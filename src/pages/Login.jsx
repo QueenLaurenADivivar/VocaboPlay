@@ -45,44 +45,46 @@ const Login = () => {
       </style>
 
       <div style={styles.pageContainer}>
-        {/* Navbar */}
-        <nav style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          right: 0,
-          background: 'linear-gradient(180deg, #ffffff 0%, #ffffff 100%)',
-          backdropFilter: 'blur(10px)',
-          boxShadow: '0 2px 20px rgb(255, 255, 255)',
-          zIndex: 1000,
-          padding: '15px 40px',
-        }}>
-          <div style={{
-            maxWidth: '1400px',
-            margin: '0 auto',
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-          }}>
-            <div 
-              onClick={() => navigate('/')}
-              style={{
-                background: 'linear-gradient(135deg, #8c7fe7)',
-                color: 'white',
-                padding: '5px 16px',
-                borderRadius: '10px',
-                fontWeight: '200',
-                fontSize: '10px',
-                cursor: 'pointer',
-                boxShadow: '0 4px 15px rgb(255, 255, 255)',
-                transition: 'all 0.3s ease',
-              }}>
-              <div style={{ ...logoTextStyle, fontSize: '20px' }}>
-                VocaboPlay
-              </div>
-            </div>
-          </div>
-        </nav>
+       {/* Navbar */}
+<nav style={{
+  position: 'fixed',
+  top: 0,
+  left: 0,
+  right: 0,
+  background: '#f5f3f8',
+  backdropFilter: 'blur(10px)',
+  boxShadow: '0 2px 20px rgba(255, 255, 255, 0.3)',
+  zIndex: 1000,
+  padding: '15px 40px',
+}}>
+  <div style={{
+    maxWidth: '1400px',
+    margin: '0 auto',
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  }}>
+    {/* VocaboPlay Logo */}
+    <div 
+      onClick={() => navigate('/')}
+      style={{
+        background: 'linear-gradient(135deg, #7c6fd6 0%, #9b8de8 100%)', // same gradient as landing page
+        color: 'white',
+        padding: '8px 20px', // same padding as landing page
+        borderRadius: '12px', // same border radius
+        fontWeight: '700', // bold
+        fontSize: '18px',
+        cursor: 'pointer',
+        boxShadow: '0 4px 15px rgba(124, 111, 214, 0.3)', // landing page box shadow
+        transition: 'all 0.3s ease',
+      }}
+    >
+      <div style={{ ...logoTextStyle, fontSize: '22px' }}>
+        VocaboPlay
+      </div>
+    </div>
+  </div>
+</nav>
 
         <div style={styles.contentContainer}>
           <div style={styles.card}>

@@ -1,6 +1,14 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+// Import images (adjust paths based on your project structure)
+// Note: You'll need to move images to public folder or use correct imports
+const brushingImage = '/assets/brushing.png';
+const cookingImage = '/assets/cooking.png';
+const bokaWelcomingImage = '/assets/bokawelcoming.jpg';
+const bokaSadFavoriteImage = '/assets/bokasadfavorite.jpg';
+const sadHeartImage = '/assets/sadheart.jpg';
+
 // Game Components
 const Flashcards = ({ onBack }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -284,14 +292,14 @@ const GuessWhatGame = ({ onBack }) => {
   const questions = [
     {
       question: 'What am I doing?',
-      image: 'src/assets/brushing.png',
+      image: brushingImage,
       sentence: 'I am ______ my hair.',
       answer: 'brushing',
       options: ['washing', 'brushing', 'cutting', 'drying']
     },
     {
       question: 'What am I doing?',
-      image: 'src/assets/cooking.png',
+      image: cookingImage,
       sentence: 'I am ______ dinner.',
       answer: 'cooking',
       options: ['eating', 'cooking', 'preparing', 'serving']
@@ -371,7 +379,7 @@ const GuessWhatGame = ({ onBack }) => {
             <ul style={{ paddingLeft: '20px', fontSize: '14px', color: '#666', lineHeight: '1.8' }}>
               <li>Look at the image carefully</li>
               <li>Read the sentence with the blank</li>
-              <li>Choose the correct word from 3 options</li>
+              <li>Choose the correct word from 4 options</li>
               <li>Get it right to earn points!</li>
             </ul>
           </div>
@@ -518,7 +526,7 @@ const GuessWhatGame = ({ onBack }) => {
   }
 };
 
-// NEW: Short Story Game Component (RESTORED)
+// NEW: Short Story Game Component
 const ShortStoryGame = ({ onBack }) => {
   const [selectedStory, setSelectedStory] = useState(null);
   const [currentChapter, setCurrentChapter] = useState(0);
@@ -878,6 +886,299 @@ const ShortStoryGame = ({ onBack }) => {
   );
 };
 
+// NEW: Sentence Builder Game (Teacher-Approved)
+const SentenceBuilder = ({ onBack }) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [score, setScore] = useState(0);
+  const [selectedWord, setSelectedWord] = useState(null);
+  const [answered, setAnswered] = useState(false);
+
+  const sentences = [
+    {
+      sentence: "The student was very ______ and completed all assignments on time.",
+      correct: "responsible",
+      options: ['responsible', 'lazy', 'funny', 'quick'],
+      hint: 'Think about someone who does their work carefully'
+    },
+    {
+      sentence: "She felt ______ when she helped her friend with homework.",
+      correct: "happy",
+      options: ['sad', 'angry', 'happy', 'tired'],
+      hint: 'This is a positive feeling'
+    },
+    {
+      sentence: "The scientist conducted an ______ to test her hypothesis.",
+      correct: "experiment",
+      options: ['experiment', 'analysis', 'observation', 'conclusion'],
+      hint: 'Scientists do this to test ideas'
+    },
+    {
+      sentence: "He was ______ enough to stand up for what was right.",
+      correct: "brave",
+      options: ['brave', 'scared', 'quiet', 'smart'],
+      hint: 'This means having courage'
+    },
+    {
+      sentence: "The teacher was ______ with the students who needed extra help.",
+      correct: "patient",
+      options: ['patient', 'angry', 'busy', 'strict'],
+      hint: 'Good teachers have this quality'
+    }
+  ];
+
+  const current = sentences[currentIndex];
+  const progress = ((currentIndex + 1) / sentences.length) * 100;
+
+  const handleAnswer = (word) => {
+    if (!answered) {
+      setSelectedWord(word);
+      setAnswered(true);
+      if (word === current.correct) {
+        setScore(score + 1);
+      }
+    }
+  };
+
+  const handleNext = () => {
+    if (currentIndex < sentences.length - 1) {
+      setCurrentIndex(currentIndex + 1);
+      setAnswered(false);
+      setSelectedWord(null);
+    } else {
+      // Game finished
+      onBack();
+    }
+  };
+
+  return (
+    <div style={{ fontFamily: "'Poppins', sans-serif", maxWidth: '600px', margin: '0 auto' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '30px' }}>
+        <button onClick={onBack} style={{ background: 'white', border: '1px solid #ddd', padding: '8px 16px', borderRadius: '8px', cursor: 'pointer', fontSize: '13px', fontWeight: '500', color: '#666', fontFamily: "'Poppins', sans-serif" }}>← Back</button>
+        <h1 style={{ fontSize: '22px', fontWeight: '700', color: '#1a1a1a', margin: '0', fontFamily: "'Poppins', sans-serif" }}>Sentence Builder</h1>
+        <div style={{ fontSize: '13px', fontWeight: '600', color: '#66BB6A', fontFamily: "'Poppins', sans-serif" }}>Score: {score}/{sentences.length}</div>
+      </div>
+
+      <div style={{ width: '100%', height: '4px', background: '#e0e0e0', borderRadius: '2px', marginBottom: '30px', overflow: 'hidden' }}>
+        <div style={{ height: '100%', background: 'linear-gradient(90deg, #66BB6A 0%, #81C784 100%)', width: `${progress}%`, transition: 'width 0.3s ease' }}></div>
+      </div>
+
+      <div style={{ background: 'white', borderRadius: '16px', padding: '30px', boxShadow: '0 2px 12px rgba(0,0,0,0.06)' }}>
+        <div style={{ fontSize: '12px', color: '#999', fontWeight: '500', marginBottom: '12px', fontFamily: "'Poppins', sans-serif" }}>Sentence {currentIndex + 1} of {sentences.length}</div>
+        
+        <div style={{ 
+          background: '#f8f7ff', 
+          borderRadius: '12px', 
+          padding: '25px', 
+          marginBottom: '30px',
+          border: '2px solid #e8e4f3'
+        }}>
+          <h2 style={{ 
+            fontSize: '18px', 
+            fontWeight: '600', 
+            color: '#333', 
+            lineHeight: '1.6',
+            fontFamily: "'Poppins', sans-serif",
+            textAlign: 'center'
+          }}>
+            {current.sentence}
+          </h2>
+        </div>
+
+        <div style={{ marginBottom: '20px' }}>
+          <p style={{ 
+            fontSize: '13px', 
+            color: '#666', 
+            fontStyle: 'italic',
+            fontFamily: "'Poppins', sans-serif"
+          }}>
+            <strong>Hint:</strong> {current.hint}
+          </p>
+        </div>
+
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '12px', marginBottom: '30px' }}>
+          {current.options.map((option, idx) => {
+            let bgColor = '#f0f0f0';
+            let borderColor = '#ddd';
+            let cursorStyle = 'pointer';
+
+            if (answered) {
+              cursorStyle = 'default';
+              if (option === current.correct) {
+                bgColor = '#e8f5e9';
+                borderColor = '#4CAF50';
+              } else if (option === selectedWord && option !== current.correct) {
+                bgColor = '#ffebee';
+                borderColor = '#f44336';
+              } else {
+                bgColor = '#f5f5f5';
+                borderColor = '#e0e0e0';
+                cursorStyle = 'default';
+              }
+            }
+
+            return (
+              <button 
+                key={idx} 
+                onClick={() => handleAnswer(option)}
+                disabled={answered}
+                style={{ 
+                  padding: '16px', 
+                  border: `2px solid ${borderColor}`, 
+                  borderRadius: '10px', 
+                  background: bgColor, 
+                  fontSize: '16px', 
+                  fontWeight: '500', 
+                  color: '#333',
+                  cursor: cursorStyle,
+                  transition: 'all 0.2s ease',
+                  fontFamily: "'Poppins', sans-serif"
+                }}
+              >
+                {option}
+                {answered && option === current.correct && <span style={{ float: 'right', color: '#4CAF50' }}>✓</span>}
+                {answered && option === selectedWord && option !== current.correct && <span style={{ float: 'right', color: '#f44336' }}>✗</span>}
+              </button>
+            );
+          })}
+        </div>
+
+        {answered && (
+          <div style={{ textAlign: 'center' }}>
+            <div style={{ 
+              padding: '16px', 
+              borderRadius: '10px', 
+              marginBottom: '20px',
+              background: selectedWord === current.correct ? '#e8f5e9' : '#fff3e0',
+              border: `1px solid ${selectedWord === current.correct ? '#4CAF50' : '#FF9800'}`
+            }}>
+              <p style={{ 
+                fontSize: '14px', 
+                fontWeight: '600', 
+                color: selectedWord === current.correct ? '#2E7D32' : '#EF6C00',
+                fontFamily: "'Poppins', sans-serif"
+              }}>
+                {selectedWord === current.correct ? 'Correct! Great job! 🎉' : `Almost! The correct word is "${current.correct}"`}
+              </p>
+            </div>
+            
+            <button 
+              onClick={handleNext}
+              style={{ 
+                width: '100%', 
+                padding: '16px', 
+                background: 'linear-gradient(135deg, #66BB6A 0%, #81C784 100%)', 
+                color: 'white', 
+                border: 'none', 
+                borderRadius: '12px', 
+                cursor: 'pointer', 
+                fontSize: '16px', 
+                fontWeight: '600',
+                fontFamily: "'Poppins', sans-serif"
+              }}
+            >
+              {currentIndex === sentences.length - 1 ? 'Finish Game' : 'Next Sentence'}
+            </button>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};
+
+// NEW: For Teachers Page Component
+const ForTeachers = ({ onBack }) => {
+  return (
+    <div style={{ fontFamily: "'Poppins', sans-serif", maxWidth: '900px', margin: '0 auto' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '30px' }}>
+        <button onClick={onBack} style={{ background: 'white', border: '1px solid #ddd', padding: '8px 16px', borderRadius: '8px', cursor: 'pointer', fontSize: '13px', fontWeight: '500', color: '#666', fontFamily: "'Poppins', sans-serif" }}>← Back</button>
+        <h1 style={{ fontSize: '22px', fontWeight: '700', color: '#1a1a1a', margin: '0', fontFamily: "'Poppins', sans-serif" }}>For Teachers 👩‍🏫</h1>
+      </div>
+
+      <div style={{ background: 'white', borderRadius: '16px', padding: '40px', boxShadow: '0 2px 12px rgba(0,0,0,0.06)' }}>
+        <div style={{ textAlign: 'center', marginBottom: '40px' }}>
+          <div style={{ fontSize: '48px', marginBottom: '20px' }}>📚</div>
+          <h2 style={{ fontSize: '28px', fontWeight: '700', color: '#1a1a1a', marginBottom: '15px', fontFamily: "'Poppins', sans-serif" }}>Using VocaboPlay in Your Classroom</h2>
+          <p style={{ fontSize: '16px', color: '#666', lineHeight: '1.6', fontFamily: "'Poppins', sans-serif" }}>
+            Discover how to integrate this vocabulary learning platform into your teaching practice.
+          </p>
+        </div>
+
+        <div style={{ marginBottom: '40px' }}>
+          <h3 style={{ fontSize: '20px', fontWeight: '700', color: '#1a1a1a', marginBottom: '20px', fontFamily: "'Poppins', sans-serif", borderBottom: '2px solid #f0f0f0', paddingBottom: '10px' }}>Recommended Classroom Activities</h3>
+          
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '20px', marginBottom: '30px' }}>
+            <div style={{ background: '#f8f7ff', borderRadius: '12px', padding: '20px' }}>
+              <div style={{ fontSize: '24px', marginBottom: '10px' }}>🏠</div>
+              <h4 style={{ fontSize: '16px', fontWeight: '600', color: '#1a1a1a', marginBottom: '8px', fontFamily: "'Poppins', sans-serif" }}>Homework Assignments</h4>
+              <p style={{ fontSize: '14px', color: '#666', lineHeight: '1.5', fontFamily: "'Poppins', sans-serif" }}>
+                Assign specific word lists from the Word Library for students to study at home.
+              </p>
+            </div>
+            
+            <div style={{ background: '#fff9e5', borderRadius: '12px', padding: '20px' }}>
+              <div style={{ fontSize: '24px', marginBottom: '10px' }}>🎯</div>
+              <h4 style={{ fontSize: '16px', fontWeight: '600', color: '#1a1a1a', marginBottom: '8px', fontFamily: "'Poppins', sans-serif" }}>In-Class Review</h4>
+              <p style={{ fontSize: '14px', color: '#666', lineHeight: '1.5', fontFamily: "'Poppins', sans-serif" }}>
+                Use the Quiz and Match games for interactive vocabulary review sessions.
+              </p>
+            </div>
+            
+            <div style={{ background: '#e8f5e9', borderRadius: '12px', padding: '20px' }}>
+              <div style={{ fontSize: '24px', marginBottom: '10px' }}>📝</div>
+              <h4 style={{ fontSize: '16px', fontWeight: '600', color: '#1a1a1a', marginBottom: '8px', fontFamily: "'Poppins', sans-serif" }}>Writing Practice</h4>
+              <p style={{ fontSize: '14px', color: '#666', lineHeight: '1.5', fontFamily: "'Poppins', sans-serif" }}>
+                Have students use new vocabulary words in sentences or short paragraphs.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div style={{ marginBottom: '40px' }}>
+          <h3 style={{ fontSize: '20px', fontWeight: '700', color: '#1a1a1a', marginBottom: '20px', fontFamily: "'Poppins', sans-serif", borderBottom: '2px solid #f0f0f0', paddingBottom: '10px' }}>Teacher-Curated Word Lists</h3>
+          
+          <div style={{ background: '#f5f5f5', borderRadius: '12px', padding: '20px', marginBottom: '20px' }}>
+            <h4 style={{ fontSize: '16px', fontWeight: '600', color: '#1a1a1a', marginBottom: '15px', fontFamily: "'Poppins', sans-serif" }}>Essay Writing Essentials</h4>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+              <span style={{ background: '#7c6fd6', color: 'white', padding: '6px 12px', borderRadius: '20px', fontSize: '12px', fontWeight: '500' }}>however</span>
+              <span style={{ background: '#7c6fd6', color: 'white', padding: '6px 12px', borderRadius: '20px', fontSize: '12px', fontWeight: '500' }}>therefore</span>
+              <span style={{ background: '#7c6fd6', color: 'white', padding: '6px 12px', borderRadius: '20px', fontSize: '12px', fontWeight: '500' }}>moreover</span>
+              <span style={{ background: '#7c6fd6', color: 'white', padding: '6px 12px', borderRadius: '20px', fontSize: '12px', fontWeight: '500' }}>consequently</span>
+              <span style={{ background: '#7c6fd6', color: 'white', padding: '6px 12px', borderRadius: '20px', fontSize: '12px', fontWeight: '500' }}>nevertheless</span>
+            </div>
+          </div>
+          
+          <div style={{ background: '#f5f5f5', borderRadius: '12px', padding: '20px', marginBottom: '20px' }}>
+            <h4 style={{ fontSize: '16px', fontWeight: '600', color: '#1a1a1a', marginBottom: '15px', fontFamily: "'Poppins', sans-serif" }}>Character Traits for Students</h4>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+              <span style={{ background: '#4CAF50', color: 'white', padding: '6px 12px', borderRadius: '20px', fontSize: '12px', fontWeight: '500' }}>responsible</span>
+              <span style={{ background: '#4CAF50', color: 'white', padding: '6px 12px', borderRadius: '20px', fontSize: '12px', fontWeight: '500' }}>persistent</span>
+              <span style={{ background: '#4CAF50', color: 'white', padding: '6px 12px', borderRadius: '20px', fontSize: '12px', fontWeight: '500' }}>creative</span>
+              <span style={{ background: '#4CAF50', color: 'white', padding: '6px 12px', borderRadius: '20px', fontSize: '12px', fontWeight: '500' }}>cooperative</span>
+              <span style={{ background: '#4CAF50', color: 'white', padding: '6px 12px', borderRadius: '20px', fontSize: '12px', fontWeight: '500' }}>resilient</span>
+            </div>
+          </div>
+        </div>
+
+        <div style={{ marginBottom: '30px' }}>
+          <h3 style={{ fontSize: '20px', fontWeight: '700', color: '#1a1a1a', marginBottom: '15px', fontFamily: "'Poppins', sans-serif" }}>Learning Objectives</h3>
+          <ul style={{ paddingLeft: '20px', fontSize: '14px', color: '#666', lineHeight: '1.8' }}>
+            <li>Students will expand their vocabulary with age-appropriate words</li>
+            <li>Students will understand word meanings in different contexts</li>
+            <li>Students will apply vocabulary in written and spoken language</li>
+            <li>Students will develop word recognition and recall skills</li>
+          </ul>
+        </div>
+
+        <div style={{ background: '#e3f2fd', borderRadius: '12px', padding: '20px', textAlign: 'center' }}>
+          <p style={{ fontSize: '14px', color: '#1565c0', fontFamily: "'Poppins', sans-serif" }}>
+            <strong>Tip:</strong> Encourage students to use the "Favorites" feature to bookmark words they need to practice more.
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const Dashboard = () => {
   const navigate = useNavigate();
   const [activeMenu, setActiveMenu] = useState('Dashboard');
@@ -900,56 +1201,128 @@ const Dashboard = () => {
     });
   };
 
-  // PlayGames Component - UPDATED to include new games
+  // PlayGames Component - ENHANCED with more creative games and lively UI
   const PlayGames = () => {
     const games = [
       {
         id: 'flashcards',
         name: 'Flashcards',
         description: 'Flip cards to learn new words and their definitions.',
-        iconBg: '#FFE5E5',
+        iconBg: 'linear-gradient(135deg, #FFE5E5 0%, #FFD1D1 100%)',
         icon: '📇',
-        accentColor: '#FF6B6B'
+        accentColor: '#FF6B6B',
+        pattern: '🔄',
+        available: true
       },
       {
         id: 'match',
         name: 'Match Game',
         description: 'Connect words with their correct definitions.',
-        iconBg: '#E5F3FF',
+        iconBg: 'linear-gradient(135deg, #E5F3FF 0%, #CCE7FF 100%)',
         icon: '🎯',
-        accentColor: '#4A90E2'
+        accentColor: '#4A90E2',
+        pattern: '🔗',
+        available: true
       },
       {
         id: 'short-story',
         name: 'Short Story',
         description: 'Short stories to read with vocab words and quizzes.',
-        iconBg: '#FFF9E5',
+        iconBg: 'linear-gradient(135deg, #FFF9E5 0%, #FFF0CC 100%)',
         icon: '📖',
-        accentColor: '#FFD54F'
+        accentColor: '#FFD54F',
+        pattern: '✨',
+        available: true
       },
       {
         id: 'quiz',
-        name: 'Quiz',
+        name: 'Quiz Master',
         description: 'Test your knowledge with multiple choice questions.',
-        iconBg: '#FFF5E5',
+        iconBg: 'linear-gradient(135deg, #FFF5E5 0%, #FFEACC 100%)',
         icon: '❓',
-        accentColor: '#FFA726'
-      },
-      {
-        id: 'type-it',
-        name: 'Type It!',
-        description: 'Listen to the word and type the correct word.',
-        iconBg: '#F3E5FF',
-        icon: '⌨️',
-        accentColor: '#AB47BC'
+        accentColor: '#FFA726',
+        pattern: '🏆',
+        available: true
       },
       {
         id: 'guesswhat',
         name: 'GuessWhat',
-        description: 'Guess what the person is doing.',
-        iconBg: '#E5F9FF',
+        description: 'Guess what the person is doing from the image.',
+        iconBg: 'linear-gradient(135deg, #E5F9FF 0%, #CCF2FF 100%)',
         icon: '🤔',
-        accentColor: '#26C6DA'
+        accentColor: '#26C6DA',
+        pattern: '🎭',
+        available: true
+      },
+      {
+        id: 'sentence-builder',
+        name: 'Sentence Builder',
+        description: 'Build correct sentences using vocabulary words.',
+        iconBg: 'linear-gradient(135deg, #E0F2F1 0%, #B2DFDB 100%)',
+        icon: '📝',
+        accentColor: '#26A69A',
+        pattern: '✍️',
+        available: true
+      },
+      {
+        id: 'word-builder',
+        name: 'Word Builder',
+        description: 'Build words from scrambled letters and learn their meanings.',
+        iconBg: 'linear-gradient(135deg, #E8F5E9 0%, #C8E6C9 100%)',
+        icon: '🧩',
+        accentColor: '#66BB6A',
+        pattern: '🔤',
+        available: false
+      },
+      {
+        id: 'context-clues',
+        name: 'Context Detective',
+        description: 'Figure out word meanings from sentence context clues.',
+        iconBg: 'linear-gradient(135deg, #FFF3E0 0%, #FFE0B2 100%)',
+        icon: '🔍',
+        accentColor: '#FF9800',
+        pattern: '🕵️',
+        available: false
+      },
+      {
+        id: 'synonym-antonym',
+        name: 'Word Twins',
+        description: 'Match words with their synonyms and antonyms.',
+        iconBg: 'linear-gradient(135deg, #F3E5F5 0%, #E1BEE7 100%)',
+        icon: '🔀',
+        accentColor: '#9C27B0',
+        pattern: '⚖️',
+        available: false
+      },
+      {
+        id: 'word-race',
+        name: 'Word Race',
+        description: 'Speed challenge! Answer as many definitions as you can in 60 seconds.',
+        iconBg: 'linear-gradient(135deg, #FFEBEE 0%, #FFCDD2 100%)',
+        icon: '⚡',
+        accentColor: '#EF5350',
+        pattern: '⏱️',
+        available: false
+      },
+      {
+        id: 'memory-chain',
+        name: 'Memory Chain',
+        description: 'Remember word sequences and their meanings in order.',
+        iconBg: 'linear-gradient(135deg, #E8EAF6 0%, #C5CAE9 100%)',
+        icon: '🧠',
+        accentColor: '#5C6BC0',
+        pattern: '⛓️',
+        available: false
+      },
+      {
+        id: 'vocabulary-journal',
+        name: 'My Word Journal',
+        description: 'Create your own vocabulary journal with notes and examples.',
+        iconBg: 'linear-gradient(135deg, #FFFDE7 0%, #FFF9C4 100%)',
+        icon: '📓',
+        accentColor: '#FDD835',
+        pattern: '✏️',
+        available: false
       },
     ];
 
@@ -958,97 +1331,192 @@ const Dashboard = () => {
         maxWidth: '1200px',
         margin: '0 auto',
         fontFamily: "'Poppins', sans-serif",
+        position: 'relative',
       }}>
+        {/* Animated background decoration */}
+        <div style={{
+          position: 'absolute',
+          top: '-50px',
+          right: '0',
+          fontSize: '120px',
+          opacity: '0.05',
+          transform: 'rotate(-15deg)',
+          pointerEvents: 'none',
+        }}>🎮</div>
+        
         <h1 style={{
-          fontSize: '32px',
-          fontWeight: '700',
-          color: '#1a1a1a',
+          fontSize: '36px',
+          fontWeight: '800',
+          background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+          WebkitBackgroundClip: 'text',
+          WebkitTextFillColor: 'transparent',
+          backgroundClip: 'text',
           marginBottom: '12px',
           textAlign: 'center',
           fontFamily: "'Poppins', sans-serif",
-        }}>Choose Your Game</h1>
+        }}>Choose Your Learning Adventure! 🎯</h1>
         <p style={{
-          fontSize: '15px',
-          color: '#999',
+          fontSize: '16px',
+          color: '#666',
           textAlign: 'center',
           marginBottom: '50px',
           fontFamily: "'Poppins', sans-serif",
-        }}>Pick a fun way to learn vocabulary!</p>
+        }}>Pick a fun way to boost your vocabulary skills! Green = Available, Gray = Coming Soon</p>
 
         <div style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
           gap: '24px',
         }}>
-          {games.map((game) => (
+          {games.map((game, index) => (
             <div 
               key={game.id} 
               onClick={() => {
-                // UPDATED: Include new games in the click handler
-                if (game.id === 'flashcards' || game.id === 'match' || game.id === 'quiz' || game.id === 'guesswhat' || game.id === 'short-story') {
+                if (game.available) {
                   setCurrentGame(game.id);
                 } else {
-                  alert(`${game.name} - Coming soon!`);
+                  alert(`${game.name} - Coming soon! 🚀\n\nThis educational game will help students:\n• ${game.description}\n• Perfect for classroom activities!\n• Teacher-approved learning method`);
                 }
               }}
               style={{
                 background: 'white',
-                border: '2px solid #f0f0f0',
-                borderRadius: '20px',
+                border: `2px solid ${game.available ? '#f0f0f0' : '#e0e0e0'}`,
+                borderRadius: '24px',
                 padding: '32px 28px',
-                cursor: 'pointer',
-                transition: 'all 0.3s ease',
-                boxShadow: '0 2px 8px rgba(0,0,0,0.04)',
+                cursor: game.available ? 'pointer' : 'not-allowed',
+                transition: 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
+                boxShadow: '0 4px 12px rgba(0,0,0,0.06)',
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'flex-start',
                 fontFamily: "'Poppins', sans-serif",
+                position: 'relative',
+                overflow: 'hidden',
+                animation: `fadeInUp 0.6s ease-out ${index * 0.1}s backwards`,
+                opacity: game.available ? 1 : 0.7,
               }}
               onMouseOver={(e) => {
-                e.currentTarget.style.transform = 'translateY(-6px)';
-                e.currentTarget.style.boxShadow = '0 12px 32px rgba(0,0,0,0.12)';
-                e.currentTarget.style.borderColor = game.accentColor;
+                if (game.available) {
+                  e.currentTarget.style.transform = 'translateY(-8px) scale(1.02)';
+                  e.currentTarget.style.boxShadow = `0 20px 40px ${game.accentColor}33`;
+                  e.currentTarget.style.borderColor = game.accentColor;
+                }
               }}
               onMouseOut={(e) => {
-                e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.04)';
-                e.currentTarget.style.borderColor = '#f0f0f0';
+                if (game.available) {
+                  e.currentTarget.style.transform = 'translateY(0) scale(1)';
+                  e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.06)';
+                  e.currentTarget.style.borderColor = '#f0f0f0';
+                }
               }}
             >
+              {/* Coming Soon Badge */}
+              {!game.available && (
+                <div style={{
+                  position: 'absolute',
+                  top: '12px',
+                  right: '12px',
+                  background: '#666',
+                  color: 'white',
+                  padding: '4px 10px',
+                  borderRadius: '12px',
+                  fontSize: '11px',
+                  fontWeight: '600',
+                  zIndex: 2,
+                }}>
+                  Coming Soon
+                </div>
+              )}
+
+              {/* Decorative pattern in corner */}
+              <div style={{
+                position: 'absolute',
+                top: '12px',
+                right: '12px',
+                fontSize: '24px',
+                opacity: '0.15',
+                zIndex: 1,
+              }}>
+                {game.pattern}
+              </div>
+
               <div style={{
                 width: '90px',
                 height: '90px',
                 background: game.iconBg,
-                borderRadius: '18px',
+                borderRadius: '20px',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 marginBottom: '24px',
                 position: 'relative',
+                boxShadow: `0 8px 16px ${game.accentColor}22`,
+                opacity: game.available ? 1 : 0.6,
               }}>
-                {/* Icon container with emoji placeholder */}
                 <div style={{
                   fontSize: '48px',
+                  animation: game.available ? 'bounce 2s ease-in-out infinite' : 'none',
                 }}>
                   {game.icon}
                 </div>
               </div>
+              
               <h3 style={{
-                fontSize: '20px',
+                fontSize: '22px',
                 fontWeight: '700',
-                color: '#1a1a1a',
+                color: game.available ? '#1a1a1a' : '#999',
                 marginBottom: '10px',
                 fontFamily: "'Poppins', sans-serif",
               }}>{game.name}</h3>
+              
               <p style={{
                 fontSize: '14px',
-                color: '#666',
+                color: game.available ? '#666' : '#aaa',
                 lineHeight: '1.7',
                 fontFamily: "'Poppins', sans-serif",
+                marginBottom: '16px',
+                flex: 1,
               }}>{game.description}</p>
+
+              {/* Play button indicator */}
+              <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '8px',
+                color: game.available ? game.accentColor : '#ccc',
+                fontSize: '14px',
+                fontWeight: '600',
+                marginTop: 'auto',
+              }}>
+                <span>{game.available ? 'Play Now' : 'Coming Soon'}</span>
+                <span style={{ fontSize: '16px' }}>{game.available ? '→' : '⏳'}</span>
+              </div>
             </div>
           ))}
         </div>
+
+        {/* Add CSS animations */}
+        <style>{`
+          @keyframes fadeInUp {
+            from {
+              opacity: 0;
+              transform: translateY(30px);
+            }
+            to {
+              opacity: 1;
+              transform: translateY(0);
+            }
+          }
+          
+          @keyframes bounce {
+            0%, 100% {
+              transform: translateY(0);
+            }
+            50% {
+              transform: translateY(-5px);
+            }
+          }
+        `}</style>
       </div>
     );
   };
@@ -1058,6 +1526,7 @@ const Dashboard = () => {
     const [selectedDifficulty, setSelectedDifficulty] = useState('all');
     const [searchTerm, setSearchTerm] = useState('');
     const [favorites, setFavorites] = useState([]);
+    const [selectedCategory, setSelectedCategory] = useState('all');
 
     const toggleFavorite = (wordId) => {
       setFavorites(prev => 
@@ -1068,7 +1537,7 @@ const Dashboard = () => {
     };
 
     const words = [
-      // EASY LEVEL - 6 words
+      // EASY LEVEL - 8 words
       {
         id: 1,
         word: 'Happy',
@@ -1076,194 +1545,384 @@ const Dashboard = () => {
         definition: 'Feeling or showing pleasure or contentment.',
         example: 'She felt happy when she received the good news.',
         difficulty: 'easy',
-        color: '#4CAF50'
+        color: '#4CAF50',
+        category: 'emotions',
+        teacherNote: 'Common emotion word for young learners'
       },
       {
         id: 2,
-        word: 'Bright',
-        pronunciation: '/braɪt/',
-        definition: 'Giving out or reflecting a lot of light; shining.',
-        example: 'The sun was bright in the clear blue sky.',
+        word: 'Sad',
+        pronunciation: '/sæd/',
+        definition: 'Feeling or showing unhappiness or sorrow.',
+        example: 'He felt sad after saying goodbye to his friends.',
         difficulty: 'easy',
-        color: '#4CAF50'
+        color: '#4CAF50',
+        category: 'emotions',
+        teacherNote: 'Basic emotion vocabulary'
       },
       {
         id: 3,
-        word: 'Quick',
-        pronunciation: '/kwɪk/',
-        definition: 'Moving fast or doing something in a short time.',
-        example: 'The rabbit was very quick and escaped easily.',
+        word: 'Big',
+        pronunciation: '/bɪɡ/',
+        definition: 'Of considerable size or extent.',
+        example: 'The elephant is very big.',
         difficulty: 'easy',
-        color: '#4CAF50'
+        color: '#4CAF50',
+        category: 'descriptive',
+        teacherNote: 'Essential size adjective'
       },
       {
         id: 4,
-        word: 'Calm',
-        pronunciation: '/kɑːm/',
-        definition: 'Not showing or feeling nervousness, anger, or other strong emotions.',
-        example: 'She remained calm during the emergency.',
+        word: 'Small',
+        pronunciation: '/smɔːl/',
+        definition: 'Of limited size; not large.',
+        example: 'The kitten is very small.',
         difficulty: 'easy',
-        color: '#4CAF50'
+        color: '#4CAF50',
+        category: 'descriptive',
+        teacherNote: 'Opposite of "big"'
       },
       {
         id: 5,
-        word: 'Kind',
-        pronunciation: '/kaɪnd/',
-        definition: 'Having or showing a friendly, generous, and considerate nature.',
-        example: 'He was kind to everyone he met.',
+        word: 'Fast',
+        pronunciation: '/fæst/',
+        definition: 'Moving or capable of moving at high speed.',
+        example: 'The car is very fast.',
         difficulty: 'easy',
-        color: '#4CAF50'
+        color: '#4CAF50',
+        category: 'descriptive',
+        teacherNote: 'Speed-related vocabulary'
       },
       {
         id: 6,
-        word: 'Strong',
-        pronunciation: '/strɒŋ/',
-        definition: 'Having the power to move heavy weights or perform physically demanding tasks.',
-        example: 'The athlete was strong enough to lift the heavy barbell.',
+        word: 'Slow',
+        pronunciation: '/sləʊ/',
+        definition: 'Moving or operating at a low speed; not fast.',
+        example: 'The turtle moves very slow.',
         difficulty: 'easy',
-        color: '#4CAF50'
+        color: '#4CAF50',
+        category: 'descriptive',
+        teacherNote: 'Opposite of "fast"'
       },
-      
-      // MODERATE LEVEL - 6 words
       {
         id: 7,
-        word: 'Ambitious',
-        pronunciation: '/æmˈbɪʃ.əs/',
-        definition: 'Having or showing a strong desire and determination to succeed.',
-        example: 'She was ambitious and worked hard to achieve her goals.',
-        difficulty: 'moderate',
-        color: '#FF9800'
+        word: 'Kind',
+        pronunciation: '/kaɪnd/',
+        definition: 'Having or showing a friendly, generous, and considerate nature.',
+        example: 'She was kind to all the students in the class.',
+        difficulty: 'easy',
+        color: '#4CAF50',
+        category: 'character',
+        teacherNote: 'Important character trait'
       },
       {
         id: 8,
-        word: 'Cautious',
-        pronunciation: '/ˈkɔː.ʃəs/',
-        definition: 'Careful to avoid potential problems or dangers.',
-        example: 'He was cautious when crossing the busy street.',
-        difficulty: 'moderate',
-        color: '#FF9800'
+        word: 'Angry',
+        pronunciation: '/ˈæŋ.ɡri/',
+        definition: 'Feeling or showing strong displeasure or annoyance.',
+        example: 'He was angry when he lost the game.',
+        difficulty: 'easy',
+        color: '#4CAF50',
+        category: 'emotions',
+        teacherNote: 'Common emotion word'
       },
+
+      // MODERATE LEVEL - 8 words
       {
         id: 9,
-        word: 'Diligent',
-        pronunciation: '/ˈdɪl.ɪ.dʒənt/',
-        definition: 'Having or showing care and conscientiousness in one\'s work or duties.',
-        example: 'The diligent student completed all assignments on time.',
+        word: 'Curious',
+        pronunciation: '/ˈkjʊə.ri.əs/',
+        definition: 'Eager to know or learn something.',
+        example: 'The child was curious about the stars in the sky.',
         difficulty: 'moderate',
-        color: '#FF9800'
+        color: '#FF9800',
+        category: 'character',
+        teacherNote: 'Promotes inquiry-based learning'
       },
       {
         id: 10,
-        word: 'Generous',
-        pronunciation: '/ˈdʒen.ər.əs/',
-        definition: 'Showing a readiness to give more than is necessary or expected.',
-        example: 'Her generous donation helped many families in need.',
+        word: 'Brave',
+        pronunciation: '/breɪv/',
+        definition: 'Ready to face and endure danger or pain; showing courage.',
+        example: 'The firefighter was very brave during the rescue.',
         difficulty: 'moderate',
-        color: '#FF9800'
+        color: '#FF9800',
+        category: 'character',
+        teacherNote: 'Important character trait for discussions'
       },
       {
         id: 11,
-        word: 'Persistent',
-        pronunciation: '/pəˈsɪs.tənt/',
-        definition: 'Continuing firmly in a course of action despite difficulty or opposition.',
-        example: 'His persistent efforts finally led to success.',
+        word: 'Friendly',
+        pronunciation: '/ˈfrend.li/',
+        definition: 'Kind and pleasant.',
+        example: 'The new student was friendly to everyone.',
         difficulty: 'moderate',
-        color: '#FF9800'
+        color: '#FF9800',
+        category: 'character',
+        teacherNote: 'Social skills vocabulary'
       },
       {
         id: 12,
-        word: 'Vibrant',
-        pronunciation: '/ˈvaɪ.brənt/',
-        definition: 'Full of energy and enthusiasm; bright and striking.',
-        example: 'The city had a vibrant cultural scene.',
+        word: 'Generous',
+        pronunciation: '/ˈdʒen.ər.əs/',
+        definition: 'Willing to give more than is necessary or expected.',
+        example: 'She is generous with her time and money.',
         difficulty: 'moderate',
-        color: '#FF9800'
+        color: '#FF9800',
+        category: 'character',
+        teacherNote: 'Character education word'
       },
-      
-      // ADVANCED LEVEL - 6 words
       {
         id: 13,
-        word: 'Ephemeral',
-        pronunciation: '/ɪˈfem.ər.əl/',
-        definition: 'Lasting for a very short time; temporary.',
-        example: 'The beauty of cherry blossoms is ephemeral.',
-        difficulty: 'advanced',
-        color: '#F44336'
+        word: 'Patient',
+        pronunciation: '/ˈpeɪ.ʃənt/',
+        definition: 'Able to accept or tolerate delays, problems, or suffering without becoming annoyed.',
+        example: 'Teachers need to be patient with students.',
+        difficulty: 'moderate',
+        color: '#FF9800',
+        category: 'character',
+        teacherNote: 'Essential for classroom discussions'
       },
       {
         id: 14,
-        word: 'Ubiquitous',
-        pronunciation: '/juːˈbɪk.wɪ.təs/',
-        definition: 'Present, appearing, or found everywhere.',
-        example: 'Smartphones have become ubiquitous in modern society.',
-        difficulty: 'advanced',
-        color: '#F44336'
+        word: 'Polite',
+        pronunciation: '/pəˈlaɪt/',
+        definition: 'Having or showing good manners and respect for others.',
+        example: 'He was polite and said thank you to everyone.',
+        difficulty: 'moderate',
+        color: '#FF9800',
+        category: 'character',
+        teacherNote: 'Basic social etiquette'
       },
       {
         id: 15,
-        word: 'Enigmatic',
-        pronunciation: '/ˌen.ɪɡˈmæt.ɪk/',
-        definition: 'Difficult to interpret or understand; mysterious.',
-        example: 'The Mona Lisa\'s enigmatic smile has fascinated people for centuries.',
-        difficulty: 'advanced',
-        color: '#F44336'
+        word: 'Creative',
+        pronunciation: '/kriˈeɪ.tɪv/',
+        definition: 'Having the ability to create or invent something new.',
+        example: 'The students came up with a creative solution.',
+        difficulty: 'moderate',
+        color: '#FF9800',
+        category: 'character',
+        teacherNote: '21st century skills vocabulary'
       },
       {
         id: 16,
-        word: 'Meticulous',
-        pronunciation: '/məˈtɪk.jə.ləs/',
-        definition: 'Showing great attention to detail; very careful and precise.',
-        example: 'The scientist was meticulous in recording every observation.',
-        difficulty: 'advanced',
-        color: '#F44336'
+        word: 'Responsible',
+        pronunciation: '/rɪˈspɒn.sɪ.bəl/',
+        definition: 'Having an obligation to do something correctly or carefully.',
+        example: 'She is responsible for feeding the classroom pets.',
+        difficulty: 'moderate',
+        color: '#FF9800',
+        category: 'character',
+        teacherNote: 'Classroom management vocabulary'
       },
+
+      // ADVANCED LEVEL - 8 words
       {
         id: 17,
-        word: 'Eloquent',
-        pronunciation: '/ˈel.ə.kwənt/',
-        definition: 'Fluent or persuasive in speaking or writing.',
-        example: 'Her eloquent speech moved the entire audience to tears.',
+        word: 'Persistent',
+        pronunciation: '/pəˈsɪs.tənt/',
+        definition: 'Continuing firmly in a course of action despite difficulty or opposition.',
+        example: 'His persistent efforts finally paid off.',
         difficulty: 'advanced',
-        color: '#F44336'
+        color: '#F44336',
+        category: 'character',
+        teacherNote: 'Growth mindset vocabulary'
       },
       {
         id: 18,
+        word: 'Meticulous',
+        pronunciation: '/məˈtɪk.jə.ləs/',
+        definition: 'Showing great attention to detail; very careful and precise.',
+        example: 'She is meticulous in checking every answer.',
+        difficulty: 'advanced',
+        color: '#F44336',
+        category: 'character',
+        teacherNote: 'Academic work quality descriptor'
+      },
+      {
+        id: 19,
+        word: 'Eloquent',
+        pronunciation: '/ˈel.ə.kwənt/',
+        definition: 'Fluent or persuasive in speaking or writing.',
+        example: 'The student gave an eloquent speech in class.',
+        difficulty: 'advanced',
+        color: '#F44336',
+        category: 'academic',
+        teacherNote: 'Essay writing and presentation skills'
+      },
+      {
+        id: 20,
         word: 'Resilient',
         pronunciation: '/rɪˈzɪl.i.ənt/',
         definition: 'Able to recover quickly from difficulties; tough and adaptable.',
-        example: 'The community proved resilient after the natural disaster.',
+        example: 'Children can be very resilient in difficult situations.',
         difficulty: 'advanced',
-        color: '#F44336'
+        color: '#F44336',
+        category: 'character',
+        teacherNote: 'Social-emotional learning term'
       },
+      {
+        id: 21,
+        word: 'Innovative',
+        pronunciation: '/ˈɪn.ə.veɪ.tɪv/',
+        definition: 'Introducing new ideas; original and creative in thinking.',
+        example: 'The team developed an innovative project for school.',
+        difficulty: 'advanced',
+        color: '#F44336',
+        category: 'academic',
+        teacherNote: 'STEM and project-based learning'
+      },
+      {
+        id: 22,
+        word: 'Compassionate',
+        pronunciation: '/kəmˈpæʃ.ən.ət/',
+        definition: 'Feeling or showing concern for others; kind and caring.',
+        example: 'Teachers should be compassionate toward their students.',
+        difficulty: 'advanced',
+        color: '#F44336',
+        category: 'character',
+        teacherNote: 'Empathy development vocabulary'
+      },
+      {
+        id: 23,
+        word: 'Analytical',
+        pronunciation: '/ˌæn.əˈlɪt.ɪ.kəl/',
+        definition: 'Relating to the ability to analyze information in detail.',
+        example: 'She has an analytical mind and solves problems easily.',
+        difficulty: 'advanced',
+        color: '#F44336',
+        category: 'academic',
+        teacherNote: 'Critical thinking skill'
+      },
+      {
+        id: 24,
+        word: 'Ambitious',
+        pronunciation: '/æmˈbɪʃ.əs/',
+        definition: 'Having a strong desire and determination to succeed.',
+        example: 'He is ambitious and wants to become a scientist.',
+        difficulty: 'advanced',
+        color: '#F44336',
+        category: 'character',
+        teacherNote: 'Goal-setting and motivation'
+      },
+
+      // TEACHER-RECOMMENDED ESSAY WORDS
+      {
+        id: 25,
+        word: 'However',
+        pronunciation: '/haʊˈev.ər/',
+        definition: 'Used to introduce a statement that contrasts with or seems to contradict something that has been said previously.',
+        example: 'I wanted to go to the park; however, it started raining.',
+        difficulty: 'moderate',
+        color: '#FF9800',
+        category: 'essay',
+        teacherNote: 'Essential transition word for essays'
+      },
+      {
+        id: 26,
+        word: 'Therefore',
+        pronunciation: '/ˈðeə.fɔːr/',
+        definition: 'For that reason; consequently.',
+        example: 'She studied hard; therefore, she passed the exam.',
+        difficulty: 'moderate',
+        color: '#FF9800',
+        category: 'essay',
+        teacherNote: 'Cause-effect relationship word'
+      },
+      {
+        id: 27,
+        word: 'Furthermore',
+        pronunciation: '/ˌfɜː.ðəˈmɔːr/',
+        definition: 'In addition; besides (used to introduce a fresh consideration in an argument).',
+        example: 'The plan is too expensive; furthermore, it would take too long.',
+        difficulty: 'advanced',
+        color: '#F44336',
+        category: 'essay',
+        teacherNote: 'Academic writing essential'
+      },
+      {
+        id: 28,
+        word: 'Consequently',
+        pronunciation: '/ˈkɒn.sɪ.kwənt.li/',
+        definition: 'As a result; therefore.',
+        example: 'He didn\'t study; consequently, he failed the test.',
+        difficulty: 'advanced',
+        color: '#F44336',
+        category: 'essay',
+        teacherNote: 'Formal consequence indicator'
+      }
     ];
 
-    // Filter words based on selected difficulty and search term
+    const categories = [
+      { id: 'all', name: 'All Categories', color: '#7c6fd6' },
+      { id: 'emotions', name: 'Emotions', color: '#FF6B6B' },
+      { id: 'descriptive', name: 'Descriptive', color: '#4CAF50' },
+      { id: 'character', name: 'Character Traits', color: '#FF9800' },
+      { id: 'academic', name: 'Academic', color: '#2196F3' },
+      { id: 'essay', name: 'Essay Writing', color: '#9C27B0' }
+    ];
+
+    // Filter words based on selected difficulty, category, and search term
     const filteredWords = words.filter(word => {
       const matchesDifficulty = selectedDifficulty === 'all' 
         ? true 
         : selectedDifficulty === 'favorites' 
           ? favorites.includes(word.id)
           : word.difficulty === selectedDifficulty;
-      const matchesSearch = word.word.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                           word.definition.toLowerCase().includes(searchTerm.toLowerCase());
-      return matchesDifficulty && matchesSearch;
+      
+      const matchesCategory = selectedCategory === 'all' 
+        ? true 
+        : word.category === selectedCategory;
+      
+      const matchesSearch = searchTerm === '' 
+        ? true 
+        : word.word.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          word.definition.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          (word.teacherNote && word.teacherNote.toLowerCase().includes(searchTerm.toLowerCase()));
+      
+      return matchesDifficulty && matchesCategory && matchesSearch;
     });
-
-    const favoriteWords = words.filter(word => favorites.includes(word.id));
 
     return (
       <div style={wordStyles.container}>
-        <h1 style={wordStyles.title}>Word Library</h1>
-        <p style={wordStyles.subtitle}>Explore and learn new vocabulary</p>
+        <h1 style={wordStyles.title}>Word Library 📚</h1>
+        <p style={wordStyles.subtitle}>Explore and learn vocabulary curated with teacher input</p>
 
         <div style={wordStyles.filterSection}>
           <input
             type="text"
-            placeholder="Search words..."
+            placeholder="Search words, definitions, or teacher notes..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             style={wordStyles.searchInput}
           />
+          
+          <div style={{ marginBottom: '20px' }}>
+            <h3 style={{ fontSize: '14px', fontWeight: '600', color: '#666', marginBottom: '10px', fontFamily: "'Poppins', sans-serif" }}>Categories</h3>
+            <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+              {categories.map(category => (
+                <button
+                  key={category.id}
+                  style={{
+                    padding: '8px 16px',
+                    border: 'none',
+                    borderRadius: '20px',
+                    fontSize: '13px',
+                    fontWeight: '500',
+                    cursor: 'pointer',
+                    transition: 'all 0.3s ease',
+                    fontFamily: "'Poppins', sans-serif",
+                    background: selectedCategory === category.id ? category.color : '#f0f0f0',
+                    color: selectedCategory === category.id ? 'white' : '#666',
+                  }}
+                  onClick={() => setSelectedCategory(category.id)}
+                >
+                  {category.name}
+                </button>
+              ))}
+            </div>
+          </div>
           
           <div style={wordStyles.filterButtons}>
             <button
@@ -1333,6 +1992,28 @@ const Dashboard = () => {
             </button>
           </div>
         </div>
+
+        {/* Teacher Recommendation Banner */}
+        {selectedCategory === 'essay' && (
+          <div style={{
+            background: 'linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 100%)',
+            border: '1px solid #90CAF9',
+            borderRadius: '12px',
+            padding: '15px 20px',
+            marginBottom: '25px',
+            fontFamily: "'Poppins', sans-serif",
+          }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+              <div style={{ fontSize: '24px' }}>👩‍🏫</div>
+              <div>
+                <h4 style={{ fontSize: '14px', fontWeight: '700', color: '#1565C0', marginBottom: '4px' }}>Teacher's Recommendation</h4>
+                <p style={{ fontSize: '12px', color: '#1976D2', lineHeight: '1.4' }}>
+                  These transition words are essential for essay writing. Practice using them to improve your writing structure and flow.
+                </p>
+              </div>
+            </div>
+          </div>
+        )}
 
         {/* Show empty state for favorites */}
         {selectedDifficulty === 'favorites' && favorites.length === 0 ? (
@@ -1905,10 +2586,10 @@ const Dashboard = () => {
         background: '#f5f5f7',
         fontFamily: 'Poppins, sans-serif',
       }}>
-        {/* Sidebar */}
+       {/* Sidebar */}
         <div style={{
-          width: '250px',
-          background: 'linear-gradient(180deg, #8b7dd6 0%, #7c6fd6 100%)',
+          width: '280px',
+          background: 'linear-gradient(180deg, #8b7dd6 0%, #7c6fd6 50%, #6b5ec5 100%)',
           color: 'white',
           display: 'flex',
           flexDirection: 'column',
@@ -1918,72 +2599,144 @@ const Dashboard = () => {
           top: 0,
           padding: '0',
           fontFamily: "'Poppins', sans-serif",
+          boxShadow: '4px 0 20px rgba(0, 0, 0, 0.1)',
         }}>
-          {/* Logo */}
+          {/* Logo with gradient accent */}
           <div style={{
-            padding: '25px 20px',
-            fontSize: '22px',
-            fontWeight: '700',
-            borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
+            padding: '30px 25px',
+            fontSize: '26px',
+            fontWeight: '800',
+            borderBottom: '2px solid rgba(255, 255, 255, 0.15)',
             letterSpacing: '-0.5px',
             color: 'white',
             fontFamily: "'Poppins', sans-serif",
+            background: 'rgba(255, 255, 255, 0.05)',
+            position: 'relative',
           }}>
-            VocaboPlay
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+              <span style={{ 
+                fontSize: '32px',
+                filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.2))'
+              }}></span>
+              VocaboPlay
+            </div>
+            {/* Decorative accent */}
+            <div style={{
+              position: 'absolute',
+              bottom: 0,
+              left: 0,
+              right: 0,
+              height: '3px',
+              background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent)',
+            }}></div>
           </div>
 
           {/* Menu Items */}
-          <nav style={{ flex: 1, padding: '20px 0' }}>
+          <nav style={{ flex: 1, padding: '25px 0' }}>
             {[
-              { name: 'Dashboard', icon: '▣' },
-              { name: 'Word Library', icon: '☰' },
-              { name: 'Games', icon: '◉' },
-              { name: 'My Progress', icon: '▦' },
-              { name: 'Favorites', icon: '★' },
+              { name: 'Dashboard', icon: '▣', color: '#ffffff' },
+              { name: 'Word Library', icon: '☰', color: '#ffffff' },
+              { name: 'Games', icon: '◉', color: '#ffffff' },
+              { name: 'My Progress', icon: '▦', color: '#ffffff' },
+              { name: 'Favorites', icon: '★', color: '#ffffff' },
             ].map((item) => (
               <div
                 key={item.name}
                 className={`menu-item ${activeMenu === item.name ? 'active' : ''}`}
                 onClick={() => setActiveMenu(item.name)}
                 style={{
-                  padding: '12px 25px',
+                  padding: '14px 25px',
+                  margin: '5px 15px',
                   display: 'flex',
                   alignItems: 'center',
-                  gap: '12px',
+                  gap: '14px',
                   cursor: 'pointer',
-                  fontSize: '15px',
-                  fontWeight: activeMenu === item.name ? '600' : '400',
+                  fontSize: '16px',
+                  fontWeight: activeMenu === item.name ? '600' : '500',
                   color: 'white',
                   fontFamily: "'Poppins', sans-serif",
+                  background: activeMenu === item.name 
+                    ? 'linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.15) 100%)' 
+                    : 'transparent',
+                  borderRadius: '12px',
+                  transition: 'all 0.3s ease',
+                  borderLeft: activeMenu === item.name ? `4px solid ${item.color}` : '4px solid transparent',
+                  boxShadow: activeMenu === item.name ? '0 4px 12px rgba(0, 0, 0, 0.15)' : 'none',
+                }}
+                onMouseOver={(e) => {
+                  if (activeMenu !== item.name) {
+                    e.currentTarget.style.background = 'rgba(255, 255, 255, 0.1)';
+                    e.currentTarget.style.transform = 'translateX(5px)';
+                  }
+                }}
+                onMouseOut={(e) => {
+                  if (activeMenu !== item.name) {
+                    e.currentTarget.style.background = 'transparent';
+                    e.currentTarget.style.transform = 'translateX(0)';
+                  }
                 }}
               >
-                <span style={{ fontSize: '18px' }}>{item.icon}</span>
+                <span style={{ 
+                  fontSize: '20px',
+                  filter: activeMenu === item.name ? 'drop-shadow(0 2px 4px rgba(0,0,0,0.3))' : 'none'
+                }}>{item.icon}</span>
                 <span>{item.name}</span>
+                {/* {activeMenu === item.name && (
+                  <span style={{ 
+                    marginLeft: 'auto', 
+                    fontSize: '12px',
+                    background: item.color,
+                    padding: '2px 8px',
+                    borderRadius: '8px',
+                    color: '#1a1a1a',
+                    fontWeight: '700',
+                  }}>●</span>
+                )} */}
               </div>
             ))}
           </nav>
 
           {/* Settings at bottom */}
           <div style={{
-            borderTop: '1px solid rgba(255, 255, 255, 0.1)',
+            borderTop: '2px solid rgba(255, 255, 255, 0.15)',
             padding: '20px 0',
+            background: 'rgba(0, 0, 0, 0.1)',
           }}>
             <div
               className="menu-item"
               onClick={() => setActiveMenu('Settings')}
               style={{
-                padding: '12px 25px',
+                padding: '14px 25px',
+                margin: '0 15px',
                 display: 'flex',
                 alignItems: 'center',
-                gap: '12px',
+                gap: '14px',
                 cursor: 'pointer',
-                fontSize: '15px',
-                fontWeight: '400',
+                fontSize: '16px',
+                fontWeight: activeMenu === 'Settings' ? '600' : '500',
                 color: 'white',
                 fontFamily: "'Poppins', sans-serif",
+                background: activeMenu === 'Settings' 
+                  ? 'linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.15) 100%)' 
+                  : 'transparent',
+                borderRadius: '12px',
+                transition: 'all 0.3s ease',
+                borderLeft: activeMenu === 'Settings' ? '4px solid #ffffff' : '4px solid transparent',
+              }}
+              onMouseOver={(e) => {
+                if (activeMenu !== 'Settings') {
+                  e.currentTarget.style.background = 'rgba(255, 255, 255, 0.1)';
+                  e.currentTarget.style.transform = 'translateX(5px)';
+                }
+              }}
+              onMouseOut={(e) => {
+                if (activeMenu !== 'Settings') {
+                  e.currentTarget.style.background = 'transparent';
+                  e.currentTarget.style.transform = 'translateX(0)';
+                }
               }}
             >
-              <span style={{ fontSize: '18px' }}>⚙</span>
+              <span style={{ fontSize: '20px' }}>⚙</span>
               <span>Settings</span>
             </div>
           </div>
@@ -1992,7 +2745,7 @@ const Dashboard = () => {
         {/* Main Content Area */}
         <div style={{
           flex: 1,
-          marginLeft: '250px',
+          marginLeft: '280px',
           padding: '25px 40px',
           overflowY: 'auto',
         }}>
@@ -2008,53 +2761,75 @@ const Dashboard = () => {
             <div
               style={{
                 background: 'white',
-                padding: '8px 16px',
-                borderRadius: '20px',
+                padding: '10px 20px',
+                borderRadius: '25px',
                 display: 'flex',
                 alignItems: 'center',
-                gap: '10px',
-                boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
+                gap: '12px',
+                boxShadow: '0 2px 12px rgba(124, 111, 214, 0.15)',
                 cursor: 'pointer',
                 transition: 'all 0.3s ease',
                 fontFamily: "'Poppins', sans-serif",
+                border: '2px solid #f0f0f0',
               }}
               onClick={() => setShowProfileMenu(!showProfileMenu)}
+              onMouseOver={(e) => {
+                e.currentTarget.style.transform = 'translateY(-2px)';
+                e.currentTarget.style.boxShadow = '0 4px 16px rgba(124, 111, 214, 0.25)';
+              }}
+              onMouseOut={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.boxShadow = '0 2px 12px rgba(124, 111, 214, 0.15)';
+              }}
             >
-              <span style={{ fontSize: '18px' }}>👤</span>
-              <span style={{ fontSize: '14px', fontWeight: '500', color: '#333', fontFamily: "'Poppins', sans-serif" }}>kwekwek</span>
+              <div style={{
+                width: '32px',
+                height: '32px',
+                borderRadius: '50%',
+                background: 'linear-gradient(135deg, #7c6fd6 0%, #9b8de8 100%)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                fontSize: '16px',
+              }}>👤</div>
+              <span style={{ fontSize: '15px', fontWeight: '600', color: '#333', fontFamily: "'Poppins', sans-serif" }}>kwekwek</span>
               <span style={{ fontSize: '12px', color: '#999' }}>▼</span>
             </div>
 
             {/* Dropdown Menu */}
             {showProfileMenu && (
-              <div style={{
-                position: 'absolute',
-                top: '50px',
-                right: '0',
-                background: 'white',
-                borderRadius: '12px',
-                boxShadow: '0 4px 16px rgba(0,0,0,0.12)',
-                zIndex: 1000,
-                minWidth: '200px',
-                overflow: 'hidden',
-                fontFamily: "'Poppins', sans-serif",
-              }}>
+          <div style={{
+  position: 'absolute',
+  top: '55px',
+  right: '0',
+  background: 'white',
+  borderRadius: '16px',
+  boxShadow: '0 8px 24px rgba(0,0,0,0.15)',
+  zIndex: 1000,
+  minWidth: '220px',
+  overflow: 'hidden',
+  fontFamily: "'Poppins', sans-serif", // removed extra quote
+  border: '1px solid #f0f0f0', // added missing comma above
+}}>
+
                 <div style={{
-                  padding: '12px 16px',
+                  padding: '14px 18px',
                   fontSize: '13px',
                   color: '#999',
-                  borderBottom: '1px solid #f0f0f0',
+                  borderBottom: '1px solid #f5f5f5',
                   fontFamily: "'Poppins', sans-serif",
+                  fontWeight: '500',
                 }}>
                   Logged in as
                 </div>
                 <div style={{
-                  padding: '12px 16px',
-                  fontSize: '14px',
+                  padding: '14px 18px',
+                  fontSize: '15px',
                   fontWeight: '600',
                   color: '#1a1a1a',
-                  borderBottom: '1px solid #f0f0f0',
+                  borderBottom: '1px solid #f5f5f5',
                   fontFamily: "'Poppins', sans-serif",
+                  background: 'linear-gradient(135deg, #f8f7ff 0%, #ffffff 100%)',
                 }}>
                   kwekwek
                 </div>
@@ -2065,11 +2840,11 @@ const Dashboard = () => {
                   }}
                   style={{
                     width: '100%',
-                    padding: '12px 16px',
+                    padding: '14px 18px',
                     border: 'none',
                     background: 'none',
-                    fontSize: '14px',
-                    fontWeight: '500',
+                    fontSize: '15px',
+                    fontWeight: '600',
                     color: '#ff6b6b',
                     cursor: 'pointer',
                     textAlign: 'left',
@@ -2155,74 +2930,372 @@ const Dashboard = () => {
           {!currentGame && activeMenu === 'My Progress' && <MyProgress />}
 
           {activeMenu === 'Dashboard' && (
+  <div style={{
+    padding: '40px',
+    fontFamily: "'Poppins', sans-serif",
+    maxWidth: '1400px',
+    margin: '0 auto',
+  }}>
+    {/* Welcome Section */}
+    <div style={{
+      background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+      borderRadius: '24px',
+      padding: '40px 50px',
+      boxShadow: '0 8px 24px rgba(102, 126, 234, 0.25)',
+      marginBottom: '40px',
+      display: 'flex',
+      gap: '40px',
+      alignItems: 'center',
+      color: 'white',
+    }}>
+      <div style={{
+        width: '180px',
+        height: '180px',
+        background: 'rgba(255, 255, 255, 0.2)',
+        borderRadius: '20px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        flexShrink: 0,
+        backdropFilter: 'blur(10px)',
+      }}>
+        <img
+          src="src/assets/bokawelcoming.jpg"
+          alt="VocaboPlay Mascot"
+          style={{
+            width: '100%',
+            height: '100%',
+            borderRadius: '20px',
+            objectFit: 'cover',
+          }}
+        />
+      </div>
+      <div style={{ flex: 1 }}>
+        <h2 style={{
+          fontSize: '32px',
+          fontWeight: '800',
+          marginBottom: '12px',
+          fontFamily: "'Fredoka', 'Poppins', sans-serif",
+        }}>
+          Welcome back, kwekwek! 👋
+        </h2>
+        <p style={{
+          fontSize: '16px',
+          opacity: '0.95',
+          lineHeight: '1.6',
+          marginBottom: '20px',
+        }}>
+          Ready to level up your vocabulary? Let's continue your learning journey!
+        </p>
+        <div style={{
+          display: 'flex',
+          gap: '20px',
+        }}>
+          <button
+            onClick={() => setActiveMenu('Games')}
+            style={{
+              background: 'white',
+              color: '#667eea',
+              border: 'none',
+              padding: '12px 28px',
+              borderRadius: '12px',
+              fontSize: '15px',
+              fontWeight: '600',
+              cursor: 'pointer',
+              fontFamily: "'Poppins', sans-serif",
+              boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
+            }}
+          >
+            Play Games 🎮
+          </button>
+          <button
+            onClick={() => setActiveMenu('Word Library')}
+            style={{
+            background: 'rgba(255, 255, 255, 0.2)',
+color: 'white',
+border: '2px solid rgba(255, 255, 255, 0.3)',
+padding: '12px 28px',
+borderRadius: '12px',
+fontSize: '15px',
+fontWeight: '600',
+cursor: 'pointer',
+fontFamily: "'Poppins', sans-serif",
+backdropFilter: 'blur(10px)',
+
+
+            }}
+          >
+            Browse Words 📚
+          </button>
+        </div>
+      </div>
+    </div>
+
+    {/* Stats Grid */}
+    <div style={{
+      display: 'grid',
+      gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+      gap: '20px',
+      marginBottom: '40px',
+    }}>
+      {[
+        { label: 'Words Learned', value: '47', icon: '📖', color: '#667eea', bg: '#E8EEFF' },
+        { label: 'Games Played', value: '23', icon: '🎮', color: '#FF6B6B', bg: '#FFE8E8' },
+        { label: 'Current Streak', value: '5 days', icon: '🔥', color: '#FFA726', bg: '#FFF4E8' },
+        { label: 'Total Score', value: '1,240', icon: '⭐', color: '#66BB6A', bg: '#E8F5E9' },
+      ].map((stat, i) => (
+        <div key={i} style={{
+          background: 'white',
+          borderRadius: '16px',
+          padding: '24px',
+          boxShadow: '0 2px 12px rgba(0,0,0,0.06)',
+          border: '2px solid #f5f5f5',
+          transition: 'all 0.3s ease',
+        }}
+        onMouseOver={(e) => {
+          e.currentTarget.style.transform = 'translateY(-4px)';
+          e.currentTarget.style.boxShadow = `0 8px 24px ${stat.color}22`;
+        }}
+        onMouseOut={(e) => {
+          e.currentTarget.style.transform = 'translateY(0)';
+          e.currentTarget.style.boxShadow = '0 2px 12px rgba(0,0,0,0.06)';
+        }}>
+          <div style={{
+            width: '50px',
+            height: '50px',
+            background: stat.bg,
+            borderRadius: '12px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            fontSize: '24px',
+            marginBottom: '16px',
+          }}>
+            {stat.icon}
+          </div>
+          <div style={{
+            fontSize: '28px',
+            fontWeight: '800',
+            color: stat.color,
+            marginBottom: '4px',
+            fontFamily: "'Fredoka', 'Poppins', sans-serif",
+          }}>
+            {stat.value}
+          </div>
+          <div style={{
+            fontSize: '13px',
+            color: '#999',
+            fontWeight: '500',
+          }}>
+            {stat.label}
+          </div>
+        </div>
+      ))}
+    </div>
+
+    {/* Two Column Layout */}
+    <div style={{
+      display: 'grid',
+      gridTemplateColumns: '1fr 1fr',
+      gap: '24px',
+    }}>
+      {/* Continue Learning */}
+      <div style={{
+        background: 'white',
+        borderRadius: '20px',
+        padding: '32px',
+        boxShadow: '0 2px 12px rgba(0,0,0,0.06)',
+      }}>
+        <h3 style={{
+          fontSize: '20px',
+          fontWeight: '700',
+          color: '#1a1a1a',
+          marginBottom: '24px',
+          fontFamily: "'Fredoka', 'Poppins', sans-serif",
+        }}>Continue Learning 📚</h3>
+        
+        {[
+          { word: 'Eloquent', progress: 75, category: 'Advanced' },
+          { word: 'Perseverance', progress: 45, category: 'Intermediate' },
+          { word: 'Serendipity', progress: 30, category: 'Advanced' },
+        ].map((item, i) => (
+          <div key={i} style={{
+            padding: '16px',
+            background: '#fafafa',
+            borderRadius: '12px',
+            marginBottom: '12px',
+            cursor: 'pointer',
+            transition: 'all 0.3s ease',
+          }}
+          onMouseOver={(e) => {
+            e.currentTarget.style.background = '#f0f0f0';
+          }}
+          onMouseOut={(e) => {
+            e.currentTarget.style.background = '#fafafa';
+          }}>
             <div style={{
               display: 'flex',
-              justifyContent: 'center',
+              justifyContent: 'space-between',
               alignItems: 'center',
-              minHeight: '60vh',
+              marginBottom: '8px',
+            }}>
+              <span style={{
+                fontSize: '16px',
+                fontWeight: '600',
+                color: '#1a1a1a',
+              }}>{item.word}</span>
+              <span style={{
+                fontSize: '12px',
+                background: '#667eea22',
+                color: '#667eea',
+                padding: '4px 10px',
+                borderRadius: '6px',
+                fontWeight: '600',
+              }}>{item.category}</span>
+            </div>
+            <div style={{
+              width: '100%',
+              height: '6px',
+              background: '#e0e0e0',
+              borderRadius: '3px',
+              overflow: 'hidden',
             }}>
               <div style={{
-                background: 'white',
-                borderRadius: '16px',
-                padding: '35px 40px',
-                boxShadow: '0 2px 12px rgba(0,0,0,0.06)',
-                maxWidth: '550px',
-                display: 'flex',
-                gap: '30px',
-                alignItems: 'center',
-                fontFamily: "'Poppins', sans-serif",
-              }}>
-                <div style={{
-                  width: '250px',
-                  height: '200px',
-                  background: 'linear-gradient(135deg, #e8e4f3 0%, #f0edfa 100%)',
-                  borderRadius: '12px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  flexShrink: 0,
-                }}>
-                  <img
-                    src="src/assets/bokawelcoming.jpg"
-                    alt="VocaboPlay Mascot"
-                    style={{
-                      width: '100%',
-                      height: '100%',
-                      borderRadius: '12px',
-                      objectFit: 'cover',
-                      justifyContent: 'center',
-                    }}
-                  />
-                </div>
-                <div style={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  justifyContent: 'center',
-                }}>
-                  <h2 style={{
-                    fontSize: '22px',
-                    fontWeight: '700',
-                    color: '#1a1a1a',
-                    marginBottom: '12px',
-                    fontFamily: "'Poppins', sans-serif",
-                    
-                  }}>
-                    Welcome to VocaboPlay!
-                  </h2>
-                  <p style={{
-                    fontSize: '13px',
-                    color: '#666',
-                    lineHeight: '1.6',
-                    justifyContent: 'center',
-                    textAlign: 'center',
-                    fontFamily: "'Poppins', sans-serif",
-                  }}>
-                    Thanks for joining our fun and interactive learning community! Join students and educators who are enhancing vocabulary skills.
-                  </p>
-                </div>
-              </div>
+                width: `${item.progress}%`,
+                height: '100%',
+                background: 'linear-gradient(90deg, #667eea 0%, #764ba2 100%)',
+                borderRadius: '3px',
+                transition: 'width 0.5s ease',
+              }}></div>
             </div>
-          )}
+          </div>
+        ))}
+      </div>
+
+      {/* Recent Activity */}
+      <div style={{
+        background: 'white',
+        borderRadius: '20px',
+        padding: '32px',
+        boxShadow: '0 2px 12px rgba(0,0,0,0.06)',
+      }}>
+        <h3 style={{
+          fontSize: '20px',
+          fontWeight: '700',
+          color: '#1a1a1a',
+          marginBottom: '24px',
+          fontFamily: "'Fredoka', 'Poppins', sans-serif",
+        }}>Recent Activity 🎯</h3>
+        
+        {[
+          { action: 'Completed Flashcards', time: '2 hours ago', icon: '📇', color: '#FF6B6B' },
+          { action: 'Played Match Game', time: '1 day ago', icon: '🎯', color: '#4A90E2' },
+          { action: 'Added 5 new words', time: '2 days ago', icon: '✨', color: '#66BB6A' },
+          { action: 'Completed Quiz', time: '3 days ago', icon: '❓', color: '#FFA726' },
+        ].map((activity, i) => (
+          <div key={i} style={{
+            display: 'flex',
+            gap: '16px',
+            alignItems: 'center',
+            padding: '16px 0',
+            borderBottom: i < 3 ? '1px solid #f0f0f0' : 'none',
+          }}>
+            <div style={{
+              width: '44px',
+              height: '44px',
+              background: `${activity.color}15`,
+              borderRadius: '12px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              fontSize: '20px',
+              flexShrink: 0,
+            }}>
+              {activity.icon}
+            </div>
+            <div style={{ flex: 1 }}>
+              <div style={{
+                fontSize: '14px',
+                fontWeight: '600',
+                color: '#1a1a1a',
+                marginBottom: '4px',
+              }}>{activity.action}</div>
+              <div style={{
+                fontSize: '12px',
+                color: '#999',
+              }}>{activity.time}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    {/* Quick Actions at Bottom */}
+    <div style={{
+      marginTop: '40px',
+      background: 'white',
+      borderRadius: '20px',
+      padding: '32px',
+      boxShadow: '0 2px 12px rgba(0,0,0,0.06)',
+    }}>
+      <h3 style={{
+        fontSize: '20px',
+        fontWeight: '700',
+        color: '#1a1a1a',
+        marginBottom: '20px',
+        fontFamily: "'Fredoka', 'Poppins', sans-serif",
+      }}>Quick Actions ⚡</h3>
+      <div style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
+        gap: '16px',
+      }}>
+        {[
+          { label: 'Add New Words', icon: '➕', color: '#667eea' },
+          { label: 'Practice Now', icon: '🎮', color: '#FF6B6B' },
+          { label: 'View Progress', icon: '📊', color: '#66BB6A' },
+          { label: 'Challenge Friend', icon: '👥', color: '#FFA726' },
+        ].map((action, i) => (
+          <button
+            key={i}
+            onClick={() => {
+              if (action.label === 'Practice Now') setActiveMenu('Games');
+              if (action.label === 'Add New Words') setActiveMenu('Word Library');
+              if (action.label === 'View Progress') setActiveMenu('My Progress');
+            }}
+            style={{
+              background: `${action.color}08`,
+              border: `2px solid ${action.color}33`,
+              borderRadius: '14px',
+              padding: '18px',
+              cursor: 'pointer',
+              transition: 'all 0.3s ease',
+              fontFamily: "'Poppins', sans-serif",
+              fontSize: '14px',
+              fontWeight: '600',
+              color: action.color,
+              display: 'flex',
+              alignItems: 'center',
+              gap: '10px',
+              justifyContent: 'center',
+            }}
+            onMouseOver={(e) => {
+              e.currentTarget.style.background = `${action.color}15`;
+              e.currentTarget.style.transform = 'translateY(-2px)';
+            }}
+            onMouseOut={(e) => {
+              e.currentTarget.style.background = `${action.color}08`;
+              e.currentTarget.style.transform = 'translateY(0)';
+            }}
+          >
+            <span style={{ fontSize: '20px' }}>{action.icon}</span>
+            {action.label}
+          </button>
+        ))}
+      </div>
+    </div>
+  </div>
+)}
 
           {!currentGame && activeMenu === 'Favorites' && (
             <div style={{
@@ -2353,14 +3426,14 @@ const Dashboard = () => {
                 </div>
               </div>
 
-              {/* Profile Information */}
+           {/* Profile Information */}
               <div style={{ marginTop: '50px' }}>
                 <h2 style={{
-                  fontSize: '16px',
+                  fontSize: '20px',
                   fontWeight: '700',
                   color: '#1a1a1a',
                   marginBottom: '25px',
-                  fontFamily: "'Poppins', sans-serif",
+                  fontFamily: "'Fredoka', 'Poppins', sans-serif",
                 }}>
                   Profile Information
                 </h2>
@@ -2383,11 +3456,20 @@ const Dashboard = () => {
                       width: '100%',
                       maxWidth: '400px',
                       padding: '12px 14px',
-                      border: '1px solid #d0d0d0',
-                      borderRadius: '8px',
+                      border: '2px solid #e0e0e0',
+                      borderRadius: '10px',
                       fontSize: '14px',
                       fontFamily: "'Poppins', sans-serif",
                       boxSizing: 'border-box',
+                      transition: 'all 0.3s ease',
+                    }}
+                    onFocus={(e) => {
+                      e.target.style.borderColor = '#7c6fd6';
+                      e.target.style.boxShadow = '0 0 0 3px rgba(124, 111, 214, 0.1)';
+                    }}
+                    onBlur={(e) => {
+                      e.target.style.borderColor = '#e0e0e0';
+                      e.target.style.boxShadow = 'none';
                     }}
                   />
                 </div>
@@ -2410,11 +3492,56 @@ const Dashboard = () => {
                       width: '100%',
                       maxWidth: '400px',
                       padding: '12px 14px',
-                      border: '1px solid #d0d0d0',
-                      borderRadius: '8px',
+                      border: '2px solid #e0e0e0',
+                      borderRadius: '10px',
                       fontSize: '14px',
                       fontFamily: "'Poppins', sans-serif",
                       boxSizing: 'border-box',
+                      transition: 'all 0.3s ease',
+                    }}
+                    onFocus={(e) => {
+                      e.target.style.borderColor = '#7c6fd6';
+                      e.target.style.boxShadow = '0 0 0 3px rgba(124, 111, 214, 0.1)';
+                    }}
+                    onBlur={(e) => {
+                      e.target.style.borderColor = '#e0e0e0';
+                      e.target.style.boxShadow = 'none';
+                    }}
+                  />
+                </div>
+
+                <div style={{ marginBottom: '25px' }}>
+                  <label style={{
+                    fontSize: '13px',
+                    fontWeight: '600',
+                    color: '#333',
+                    display: 'block',
+                    marginBottom: '8px',
+                    fontFamily: "'Poppins', sans-serif",
+                  }}>
+                    Display Name
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="How others see you"
+                    style={{
+                      width: '100%',
+                      maxWidth: '400px',
+                      padding: '12px 14px',
+                      border: '2px solid #e0e0e0',
+                      borderRadius: '10px',
+                      fontSize: '14px',
+                      fontFamily: "'Poppins', sans-serif",
+                      boxSizing: 'border-box',
+                      transition: 'all 0.3s ease',
+                    }}
+                    onFocus={(e) => {
+                      e.target.style.borderColor = '#7c6fd6';
+                      e.target.style.boxShadow = '0 0 0 3px rgba(124, 111, 214, 0.1)';
+                    }}
+                    onBlur={(e) => {
+                      e.target.style.borderColor = '#e0e0e0';
+                      e.target.style.boxShadow = 'none';
                     }}
                   />
                 </div>
@@ -2422,23 +3549,221 @@ const Dashboard = () => {
                 {/* Save Changes Button */}
                 <button
                   style={{
-                    marginTop: '30px',
+                    marginTop: '10px',
                     padding: '14px 40px',
                     background: 'linear-gradient(135deg, #7c6fd6 0%, #9b8de8 100%)',
                     color: 'white',
                     border: 'none',
-                    borderRadius: '10px',
+                    borderRadius: '12px',
                     fontSize: '15px',
                     fontWeight: '600',
                     cursor: 'pointer',
                     transition: 'all 0.3s ease',
                     fontFamily: "'Poppins', sans-serif",
+                    boxShadow: '0 4px 12px rgba(124, 111, 214, 0.3)',
                   }}
-                  onMouseOver={(e) => e.target.style.transform = 'translateY(-2px)'}
-                  onMouseOut={(e) => e.target.style.transform = 'translateY(0)'}
+                  onMouseOver={(e) => {
+                    e.target.style.transform = 'translateY(-2px)';
+                    e.target.style.boxShadow = '0 6px 20px rgba(124, 111, 214, 0.4)';
+                  }}
+                  onMouseOut={(e) => {
+                    e.target.style.transform = 'translateY(0)';
+                    e.target.style.boxShadow = '0 4px 12px rgba(124, 111, 214, 0.3)';
+                  }}
                   onClick={() => alert('Changes saved successfully!')}
                 >
                   Save Changes
+                </button>
+              </div>
+
+              {/* Learning Preferences Section */}
+              <div style={{ marginTop: '50px' }}>
+                <h2 style={{
+                  fontSize: '20px',
+                  fontWeight: '700',
+                  color: '#1a1a1a',
+                  marginBottom: '25px',
+                  fontFamily: "'Fredoka', 'Poppins', sans-serif",
+                }}>
+                  Learning Preferences
+                </h2>
+
+                <div style={{ marginBottom: '25px' }}>
+                  <label style={{
+                    fontSize: '13px',
+                    fontWeight: '600',
+                    color: '#333',
+                    display: 'block',
+                    marginBottom: '8px',
+                    fontFamily: "'Poppins', sans-serif",
+                  }}>
+                    Daily Goal (words per day)
+                  </label>
+                  <select
+                    style={{
+                      width: '100%',
+                      maxWidth: '400px',
+                      padding: '12px 14px',
+                      border: '2px solid #e0e0e0',
+                      borderRadius: '10px',
+                      fontSize: '14px',
+                      fontFamily: "'Poppins', sans-serif",
+                      boxSizing: 'border-box',
+                      cursor: 'pointer',
+                      background: 'white',
+                    }}
+                  >
+                    <option value="5">5 words</option>
+                    <option value="10" selected>10 words</option>
+                    <option value="15">15 words</option>
+                    <option value="20">20 words</option>
+                  </select>
+                </div>
+
+                <div style={{ marginBottom: '25px' }}>
+                  <label style={{
+                    fontSize: '13px',
+                    fontWeight: '600',
+                    color: '#333',
+                    display: 'block',
+                    marginBottom: '8px',
+                    fontFamily: "'Poppins', sans-serif",
+                  }}>
+                    Difficulty Level
+                  </label>
+                  <select
+                    style={{
+                      width: '100%',
+                      maxWidth: '400px',
+                      padding: '12px 14px',
+                      border: '2px solid #e0e0e0',
+                      borderRadius: '10px',
+                      fontSize: '14px',
+                      fontFamily: "'Poppins', sans-serif",
+                      boxSizing: 'border-box',
+                      cursor: 'pointer',
+                      background: 'white',
+                    }}
+                  >
+                    <option value="beginner">Beginner</option>
+                    <option value="intermediate" selected>Intermediate</option>
+                    <option value="advanced">Advanced</option>
+                    <option value="expert">Expert</option>
+                  </select>
+                </div>
+              </div>
+
+              {/* Notifications Section */}
+              <div style={{ marginTop: '50px' }}>
+                <h2 style={{
+                  fontSize: '20px',
+                  fontWeight: '700',
+                  color: '#1a1a1a',
+                  marginBottom: '25px',
+                  fontFamily: "'Fredoka', 'Poppins', sans-serif",
+                }}>
+                  Notifications
+                </h2>
+
+                <div style={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  padding: '16px 0',
+                  borderBottom: '1px solid #f0f0f0',
+                }}>
+                  <div>
+                    <div style={{
+                      fontSize: '14px',
+                      fontWeight: '600',
+                      color: '#333',
+                      marginBottom: '4px',
+                      fontFamily: "'Poppins', sans-serif",
+                    }}>
+                      Daily Reminders
+                    </div>
+                    <div style={{
+                      fontSize: '12px',
+                      color: '#999',
+                      fontFamily: "'Poppins', sans-serif",
+                    }}>
+                      Get notified to practice daily
+                    </div>
+                  </div>
+                  <label style={{
+                    position: 'relative',
+                    display: 'inline-block',
+                    width: '50px',
+                    height: '26px',
+                    cursor: 'pointer',
+                  }}>
+                    <input type="checkbox" defaultChecked style={{ opacity: 0, width: 0, height: 0 }} />
+                    <span style={{
+                      position: 'absolute',
+                      cursor: 'pointer',
+                      top: 0,
+                      left: 0,
+                      right: 0,
+                      bottom: 0,
+                      background: '#7c6fd6',
+                      borderRadius: '26px',
+                      transition: '0.4s',
+                    }}>
+                      <span style={{
+                        position: 'absolute',
+                        content: '""',
+                        height: '20px',
+                        width: '20px',
+                        left: '26px',
+                        bottom: '3px',
+                        background: 'white',
+                        borderRadius: '50%',
+                        transition: '0.4s',
+                      }}></span>
+                    </span>
+                  </label>
+                </div>
+
+          
+              </div>
+
+              {/* Account Actions Section */}
+              <div style={{ marginTop: '50px' }}>
+                <h2 style={{
+                  fontSize: '20px',
+                  fontWeight: '700',
+                  color: '#1a1a1a',
+                  marginBottom: '25px',
+                  fontFamily: "'Fredoka', 'Poppins', sans-serif",
+                }}>
+                  Account Actions
+                </h2>
+
+               
+                <button
+                  style={{
+                    padding: '12px 30px',
+                    background: 'white',
+                    color: '#999',
+                    border: '2px solid #ddd',
+                    borderRadius: '10px',
+                    fontSize: '14px',
+                    fontWeight: '600',
+                    cursor: 'pointer',
+                    transition: 'all 0.3s ease',
+                    fontFamily: "'Poppins', sans-serif",
+                  }}
+                  onMouseOver={(e) => {
+                    e.target.style.borderColor = '#999';
+                    e.target.style.color = '#666';
+                  }}
+                  onMouseOut={(e) => {
+                    e.target.style.borderColor = '#ddd';
+                    e.target.style.color = '#999';
+                  }}
+                  onClick={() => alert('Logged out successfully!')}
+                >
+                  Log Out
                 </button>
               </div>
             </div>
@@ -2452,94 +3777,109 @@ const Dashboard = () => {
 // Word Library Styles
 const wordStyles = {
   container: {
-    padding: '30px 40px',
-    background: 'white',
-    borderRadius: '16px',
-    boxShadow: '0 2px 12px rgba(0,0,0,0.06)',
+    padding: '40px',
+    background: 'linear-gradient(135deg, #f8f9ff 0%, #fff5f8 100%)',
+    borderRadius: '24px',
+    boxShadow: '0 8px 32px rgba(102, 126, 234, 0.12)',
     fontFamily: "'Poppins', sans-serif",
   },
   title: {
-    fontSize: '24px',
-    fontWeight: '700',
-    color: '#1a1a1a',
+    fontSize: '32px',
+    fontWeight: '800',
+    background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+    WebkitBackgroundClip: 'text',
+    WebkitTextFillColor: 'transparent',
+    backgroundClip: 'text',
     marginBottom: '8px',
-    fontFamily: "'Poppins', sans-serif",
+    fontFamily: "'Fredoka', 'Poppins', sans-serif",
   },
   subtitle: {
-    fontSize: '13px',
-    color: '#999',
-    marginBottom: '25px',
+    fontSize: '15px',
+    color: '#666',
+    marginBottom: '30px',
     fontFamily: "'Poppins', sans-serif",
   },
   filterSection: {
-    marginBottom: '30px',
+    marginBottom: '35px',
   },
   searchInput: {
     width: '100%',
-    padding: '12px 16px',
-    border: '1px solid #e0e0e0',
-    borderRadius: '8px',
-    fontSize: '14px',
-    marginBottom: '15px',
+    padding: '16px 20px',
+    border: '2px solid #e8e8e8',
+    borderRadius: '14px',
+    fontSize: '15px',
+    marginBottom: '20px',
     fontFamily: "'Poppins', sans-serif",
     boxSizing: 'border-box',
+    background: 'white',
+    transition: 'all 0.3s ease',
   },
   filterButtons: {
     display: 'flex',
-    gap: '10px',
+    gap: '12px',
     flexWrap: 'wrap',
   },
   filterButton: {
-    padding: '8px 16px',
-    border: 'none',
-    borderRadius: '20px',
-    fontSize: '13px',
-    fontWeight: '500',
+    padding: '10px 20px',
+    border: '2px solid #e8e8e8',
+    borderRadius: '12px',
+    fontSize: '14px',
+    fontWeight: '600',
     cursor: 'pointer',
     transition: 'all 0.3s ease',
     fontFamily: "'Poppins', sans-serif",
+    background: 'white',
   },
   wordsGrid: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-    gap: '20px',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+    gap: '24px',
   },
   wordCard: {
-    border: '1px solid #e8e4f3',
-    borderRadius: '12px',
-    padding: '20px',
-    background: '#f9f8fc',
+    border: '2px solid #e8e4f3',
+    borderRadius: '16px',
+    padding: '24px',
+    background: 'white',
     position: 'relative',
-    transition: 'all 0.3s ease',
+    transition: 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
     cursor: 'pointer',
     fontFamily: "'Poppins', sans-serif",
+    boxShadow: '0 4px 12px rgba(124, 111, 214, 0.08)',
   },
   wordName: {
-    fontSize: '16px',
-    fontWeight: '700',
-    color: '#7c6fd6',
-    marginBottom: '4px',
-    fontFamily: "'Poppins', sans-serif",
+    fontSize: '22px',
+    fontWeight: '800',
+    background: 'linear-gradient(135deg, #7c6fd6 0%, #9b8fd9 100%)',
+    WebkitBackgroundClip: 'text',
+    WebkitTextFillColor: 'transparent',
+    backgroundClip: 'text',
+    marginBottom: '6px',
+    fontFamily: "'Fredoka', 'Poppins', sans-serif",
   },
   pronunciation: {
-    fontSize: '12px',
+    fontSize: '13px',
     color: '#999',
     fontStyle: 'italic',
-    marginBottom: '8px',
+    marginBottom: '12px',
     fontFamily: "'Poppins', sans-serif",
   },
   wordDefinition: {
-    fontSize: '13px',
-    color: '#666',
-    lineHeight: '1.5',
-    marginBottom: '8px',
+    fontSize: '14px',
+    color: '#444',
+    lineHeight: '1.7',
+    marginBottom: '12px',
     fontFamily: "'Poppins', sans-serif",
   },
   wordExample: {
-    fontSize: '12px',
-    color: '#888',
-    lineHeight: '1.4',
+    fontSize: '13px',
+    color: '#666',
+    lineHeight: '1.6',
     fontFamily: "'Poppins', sans-serif",
+    padding: '12px 14px',
+    background: '#f8f9fa',
+    borderRadius: '10px',
+    borderLeft: '3px solid #7c6fd6',
+    fontStyle: 'italic',
   }
 };
 

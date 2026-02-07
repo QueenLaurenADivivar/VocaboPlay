@@ -9,7 +9,7 @@ const AdminLogin = () => {
   const [error, setError] = useState('');
 
   const logoTextStyle = {
-    fontFamily: "'Tilt Warp', sans-serif",
+    fontFamily: "'Poppins', sans-serif",
     fontWeight: '800',
   };
 
@@ -23,7 +23,6 @@ const AdminLogin = () => {
     }
 
     // For demo purposes, accept any credentials
-    // In production, you'd validate against a backend
     localStorage.setItem('adminToken', 'admin-demo-token');
     navigate('/admin/dashboard');
   };
@@ -53,53 +52,52 @@ const AdminLogin = () => {
       </style>
 
       <div style={styles.pageContainer}>
-        {/* Navbar */}
-         <nav style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          right: 0,
-          background: 'linear-gradient(180deg, #ffffff 0%, #ffffff 100%)',
-          backdropFilter: 'blur(10px)',
-          boxShadow: '0 2px 20px rgb(255, 255, 255)',
-          zIndex: 1000,
-          padding: '15px 40px',
-        }}>
-          <div style={{
-            maxWidth: '1400px',
-            margin: '0 auto',
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-          }}>
-            
-            <div 
-              onClick={() => navigate('/')}
-              style={{
-                background: 'linear-gradient(135deg, #8c7fe7)',
-                color: 'white',
-                padding: '5px 16px',
-                borderRadius: '10px',
-                fontWeight: '200',
-                fontSize: '10px',
-                cursor: 'pointer',
-                boxShadow: '0 4px 15px rgb(255, 255, 255)',
-                transition: 'all 0.3s ease',
-              }}>
-              
-              <div style={{ ...logoTextStyle, fontSize: '20px' }}>
-                VocaboPlay
-              </div>
-  
-            </div>
-        
-          </div>
-        </nav>
+      {/* Navbar - updated to match Signup navbar */}
+<nav style={{
+  position: 'fixed',
+  top: 0,
+  left: 0,
+  right: 0,
+  background: '#f5f3f8',
+  backdropFilter: 'blur(10px)',
+  boxShadow: '0 2px 20px rgba(255, 255, 255, 0.3)',
+  zIndex: 1000,
+  padding: '15px 40px',
+}}>
+  <div style={{
+    maxWidth: '1400px',
+    margin: '0 auto',
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  }}>
+    {/* VocaboPlay Logo */}
+    <div 
+      onClick={() => navigate('/')}
+      style={{
+        background: 'linear-gradient(135deg, #7c6fd6 0%, #9b8de8 100%)', // Landing page gradient
+        color: 'white',
+        padding: '8px 20px', // Landing page padding
+        borderRadius: '12px', // Landing page border-radius
+        fontWeight: '700', // Bold
+        fontSize: '18px',
+        cursor: 'pointer',
+        boxShadow: '0 4px 15px rgba(124, 111, 214, 0.3)', // Landing page box-shadow
+        transition: 'all 0.3s ease',
+      }}
+      onMouseOver={e => e.currentTarget.style.transform = 'scale(1.05)'} // hover scale effect
+      onMouseOut={e => e.currentTarget.style.transform = 'scale(1)'}
+    >
+      <div style={{ ...logoTextStyle, fontSize: '22px' }}>
+        VocaboPlay
+      </div>
+    </div>
+  </div>
+</nav>
+
 
         <div style={styles.contentContainer}>
           <div style={styles.card}>
-           
-
             <h1 style={styles.title}>Admin</h1>
             <p style={styles.subtitle}>Access the VocaboPlay admin panel</p>
 
@@ -185,14 +183,6 @@ const styles = {
     width: '100%',
     maxWidth: '350px',
     boxShadow: '0 2px 12px rgba(255, 255, 255, 0.06)',
-  },
-  iconContainer: {
-    display: 'flex',
-    justifyContent: 'center',
-    marginBottom: '20px',
-  },
-  adminIcon: {
-    fontSize: '48px',
   },
   title: {
     fontSize: '36px',
