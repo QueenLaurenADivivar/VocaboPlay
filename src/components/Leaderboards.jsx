@@ -176,14 +176,13 @@ const Leaderboards = ({ onBack, isAdmin = false, currentUserId = null }) => {
             alignItems: 'center',
             gap: '8px',
           }}>
-            <span style={{ fontSize: '32px', color: '#7c6fd6' }}>🏆</span>
             {isAdmin ? 'Admin Leaderboards' : 'Leaderboards'}
           </h1>
           <p style={{
             fontSize: '15px',
             color: '#475569',
             margin: '0',
-            fontWeight: '300',
+            fontWeight: '200',
           }}>
             {isAdmin ? 'Monitor and manage top performers' : 'See how you rank against other learners'}
           </p>
@@ -249,7 +248,7 @@ const Leaderboards = ({ onBack, isAdmin = false, currentUserId = null }) => {
               }
             }}
           >
-            ← Back
+            ← 
           </button>
         </div>
       </div>
@@ -419,67 +418,90 @@ const Leaderboards = ({ onBack, isAdmin = false, currentUserId = null }) => {
         </div>
       ) : (
         <>
-          {/* TOP 3 PODIUM - ONLY for students (optional for admin but keeping for now) */}
+          {/* TOP 3 PODIUM - ONLY for students */}
           {!isAdmin && leaderboardData.length >= 3 && (
             <div style={{
               display: 'flex',
               alignItems: 'flex-end',
               justifyContent: 'center',
-              gap: '20px',
-              marginBottom: '40px',
-              padding: '20px',
-              background: 'linear-gradient(135deg, #f8f7ff 0%, #ffffff 100%)',
-              borderRadius: '24px',
-              border: '1px solid #e6e0ff',
+              gap: '16px',
+              marginBottom: '32px',
+              padding: '16px',
+              background: '#faf9ff',
+              borderRadius: '12px',
+              border: '1px solid #eae8f0',
             }}>
               {/* 2nd Place */}
               {leaderboardData[1] && (
-                <div style={{
-                  textAlign: 'center',
-                }}>
+                <div style={{ textAlign: 'center' }}>
                   <div style={{
-                    width: '100px',
-                    height: '100px',
+                    width: '80px',
+                    height: '80px',
                     borderRadius: '50%',
-                    background: 'linear-gradient(135deg, #C0C0C0, #A0A0A0)',
+                    background: '#e8e8e8',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    margin: '0 auto 12px',
-                    border: '4px solid white',
-                    boxShadow: '0 8px 20px rgba(0,0,0,0.15)',
+                    margin: '0 auto 8px',
+                    border: '2px solid #ffffff',
+                    boxShadow: '0 2px 8px rgba(0,0,0,0.05)',
                     position: 'relative',
+                    overflow: 'hidden',
                   }}>
-                    <span style={{ fontSize: '40px' }}>{leaderboardData[1].avatar}</span>
+                    {leaderboardData[1].avatar && (leaderboardData[1].avatar.includes('src/') || leaderboardData[1].avatar.includes('.png')) ? (
+                      <img 
+                        src={leaderboardData[1].avatar}
+                        alt=""
+                        style={{
+                          width: '100%',
+                          height: '100%',
+                          objectFit: 'cover',
+                        }}
+                        onError={(e) => {
+                          e.target.style.display = 'none';
+                          e.target.parentNode.innerHTML = '<span style="font-size: 32px;">👤</span>';
+                        }}
+                      />
+                    ) : (
+                      <span style={{ fontSize: '32px' }}>{leaderboardData[1].avatar}</span>
+                    )}
                     <div style={{
                       position: 'absolute',
-                      top: -5,
-                      right: -5,
-                      width: '30px',
-                      height: '30px',
+                      top: -4,
+                      right: -4,
+                      width: '24px',
+                      height: '24px',
                       borderRadius: '50%',
-                      background: '#C0C0C0',
+                      background: '#a0a0a0',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
-                      color: 'white',
-                      fontWeight: '700',
-                      fontSize: '14px',
-                      border: '2px solid white',
+                      color: '#ffffff',
+                      fontWeight: '500',
+                      fontSize: '12px',
+                      border: '2px solid #ffffff',
+                      fontFamily: "'Poppins', sans-serif",
                     }}>
                       2
                     </div>
                   </div>
-                  <div style={{ fontWeight: '600', color: '#0f172a', marginBottom: '4px' }}>
+                  <div style={{ 
+                    fontWeight: '500', 
+                    color: '#2c3440', 
+                    fontSize: '14px', 
+                    marginBottom: '4px',
+                    fontFamily: "'Poppins', sans-serif",
+                  }}>
                     {leaderboardData[1].displayName}
                   </div>
                   <div style={{
-                    fontSize: '14px',
-                    color: '#64748b',
-                    background: '#f1f5f9',
-                    padding: '4px 12px',
-                    borderRadius: '100px',
+                    fontSize: '13px',
+                    color: '#6f7887',
+                    background: '#f2f4f8',
+                    padding: '4px 10px',
+                    borderRadius: '12px',
                     display: 'inline-block',
+                    fontFamily: "'Poppins', sans-serif",
                   }}>
                     {getValue(leaderboardData[1])} {getUnit()}
                   </div>
@@ -490,53 +512,78 @@ const Leaderboards = ({ onBack, isAdmin = false, currentUserId = null }) => {
               {leaderboardData[0] && (
                 <div style={{
                   textAlign: 'center',
-                  transform: 'scale(1.1)',
+                  transform: 'scale(1.05)',
                   zIndex: 2,
                 }}>
                   <div style={{
-                    width: '120px',
-                    height: '120px',
+                    width: '96px',
+                    height: '96px',
                     borderRadius: '50%',
-                    background: 'linear-gradient(135deg, #FFD700, #FFA500)',
+                    background: '#f5e9d3',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    margin: '0 auto 12px',
-                    border: '4px solid white',
-                    boxShadow: '0 8px 30px rgba(255,215,0,0.3)',
+                    margin: '0 auto 8px',
+                    border: '2px solid #ffffff',
+                    boxShadow: '0 4px 12px rgba(0,0,0,0.08)',
                     position: 'relative',
+                    overflow: 'hidden',
                   }}>
-                    <span style={{ fontSize: '48px' }}>{leaderboardData[0].avatar}</span>
+                    {leaderboardData[0].avatar && (leaderboardData[0].avatar.includes('src/') || leaderboardData[0].avatar.includes('.png')) ? (
+                      <img 
+                        src={leaderboardData[0].avatar}
+                        alt=""
+                        style={{
+                          width: '100%',
+                          height: '100%',
+                          objectFit: 'cover',
+                        }}
+                        onError={(e) => {
+                          e.target.style.display = 'none';
+                          e.target.parentNode.innerHTML = '<span style="font-size: 40px;">👤</span>';
+                        }}
+                      />
+                    ) : (
+                      <span style={{ fontSize: '40px' }}>{leaderboardData[0].avatar}</span>
+                    )}
                     <div style={{
                       position: 'absolute',
-                      top: -5,
-                      right: -5,
-                      width: '36px',
-                      height: '36px',
+                      top: -4,
+                      right: -4,
+                      width: '28px',
+                      height: '28px',
                       borderRadius: '50%',
-                      background: '#FFD700',
+                      background: '#d4af37',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
-                      color: 'white',
-                      fontWeight: '700',
-                      fontSize: '16px',
-                      border: '3px solid white',
+                      color: '#ffffff',
+                      fontWeight: '500',
+                      fontSize: '14px',
+                      border: '2px solid #ffffff',
+                      fontFamily: "'Poppins', sans-serif",
                     }}>
                       1
                     </div>
                   </div>
-                  <div style={{ fontWeight: '700', color: '#0f172a', marginBottom: '4px', fontSize: '18px' }}>
+                  <div style={{ 
+                    fontWeight: '600', 
+                    color: '#2c3440', 
+                    fontSize: '16px', 
+                    marginBottom: '4px',
+                    fontFamily: "'Poppins', sans-serif",
+                  }}>
                     {leaderboardData[0].displayName}
                   </div>
                   <div style={{
-                    fontSize: '16px',
-                    fontWeight: '600',
-                    color: '#7c6fd6',
-                    background: '#f0edff',
-                    padding: '6px 16px',
-                    borderRadius: '100px',
+                    fontSize: '14px',
+                    fontWeight: '500',
+                    color: '#6b63b5',
+                    background: '#f2efff',
+                    padding: '4px 12px',
+                    borderRadius: '12px',
                     display: 'inline-block',
+                    fontFamily: "'Poppins', sans-serif",
                   }}>
                     {getValue(leaderboardData[0])} {getUnit()}
                   </div>
@@ -545,52 +592,75 @@ const Leaderboards = ({ onBack, isAdmin = false, currentUserId = null }) => {
 
               {/* 3rd Place */}
               {leaderboardData[2] && (
-                <div style={{
-                  textAlign: 'center',
-                }}>
+                <div style={{ textAlign: 'center' }}>
                   <div style={{
-                    width: '90px',
-                    height: '90px',
+                    width: '72px',
+                    height: '72px',
                     borderRadius: '50%',
-                    background: 'linear-gradient(135deg, #CD7F32, #8B4513)',
+                    background: '#ede0d4',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    margin: '0 auto 12px',
-                    border: '4px solid white',
-                    boxShadow: '0 8px 20px rgba(0,0,0,0.15)',
+                    margin: '0 auto 8px',
+                    border: '2px solid #ffffff',
+                    boxShadow: '0 2px 8px rgba(0,0,0,0.05)',
                     position: 'relative',
+                    overflow: 'hidden',
                   }}>
-                    <span style={{ fontSize: '36px' }}>{leaderboardData[2].avatar}</span>
+                    {leaderboardData[2].avatar && (leaderboardData[2].avatar.includes('src/') || leaderboardData[2].avatar.includes('.png')) ? (
+                      <img 
+                        src={leaderboardData[2].avatar}
+                        alt=""
+                        style={{
+                          width: '100%',
+                          height: '100%',
+                          objectFit: 'cover',
+                        }}
+                        onError={(e) => {
+                          e.target.style.display = 'none';
+                          e.target.parentNode.innerHTML = '<span style="font-size: 28px;">👤</span>';
+                        }}
+                      />
+                    ) : (
+                      <span style={{ fontSize: '28px' }}>{leaderboardData[2].avatar}</span>
+                    )}
                     <div style={{
                       position: 'absolute',
-                      top: -5,
-                      right: -5,
-                      width: '28px',
-                      height: '28px',
+                      top: -4,
+                      right: -4,
+                      width: '22px',
+                      height: '22px',
                       borderRadius: '50%',
-                      background: '#CD7F32',
+                      background: '#b08d6b',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
-                      color: 'white',
-                      fontWeight: '700',
-                      fontSize: '13px',
-                      border: '2px solid white',
+                      color: '#ffffff',
+                      fontWeight: '500',
+                      fontSize: '11px',
+                      border: '2px solid #ffffff',
+                      fontFamily: "'Poppins', sans-serif",
                     }}>
                       3
                     </div>
                   </div>
-                  <div style={{ fontWeight: '600', color: '#0f172a', marginBottom: '4px' }}>
+                  <div style={{ 
+                    fontWeight: '500', 
+                    color: '#2c3440', 
+                    fontSize: '13px', 
+                    marginBottom: '4px',
+                    fontFamily: "'Poppins', sans-serif",
+                  }}>
                     {leaderboardData[2].displayName}
                   </div>
                   <div style={{
-                    fontSize: '14px',
-                    color: '#64748b',
-                    background: '#f1f5f9',
-                    padding: '4px 12px',
-                    borderRadius: '100px',
+                    fontSize: '12px',
+                    color: '#6f7887',
+                    background: '#f2f4f8',
+                    padding: '4px 10px',
+                    borderRadius: '12px',
                     display: 'inline-block',
+                    fontFamily: "'Poppins', sans-serif",
                   }}>
                     {getValue(leaderboardData[2])} {getUnit()}
                   </div>
@@ -602,38 +672,39 @@ const Leaderboards = ({ onBack, isAdmin = false, currentUserId = null }) => {
           {/* LEADERBOARD TABLE */}
           <div style={{
             background: '#ffffff',
-            borderRadius: '20px',
-            border: '1px solid #e2e8f0',
+            borderRadius: '12px',
+            border: '1px solid #eaedf2',
             overflow: 'hidden',
-            boxShadow: '0 2px 12px rgba(0,0,0,0.02)',
           }}>
             <div style={{
-              padding: '20px 24px',
-              borderBottom: '1px solid #e2e8f0',
-              background: '#f8fafc',
+              padding: '16px 20px',
+              borderBottom: '1px solid #eaedf2',
+              background: '#fbfcfd',
               display: 'flex',
               justifyContent: 'space-between',
               alignItems: 'center',
             }}>
               <h3 style={{
-                fontSize: '16px',
-                fontWeight: '600',
-                color: '#0f172a',
+                fontSize: '15px',
+                fontWeight: '500',
+                color: '#2c3440',
                 margin: 0,
                 display: 'flex',
                 alignItems: 'center',
-                gap: '8px',
+                gap: '6px',
+                fontFamily: "'Poppins', sans-serif",
               }}>
-                <span style={{ fontSize: '20px', color: currentType.color }}>{currentType.icon}</span>
+                <span style={{ fontSize: '18px', color: currentType.color }}>{currentType.icon}</span>
                 {currentType.label} Ranking
               </h3>
               <span style={{
-                fontSize: '13px',
-                color: '#64748b',
+                fontSize: '12px',
+                color: '#6f7887',
                 background: '#ffffff',
-                padding: '4px 12px',
-                borderRadius: '100px',
-                border: '1px solid #e2e8f0',
+                padding: '4px 10px',
+                borderRadius: '12px',
+                border: '1px solid #eaedf2',
+                fontFamily: "'Poppins', sans-serif",
               }}>
                 Total: {leaderboardData.length} players
               </span>
@@ -643,21 +714,63 @@ const Leaderboards = ({ onBack, isAdmin = false, currentUserId = null }) => {
               <table style={{
                 width: '100%',
                 borderCollapse: 'collapse',
-                fontFamily: "'Inter', 'Poppins', sans-serif",
+                fontFamily: "'Poppins', sans-serif",
               }}>
                 <thead>
                   <tr style={{
                     background: '#ffffff',
-                    borderBottom: '1px solid #e2e8f0',
+                    borderBottom: '1px solid #eaedf2',
                   }}>
-                    <th style={{ padding: '16px 24px', textAlign: 'left', fontSize: '13px', fontWeight: '600', color: '#64748b' }}>Rank</th>
-                    <th style={{ padding: '16px 24px', textAlign: 'left', fontSize: '13px', fontWeight: '600', color: '#64748b' }}>Player</th>
+                    <th style={{ 
+                      padding: '14px 20px', 
+                      textAlign: 'left', 
+                      fontSize: '12px', 
+                      fontWeight: '500', 
+                      color: '#6f7887',
+                      fontFamily: "'Poppins', sans-serif",
+                    }}>Rank</th>
+                    <th style={{ 
+                      padding: '14px 20px', 
+                      textAlign: 'left', 
+                      fontSize: '12px', 
+                      fontWeight: '500', 
+                      color: '#6f7887',
+                      fontFamily: "'Poppins', sans-serif",
+                    }}>Player</th>
                     {/* Email column - ONLY for admin */}
-                    {isAdmin && <th style={{ padding: '16px 24px', textAlign: 'left', fontSize: '13px', fontWeight: '600', color: '#64748b' }}>Email</th>}
-                    <th style={{ padding: '16px 24px', textAlign: 'left', fontSize: '13px', fontWeight: '600', color: '#64748b' }}>Level</th>
-                    <th style={{ padding: '16px 24px', textAlign: 'right', fontSize: '13px', fontWeight: '600', color: '#64748b' }}>{currentType.label}</th>
+                    {isAdmin && <th style={{ 
+                      padding: '14px 20px', 
+                      textAlign: 'left', 
+                      fontSize: '12px', 
+                      fontWeight: '500', 
+                      color: '#6f7887',
+                      fontFamily: "'Poppins', sans-serif",
+                    }}>Email</th>}
+                    <th style={{ 
+                      padding: '14px 20px', 
+                      textAlign: 'left', 
+                      fontSize: '12px', 
+                      fontWeight: '500', 
+                      color: '#6f7887',
+                      fontFamily: "'Poppins', sans-serif",
+                    }}>Level</th>
+                    <th style={{ 
+                      padding: '14px 20px', 
+                      textAlign: 'right', 
+                      fontSize: '12px', 
+                      fontWeight: '500', 
+                      color: '#6f7887',
+                      fontFamily: "'Poppins', sans-serif",
+                    }}>{currentType.label}</th>
                     {/* Actions column - ONLY for admin */}
-                    {isAdmin && <th style={{ padding: '16px 24px', textAlign: 'center', fontSize: '13px', fontWeight: '600', color: '#64748b' }}>Actions</th>}
+                    {isAdmin && <th style={{ 
+                      padding: '14px 20px', 
+                      textAlign: 'center', 
+                      fontSize: '12px', 
+                      fontWeight: '500', 
+                      color: '#6f7887',
+                      fontFamily: "'Poppins', sans-serif",
+                    }}>Actions</th>}
                   </tr>
                 </thead>
                 <tbody>
@@ -665,13 +778,13 @@ const Leaderboards = ({ onBack, isAdmin = false, currentUserId = null }) => {
                     <tr
                       key={user.id}
                       style={{
-                        borderBottom: index < leaderboardData.length - 1 ? '1px solid #e2e8f0' : 'none',
-                        background: user.id === currentUserId ? '#f0edff' : 'transparent',
+                        borderBottom: index < leaderboardData.length - 1 ? '1px solid #eaedf2' : 'none',
+                        background: user.id === currentUserId ? '#f8f7ff' : 'transparent',
                         transition: 'background 0.2s ease',
                       }}
                       onMouseOver={(e) => {
                         if (user.id !== currentUserId) {
-                          e.currentTarget.style.background = '#f8fafc';
+                          e.currentTarget.style.background = '#f9fafc';
                         }
                       }}
                       onMouseOut={(e) => {
@@ -680,78 +793,98 @@ const Leaderboards = ({ onBack, isAdmin = false, currentUserId = null }) => {
                         }
                       }}
                     >
-                      <td style={{ padding: '16px 24px' }}>
+                      <td style={{ padding: '14px 20px' }}>
                         <div style={{
                           display: 'flex',
                           alignItems: 'center',
-                          gap: '8px',
+                          gap: '6px',
                         }}>
                           {user.rank <= 3 ? (
                             <div style={{
-                              width: '32px',
-                              height: '32px',
+                              width: '28px',
+                              height: '28px',
                               borderRadius: '50%',
-                              background: user.rank === 1 ? '#FFD700' : user.rank === 2 ? '#C0C0C0' : '#CD7F32',
+                              background: user.rank === 1 ? '#f5e9d3' : user.rank === 2 ? '#e8e8e8' : '#ede0d4',
                               display: 'flex',
                               alignItems: 'center',
                               justifyContent: 'center',
-                              color: 'white',
-                              fontWeight: '700',
-                              fontSize: '14px',
+                              color: user.rank === 1 ? '#b38b40' : user.rank === 2 ? '#6f7887' : '#8b6f4c',
+                              fontWeight: '500',
+                              fontSize: '10px',
+                              fontFamily: "'Poppins', sans-serif",
                             }}>
                               {user.rank}
                             </div>
                           ) : (
                             <span style={{
-                              width: '32px',
-                              height: '32px',
+                              width: '28px',
+                              height: '28px',
                               display: 'flex',
                               alignItems: 'center',
                               justifyContent: 'center',
-                              fontSize: '14px',
-                              fontWeight: '600',
-                              color: '#64748b',
+                              fontSize: '13px',
+                              fontWeight: '400',
+                              color: '#8f9aab',
+                              fontFamily: "'Poppins', sans-serif",
                             }}>
                               #{user.rank}
                             </span>
                           )}
                         </div>
                       </td>
-                      <td style={{ padding: '16px 24px' }}>
+                      <td style={{ padding: '14px 20px' }}>
                         <div style={{
                           display: 'flex',
                           alignItems: 'center',
-                          gap: '12px',
+                          gap: '10px',
                         }}>
                           <div style={{
-                            width: '40px',
-                            height: '40px',
+                            width: '36px',
+                            height: '36px',
                             borderRadius: '50%',
-                            background: `linear-gradient(135deg, ${currentType.color}, ${currentType.color}dd)`,
+                            background: `linear-gradient(135deg, ${currentType.color}10, ${currentType.color}20)`,
                             display: 'flex',
                             alignItems: 'center',
                             justifyContent: 'center',
-                            fontSize: '20px',
-                            color: 'white',
+                            overflow: 'hidden',
                           }}>
-                            {user.avatar}
+                            {user.avatar && (user.avatar.includes('src/') || user.avatar.includes('.png')) ? (
+                              <img 
+                                src={user.avatar}
+                                alt=""
+                                style={{
+                                  width: '100%',
+                                  height: '100%',
+                                  objectFit: 'cover',
+                                }}
+                                onError={(e) => {
+                                  e.target.style.display = 'none';
+                                  e.target.parentNode.innerHTML = '<span style="font-size: 18px;">👤</span>';
+                                }}
+                              />
+                            ) : (
+                              <span style={{ fontSize: '18px', color: currentType.color }}>{user.avatar}</span>
+                            )}
                           </div>
                           <div>
                             <div style={{
-                              fontSize: '15px',
-                              fontWeight: '600',
-                              color: '#0f172a',
+                              fontSize: '14px',
+                              fontWeight: '500',
+                              color: '#2c3440',
                               marginBottom: '2px',
+                              fontFamily: "'Poppins', sans-serif",
                             }}>
                               {user.displayName}
                               {user.id === currentUserId && !isAdmin && (
                                 <span style={{
                                   marginLeft: '8px',
-                                  fontSize: '11px',
-                                  background: '#7c6fd6',
-                                  color: 'white',
-                                  padding: '2px 8px',
-                                  borderRadius: '100px',
+                                  fontSize: '10px',
+                                  background: '#6b63b5',
+                                  color: '#ffffff',
+                                  padding: '2px 6px',
+                                  borderRadius: '10px',
+                                  fontWeight: '400',
+                                  fontFamily: "'Poppins', sans-serif",
                                 }}>
                                   You
                                 </span>
@@ -762,71 +895,81 @@ const Leaderboards = ({ onBack, isAdmin = false, currentUserId = null }) => {
                       </td>
                       {/* Email column - ONLY for admin */}
                       {isAdmin && (
-                        <td style={{ padding: '16px 24px', color: '#64748b', fontSize: '14px' }}>{user.email}</td>
-                      )}
-                      <td style={{ padding: '16px 24px' }}>
-                        <span style={{
-                          padding: '4px 12px',
-                          borderRadius: '100px',
+                        <td style={{ 
+                          padding: '14px 20px', 
+                          color: '#6f7887', 
                           fontSize: '13px',
-                          fontWeight: '600',
-                          background: '#f0edff',
-                          color: '#7c6fd6',
+                          fontFamily: "'Poppins', sans-serif",
+                        }}>{user.email}</td>
+                      )}
+                      <td style={{ padding: '14px 20px' }}>
+                        <span style={{
+                          padding: '4px 10px',
+                          borderRadius: '12px',
+                          fontSize: '12px',
+                          fontWeight: '500',
+                          background: '#f2f4f8',
+                          color: '#5a6270',
+                          fontFamily: "'Poppins', sans-serif",
                         }}>
                           Level {user.progress.level || 1}
                         </span>
                       </td>
-                      <td style={{ padding: '16px 24px', textAlign: 'right' }}>
+                      <td style={{ padding: '14px 20px', textAlign: 'right' }}>
                         <span style={{
-                          fontSize: '18px',
-                          fontWeight: '700',
+                          fontSize: '16px',
+                          fontWeight: '500',
                           color: currentType.color,
+                          fontFamily: "'Poppins', sans-serif",
                         }}>
                           {getValue(user).toLocaleString()}
                         </span>
                         <span style={{
-                          fontSize: '12px',
-                          color: '#94a3b8',
+                          fontSize: '11px',
+                          color: '#9aa5b5',
                           marginLeft: '4px',
+                          fontFamily: "'Poppins', sans-serif",
                         }}>
                           {getUnit()}
                         </span>
                       </td>
                       {/* Admin Actions - ONLY for admin */}
                       {isAdmin && (
-                        <td style={{ padding: '16px 24px', textAlign: 'center' }}>
-                          <div style={{ display: 'flex', gap: '8px', justifyContent: 'center' }}>
+                        <td style={{ padding: '14px 20px', textAlign: 'center' }}>
+                          <div style={{ display: 'flex', gap: '6px', justifyContent: 'center' }}>
                             <button
                               onClick={() => handleResetStats(user.id)}
                               style={{
-                                padding: '6px 12px',
-                                background: '#fff4e5',
+                                padding: '4px 10px',
+                                background: '#faf6f0',
                                 border: 'none',
                                 borderRadius: '6px',
-                                fontSize: '12px',
-                                color: '#B85C1A',
+                                fontSize: '11px',
+                                color: '#8b6f4c',
                                 cursor: 'pointer',
                                 transition: 'all 0.2s ease',
+                                fontFamily: "'Poppins', sans-serif",
                               }}
-                              onMouseOver={(e) => e.currentTarget.style.background = '#ffe4cc'}
-                              onMouseOut={(e) => e.currentTarget.style.background = '#fff4e5'}
+                              onMouseOver={(e) => e.currentTarget.style.background = '#f5ede2'}
+                              onMouseOut={(e) => e.currentTarget.style.background = '#faf6f0'}
                             >
                               Reset
                             </button>
                             <button
                               onClick={() => handleRemoveUser(user.id)}
                               style={{
-                                padding: '6px 12px',
-                                background: '#fee9e9',
+                                padding: '4px 10px',
+                                background: '#faf2f2',
                                 border: 'none',
                                 borderRadius: '6px',
-                                fontSize: '12px',
-                                color: '#C44545',
+                                fontSize: '11px',
+                                color: '#b58a8a',
                                 cursor: 'pointer',
                                 transition: 'all 0.2s ease',
+                                fontFamily: "'Poppins', sans-serif",
                               }}
-                              onMouseOver={(e) => e.currentTarget.style.background = '#fdd5d5'}
-                              onMouseOut={(e) => e.currentTarget.style.background = '#fee9e9'}
+                              onMouseOver={(e) => e.currentTarget.style.background = '#f5e5e5'}
+                              onMouseOut={(e) => e.currentTarget.style.background = '#faf2f2'}
                             >
                               Remove
                             </button>
@@ -845,18 +988,18 @@ const Leaderboards = ({ onBack, isAdmin = false, currentUserId = null }) => {
             <div style={{
               marginTop: '24px',
               padding: '16px 24px',
-              background: '#f0edff',
+              background: '#f8fafc',
               borderRadius: '12px',
-              border: '1px solid #e6e0ff',
+              border: '1px solid #e2e8f0',
               display: 'flex',
               justifyContent: 'space-between',
               alignItems: 'center',
             }}>
               <span style={{ color: '#475569' }}>Your Current Rank</span>
               <span style={{ 
-                color: '#7c6fd6', 
-                fontWeight: '700',
-                fontSize: '18px',
+                color: '#c5c4cb', 
+                fontWeight: '300',
+                fontSize: '15px',
               }}>
                 #{leaderboardData.findIndex(u => u.id === currentUserId) + 1 || 'Not in top 20'}
               </span>
@@ -881,7 +1024,7 @@ const Leaderboards = ({ onBack, isAdmin = false, currentUserId = null }) => {
                 <span>🏆 Top Score: {getValue(leaderboardData[0]).toLocaleString()} {getUnit()}</span>
                 <span>📊 Average: {Math.round(leaderboardData.reduce((acc, u) => acc + getValue(u), 0) / leaderboardData.length).toLocaleString()} {getUnit()}</span>
               </div>
-              <span style={{ color: '#7c6fd6', fontWeight: '500' }}>
+              <span style={{ color: '#7c6fd6', fontWeight: '400' }}>
                 Updated just now
               </span>
             </div>

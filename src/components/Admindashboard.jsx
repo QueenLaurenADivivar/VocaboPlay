@@ -98,87 +98,307 @@ const AdminDashboard = () => {
       { label: 'Avg Score',      value: avgScore + '%',          icon: '▦', color: '#7c6fd6', bg: '#f0edff', change: 'Class average' },
     ];
 
-    return (
-      <div>
-        <div style={{ marginBottom: '32px', borderBottom: '1px solid #eaeef2', paddingBottom: '20px' }}>
-          <h1 style={{ fontSize: '28px', fontWeight: '600', color: '#1a2634', marginBottom: '6px', fontFamily: "'Poppins', sans-serif" }}>Admin Overview</h1>
-          <p style={{ fontSize: '15px', color: '#6b7a8d', margin: 0, fontWeight: '300' }}>Monitor your vocabulary learning platform</p>
-        </div>
+return (
+  <div>
+    {/* Header Section */}
+    <div style={{ 
+      marginBottom: '24px', 
+      borderBottom: '1px solid #eaedf2', 
+      paddingBottom: '16px' 
+    }}>
+      <h1 style={{ 
+        fontSize: '24px', 
+        fontWeight: '500', 
+        color: '#2c3440', 
+        marginBottom: '4px', 
+        fontFamily: "'Poppins', sans-serif" 
+      }}>Admin Overview</h1>
+      <p style={{ 
+        fontSize: '13px', 
+        color: '#6f7887', 
+        margin: 0, 
+        fontWeight: '400',
+        fontFamily: "'Poppins', sans-serif"
+      }}>Monitor your vocabulary learning platform</p>
+    </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: '20px', marginBottom: '32px' }}>
-          {stats.map((s, i) => (
-            <div key={i}
-              style={{ background: '#fff', borderRadius: '20px', padding: '24px', boxShadow: '0 2px 12px rgba(0,0,0,0.06)', border: '1px solid #e6eaf0', transition: 'all .3s ease', cursor: 'default' }}
-              onMouseEnter={e => { e.currentTarget.style.borderColor = s.color + '40'; e.currentTarget.style.transform = 'translateY(-2px)'; }}
-              onMouseLeave={e => { e.currentTarget.style.borderColor = '#e6eaf0'; e.currentTarget.style.transform = 'translateY(0)'; }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
-                <div style={{ width: '48px', height: '48px', borderRadius: '14px', background: s.bg, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '22px', color: s.color }}>{s.icon}</div>
-                <span style={{ fontSize: '11px', color: '#7c8b9c', background: '#f8fafc', padding: '4px 10px', borderRadius: '100px', border: '1px solid #e2e8f0' }}>{s.change}</span>
+    {/* Stats Grid */}
+    <div style={{ 
+      display: 'grid', 
+      gridTemplateColumns: 'repeat(4,1fr)', 
+      gap: '16px', 
+      marginBottom: '24px' 
+    }}>
+      {stats.map((s, i) => (
+        <div key={i}
+          style={{ 
+            background: '#ffffff', 
+            borderRadius: '16px', 
+            padding: '20px', 
+            border: '1px solid #eae8f0', 
+            transition: 'all 0.2s ease', 
+            cursor: 'default' 
+          }}
+          onMouseEnter={e => { 
+            e.currentTarget.style.borderColor = `${s.color}40`; 
+            e.currentTarget.style.backgroundColor = '#faf9ff';
+            e.currentTarget.style.transform = 'translateY(-2px)'; 
+          }}
+          onMouseLeave={e => { 
+            e.currentTarget.style.borderColor = '#eae8f0'; 
+            e.currentTarget.style.backgroundColor = '#ffffff';
+            e.currentTarget.style.transform = 'translateY(0)'; 
+          }}>
+          <div style={{ 
+            display: 'flex', 
+            justifyContent: 'space-between', 
+            alignItems: 'center', 
+            marginBottom: '12px' 
+          }}>
+            <div style={{ 
+              width: '42px', 
+              height: '42px', 
+              borderRadius: '12px', 
+              background: s.bg, 
+              display: 'flex', 
+              alignItems: 'center', 
+              justifyContent: 'center', 
+              fontSize: '20px', 
+              color: s.color 
+            }}>{s.icon}</div>
+            <span style={{ 
+              fontSize: '11px', 
+              color: '#6f7887', 
+              background: '#f8fafc', 
+              padding: '4px 8px', 
+              borderRadius: '12px', 
+              border: '1px solid #eaedf2',
+              fontWeight: '400'
+            }}>{s.change}</span>
+          </div>
+          <div style={{ 
+            fontSize: '28px', 
+            fontWeight: '500', 
+            color: '#2c3440', 
+            marginBottom: '2px',
+            fontFamily: "'Poppins', sans-serif",
+            lineHeight: 1.2
+          }}>{s.value}</div>
+          <div style={{ 
+            fontSize: '13px', 
+            color: '#5a6270',
+            fontWeight: '400'
+          }}>{s.label}</div>
+        </div>
+      ))}
+    </div>
+
+    {/* Two Column Layout */}
+    <div style={{ 
+      display: 'grid', 
+      gridTemplateColumns: '1fr 1fr', 
+      gap: '20px', 
+      marginBottom: '20px' 
+    }}>
+      {/* Recent Activity */}
+      <div style={{ 
+        background: '#ffffff', 
+        borderRadius: '16px', 
+        padding: '20px', 
+        border: '1px solid #eae8f0' 
+      }}>
+        <h3 style={{ 
+          fontSize: '15px', 
+          fontWeight: '500', 
+          color: '#2c3440', 
+          margin: '0 0 16px 0',
+          fontFamily: "'Poppins', sans-serif"
+        }}>Recent Activity</h3>
+        {students.length > 0 ? (
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+            {students.slice(0, 3).map((st, i) => (
+              <div key={i} style={{ 
+                display: 'flex', 
+                alignItems: 'center', 
+                gap: '12px', 
+                padding: '10px', 
+                background: '#f8fafc', 
+                borderRadius: '10px',
+                border: '1px solid #eaedf2'
+              }}>
+                <div style={{ 
+                  width: '36px', 
+                  height: '36px', 
+                  borderRadius: '10px', 
+                  background: 'linear-gradient(135deg,#7c6fd6,#9b8de8)', 
+                  display: 'flex', 
+                  alignItems: 'center', 
+                  justifyContent: 'center', 
+                  color: '#fff', 
+                  fontWeight: '500', 
+                  fontSize: '16px', 
+                  flexShrink: 0 
+                }}>{st.name.charAt(0)}</div>
+                <div style={{ flex: 1 }}>
+                  <div style={{ 
+                    fontSize: '13px', 
+                    fontWeight: '500', 
+                    color: '#2c3440',
+                    fontFamily: "'Poppins', sans-serif"
+                  }}>{st.name} joined</div>
+                  <div style={{ 
+                    fontSize: '11px', 
+                    color: '#8f9aab' 
+                  }}>{st.joinDate}</div>
+                </div>
+                <span style={{ 
+                  fontSize: '10px', 
+                  background: '#e8f5e9', 
+                  color: '#2e7d32', 
+                  padding: '3px 8px', 
+                  borderRadius: '12px', 
+                  fontWeight: '500' 
+                }}>New</span>
               </div>
-              <div style={{ fontSize: '32px', fontWeight: '700', color: '#1a2634', marginBottom: '4px' }}>{s.value}</div>
-              <div style={{ fontSize: '14px', color: '#6b7a8d' }}>{s.label}</div>
+            ))}
+          </div>
+        ) : (
+          <div style={{ 
+            textAlign: 'center', 
+            padding: '32px', 
+            color: '#8f9aab' 
+          }}>
+            <div style={{ fontSize: '28px', marginBottom: '8px' }}>👋</div>
+            <div style={{ fontSize: '13px' }}>No recent activity</div>
+          </div>
+        )}
+      </div>
+
+      {/* Platform Stats */}
+      <div style={{ 
+        background: '#ffffff', 
+        borderRadius: '16px', 
+        padding: '20px', 
+        border: '1px solid #eae8f0' 
+      }}>
+        <h3 style={{ 
+          fontSize: '15px', 
+          fontWeight: '500', 
+          color: '#2c3440', 
+          margin: '0 0 16px 0',
+          fontFamily: "'Poppins', sans-serif"
+        }}>Platform Stats</h3>
+        <div style={{ 
+          display: 'grid', 
+          gridTemplateColumns: '1fr 1fr', 
+          gap: '8px' 
+        }}>
+          {[
+            { label: 'Easy Words',   value: words.filter(w => w.difficulty === 'Easy').length,   color: '#2e7d32', bg: '#e8f5e9' },
+            { label: 'Medium Words', value: words.filter(w => w.difficulty === 'Medium').length, color: '#b85c1a', bg: '#fff4e5' },
+            { label: 'Hard Words',   value: words.filter(w => w.difficulty === 'Hard').length,   color: '#a93226', bg: '#ffebee' },
+            { label: 'Total Plays',  value: totalPlayed,                                          color: '#7c6fd6', bg: '#f8f7ff' },
+          ].map((item, i) => (
+            <div key={i} style={{ 
+              padding: '14px', 
+              background: item.bg, 
+              borderRadius: '12px', 
+              textAlign: 'center',
+              border: '1px solid transparent',
+              transition: 'all 0.2s ease'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.borderColor = item.color + '30';
+              e.currentTarget.style.transform = 'translateY(-1px)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.borderColor = 'transparent';
+              e.currentTarget.style.transform = 'translateY(0)';
+            }}>
+              <div style={{ 
+                fontSize: '22px', 
+                fontWeight: '500', 
+                color: item.color,
+                fontFamily: "'Poppins', sans-serif",
+                lineHeight: 1.2
+              }}>{item.value}</div>
+              <div style={{ 
+                fontSize: '11px', 
+                color: item.color, 
+                fontWeight: '400', 
+                marginTop: '2px' 
+              }}>{item.label}</div>
             </div>
           ))}
         </div>
-
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px', marginBottom: '24px' }}>
-          <div style={{ background: '#fff', borderRadius: '20px', padding: '24px', boxShadow: '0 2px 12px rgba(0,0,0,0.06)', border: '1px solid #e6eaf0' }}>
-            <h3 style={{ fontSize: '16px', fontWeight: '600', color: '#1a2634', marginBottom: '20px' }}>Recent Activity</h3>
-            {students.length > 0 ? (
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-                {students.slice(0, 3).map((st, i) => (
-                  <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '12px', padding: '12px', background: '#f8fafc', borderRadius: '12px' }}>
-                    <div style={{ width: '36px', height: '36px', borderRadius: '50%', background: 'linear-gradient(135deg,#7c6fd6,#9b8de8)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontWeight: '600', fontSize: '14px', flexShrink: 0 }}>{st.name.charAt(0)}</div>
-                    <div style={{ flex: 1 }}>
-                      <div style={{ fontSize: '14px', fontWeight: '500', color: '#1a2634' }}>{st.name} joined</div>
-                      <div style={{ fontSize: '12px', color: '#7c8b9c' }}>{st.joinDate}</div>
-                    </div>
-                    <span style={{ fontSize: '11px', background: '#e8f5e9', color: '#2e7d32', padding: '3px 10px', borderRadius: '100px', fontWeight: '600' }}>New</span>
-                  </div>
-                ))}
-              </div>
-            ) : (
-              <div style={{ textAlign: 'center', padding: '32px', color: '#7c8b9c' }}>
-                <div style={{ fontSize: '32px', marginBottom: '8px' }}>👋</div>
-                <div style={{ fontSize: '14px' }}>No recent activity</div>
-              </div>
-            )}
-          </div>
-
-          <div style={{ background: '#fff', borderRadius: '20px', padding: '24px', boxShadow: '0 2px 12px rgba(0,0,0,0.06)', border: '1px solid #e6eaf0' }}>
-            <h3 style={{ fontSize: '16px', fontWeight: '600', color: '#1a2634', marginBottom: '20px' }}>Platform Stats</h3>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
-              {[
-                { label: 'Easy Words',   value: words.filter(w => w.difficulty === 'Easy').length,   color: '#2e7d32', bg: '#e8f5e9' },
-                { label: 'Medium Words', value: words.filter(w => w.difficulty === 'Medium').length, color: '#b85c1a', bg: '#fff4e5' },
-                { label: 'Hard Words',   value: words.filter(w => w.difficulty === 'Hard').length,   color: '#a93226', bg: '#ffebee' },
-                { label: 'Total Plays',  value: totalPlayed,                                          color: '#5c6ac4', bg: '#f0edff' },
-              ].map((item, i) => (
-                <div key={i} style={{ padding: '16px', background: item.bg, borderRadius: '14px', textAlign: 'center' }}>
-                  <div style={{ fontSize: '24px', fontWeight: '700', color: item.color }}>{item.value}</div>
-                  <div style={{ fontSize: '12px', color: item.color, fontWeight: '500', marginTop: '4px' }}>{item.label}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        <div style={{ background: '#fff', padding: students.length > 0 ? '24px' : '64px 32px', borderRadius: '20px', boxShadow: '0 2px 12px rgba(0,0,0,0.06)', textAlign: 'center', border: '1px solid #e6eaf0' }}>
-          {students.length === 0 && <div style={{ fontSize: '48px', marginBottom: '16px' }}>👋</div>}
-          <h3 style={{ fontSize: '18px', fontWeight: '600', color: '#1a2634', marginBottom: '8px' }}>
-            {students.length > 0 ? `${students.length} Active Student${students.length > 1 ? 's' : ''}` : 'No Students Yet'}
-          </h3>
-          <p style={{ fontSize: '14px', color: '#7c8b9c' }}>
-            {students.length > 0 ? 'Students are actively learning vocabulary. Check the Students tab for detailed progress.' : 'No students have signed up yet. Students will appear here once they create an account and log in.'}
-          </p>
-          {students.length > 0 && (
-            <button onClick={() => setActiveMenu('Students')} style={{ marginTop: '20px', padding: '10px 24px', background: '#5c6ac4', color: '#fff', border: 'none', borderRadius: '100px', fontSize: '14px', cursor: 'pointer' }}>
-              View All Students
-            </button>
-          )}
-        </div>
       </div>
-    );
+    </div>
+
+    {/* Students Summary */}
+    <div style={{ 
+      background: '#ffffff', 
+      padding: students.length > 0 ? '20px' : '48px 24px', 
+      borderRadius: '16px', 
+      border: '1px solid #eae8f0',
+      textAlign: 'center' 
+    }}>
+      {students.length === 0 && (
+        <div style={{ fontSize: '40px', marginBottom: '12px' }}>👋</div>
+      )}
+      <h3 style={{ 
+        fontSize: '16px', 
+        fontWeight: '500', 
+        color: '#2c3440', 
+        marginBottom: '4px',
+        fontFamily: "'Poppins', sans-serif"
+      }}>
+        {students.length > 0 ? `${students.length} Active Student${students.length > 1 ? 's' : ''}` : 'No Students Yet'}
+      </h3>
+      <p style={{ 
+        fontSize: '13px', 
+        color: '#6f7887', 
+        maxWidth: '500px',
+        margin: '0 auto',
+        lineHeight: '1.5'
+      }}>
+        {students.length > 0 
+          ? 'Students are actively learning vocabulary. Check the Students tab for detailed progress.' 
+          : 'No students have signed up yet. Students will appear here once they create an account and log in.'}
+      </p>
+      {students.length > 0 && (
+        <button 
+          onClick={() => setActiveMenu('Students')} 
+          style={{ 
+            marginTop: '16px', 
+            padding: '8px 20px', 
+            background: '#7c6fd6', 
+            color: '#fff', 
+            border: 'none', 
+            borderRadius: '30px', 
+            fontSize: '13px', 
+            fontWeight: '400',
+            cursor: 'pointer',
+            fontFamily: "'Poppins', sans-serif",
+            transition: 'all 0.2s ease',
+            boxShadow: '0 2px 8px rgba(124, 111, 214, 0.2)'
+          }}
+          onMouseOver={(e) => {
+            e.currentTarget.style.background = '#6b5ec5';
+            e.currentTarget.style.transform = 'translateY(-1px)';
+            e.currentTarget.style.boxShadow = '0 4px 12px rgba(124, 111, 214, 0.3)';
+          }}
+          onMouseOut={(e) => {
+            e.currentTarget.style.background = '#7c6fd6';
+            e.currentTarget.style.transform = 'translateY(0)';
+            e.currentTarget.style.boxShadow = '0 2px 8px rgba(124, 111, 214, 0.2)';
+          }}
+        >
+          View All Students
+        </button>
+      )}
+    </div>
+  </div>
+);
   };
 
   // ============================================================
@@ -667,23 +887,7 @@ const AdminDashboard = () => {
           </div>
         </div>
 
-        {/* Stats Bar */}
-        <div style={{ display: 'flex', gap: '16px', marginBottom: '24px', padding: '16px', background: '#fff', borderRadius: '16px', border: '1px solid #e6eaf0', flexWrap: 'wrap' }}>
-          {[
-            { label: 'Easy:',   val: stats.easy,   color: '#2e7d32', bg: '#e8f5e9' },
-            { label: 'Medium:', val: stats.medium,  color: '#b85c1a', bg: '#fff4e5' },
-            { label: 'Hard:',   val: stats.hard,    color: '#b71c1c', bg: '#ffebee' },
-          ].map(s => (
-            <div key={s.label} style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '8px 16px', background: s.bg, borderRadius: '100px' }}>
-              <span style={{ fontSize: '14px', fontWeight: '600', color: s.color }}>{s.label}</span>
-              <span style={{ fontSize: '16px', fontWeight: '700', color: s.color }}>{s.val}</span>
-            </div>
-          ))}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '8px 16px', background: '#f1f5f9', borderRadius: '100px', marginLeft: 'auto' }}>
-            <span style={{ fontSize: '14px', fontWeight: '600', color: '#475569' }}>Total Studies:</span>
-            <span style={{ fontSize: '16px', fontWeight: '700', color: '#1a2634' }}>{stats.total}</span>
-          </div>
-        </div>
+
 
         {/* Search & Filter */}
         <div style={{ display: 'flex', gap: '16px', alignItems: 'center', marginBottom: '24px', flexWrap: 'wrap' }}>
@@ -809,67 +1013,244 @@ const AdminDashboard = () => {
 
       <div style={{ display: 'flex', minHeight: '100vh', background: '#f5f5f7', fontFamily: "'Poppins', sans-serif" }}>
 
-        {/* ── Sidebar ─────────────────────────────────────────────────────────── */}
-        <div style={{ width: '260px', background: 'linear-gradient(180deg,#8b7dd6 0%,#7c6fd6 50%,#6b5ec5 100%)', color: '#fff', display: 'flex', flexDirection: 'column', position: 'fixed', height: '100vh', left: 0, top: 0, boxShadow: '4px 0 20px rgba(0,0,0,0.1)', zIndex: 1000 }}>
-          <div style={{ padding: '30px 25px', fontSize: '27px', fontWeight: '700', borderBottom: '1px solid rgba(255,255,255,0.1)', letterSpacing: '-0.5px', background: 'rgba(255,255,255,0.05)' }}>
-            Admin Panel
-          </div>
+{/* ── Sidebar ─────────────────────────────────────────────────────────── */}
+<div style={{
+  width: '260px',
+  background: 'linear-gradient(180deg, #8b7dd6 0%, #7c6fd6 50%, #6b5ec5 100%)',
+  color: 'white',
+  display: 'flex',
+  flexDirection: 'column',
+  position: 'fixed',
+  height: '100vh',
+  left: 0,
+  top: 0,
+  padding: '0',
+  fontFamily: "'Poppins', sans-serif",
+  boxShadow: '4px 0 20px rgba(0, 0, 0, 0.1)',
+  zIndex: 1000,
+}}>
+  {/* Logo */}
+  <div style={{
+    padding: '30px 25px',
+    fontSize: '26px',
+    fontWeight: '600', // Reduced from 800 to 600
+    borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
+    letterSpacing: '-0.5px',
+    color: 'white',
+    fontFamily: "'Poppins', sans-serif",
+    background: 'rgba(255, 255, 255, 0.05)',
+    position: 'relative',
+  }}>
+    <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+      <span style={{
+        fontSize: '32px',
+        filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.2))'
+      }}></span>
+      Admin Panel
+    </div>
+  </div>
 
-          <nav style={{ flex: 1, padding: '25px 0' }}>
-            {[
-              { name: 'Overview', icon: '▣' },
-              { name: 'Students', icon: '☰' },
-              { name: 'Games',    icon: '◉' },
-              { name: 'Words',    icon: '▦' },
-              { name: 'Leaderboards', icon: '🏆' },
-            ].map(item => (
-              <div key={item.name} onClick={() => setActiveMenu(item.name)}
-                style={{ padding: '14px 25px', margin: '5px 15px', display: 'flex', alignItems: 'center', gap: '14px', cursor: 'pointer', fontSize: '16px', fontWeight: activeMenu === item.name ? '600' : '500', color: '#fff', background: activeMenu === item.name ? 'linear-gradient(135deg,rgba(255,255,255,0.25),rgba(255,255,255,0.15))' : 'transparent', borderRadius: '12px', transition: 'all .3s ease', boxShadow: activeMenu === item.name ? '0 4px 12px rgba(0,0,0,0.15)' : 'none' }}
-                onMouseOver={e => { if (activeMenu !== item.name) { e.currentTarget.style.background = 'rgba(255,255,255,0.1)'; e.currentTarget.style.transform = 'translateX(5px)'; } }}
-                onMouseOut={e => { if (activeMenu !== item.name) { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.transform = 'translateX(0)'; } }}>
-                <span style={{ fontSize: '20px' }}>{item.icon}</span>
-                <span>{item.name}</span>
-              </div>
-            ))}
-          </nav>
+  {/* Menu Items */}
+  <nav style={{ flex: 1, padding: '23px 0' }}> {/* Reduced from 25px to 23px */}
+    {[
+      { name: 'Overview', icon: '⊞' },      // Changed to match Dashboard style
+      { name: 'Students', icon: '☰' },      // Hamburger menu
+      { name: 'Games', icon: '▶' },          // Play button
+      { name: 'Words', icon: '≡' },          // Stacked lines
+      { name: 'Leaderboards', icon: '⚑' },   // Flag
+    ].map(item => (
+      <div
+        key={item.name}
+        onClick={() => setActiveMenu(item.name)}
+        style={{
+          padding: '14px 25px',
+          margin: '5px 15px',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '14px',
+          cursor: 'pointer',
+          fontSize: '16px',
+          fontWeight: activeMenu === item.name ? '600' : '500', // Bold for active only
+          color: 'white',
+          fontFamily: "'Poppins', sans-serif",
+          background: activeMenu === item.name
+            ? 'linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.15) 100%)'
+            : 'transparent',
+          borderRadius: '12px',
+          transition: 'all 0.3s ease',
+          borderLeft: activeMenu === item.name ? '4px solid white' : '4px solid transparent',
+          boxShadow: activeMenu === item.name ? '0 4px 12px rgba(0, 0, 0, 0.15)' : 'none',
+        }}
+        onMouseOver={(e) => {
+          if (activeMenu !== item.name) {
+            e.currentTarget.style.background = 'rgba(255, 255, 255, 0.1)';
+            e.currentTarget.style.transform = 'translateX(5px)';
+          }
+        }}
+        onMouseOut={(e) => {
+          if (activeMenu !== item.name) {
+            e.currentTarget.style.background = 'transparent';
+            e.currentTarget.style.transform = 'translateX(0)';
+          }
+        }}
+      >
+        <span style={{
+          fontSize: '20px',
+          filter: activeMenu === item.name ? 'drop-shadow(0 2px 4px rgba(0,0,0,0.3))' : 'none'
+        }}>{item.icon}</span>
+        <span>{item.name}</span>
+      </div>
+    ))}
+  </nav>
 
-          <div style={{ padding: '20px 15px', borderTop: '1px solid rgba(255,255,255,0.1)' }}>
-            <div onClick={handleLogout}
-              style={{ padding: '14px 25px', display: 'flex', alignItems: 'center', gap: '14px', cursor: 'pointer', fontSize: '16px', color: '#fff', borderRadius: '12px', transition: 'all .3s ease' }}
-              onMouseOver={e => e.currentTarget.style.background = 'rgba(255,255,255,0.1)'}
-              onMouseOut={e => e.currentTarget.style.background = 'transparent'}>
-              <span style={{ fontSize: '20px' }}>🚪</span>
-              <span>Logout</span>
-            </div>
-          </div>
+  {/* Logout at bottom */}
+  <div style={{
+    borderTop: '1px solid rgba(255, 255, 255, 0.2)', // Lighter border
+    padding: '20px 0',
+  }}>
+    <div
+      onClick={handleLogout}
+      style={{
+        padding: '14px 25px',
+        margin: '0 15px',
+        display: 'flex',
+        alignItems: 'center',
+        gap: '14px',
+        cursor: 'pointer',
+        fontSize: '16px',
+        fontWeight: '500',
+        color: 'white',
+        fontFamily: "'Poppins', sans-serif",
+        background: 'transparent',
+        borderRadius: '12px',
+        transition: 'all 0.3s ease',
+      }}
+      onMouseOver={(e) => {
+        e.currentTarget.style.background = 'rgba(255, 255, 255, 0.1)';
+        e.currentTarget.style.transform = 'translateX(5px)';
+      }}
+      onMouseOut={(e) => {
+        e.currentTarget.style.background = 'transparent';
+        e.currentTarget.style.transform = 'translateX(0)';
+      }}
+    >
+      <span style={{ fontSize: '20px' }}>↪</span> {/* Changed from door to exit arrow */}
+      <span>Logout</span>
+    </div>
+  </div>
+</div>
+
+{/* ── Main Content ─────────────────────────────────────────────────────── */}
+<div style={{ flex: 1, marginLeft: '260px', padding: '24px 32px', overflowY: 'auto', fontFamily: "'Poppins', sans-serif" }}> {/* Adjusted padding */}
+
+  {/* Top Bar */}
+  <div style={{ 
+    display: 'flex', 
+    justifyContent: 'flex-end', 
+    marginBottom: '32px', 
+    position: 'relative' 
+  }}>
+    <div style={{ 
+      background: '#fff', 
+      padding: '8px 20px 8px 16px', 
+      borderRadius: '40px', 
+      display: 'flex', 
+      alignItems: 'center', 
+      gap: '12px', 
+      boxShadow: '0 2px 12px rgba(124,111,214,0.15)', 
+      border: '1px solid #eaedf2', // Thinner, lighter border
+      cursor: 'pointer', 
+      transition: 'all .3s ease',
+      fontFamily: "'Poppins', sans-serif",
+    }}
+      onClick={() => setShowProfileMenu(!showProfileMenu)}
+      onMouseOver={e => { 
+        e.currentTarget.style.transform = 'translateY(-2px)'; 
+        e.currentTarget.style.boxShadow = '0 4px 16px rgba(124,111,214,0.25)'; 
+        e.currentTarget.style.borderColor = '#d0c9f0';
+      }}
+      onMouseOut={e => { 
+        e.currentTarget.style.transform = 'translateY(0)'; 
+        e.currentTarget.style.boxShadow = '0 2px 12px rgba(124,111,214,0.15)'; 
+        e.currentTarget.style.borderColor = '#eaedf2';
+      }}>
+      <div style={{ 
+        width: '36px', 
+        height: '36px', 
+        borderRadius: '50%', 
+        background: 'linear-gradient(135deg,#7c6fd6,#9b8de8)', 
+        display: 'flex', 
+        alignItems: 'center', 
+        justifyContent: 'center',
+        overflow: 'hidden',
+      }}>
+        <span style={{ fontSize: '18px', color: 'white' }}>👨‍🏫</span>
+      </div>
+      <span style={{ fontSize: '14px', fontWeight: '500', color: '#2c3440' }}>Admin</span>
+      <span style={{ fontSize: '12px', color: '#8f9aab' }}>▼</span>
+    </div>
+
+    {showProfileMenu && (
+      <div style={{ 
+        position: 'absolute', 
+        top: '55px', 
+        right: 0, 
+        background: '#fff', 
+        borderRadius: '12px', 
+        boxShadow: '0 4px 16px rgba(0,0,0,0.08)', 
+        zIndex: 1000, 
+        minWidth: '200px', 
+        overflow: 'hidden', 
+        border: '1px solid #eaedf2',
+        fontFamily: "'Poppins', sans-serif",
+      }}>
+        <div style={{ 
+          padding: '12px 16px', 
+          fontSize: '12px', 
+          color: '#8f9aab', 
+          borderBottom: '1px solid #eaedf2',
+          background: '#faf9ff',
+        }}>
+          Logged in as
         </div>
-
-        {/* ── Main Content ─────────────────────────────────────────────────────── */}
-        <div style={{ flex: 1, marginLeft: '260px', padding: '30px 40px', overflowY: 'auto' }}>
-
-          {/* Top Bar */}
-          <div style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: '40px', position: 'relative' }}>
-            <div style={{ background: '#fff', padding: '10px 20px', borderRadius: '25px', display: 'flex', alignItems: 'center', gap: '12px', boxShadow: '0 2px 12px rgba(124,111,214,0.15)', border: '2px solid #f0f0f0', cursor: 'pointer', transition: 'all .3s ease' }}
-              onClick={() => setShowProfileMenu(!showProfileMenu)}
-              onMouseOver={e => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 4px 16px rgba(124,111,214,0.25)'; }}
-              onMouseOut={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 2px 12px rgba(124,111,214,0.15)'; }}>
-              <div style={{ width: '32px', height: '32px', borderRadius: '50%', background: 'linear-gradient(135deg,#7c6fd6,#9b8de8)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '16px' }}>👨‍🏫</div>
-              <span style={{ fontSize: '15px', fontWeight: '600', color: '#333' }}>Admin</span>
-              <span style={{ fontSize: '12px', color: '#999' }}>▼</span>
-            </div>
-
-            {showProfileMenu && (
-              <div style={{ position: 'absolute', top: '55px', right: 0, background: '#fff', borderRadius: '16px', boxShadow: '0 8px 24px rgba(0,0,0,0.15)', zIndex: 1000, minWidth: '200px', overflow: 'hidden', border: '1px solid #f0f0f0' }}>
-                <div style={{ padding: '14px 18px', fontSize: '13px', color: '#999', borderBottom: '1px solid #f5f5f5' }}>Logged in as</div>
-                <div style={{ padding: '14px 18px', fontSize: '15px', fontWeight: '600', color: '#1a1a1a', borderBottom: '1px solid #f5f5f5', background: 'linear-gradient(135deg,#f8f7ff,#fff)' }}>Admin</div>
-                <button onClick={handleLogout} style={{ width: '100%', padding: '14px 18px', border: 'none', background: 'none', fontSize: '15px', fontWeight: '600', color: '#ff6b6b', cursor: 'pointer', textAlign: 'left', fontFamily: "'Poppins', sans-serif" }}
-                  onMouseOver={e => e.currentTarget.style.background = '#fff5f5'}
-                  onMouseOut={e => e.currentTarget.style.background = 'none'}>
-                  Logout
-                </button>
-              </div>
-            )}
-          </div>
+        <div style={{ 
+          padding: '12px 16px', 
+          fontSize: '14px', 
+          fontWeight: '500', 
+          color: '#2c3440', 
+          borderBottom: '1px solid #eaedf2', 
+          background: '#faf9ff'
+        }}>
+          Admin
+        </div>
+        <button 
+          onClick={handleLogout} 
+          style={{ 
+            width: '100%', 
+            padding: '12px 16px', 
+            border: 'none', 
+            background: 'none', 
+            fontSize: '13px', 
+            fontWeight: '400', 
+            color: '#b58a8a', 
+            cursor: 'pointer', 
+            textAlign: 'left', 
+            fontFamily: "'Poppins', sans-serif",
+            transition: 'all 0.2s ease',
+          }}
+          onMouseOver={e => {
+            e.currentTarget.style.background = '#faf2f2';
+            e.currentTarget.style.color = '#b58a8a';
+          }}
+          onMouseOut={e => {
+            e.currentTarget.style.background = 'none';
+            e.currentTarget.style.color = '#b58a8a';
+          }}>
+          Logout
+        </button>
+      </div>
+    )}
+  </div>
 
           {/* Views */}
           {activeMenu === 'Overview'  && <Overview />}

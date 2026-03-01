@@ -16,7 +16,7 @@ const Profile = ({ onBack }) => {
     displayName: '',
     username: '',
     bio: '',
-    avatar: '👤',
+    avatar: '/avatars/avatar1.png',
     email: '',
     phone: '',
     location: '',
@@ -40,12 +40,15 @@ const Profile = ({ onBack }) => {
     confirmPassword: ''
   });
 
-  // Avatar options - more emojis!
+  // Avatar options - images!
   const avatarOptions = [
-    '👤', '😊', '🎓', '👨‍🎓', '👩‍🎓', '👨‍🏫', '👩‍🏫', 
-    '📚', '✍️', '🎯', '⭐', '🌟', '🔥', '💡', '🧠',
-    '🐶', '🐱', '🦊', '🐼', '🐨', '🦁', '🐧', '🐝',
-    '🌈', '🍕', '🎨', '🎸', '⚽', '🏀', '🚀', '🌍'
+    'src/image/a1.png', 'src/image/A2.png', 'src/image/A3.png', 'src/image/A4.png', 'src/image/A5.png',
+    'src/image/A6.png', 'src/image/A7.png', 'src/image/A8.png', 'src/image/A9.png', 'src/image/A10.png',
+    'src/image/A11.png', 'src/image/A12.png', 'src/image/A13.png', 'src/image/A14.png', 'src/image/15.png',
+    'src/image/A16.png', 'src/image/A17.png', 'src/image/A18.png', 'src/image/A19.png', 'src/image/A20.png',
+    'src/image/A21.png', 'src/image/A22.png', 'src/image/A23.png', 'src/image/A24.png', 'src/image/A25.png',
+    'src/image/A26.png', 'src/image/A27.png', 'src/image/A28.png', 'src/image/A29.png', 'src/image/A30.png',
+    'src/image/A31.png', 'src/image/A32.png'
   ];
 
   useEffect(() => {
@@ -70,7 +73,7 @@ const Profile = ({ onBack }) => {
           displayName: parsed.displayName || '',
           username: parsed.username || '',
           bio: parsed.bio || '',
-          avatar: parsed.avatar || '👤',
+          avatar: parsed.avatar || '/avatars/avatar1.png',
           email: parsed.email || user.email || '',
           phone: parsed.phone || '',
           location: parsed.location || '',
@@ -95,7 +98,7 @@ const Profile = ({ onBack }) => {
           displayName: firestoreData.displayName || '',
           username: firestoreData.username || '',
           bio: firestoreData.bio || '',
-          avatar: firestoreData.avatar || '👤',
+          avatar: firestoreData.avatar || '/avatars/avatar1.png',
           email: user.email || '',
           phone: firestoreData.phone || '',
           location: firestoreData.location || '',
@@ -211,7 +214,7 @@ const Profile = ({ onBack }) => {
         displayName: formData.displayName,
         username: formData.username,
         bio: formData.bio,
-        avatar: formData.avatar, // This will be an emoji
+        avatar: formData.avatar, // This will be an image path
         phone: formData.phone,
         location: formData.location,
         website: formData.website,
@@ -317,22 +320,24 @@ const Profile = ({ onBack }) => {
 
       {/* Profile Content */}
       <div style={styles.content}>
-        {/* Avatar Section - Emoji Only */}
+        {/* Avatar Section - Images */}
         <div style={styles.avatarSection}>
           <div style={styles.avatarContainer}>
             <div style={styles.avatarWrapper}>
-              <div style={{
-                ...styles.avatar,
-                fontSize: '48px',
-              }}>
-                {formData.avatar}
-              </div>
+              <img 
+                src={formData.avatar}
+                alt="Profile Avatar"
+                style={styles.avatar}
+                onError={(e) => {
+                  e.target.src = '/avatars/avatar1.png'; // Fallback
+                }}
+              />
             </div>
           </div>
 
           {editMode && (
             <div style={styles.avatarOptions}>
-              <p style={styles.avatarOptionsTitle}>Choose your avatar emoji:</p>
+              <p style={styles.avatarOptionsTitle}>Choose your avatar:</p>
               <div style={styles.avatarGrid}>
                 {avatarOptions.map((avatar, index) => (
                   <button
@@ -340,16 +345,27 @@ const Profile = ({ onBack }) => {
                     onClick={() => handleAvatarSelect(avatar)}
                     style={{
                       ...styles.avatarOption,
-                      backgroundColor: formData.avatar === avatar ? '#7c6fd6' : '#f5f5f5',
-                      color: formData.avatar === avatar ? 'white' : '#333',
+                      border: formData.avatar === avatar ? '2px solid #7c6fd6' : '2px solid transparent',
                     }}
                   >
-                    {avatar}
+                    <img 
+                      src={avatar}
+                      alt={`Avatar ${index + 1}`}
+                      style={{
+                        width: '100%',
+                        height: '100%',
+                        borderRadius: '50%',
+                        objectFit: 'cover',
+                      }}
+                      onError={(e) => {
+                        e.target.src = '/avatars/avatar1.png'; // Fallback
+                      }}
+                    />
                   </button>
                 ))}
               </div>
               <p style={styles.avatarNote}>
-                Click an emoji to set as your avatar
+                Click an image to set as your avatar
               </p>
             </div>
           )}
@@ -702,13 +718,13 @@ const styles = {
     alignItems: 'center',
     justifyContent: 'center',
     minHeight: '400px',
-    color: '#666',
+    color: '#8f9aab',
   },
   loadingSpinner: {
     width: '40px',
     height: '40px',
-    border: '3px solid #f3f3f3',
-    borderTop: '3px solid #7c6fd6',
+    border: '2px solid #f0f0f0',
+    borderTop: '2px solid #7c6fd6',
     borderRadius: '50%',
     animation: 'spin 1s linear infinite',
     marginBottom: '16px',
@@ -717,207 +733,203 @@ const styles = {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: '32px',
-    paddingBottom: '20px',
-    borderBottom: '1px solid #e2e8f0',
+    marginBottom: '28px',
+    paddingBottom: '16px',
+    borderBottom: '1px solid #eaedf2',
   },
   backButton: {
     background: 'white',
-    border: '1px solid #e2e8f0',
-    padding: '8px 20px',
-    borderRadius: '100px',
+    border: '1px solid #eaedf2',
+    padding: '8px 18px',
+    borderRadius: '30px',
     cursor: 'pointer',
-    fontSize: '14px',
-    fontWeight: '500',
-    color: '#475569',
+    fontSize: '13px',
+    fontWeight: '400',
+    color: '#5a6270',
     fontFamily: "'Inter', 'Poppins', sans-serif",
     transition: 'all 0.2s ease',
   },
   title: {
-    fontSize: '24px',
-    fontWeight: '600',
-    color: '#0f172a',
+    fontSize: '22px',
+    fontWeight: '500',
+    color: '#2c3440',
     margin: '0',
     fontFamily: "'Inter', 'Poppins', sans-serif",
   },
   editButton: {
-    padding: '8px 24px',
+    padding: '8px 22px',
     background: '#7c6fd6',
     color: 'white',
     border: 'none',
-    borderRadius: '100px',
-    fontSize: '14px',
-    fontWeight: '500',
+    borderRadius: '30px',
+    fontSize: '13px',
+    fontWeight: '400',
     cursor: 'pointer',
     transition: 'all 0.2s ease',
     fontFamily: "'Inter', 'Poppins', sans-serif",
   },
   editActions: {
     display: 'flex',
-    gap: '12px',
+    gap: '10px',
   },
   cancelButton: {
-    padding: '8px 20px',
+    padding: '8px 18px',
     background: 'white',
-    color: '#475569',
-    border: '1px solid #e2e8f0',
-    borderRadius: '100px',
-    fontSize: '14px',
-    fontWeight: '500',
+    color: '#5a6270',
+    border: '1px solid #eaedf2',
+    borderRadius: '30px',
+    fontSize: '13px',
+    fontWeight: '400',
     cursor: 'pointer',
     transition: 'all 0.2s ease',
     fontFamily: "'Inter', 'Poppins', sans-serif",
   },
   saveButton: {
-    padding: '8px 24px',
+    padding: '8px 22px',
     background: '#10b981',
     color: 'white',
     border: 'none',
-    borderRadius: '100px',
-    fontSize: '14px',
-    fontWeight: '500',
+    borderRadius: '30px',
+    fontSize: '13px',
+    fontWeight: '400',
     cursor: 'pointer',
     transition: 'all 0.2s ease',
     fontFamily: "'Inter', 'Poppins', sans-serif",
   },
   message: {
-    padding: '12px 16px',
+    padding: '10px 16px',
     borderRadius: '8px',
     border: '1px solid',
-    marginBottom: '24px',
-    fontSize: '14px',
+    marginBottom: '20px',
+    fontSize: '13px',
   },
   content: {
     display: 'grid',
-    gridTemplateColumns: '300px 1fr',
-    gap: '24px',
-    marginBottom: '32px',
+    gridTemplateColumns: '280px 1fr',
+    gap: '20px',
+    marginBottom: '28px',
   },
   avatarSection: {
     background: '#ffffff',
-    borderRadius: '20px',
-    padding: '24px',
-    border: '1px solid #e2e8f0',
+    borderRadius: '16px',
+    padding: '20px',
+    border: '1px solid #eaedf2',
     height: 'fit-content',
   },
   avatarContainer: {
     display: 'flex',
     justifyContent: 'center',
-    marginBottom: '20px',
+    marginBottom: '16px',
   },
   avatarWrapper: {
     position: 'relative',
   },
   avatar: {
-    width: '150px',
-    height: '150px',
+    width: '140px',
+    height: '140px',
     borderRadius: '50%',
-    background: 'linear-gradient(135deg, #7c6fd6 0%, #9b8de8 100%)',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    fontSize: '48px',
-    color: 'white',
-    border: '4px solid white',
-    boxShadow: '0 4px 20px rgba(124, 111, 214, 0.3)',
+    objectFit: 'cover',
+    border: '3px solid white',
+    boxShadow: '0 4px 12px rgba(124, 111, 214, 0.2)',
   },
   avatarOptions: {
-    borderTop: '1px solid #e2e8f0',
-    paddingTop: '20px',
+    borderTop: '1px solid #eaedf2',
+    paddingTop: '16px',
   },
   avatarOptionsTitle: {
-    fontSize: '13px',
-    color: '#475569',
-    marginBottom: '12px',
+    fontSize: '12px',
+    color: '#6f7887',
+    marginBottom: '10px',
     fontWeight: '500',
   },
   avatarGrid: {
     display: 'grid',
     gridTemplateColumns: 'repeat(5, 1fr)',
-    gap: '8px',
+    gap: '6px',
   },
   avatarOption: {
     aspectRatio: '1',
     borderRadius: '50%',
     border: 'none',
-    fontSize: '20px',
     cursor: 'pointer',
     transition: 'all 0.2s ease',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    padding: '2px',
+    background: 'transparent',
   },
   avatarNote: {
-    fontSize: '12px',
-    color: '#64748b',
-    marginTop: '16px',
+    fontSize: '11px',
+    color: '#8f9aab',
+    marginTop: '14px',
     textAlign: 'center',
     fontStyle: 'italic',
   },
   infoSection: {
     display: 'flex',
     flexDirection: 'column',
-    gap: '20px',
+    gap: '16px',
   },
   infoCard: {
     background: '#ffffff',
-    borderRadius: '20px',
-    padding: '24px',
-    border: '1px solid #e2e8f0',
+    borderRadius: '16px',
+    padding: '20px',
+    border: '1px solid #eaedf2',
   },
   sectionTitle: {
-    fontSize: '16px',
-    fontWeight: '600',
-    color: '#0f172a',
-    margin: '0 0 20px 0',
+    fontSize: '15px',
+    fontWeight: '500',
+    color: '#2c3440',
+    margin: '0 0 16px 0',
     fontFamily: "'Inter', 'Poppins', sans-serif",
   },
   infoRow: {
-    marginBottom: '16px',
+    marginBottom: '14px',
   },
   label: {
     display: 'block',
-    fontSize: '12px',
-    fontWeight: '600',
-    color: '#64748b',
-    marginBottom: '6px',
+    fontSize: '11px',
+    fontWeight: '500',
+    color: '#6f7887',
+    marginBottom: '4px',
     textTransform: 'uppercase',
-    letterSpacing: '0.5px',
+    letterSpacing: '0.3px',
   },
   infoValue: {
-    fontSize: '15px',
-    color: '#0f172a',
+    fontSize: '14px',
+    color: '#2c3440',
     margin: '0',
-    padding: '4px 0',
+    padding: '2px 0',
     wordBreak: 'break-word',
   },
   input: {
     width: '100%',
-    padding: '10px 12px',
-    border: '1px solid #e2e8f0',
+    padding: '8px 12px',
+    border: '1px solid #eaedf2',
     borderRadius: '8px',
-    fontSize: '14px',
+    fontSize: '13px',
     fontFamily: "'Inter', 'Poppins', sans-serif",
     transition: 'all 0.2s ease',
     outline: 'none',
   },
   textarea: {
     width: '100%',
-    padding: '10px 12px',
-    border: '1px solid #e2e8f0',
+    padding: '8px 12px',
+    border: '1px solid #eaedf2',
     borderRadius: '8px',
-    fontSize: '14px',
+    fontSize: '13px',
     fontFamily: "'Inter', 'Poppins', sans-serif",
     resize: 'vertical',
-    minHeight: '80px',
+    minHeight: '70px',
     outline: 'none',
   },
   select: {
     width: '100%',
-    padding: '10px 12px',
-    border: '1px solid #e2e8f0',
+    padding: '8px 12px',
+    border: '1px solid #eaedf2',
     borderRadius: '8px',
-    fontSize: '14px',
+    fontSize: '13px',
     fontFamily: "'Inter', 'Poppins', sans-serif",
     backgroundColor: 'white',
     outline: 'none',
@@ -926,8 +938,8 @@ const styles = {
     display: 'flex',
     alignItems: 'center',
     gap: '8px',
-    fontSize: '14px',
-    color: '#475569',
+    fontSize: '13px',
+    color: '#5a6270',
     cursor: 'pointer',
   },
   checkbox: {
@@ -940,72 +952,72 @@ const styles = {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: '16px',
+    marginBottom: '14px',
   },
   changePasswordButton: {
-    padding: '6px 16px',
+    padding: '5px 14px',
     background: 'white',
     color: '#7c6fd6',
     border: '1px solid #7c6fd6',
-    borderRadius: '100px',
-    fontSize: '12px',
-    fontWeight: '500',
+    borderRadius: '20px',
+    fontSize: '11px',
+    fontWeight: '400',
     cursor: 'pointer',
     transition: 'all 0.2s ease',
   },
   passwordForm: {
-    marginTop: '16px',
-    padding: '16px',
+    marginTop: '14px',
+    padding: '14px',
     background: '#f8fafc',
-    borderRadius: '12px',
+    borderRadius: '10px',
   },
   updatePasswordButton: {
     width: '100%',
-    padding: '12px',
+    padding: '10px',
     background: '#7c6fd6',
     color: 'white',
     border: 'none',
     borderRadius: '8px',
-    fontSize: '14px',
-    fontWeight: '500',
+    fontSize: '13px',
+    fontWeight: '400',
     cursor: 'pointer',
     transition: 'all 0.2s ease',
     marginTop: '8px',
   },
   statsSection: {
     background: '#ffffff',
-    borderRadius: '20px',
-    padding: '24px',
-    border: '1px solid #e2e8f0',
+    borderRadius: '16px',
+    padding: '20px',
+    border: '1px solid #eaedf2',
   },
   statsGrid: {
     display: 'grid',
     gridTemplateColumns: 'repeat(4, 1fr)',
-    gap: '20px',
+    gap: '16px',
   },
   statCard: {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    padding: '20px',
-    background: '#f8f7ff',
-    borderRadius: '16px',
-    border: '1px solid #e6e0ff',
+    padding: '16px',
+    background: '#faf9ff',
+    borderRadius: '12px',
+    border: '1px solid #eae8f0',
   },
   statIcon: {
-    fontSize: '32px',
-    marginBottom: '12px',
+    fontSize: '28px',
+    marginBottom: '8px',
     color: '#7c6fd6',
   },
   statValue: {
-    fontSize: '24px',
-    fontWeight: '700',
-    color: '#0f172a',
-    marginBottom: '4px',
+    fontSize: '22px',
+    fontWeight: '500',
+    color: '#2c3440',
+    marginBottom: '2px',
   },
   statLabel: {
-    fontSize: '12px',
-    color: '#64748b',
+    fontSize: '11px',
+    color: '#6f7887',
     textAlign: 'center',
   },
 };

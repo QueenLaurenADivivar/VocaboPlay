@@ -447,29 +447,30 @@ const imageLibrary = [
       }}>
         {/* Hero Section */}
         <div style={{
-          background: 'linear-gradient(135deg, #f8f7ff 0%, #ffffff 100%)',
-          borderRadius: '24px',
-          padding: '40px',
-          marginBottom: '32px',
-          border: '1px solid #e6e0ff',
-          boxShadow: '0 8px 24px rgba(124, 111, 214, 0.08)',
+          background: '#ffffff',
+          borderRadius: '16px',
+          padding: '32px',
+          marginBottom: '24px',
+          border: '1px solid #eaedf2',
           textAlign: 'center'
         }}>
-          <div style={{ fontSize: '72px', marginBottom: '20px' }}>🖼️</div>
+          <div style={{ fontSize: '64px', marginBottom: '16px', color: '#7c6fd6' }}>🖼️</div>
           <h2 style={{
-            fontSize: '32px',
-            fontWeight: '600',
-            color: '#0f172a',
-            marginBottom: '12px',
+            fontSize: '28px',
+            fontWeight: '500',
+            color: '#2c3440',
+            marginBottom: '8px',
+            fontFamily: "'Poppins', sans-serif"
           }}>
             Word Pics Challenge
           </h2>
           <p style={{
-            fontSize: '16px',
-            color: '#475569',
+            fontSize: '14px',
+            color: '#6f7887',
             marginBottom: '24px',
-            maxWidth: '600px',
-            margin: '0 auto 24px'
+            maxWidth: '500px',
+            margin: '0 auto 24px',
+            lineHeight: '1.6'
           }}>
             Match the pictures with the correct words! Test your vocabulary and memory.
           </p>
@@ -477,16 +478,16 @@ const imageLibrary = [
           {/* Difficulty Selection */}
           <div style={{ marginBottom: '24px' }}>
             <h3 style={{
-              fontSize: '18px',
-              fontWeight: '600',
-              color: '#0f172a',
-              marginBottom: '16px',
+              fontSize: '15px',
+              fontWeight: '500',
+              color: '#2c3440',
+              marginBottom: '12px',
             }}>
               Choose Difficulty
             </h3>
             <div style={{
               display: 'flex',
-              gap: '12px',
+              gap: '8px',
               justifyContent: 'center',
               flexWrap: 'wrap'
             }}>
@@ -495,18 +496,19 @@ const imageLibrary = [
                   key={level.id}
                   onClick={() => setDifficulty(level.id)}
                   style={{
-                    padding: '12px 24px',
-                    borderRadius: '100px',
-                    border: `2px solid ${difficulty === level.id ? level.color : '#e2e8f0'}`,
-                    background: difficulty === level.id ? level.color : 'white',
-                    color: difficulty === level.id ? 'white' : '#475569',
-                    fontWeight: '600',
-                    fontSize: '14px',
+                    padding: '10px 20px',
+                    borderRadius: '30px',
+                    border: `1px solid ${difficulty === level.id ? level.color : '#eaedf2'}`,
+                    background: difficulty === level.id ? level.color : '#ffffff',
+                    color: difficulty === level.id ? '#ffffff' : '#5a6270',
+                    fontWeight: '400',
+                    fontSize: '13px',
                     cursor: 'pointer',
                     transition: 'all 0.2s ease',
                     display: 'flex',
                     alignItems: 'center',
-                    gap: '8px',
+                    gap: '6px',
+                    fontFamily: "'Poppins', sans-serif",
                   }}
                 >
                   <span>{level.icon}</span>
@@ -519,17 +521,17 @@ const imageLibrary = [
           {/* Category Selection */}
           <div style={{ marginBottom: '24px' }}>
             <h3 style={{
-              fontSize: '18px',
-              fontWeight: '600',
-              color: '#0f172a',
-              marginBottom: '16px',
+              fontSize: '15px',
+              fontWeight: '500',
+              color: '#2c3440',
+              marginBottom: '12px',
             }}>
               Choose Category
             </h3>
             <div style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))',
-              gap: '12px'
+              gridTemplateColumns: 'repeat(auto-fit, minmax(120px, 1fr))',
+              gap: '8px'
             }}>
               {categories.map(category => {
                 const count = imageLibrary.filter(img => 
@@ -541,25 +543,27 @@ const imageLibrary = [
                     key={category.id}
                     onClick={() => setSelectedCategory(category.id)}
                     style={{
-                      background: selectedCategory === category.id ? category.color : '#ffffff',
-                      border: `1px solid ${selectedCategory === category.id ? category.color : '#e2e8f0'}`,
-                      borderRadius: '16px',
-                      padding: '16px',
+                      background: selectedCategory === category.id ? `${category.color}15` : '#ffffff',
+                      border: `1px solid ${selectedCategory === category.id ? category.color : '#eaedf2'}`,
+                      borderRadius: '12px',
+                      padding: '12px',
                       cursor: 'pointer',
                       transition: 'all 0.2s ease',
                     }}
                   >
-                    <span style={{ fontSize: '32px', display: 'block' }}>{category.icon}</span>
+                    <span style={{ fontSize: '28px', display: 'block', marginBottom: '4px' }}>{category.icon}</span>
                     <span style={{
-                      fontSize: '14px',
-                      fontWeight: '600',
-                      color: selectedCategory === category.id ? 'white' : '#0f172a',
+                      fontSize: '13px',
+                      fontWeight: '500',
+                      color: selectedCategory === category.id ? category.color : '#2c3440',
                     }}>
                       {category.name}
                     </span>
                     <span style={{
-                      fontSize: '12px',
-                      color: selectedCategory === category.id ? 'rgba(255,255,255,0.8)' : '#64748b',
+                      fontSize: '11px',
+                      color: selectedCategory === category.id ? category.color : '#8f9aab',
+                      display: 'block',
+                      marginTop: '2px'
                     }}>
                       {count} words
                     </span>
@@ -580,15 +584,22 @@ const imageLibrary = [
             }}
             style={{
               width: '100%',
-              padding: '16px',
-              background: 'linear-gradient(135deg, #7c6fd6 0%, #6b5ec5 100%)',
-              color: 'white',
+              padding: '12px',
+              background: '#7c6fd6',
+              color: '#ffffff',
               border: 'none',
-              borderRadius: '50px',
+              borderRadius: '30px',
               cursor: 'pointer',
-              fontSize: '16px',
-              fontWeight: '600',
-              boxShadow: '0 8px 20px rgba(124, 111, 214, 0.3)',
+              fontSize: '14px',
+              fontWeight: '400',
+              fontFamily: "'Poppins', sans-serif",
+              transition: 'all 0.2s ease',
+            }}
+            onMouseOver={(e) => {
+              e.currentTarget.style.background = '#6b5ec5';
+            }}
+            onMouseOut={(e) => {
+              e.currentTarget.style.background = '#7c6fd6';
             }}
           >
             Start Game
@@ -604,30 +615,31 @@ const imageLibrary = [
       return (
         <div style={{ maxWidth: '600px', margin: '0 auto', padding: '24px' }}>
           <div style={{
-            background: 'white',
-            borderRadius: '24px',
-            padding: '48px',
-            border: '1px solid #edf2f7',
+            background: '#ffffff',
+            borderRadius: '16px',
+            padding: '40px',
+            border: '1px solid #eaedf2',
             textAlign: 'center'
           }}>
-            <div style={{ fontSize: '48px', marginBottom: '16px', color: '#94a3b8' }}>📭</div>
-            <h2 style={{ fontSize: '20px', fontWeight: '600', color: '#0f172a', marginBottom: '8px' }}>
+            <div style={{ fontSize: '48px', marginBottom: '16px', color: '#8f9aab' }}>📭</div>
+            <h2 style={{ fontSize: '18px', fontWeight: '500', color: '#2c3440', marginBottom: '4px' }}>
               No Questions Available
             </h2>
-            <p style={{ fontSize: '14px', color: '#64748b', marginBottom: '24px' }}>
+            <p style={{ fontSize: '13px', color: '#6f7887', marginBottom: '20px' }}>
               Try adjusting your filters
             </p>
             <button
               onClick={() => setGameState('intro')}
               style={{
-                padding: '12px 28px',
+                padding: '10px 24px',
                 background: '#7c6fd6',
-                color: 'white',
+                color: '#ffffff',
                 border: 'none',
-                borderRadius: '100px',
-                fontSize: '14px',
-                fontWeight: '500',
-                cursor: 'pointer'
+                borderRadius: '30px',
+                fontSize: '13px',
+                fontWeight: '400',
+                cursor: 'pointer',
+                fontFamily: "'Poppins', sans-serif"
               }}
             >
               Back to Settings
@@ -642,7 +654,7 @@ const imageLibrary = [
 
     return (
       <div style={{
-        fontFamily: "'Inter', 'Poppins', sans-serif",
+        fontFamily: "'Poppins', sans-serif",
         maxWidth: '800px',
         margin: '0 auto',
         padding: '24px'
@@ -652,44 +664,54 @@ const imageLibrary = [
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
-          marginBottom: '24px',
-          borderBottom: '1px solid #e2e8f0',
-          paddingBottom: '20px',
+          marginBottom: '20px',
+          borderBottom: '1px solid #eaedf2',
+          paddingBottom: '16px',
         }}>
           <button
             onClick={() => setGameState('intro')}
             style={{
-              background: 'white',
-              border: '1px solid #e2e8f0',
-              padding: '8px 20px',
-              borderRadius: '100px',
+              background: '#ffffff',
+              border: '1px solid #eaedf2',
+              padding: '8px 18px',
+              borderRadius: '30px',
               cursor: 'pointer',
-              fontSize: '14px',
-              fontWeight: '500',
-              color: '#475569',
+              fontSize: '13px',
+              fontWeight: '400',
+              color: '#5a6270',
+              fontFamily: "'Poppins', sans-serif",
+              transition: 'all 0.2s ease',
+            }}
+            onMouseOver={(e) => {
+              e.currentTarget.style.background = '#f8fafc';
+            }}
+            onMouseOut={(e) => {
+              e.currentTarget.style.background = '#ffffff';
             }}
           >
             Exit
           </button>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
             <span style={{
-              padding: '8px 16px',
-              background: '#f0edff',
-              borderRadius: '100px',
-              fontSize: '14px',
-              fontWeight: '600',
+              padding: '6px 14px',
+              background: '#f8f7ff',
+              borderRadius: '20px',
+              fontSize: '13px',
+              fontWeight: '400',
               color: '#7c6fd6',
+              border: '1px solid #eae8f0',
             }}>
               🔥 Streak: {streak}
             </span>
             <span style={{
-              padding: '8px 16px',
-              background: '#f0edff',
-              borderRadius: '100px',
-              fontSize: '14px',
-              fontWeight: '600',
+              padding: '6px 14px',
+              background: '#f8f7ff',
+              borderRadius: '20px',
+              fontSize: '13px',
+              fontWeight: '400',
               color: '#7c6fd6',
+              border: '1px solid #eae8f0',
             }}>
               🎯 Score: {score}/{filteredQuestions.length}
             </span>
@@ -697,29 +719,30 @@ const imageLibrary = [
         </div>
 
         {/* Progress Bar */}
-        <div style={{ marginBottom: '24px' }}>
+        <div style={{ marginBottom: '20px' }}>
           <div style={{
             display: 'flex',
             justifyContent: 'space-between',
-            marginBottom: '8px',
-            fontSize: '13px',
-            color: '#64748b',
+            marginBottom: '6px',
+            fontSize: '12px',
+            color: '#8f9aab',
           }}>
             <span>Question {currentQuestionIndex + 1} of {filteredQuestions.length}</span>
-            <span>{Math.round(progress)}% Complete</span>
+            <span>{Math.round(progress)}%</span>
           </div>
           <div style={{
             width: '100%',
-            height: '8px',
-            background: '#f1f5f9',
-            borderRadius: '100px',
+            height: '6px',
+            background: '#f2f4f8',
+            borderRadius: '8px',
             overflow: 'hidden',
           }}>
             <div style={{
               height: '100%',
-              background: `linear-gradient(90deg, ${currentCategory.color}, ${currentCategory.color}dd)`,
+              background: '#7c6fd6',
               width: `${progress}%`,
               transition: 'width 0.3s ease',
+              borderRadius: '8px',
             }} />
           </div>
         </div>
@@ -727,33 +750,33 @@ const imageLibrary = [
         {/* Main Game Card */}
         <div style={{
           background: '#ffffff',
-          borderRadius: '24px',
-          padding: '32px',
-          boxShadow: '0 8px 24px rgba(124, 111, 214, 0.08)',
-          border: '1px solid #e6e0ff',
+          borderRadius: '16px',
+          padding: '28px',
+          border: '1px solid #eae8f0',
         }}>
           {/* Category & Difficulty Badges */}
           <div style={{
             display: 'flex',
             justifyContent: 'space-between',
             alignItems: 'center',
-            marginBottom: '24px',
+            marginBottom: '20px',
           }}>
             <span style={{
-              padding: '6px 16px',
-              borderRadius: '100px',
-              fontSize: '13px',
-              fontWeight: '600',
-              background: currentCategory.bg || '#f0edff',
+              padding: '4px 12px',
+              borderRadius: '12px',
+              fontSize: '12px',
+              fontWeight: '500',
+              background: '#f8f7ff',
               color: currentCategory.color,
+              border: '1px solid #eae8f0',
             }}>
               {currentCategory.icon} {currentCategory.name}
             </span>
             <span style={{
-              padding: '6px 16px',
-              borderRadius: '100px',
-              fontSize: '13px',
-              fontWeight: '600',
+              padding: '4px 12px',
+              borderRadius: '12px',
+              fontSize: '12px',
+              fontWeight: '500',
               background: difficulty === 'beginner' ? '#e8f5e9' : difficulty === 'intermediate' ? '#fff4e5' : '#ffebee',
               color: difficulty === 'beginner' ? '#2e7d32' : difficulty === 'intermediate' ? '#b85c1a' : '#b91c1c',
             }}>
@@ -761,60 +784,47 @@ const imageLibrary = [
             </span>
           </div>
 
-         {/* Image/Icon Display with Animation */}
+         {/* Image/Icon Display */}
 <div style={{
   textAlign: 'center',
-  marginBottom: '32px',
+  marginBottom: '24px',
 }}>
   <div style={{
-    width: '280px',
-    height: '280px',
+    width: '240px',
+    height: '240px',
     margin: '0 auto',
-    borderRadius: '30% 70% 70% 30% / 30% 30% 70% 70%',  // Organic shape
-    background: `linear-gradient(135deg, ${currentCategory.color}, ${currentCategory.color}80)`,
-    boxShadow: `0 20px 30px ${currentCategory.color}60`,
+    borderRadius: '50%',
+    background: `linear-gradient(135deg, ${currentCategory.color}20, ${currentCategory.color}10)`,
+    border: `2px solid ${currentCategory.color}30`,
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    fontSize: '140px',
-    animation: 'float 3s ease-in-out infinite',
+    fontSize: '100px',
     transition: 'all 0.3s ease',
   }}>
     {currentQuestion.icon}
   </div>
   <p style={{
-    fontSize: '18px',
-    color: '#475569',
-    marginTop: '20px',
-    fontWeight: '500',
-    background: '#f8fafc',
-    padding: '8px 24px',
-    borderRadius: '100px',
-    display: 'inline-block',
-    border: '1px solid #e2e8f0',
+    fontSize: '16px',
+    color: '#5a6270',
+    marginTop: '16px',
+    fontWeight: '400',
   }}>
     🔍 What word is this?
   </p>
 </div>
 
-<style>{`
-  @keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-10px); }
-  }
-`}</style>
-
           {/* Options Grid */}
           <div style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(2, 1fr)',
-            gap: '12px',
-            marginBottom: '24px',
+            gap: '10px',
+            marginBottom: '20px',
           }}>
             {options.map((option, idx) => {
               let bgColor = '#ffffff';
-              let borderColor = '#e2e8f0';
-              let textColor = '#0f172a';
+              let borderColor = '#eaedf2';
+              let textColor = '#2c3440';
 
               if (answered) {
                 if (option === currentQuestion.word) {
@@ -834,46 +844,41 @@ const imageLibrary = [
                   onClick={() => handleAnswer(option)}
                   disabled={answered}
                   style={{
-                    padding: '16px 20px',
-                    border: `2px solid ${borderColor}`,
-                    borderRadius: '16px',
+                    padding: '14px 16px',
+                    border: `1px solid ${borderColor}`,
+                    borderRadius: '12px',
                     background: bgColor,
-                    fontSize: '18px',
-                    fontWeight: '600',
+                    fontSize: '16px',
+                    fontWeight: '400',
                     color: textColor,
                     cursor: answered ? 'default' : 'pointer',
                     transition: 'all 0.2s ease',
-                    fontFamily: "'Inter', 'Poppins', sans-serif",
+                    fontFamily: "'Poppins', sans-serif",
                     textAlign: 'center',
-                    boxShadow: '0 2px 4px rgba(0,0,0,0.02)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    gap: '8px',
+                    gap: '6px',
                   }}
                   onMouseOver={(e) => {
                     if (!answered) {
                       e.currentTarget.style.background = '#f8fafc';
                       e.currentTarget.style.borderColor = currentCategory.color;
-                      e.currentTarget.style.transform = 'translateY(-2px)';
-                      e.currentTarget.style.boxShadow = '0 8px 16px rgba(124, 111, 214, 0.1)';
                     }
                   }}
                   onMouseOut={(e) => {
                     if (!answered) {
                       e.currentTarget.style.background = '#ffffff';
-                      e.currentTarget.style.borderColor = '#e2e8f0';
-                      e.currentTarget.style.transform = 'translateY(0)';
-                      e.currentTarget.style.boxShadow = 'none';
+                      e.currentTarget.style.borderColor = '#eaedf2';
                     }
                   }}
                 >
                   <span>{option}</span>
                   {answered && option === currentQuestion.word && (
-                    <span style={{ color: '#22c55e', fontSize: '20px' }}>✓</span>
+                    <span style={{ color: '#22c55e', fontSize: '18px' }}>✓</span>
                   )}
                   {answered && option === selectedAnswer && option !== currentQuestion.word && (
-                    <span style={{ color: '#ef4444', fontSize: '20px' }}>✗</span>
+                    <span style={{ color: '#ef4444', fontSize: '18px' }}>✗</span>
                   )}
                 </button>
               );
@@ -883,14 +888,14 @@ const imageLibrary = [
           {/* Feedback Message */}
           {showFeedback && (
             <div style={{
-              padding: '12px',
-              borderRadius: '12px',
+              padding: '10px',
+              borderRadius: '8px',
               background: feedbackMessage.includes('✅') ? '#f0fdf4' : '#fef2f2',
               border: `1px solid ${feedbackMessage.includes('✅') ? '#bbf7d0' : '#fecaca'}`,
               marginBottom: '16px',
               textAlign: 'center',
-              fontSize: '16px',
-              fontWeight: '500',
+              fontSize: '14px',
+              fontWeight: '400',
               color: feedbackMessage.includes('✅') ? '#166534' : '#991b1b',
             }}>
               {feedbackMessage}
@@ -903,32 +908,30 @@ const imageLibrary = [
               onClick={handleNext}
               style={{
                 width: '100%',
-                padding: '16px',
-                background: 'linear-gradient(135deg, #7c6fd6 0%, #6b5ec5 100%)',
-                color: 'white',
+                padding: '14px',
+                background: '#7c6fd6',
+                color: '#ffffff',
                 border: 'none',
-                borderRadius: '100px',
+                borderRadius: '30px',
                 cursor: 'pointer',
-                fontSize: '16px',
-                fontWeight: '600',
-                boxShadow: '0 4px 12px rgba(124, 111, 214, 0.2)',
+                fontSize: '14px',
+                fontWeight: '400',
+                fontFamily: "'Poppins', sans-serif",
                 transition: 'all 0.2s ease',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                gap: '8px',
+                gap: '6px',
               }}
               onMouseOver={(e) => {
-                e.currentTarget.style.transform = 'translateY(-2px)';
-                e.currentTarget.style.boxShadow = '0 8px 20px rgba(124, 111, 214, 0.3)';
+                e.currentTarget.style.background = '#6b5ec5';
               }}
               onMouseOut={(e) => {
-                e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.boxShadow = '0 4px 12px rgba(124, 111, 214, 0.2)';
+                e.currentTarget.style.background = '#7c6fd6';
               }}
             >
               {currentQuestionIndex === filteredQuestions.length - 1 ? 'Finish Game' : 'Next Question'}
-              {currentQuestionIndex < filteredQuestions.length - 1 && <span style={{ fontSize: '18px' }}>→</span>}
+              {currentQuestionIndex < filteredQuestions.length - 1 && <span style={{ fontSize: '16px' }}>→</span>}
             </button>
           )}
         </div>
@@ -942,64 +945,64 @@ const imageLibrary = [
 
     return (
       <div style={{
-        fontFamily: "'Inter', 'Poppins', sans-serif",
-        maxWidth: '600px',
+        fontFamily: "'Poppins', sans-serif",
+        maxWidth: '500px',
         margin: '0 auto',
         padding: '24px'
       }}>
         <div style={{
           background: '#ffffff',
-          borderRadius: '24px',
-          padding: '40px',
-          boxShadow: '0 8px 24px rgba(124, 111, 214, 0.08)',
-          border: '1px solid #e6e0ff',
+          borderRadius: '16px',
+          padding: '32px',
+          border: '1px solid #eae8f0',
           textAlign: 'center'
         }}>
           <div style={{
-            fontSize: '80px',
-            marginBottom: '20px',
+            fontSize: '64px',
+            marginBottom: '16px',
           }}>
             {percentage === 100 ? '🏆' : '🎉'}
           </div>
 
           <h2 style={{
-            fontSize: '32px',
-            fontWeight: '700',
-            color: '#0f172a',
-            marginBottom: '8px',
+            fontSize: '24px',
+            fontWeight: '500',
+            color: '#2c3440',
+            marginBottom: '4px',
+            fontFamily: "'Poppins', sans-serif"
           }}>
             {percentage === 100 ? 'Perfect Score!' : 'Great Job!'}
           </h2>
 
           <p style={{
-            fontSize: '18px',
-            color: '#475569',
-            marginBottom: '24px',
+            fontSize: '14px',
+            color: '#6f7887',
+            marginBottom: '20px',
           }}>
             You got {score} out of {filteredQuestions.length} correct!
           </p>
 
           {/* Score Circle */}
           <div style={{
-            width: '150px',
-            height: '150px',
-            margin: '0 auto 24px',
+            width: '120px',
+            height: '120px',
+            margin: '0 auto 20px',
             borderRadius: '50%',
-            background: `conic-gradient(#7c6fd6 0% ${percentage}%, #f1f5f9 ${percentage}% 100%)`,
+            background: `conic-gradient(#7c6fd6 0% ${percentage}%, #f2f4f8 ${percentage}% 100%)`,
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
           }}>
             <div style={{
-              width: '110px',
-              height: '110px',
+              width: '90px',
+              height: '90px',
               borderRadius: '50%',
-              background: 'white',
+              background: '#ffffff',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              fontSize: '36px',
-              fontWeight: '700',
+              fontSize: '28px',
+              fontWeight: '500',
               color: '#7c6fd6',
             }}>
               {percentage}%
@@ -1008,68 +1011,66 @@ const imageLibrary = [
 
           {/* Stats */}
           <div style={{
-            background: '#f8f7ff',
-            borderRadius: '16px',
-            padding: '20px',
-            marginBottom: '28px',
-            border: '1px solid #e6e0ff',
+            background: '#f8fafc',
+            borderRadius: '12px',
+            padding: '16px',
+            marginBottom: '24px',
+            border: '1px solid #eaedf2',
           }}>
             <div style={{
               display: 'flex',
               justifyContent: 'space-between',
-              marginBottom: '12px',
-              fontSize: '16px',
+              marginBottom: '8px',
+              fontSize: '14px',
             }}>
-              <span style={{ color: '#475569' }}>Words Learned</span>
-              <span style={{ fontWeight: '600', color: '#7c6fd6' }}>+{score}</span>
+              <span style={{ color: '#5a6270' }}>Words Learned</span>
+              <span style={{ fontWeight: '500', color: '#7c6fd6' }}>+{score}</span>
             </div>
             <div style={{
               display: 'flex',
               justifyContent: 'space-between',
-              marginBottom: '12px',
-              fontSize: '16px',
+              marginBottom: '8px',
+              fontSize: '14px',
             }}>
-              <span style={{ color: '#475569' }}>XP Earned</span>
-              <span style={{ fontWeight: '600', color: '#7c6fd6' }}>
+              <span style={{ color: '#5a6270' }}>XP Earned</span>
+              <span style={{ fontWeight: '500', color: '#7c6fd6' }}>
                 +{score === filteredQuestions.length ? 40 : 20}
               </span>
             </div>
             <div style={{
               display: 'flex',
               justifyContent: 'space-between',
-              fontSize: '16px',
+              fontSize: '14px',
             }}>
-              <span style={{ color: '#475569' }}>Points Earned</span>
-              <span style={{ fontWeight: '600', color: '#7c6fd6' }}>
+              <span style={{ color: '#5a6270' }}>Points Earned</span>
+              <span style={{ fontWeight: '500', color: '#7c6fd6' }}>
                 +{score === filteredQuestions.length ? 120 : 50}
               </span>
             </div>
           </div>
 
           {/* Action Buttons */}
-          <div style={{ display: 'flex', gap: '12px' }}>
+          <div style={{ display: 'flex', gap: '10px' }}>
             <button
               onClick={handleRestart}
               style={{
                 flex: 1,
-                padding: '14px',
+                padding: '12px',
                 background: '#7c6fd6',
-                color: 'white',
+                color: '#ffffff',
                 border: 'none',
-                borderRadius: '100px',
+                borderRadius: '30px',
                 cursor: 'pointer',
-                fontSize: '15px',
-                fontWeight: '600',
-                boxShadow: '0 4px 12px rgba(124, 111, 214, 0.2)',
+                fontSize: '13px',
+                fontWeight: '400',
+                fontFamily: "'Poppins', sans-serif",
                 transition: 'all 0.2s ease',
               }}
               onMouseOver={(e) => {
                 e.currentTarget.style.background = '#6b5ec5';
-                e.currentTarget.style.transform = 'translateY(-2px)';
               }}
               onMouseOut={(e) => {
                 e.currentTarget.style.background = '#7c6fd6';
-                e.currentTarget.style.transform = 'translateY(0)';
               }}
             >
               Play Again
@@ -1078,14 +1079,15 @@ const imageLibrary = [
               onClick={onBack}
               style={{
                 flex: 1,
-                padding: '14px',
-                background: 'white',
-                color: '#475569',
-                border: '1px solid #e2e8f0',
-                borderRadius: '100px',
+                padding: '12px',
+                background: '#ffffff',
+                color: '#5a6270',
+                border: '1px solid #eaedf2',
+                borderRadius: '30px',
                 cursor: 'pointer',
-                fontSize: '15px',
-                fontWeight: '600',
+                fontSize: '13px',
+                fontWeight: '400',
+                fontFamily: "'Poppins', sans-serif",
                 transition: 'all 0.2s ease',
               }}
               onMouseOver={(e) => {
@@ -1094,9 +1096,9 @@ const imageLibrary = [
                 e.currentTarget.style.color = '#7c6fd6';
               }}
               onMouseOut={(e) => {
-                e.currentTarget.style.background = 'white';
-                e.currentTarget.style.borderColor = '#e2e8f0';
-                e.currentTarget.style.color = '#475569';
+                e.currentTarget.style.background = '#ffffff';
+                e.currentTarget.style.borderColor = '#eaedf2';
+                e.currentTarget.style.color = '#5a6270';
               }}
             >
               Back to Games
@@ -1117,8 +1119,11 @@ const Quiz = ({ onBack }) => {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [filteredQuizzes, setFilteredQuizzes] = useState([]);
   const [dailySeed, setDailySeed] = useState('');
+  const [streak, setStreak] = useState(0);
+  const [feedbackMessage, setFeedbackMessage] = useState('');
+  const [showFeedback, setShowFeedback] = useState(false);
 
-  // Define categories - matching MatchGame style
+  // Define categories
   const categories = [
     { id: 'all', name: 'All Words', icon: '📚', color: '#7c6fd6' },
     { id: 'beginner', name: 'Beginner', icon: '🌱', color: '#2E7D32' },
@@ -1151,13 +1156,9 @@ const generateDailyQuiz = () => {
   };
 
   // Separate UNIFIED_VOCABULARY by difficulty
-  const beginnerWords = UNIFIED_VOCABULARY.filter(w => w.id <= 6); // IDs 1-6 = beginner
-  const intermediateWords = UNIFIED_VOCABULARY.filter(w => w.id > 6 && w.id < 13); // IDs 7-12 = intermediate
-  const advancedWords = UNIFIED_VOCABULARY.filter(w => w.id >= 13); // IDs 13+ = advanced
-
-  console.log('Beginner words:', beginnerWords.length);
-  console.log('Intermediate words:', intermediateWords.length);
-  console.log('Advanced words:', advancedWords.length);
+  const beginnerWords = UNIFIED_VOCABULARY.filter(w => w.id <= 6);
+  const intermediateWords = UNIFIED_VOCABULARY.filter(w => w.id > 6 && w.id < 13);
+  const advancedWords = UNIFIED_VOCABULARY.filter(w => w.id >= 13);
 
   // Shuffle each array
   const shuffleArray = (array) => {
@@ -1173,7 +1174,7 @@ const generateDailyQuiz = () => {
   const shuffledIntermediate = shuffleArray(intermediateWords);
   const shuffledAdvanced = shuffleArray(advancedWords);
 
-  // Take 5 from each difficulty (or less if not enough)
+  // Take 5 from each difficulty
   const selectedBeginner = shuffledBeginner.slice(0, 5);
   const selectedIntermediate = shuffledIntermediate.slice(0, 5);
   const selectedAdvanced = shuffledAdvanced.slice(0, 5);
@@ -1183,11 +1184,6 @@ const generateDailyQuiz = () => {
     ...selectedIntermediate,
     ...selectedAdvanced
   ];
-
-  console.log('Selected words:', selectedWords.map(w => ({ 
-    word: w.word, 
-    difficulty: w.id <= 6 ? 'beginner' : w.id >= 13 ? 'advanced' : 'intermediate'
-  })));
 
   // Create quiz questions
   return selectedWords.map((word) => {
@@ -1257,90 +1253,99 @@ const generateDailyQuiz = () => {
   const current = filteredQuizzes[currentIndex];
   const progress = filteredQuizzes.length > 0 ? ((currentIndex + 1) / filteredQuizzes.length) * 100 : 0;
 
- const handleAnswer = (selected) => {
-  if (!answered && currentQuestion) {
-    setSelectedAnswer(selected);
-    setAnswered(true);
-    
-    const isCorrect = selected === currentQuestion.word;
-    
-    if (isCorrect) {
-      setScore(score + 1);
-      setStreak(streak + 1);
-      setFeedbackMessage('✅ Correct! Great job!');
+  const handleAnswer = (selected) => {
+    if (!answered && current) {
+      setSelectedAnswer(selected);
+      setAnswered(true);
       
-      // Update progress
+      const isCorrect = selected === current.correct;
+      
+      if (isCorrect) {
+        setScore(score + 1);
+        setStreak(streak + 1);
+        setFeedbackMessage('✅ Correct! Great job!');
+      
+        // Update progress
+        const savedProgress = localStorage.getItem('vocaboplay_progress');
+        const currentProgress = savedProgress ? JSON.parse(savedProgress) : null;
+        
+        if (currentProgress) {
+          const updates = {
+            totalAnswers: (currentProgress.totalAnswers || 0) + 1,
+            correctAnswers: (currentProgress.correctAnswers || 0) + 1,
+            totalPoints: (currentProgress.totalPoints || 0) + 15,
+            xp: (currentProgress.xp || 0) + 8,
+            wordsLearned: (currentProgress.wordsLearned || 0) + 1,
+            quiz: {
+              ...currentProgress.quiz,
+              gamesCompleted: (currentProgress.quiz?.gamesCompleted || 0) + 1,
+              correctAnswers: (currentProgress.quiz?.correctAnswers || 0) + 1,
+              totalQuestions: (currentProgress.quiz?.totalQuestions || 0) + 1
+            }
+          };
+          
+          updateProgress(updates);
+        }
+      } else {
+        setStreak(0);
+        setFeedbackMessage(`❌ Oops! The correct answer is option ${String.fromCharCode(65 + current.correct)}`);
+      }
+      
+      setShowFeedback(true);
+      setTimeout(() => setShowFeedback(false), 2000);
+    }
+  };
+
+  const handleNext = () => {
+    if (currentIndex < filteredQuizzes.length - 1) {
+      setCurrentIndex(currentIndex + 1);
+      setAnswered(false);
+      setSelectedAnswer(null);
+    } else {
+      // Game finished
+      setGameState('finished');
+      
+      // Update final stats
       const savedProgress = localStorage.getItem('vocaboplay_progress');
       const currentProgress = savedProgress ? JSON.parse(savedProgress) : null;
       
       if (currentProgress) {
         const updates = {
-          totalAnswers: (currentProgress.totalAnswers || 0) + 1,
-          correctAnswers: (currentProgress.correctAnswers || 0) + 1,
-          totalPoints: (currentProgress.totalPoints || 0) + 15,
-          xp: (currentProgress.xp || 0) + 8,
-          wordsLearned: (currentProgress.wordsLearned || 0) + 1,
-          wordPics: {  // ← PALITAN ITO! Dati 'flashcards'
-            ...currentProgress.wordPics,
-            gamesPlayed: (currentProgress.wordPics?.gamesPlayed || 0) + 1,
-            cardsViewed: (currentProgress.wordPics?.cardsViewed || 0) + 1,
-            correctAnswers: (currentProgress.wordPics?.correctAnswers || 0) + 1,
-            knownWords: [...new Set([...(currentProgress.wordPics?.knownWords || []), currentQuestion.id])]
+          gamesPlayed: (currentProgress.gamesPlayed || 0) + 1,
+          quiz: {
+            ...currentProgress.quiz,
+            gamesCompleted: (currentProgress.quiz?.gamesCompleted || 0) + 1,
+            bestScore: Math.max(currentProgress.quiz?.bestScore || 0, score)
           }
         };
         
+        if (score === filteredQuizzes.length) {
+          updates.achievements = {
+            ...currentProgress.achievements,
+            perfectScore: true
+          };
+          updates.xp = (currentProgress.xp || 0) + 40;
+          updates.totalPoints = (currentProgress.totalPoints || 0) + 120;
+        } else {
+          updates.xp = (currentProgress.xp || 0) + 20;
+          updates.totalPoints = (currentProgress.totalPoints || 0) + 50;
+        }
+        
         updateProgress(updates);
       }
-    } else {
-      setStreak(0);
-      setFeedbackMessage(`❌ Oops! The correct word is "${currentQuestion.word}"`);
     }
-    
-    setShowFeedback(true);
-    setTimeout(() => setShowFeedback(false), 2000);
-  }
-};
- const handleNext = () => {
-  if (currentQuestionIndex < filteredQuestions.length - 1) {
-    setCurrentQuestionIndex(currentQuestionIndex + 1);
+  };
+
+  const handleRestart = () => {
+    setGameState('intro');
+    setCurrentIndex(0);
+    setScore(0);
     setAnswered(false);
     setSelectedAnswer(null);
-  } else {
-    // Game finished
-    setGameState('finished');
-    
-    // Update final stats
-    const savedProgress = localStorage.getItem('vocaboplay_progress');
-    const currentProgress = savedProgress ? JSON.parse(savedProgress) : null;
-    
-    if (currentProgress) {
-      const updates = {
-        gamesPlayed: (currentProgress.gamesPlayed || 0) + 1,
-        wordPics: {  // ← PALITAN ITO!
-          ...currentProgress.wordPics,
-          gamesCompleted: (currentProgress.wordPics?.gamesCompleted || 0) + 1,
-          totalScore: (currentProgress.wordPics?.totalScore || 0) + score
-        }
-      };
-      
-      if (score === filteredQuestions.length) {
-        updates.achievements = {
-          ...currentProgress.achievements,
-          perfectScore: true
-        };
-        updates.xp = (currentProgress.xp || 0) + 40;
-        updates.totalPoints = (currentProgress.totalPoints || 0) + 120;
-      } else {
-        updates.xp = (currentProgress.xp || 0) + 20;
-        updates.totalPoints = (currentProgress.totalPoints || 0) + 50;
-      }
-      
-      updateProgress(updates);
-    }
-  }
-};
+    setStreak(0);
+  };
 
-  // Welcome Screen - Matching MatchGame style
+  // INTRO SCREEN
   if (gameState === 'intro') {
     const today = new Date();
     const dateString = today.toLocaleDateString('en-US', {
@@ -1352,41 +1357,36 @@ const generateDailyQuiz = () => {
 
     return (
       <div style={{
-        fontFamily: "'Inter', 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif",
+        fontFamily: "'Poppins', sans-serif",
         maxWidth: '900px',
         margin: '0 auto',
         padding: '24px',
-        color: '#1e293b'
       }}>
-
-
-        {/* Hero Section - Matching MatchGame style */}
+        {/* Hero Section */}
         <div style={{
-          background: 'linear-gradient(135deg, #f8f7ff 0%, #ffffff 100%)',
-          borderRadius: '24px',
-          padding: '40px',
-          marginBottom: '32px',
-          border: '1px solid #e6e0ff',
-          boxShadow: '0 8px 24px rgba(124, 111, 214, 0.08)',
+          background: '#ffffff',
+          borderRadius: '16px',
+          padding: '32px',
+          marginBottom: '24px',
+          border: '1px solid #eaedf2',
           textAlign: 'center'
         }}>
-          <div style={{ fontSize: '64px', marginBottom: '20px', animation: 'float 3s ease-in-out infinite' }}>📝</div>
+          <div style={{ fontSize: '64px', marginBottom: '16px', color: '#7c6fd6' }}>📝</div>
           <h2 style={{
             fontSize: '28px',
-            fontWeight: '600',
-            color: '#0f172a',
-            marginBottom: '12px',
-            fontFamily: "'Inter', 'Poppins', sans-serif"
+            fontWeight: '500',
+            color: '#2c3440',
+            marginBottom: '8px',
+            fontFamily: "'Poppins', sans-serif"
           }}>
             Daily Vocabulary Quiz
           </h2>
           <p style={{
-            fontSize: '13px',
-            color: '#475569',
+            fontSize: '14px',
+            color: '#6f7887',
             lineHeight: '1.6',
             marginBottom: '24px',
-            fontFamily: "'Inter', 'Poppins', sans-serif",
-            maxWidth: '600px',
+            maxWidth: '500px',
             margin: '0 auto 24px'
           }}>
             Test your knowledge with 10 new words every day
@@ -1397,231 +1397,190 @@ const generateDailyQuiz = () => {
             gridTemplateColumns: 'repeat(3, 1fr)',
             gap: '12px',
             maxWidth: '400px',
-            margin: '0 auto'
+            margin: '0 auto 24px'
           }}>
             <div style={{
               background: '#f8fafc',
               padding: '16px',
-              borderRadius: '16px',
-              border: '1px solid #e2e8f0'
+              borderRadius: '12px',
+              border: '1px solid #eaedf2'
             }}>
-              <div style={{ fontSize: '24px', fontWeight: '600', color: '#0f172a' }}>10</div>
-              <div style={{ fontSize: '13px', color: '#64748b' }}>Questions</div>
+              <div style={{ fontSize: '22px', fontWeight: '500', color: '#2c3440' }}>10</div>
+              <div style={{ fontSize: '12px', color: '#8f9aab' }}>Questions</div>
             </div>
             <div style={{
               background: '#f8fafc',
               padding: '16px',
-              borderRadius: '16px',
-              border: '1px solid #e2e8f0'
+              borderRadius: '12px',
+              border: '1px solid #eaedf2'
             }}>
-              <div style={{ fontSize: '24px', fontWeight: '600', color: '#0f172a' }}>+5</div>
-              <div style={{ fontSize: '13px', color: '#64748b' }}>XP Each</div>
+              <div style={{ fontSize: '22px', fontWeight: '500', color: '#2c3440' }}>+5</div>
+              <div style={{ fontSize: '12px', color: '#8f9aab' }}>XP Each</div>
             </div>
             <div style={{
               background: '#f8fafc',
               padding: '16px',
-              borderRadius: '16px',
-              border: '1px solid #e2e8f0'
+              borderRadius: '12px',
+              border: '1px solid #eaedf2'
             }}>
-              <div style={{ fontSize: '24px', fontWeight: '600', color: '#0f172a' }}>Daily</div>
-              <div style={{ fontSize: '13px', color: '#64748b' }}>Challenge</div>
+              <div style={{ fontSize: '22px', fontWeight: '500', color: '#2c3440' }}>Daily</div>
+              <div style={{ fontSize: '12px', color: '#8f9aab' }}>Challenge</div>
             </div>
           </div>
-        </div>
 
-        {/* Categories Section - Matching MatchGame style */}
-        <div style={{ marginBottom: '32px' }}>
-          <h3 style={{
-            fontSize: '16px',
-            fontWeight: '600',
-            color: '#0f172a',
-            marginBottom: '16px',
-            fontFamily: "'Inter', 'Poppins', sans-serif",
-            display: 'flex',
-            alignItems: 'center',
-            gap: '8px'
-          }}>
-            Filter by Category
-          </h3>
+          {/* Categories Section */}
+          <div style={{ marginBottom: '24px' }}>
+            <h3 style={{
+              fontSize: '15px',
+              fontWeight: '500',
+              color: '#2c3440',
+              marginBottom: '12px',
+            }}>
+              Filter by Category
+            </h3>
 
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))',
+              gap: '8px'
+            }}>
+              {categories.map(category => {
+                const count = category.id === 'all' 
+                  ? filteredQuizzes.length 
+                  : category.id === 'beginner' 
+                    ? filteredQuizzes.filter(q => q.difficulty === 'beginner').length
+                    : category.id === 'intermediate'
+                      ? filteredQuizzes.filter(q => q.difficulty === 'intermediate').length
+                      : category.id === 'advanced'
+                        ? filteredQuizzes.filter(q => q.difficulty === 'advanced').length
+                        : filteredQuizzes.filter(q => q.category === category.id).length;
+
+                return (
+                  <button
+                    key={category.id}
+                    onClick={() => setSelectedCategory(category.id)}
+                    style={{
+                      background: selectedCategory === category.id ? `${category.color}15` : '#ffffff',
+                      border: `1px solid ${selectedCategory === category.id ? category.color : '#eaedf2'}`,
+                      borderRadius: '12px',
+                      padding: '12px',
+                      cursor: 'pointer',
+                      transition: 'all 0.2s ease',
+                    }}
+                  >
+                    <span style={{ fontSize: '28px', display: 'block', marginBottom: '4px' }}>{category.icon}</span>
+                    <span style={{
+                      fontSize: '13px',
+                      fontWeight: '500',
+                      color: selectedCategory === category.id ? category.color : '#2c3440',
+                    }}>
+                      {category.name}
+                    </span>
+                    <span style={{
+                      fontSize: '11px',
+                      color: selectedCategory === category.id ? category.color : '#8f9aab',
+                      display: 'block',
+                      marginTop: '2px'
+                    }}>
+                      {count} {count === 1 ? 'question' : 'questions'}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Daily Challenge Note */}
           <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))',
-            gap: '12px',
-            marginBottom: '24px'
-          }}>
-           {categories.map(category => {
-  const count = category.id === 'all' 
-    ? filteredQuizzes.length 
-    : category.id === 'beginner' 
-      ? filteredQuizzes.filter(q => q.difficulty === 'beginner').length
-      : category.id === 'intermediate'
-        ? filteredQuizzes.filter(q => q.difficulty === 'intermediate').length
-        : category.id === 'advanced'
-          ? filteredQuizzes.filter(q => q.difficulty === 'advanced').length
-          : filteredQuizzes.filter(q => q.category === category.id).length;
-
-  return (
-    <button
-      key={category.id}
-      onClick={() => setSelectedCategory(category.id)}
-      style={{
-        background: selectedCategory === category.id ? category.color : '#ffffff',
-        border: `1px solid ${selectedCategory === category.id ? category.color : '#e2e8f0'}`,
-        borderRadius: '16px',
-        padding: '16px 12px',
-        cursor: 'pointer',
-        transition: 'all 0.2s ease',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        gap: '8px',
-      }}
-    >
-      <span style={{ fontSize: '28px', marginBottom: '4px' }}>{category.icon}</span>
-      <span style={{
-        fontSize: '14px',
-        fontWeight: '600',
-        color: selectedCategory === category.id ? 'white' : '#0f172a',
-      }}>
-        {category.name}
-      </span>
-      <span style={{
-        fontSize: '12px',
-        color: selectedCategory === category.id ? 'rgba(255,255,255,0.9)' : '#64748b',
-        background: selectedCategory === category.id ? 'rgba(255,255,255,0.2)' : '#f1f5f9',
-        padding: '4px 10px',
-        borderRadius: '100px',
-      }}>
-        {count} {count === 1 ? 'question' : 'questions'}
-      </span>
-    </button>
-  );
-})}
-          </div>
-        </div>
-
-        {/* Daily Challenge Note - Matching MatchGame style */}
-        <div style={{
-          marginBottom: '24px',
-          background: '#f8f7ff',
-          borderRadius: '14px',
-          padding: '15px',
-          border: '1px solid #e6e0ff'
-        }}>
-          <div style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '12px'
-          }}>
-            <div>
-              <h4 style={{
-                fontSize: '14px',
-                fontWeight: '600',
-                color: '#0f172a',
-                margin: '0 0 4px 0'
-              }}>
-                Daily Challenge
-              </h4>
-              <p style={{
-                fontSize: '13px',
-                color: '#475569',
-                margin: '0'
-              }}>
-                A new set of 10 questions every day. Come back tomorrow for a fresh challenge!
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* Start Button - Matching MatchGame style */}
-        <button
-          onClick={() => setGameState('playing')}
-          style={{
-            width: '100%',
+            marginBottom: '24px',
+            background: '#f8f7ff',
+            borderRadius: '12px',
             padding: '16px',
-            background: 'linear-gradient(135deg, #7c6fd6 0%, #6b5ec5 100%)',
-            color: 'white',
-            border: 'none',
-            borderRadius: '50px',
-            cursor: 'pointer',
-            fontSize: '16px',
-            fontWeight: '500',
-            transition: 'all 0.2s ease',
-            fontFamily: "'Inter', 'Poppins', sans-serif",
-            boxShadow: '0 8px 20px rgba(124, 111, 214, 0.3)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: '8px'
-          }}
-          onMouseOver={(e) => {
-            e.currentTarget.style.transform = 'translateY(-2px)';
-            e.currentTarget.style.boxShadow = '0 12px 28px rgba(124, 111, 214, 0.4)';
-          }}
-          onMouseOut={(e) => {
-            e.currentTarget.style.transform = 'translateY(0)';
-            e.currentTarget.style.boxShadow = '0 8px 20px rgba(124, 111, 214, 0.3)';
-          }}
-        >
-          Start Daily Quiz
-        </button>
+            border: '1px solid #eae8f0'
+          }}>
+            <h4 style={{
+              fontSize: '14px',
+              fontWeight: '500',
+              color: '#7c6fd6',
+              margin: '0 0 4px 0'
+            }}>
+              Daily Challenge
+            </h4>
+            <p style={{
+              fontSize: '13px',
+              color: '#5a6270',
+              margin: '0'
+            }}>
+              A new set of 10 questions every day. Come back tomorrow for a fresh challenge!
+            </p>
+          </div>
 
-        <style>{`
-          @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-8px); }
-          }
-        `}</style>
+          {/* Start Button */}
+          <button
+            onClick={() => setGameState('playing')}
+            style={{
+              width: '100%',
+              padding: '12px',
+              background: '#7c6fd6',
+              color: '#ffffff',
+              border: 'none',
+              borderRadius: '30px',
+              cursor: 'pointer',
+              fontSize: '14px',
+              fontWeight: '400',
+              fontFamily: "'Poppins', sans-serif",
+              transition: 'all 0.2s ease',
+            }}
+            onMouseOver={(e) => {
+              e.currentTarget.style.background = '#6b5ec5';
+            }}
+            onMouseOut={(e) => {
+              e.currentTarget.style.background = '#7c6fd6';
+            }}
+          >
+            Start Daily Quiz
+          </button>
+        </div>
       </div>
     );
   }
 
-  // Playing Screen - Matching MatchGame style
+  // PLAYING SCREEN
   if (gameState === 'playing') {
     if (!current) {
       return (
         <div style={{
-          fontFamily: "'Inter', 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif",
+          fontFamily: "'Poppins', sans-serif",
           maxWidth: '600px',
           margin: '0 auto',
           padding: '24px'
         }}>
           <div style={{
-            background: 'white',
-            borderRadius: '24px',
-            padding: '48px',
-            border: '1px solid #edf2f7',
-            textAlign: 'center',
-            boxShadow: '0 8px 24px rgba(124, 111, 214, 0.08)'
+            background: '#ffffff',
+            borderRadius: '16px',
+            padding: '40px',
+            border: '1px solid #eaedf2',
+            textAlign: 'center'
           }}>
-            <div style={{ fontSize: '48px', marginBottom: '16px', color: '#94a3b8' }}>📭</div>
-            <h2 style={{ fontSize: '20px', fontWeight: '600', color: '#0f172a', marginBottom: '8px' }}>
+            <div style={{ fontSize: '48px', marginBottom: '16px', color: '#8f9aab' }}>📭</div>
+            <h2 style={{ fontSize: '18px', fontWeight: '500', color: '#2c3440', marginBottom: '4px' }}>
               No Questions
             </h2>
-            <p style={{ fontSize: '14px', color: '#64748b', marginBottom: '24px' }}>
+            <p style={{ fontSize: '13px', color: '#6f7887', marginBottom: '20px' }}>
               Try another category
             </p>
             <button
               onClick={() => setGameState('intro')}
               style={{
-                padding: '12px 28px',
+                padding: '10px 24px',
                 background: '#7c6fd6',
-                color: 'white',
+                color: '#ffffff',
                 border: 'none',
-                borderRadius: '100px',
-                fontSize: '14px',
-                fontWeight: '500',
+                borderRadius: '30px',
+                fontSize: '13px',
+                fontWeight: '400',
                 cursor: 'pointer',
-                transition: 'all 0.2s ease'
-              }}
-              onMouseOver={(e) => {
-                e.currentTarget.style.background = '#6b5ec5';
-                e.currentTarget.style.transform = 'translateY(-1px)';
-              }}
-              onMouseOut={(e) => {
-                e.currentTarget.style.background = '#7c6fd6';
-                e.currentTarget.style.transform = 'translateY(0)';
+                fontFamily: "'Poppins', sans-serif"
               }}
             >
               Back to Categories
@@ -1635,165 +1594,156 @@ const generateDailyQuiz = () => {
 
     return (
       <div style={{
-        fontFamily: "'Inter', 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif",
+        fontFamily: "'Poppins', sans-serif",
         maxWidth: '720px',
         margin: '0 auto',
         padding: '24px'
       }}>
-        {/* Header - Matching MatchGame style */}
+        {/* Header */}
         <div style={{
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
-          marginBottom: '24px',
-          borderBottom: '1px solid #e2e8f0',
-          paddingBottom: '20px',
+          marginBottom: '20px',
+          borderBottom: '1px solid #eaedf2',
+          paddingBottom: '16px',
         }}>
           <button
             onClick={() => setGameState('intro')}
             style={{
-              background: 'white',
-              border: '1px solid #e2e8f0',
-              padding: '8px 20px',
-              borderRadius: '100px',
+              background: '#ffffff',
+              border: '1px solid #eaedf2',
+              padding: '8px 18px',
+              borderRadius: '30px',
               cursor: 'pointer',
-              fontSize: '14px',
-              fontWeight: '500',
-              color: '#475569',
-              fontFamily: "'Inter', 'Poppins', sans-serif",
+              fontSize: '13px',
+              fontWeight: '400',
+              color: '#5a6270',
+              fontFamily: "'Poppins', sans-serif",
               transition: 'all 0.2s ease',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '8px'
             }}
             onMouseOver={(e) => {
               e.currentTarget.style.background = '#f8fafc';
-              e.currentTarget.style.borderColor = '#cbd5e1';
             }}
             onMouseOut={(e) => {
-              e.currentTarget.style.background = 'white';
-              e.currentTarget.style.borderColor = '#e2e8f0';
+              e.currentTarget.style.background = '#ffffff';
             }}
           >
             Exit
           </button>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-            <span style={{ fontSize: '24px', color: currentCategory.color }}>{currentCategory.icon}</span>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <span style={{ fontSize: '22px', color: currentCategory.color }}>{currentCategory.icon}</span>
             <h1 style={{
-              fontSize: '22px',
-              fontWeight: '600',
-              color: '#0f172a',
+              fontSize: '20px',
+              fontWeight: '500',
+              color: '#2c3440',
               margin: '0',
-              fontFamily: "'Inter', 'Poppins', sans-serif"
+              fontFamily: "'Poppins', sans-serif"
             }}>
               {currentCategory.name}
             </h1>
           </div>
 
           <div style={{
-            fontSize: '16px',
-            fontWeight: '600',
+            fontSize: '14px',
+            fontWeight: '500',
             background: '#f8f7ff',
             color: '#7c6fd6',
-            padding: '8px 16px',
-            borderRadius: '100px',
-            border: '1px solid #e6e0ff',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '8px'
+            padding: '6px 14px',
+            borderRadius: '20px',
+            border: '1px solid #eae8f0',
           }}>
-            <span>🎯 {score}/{filteredQuizzes.length}</span>
+            🎯 {score}/{filteredQuizzes.length}
           </div>
         </div>
 
-        {/* Progress Bar - Matching MatchGame style */}
-        <div style={{ marginBottom: '24px' }}>
+        {/* Progress Bar */}
+        <div style={{ marginBottom: '20px' }}>
           <div style={{
             display: 'flex',
             justifyContent: 'space-between',
-            marginBottom: '8px',
-            fontSize: '13px',
-            color: '#64748b',
+            marginBottom: '6px',
+            fontSize: '12px',
+            color: '#8f9aab',
           }}>
             <span>Question {currentIndex + 1} of {filteredQuizzes.length}</span>
-            <span>{Math.round(progress)}% Complete</span>
+            <span>{Math.round(progress)}%</span>
           </div>
           <div style={{
             width: '100%',
             height: '6px',
-            background: '#f1f5f9',
-            borderRadius: '100px',
+            background: '#f2f4f8',
+            borderRadius: '8px',
             overflow: 'hidden',
           }}>
             <div style={{
               height: '100%',
-              background: `linear-gradient(90deg, ${currentCategory.color}, ${currentCategory.color}dd)`,
+              background: '#7c6fd6',
               width: `${progress}%`,
               transition: 'width 0.3s ease',
-              borderRadius: '100px',
+              borderRadius: '8px',
             }} />
           </div>
         </div>
 
         {/* Question Card */}
         <div style={{
-          background: 'white',
-          borderRadius: '24px',
-          padding: '32px',
-          boxShadow: '0 8px 24px rgba(124, 111, 214, 0.08)',
-          border: '1px solid #e6e0ff',
-          marginBottom: '24px'
+          background: '#ffffff',
+          borderRadius: '16px',
+          padding: '28px',
+          border: '1px solid #eae8f0',
+          marginBottom: '20px'
         }}>
           {/* Difficulty Badge */}
           {current.difficulty && (
             <div style={{
               display: 'inline-block',
-              padding: '6px 16px',
-              borderRadius: '100px',
+              padding: '4px 12px',
+              borderRadius: '12px',
               fontSize: '12px',
-              fontWeight: '600',
+              fontWeight: '500',
               background: current.difficulty === 'beginner' ? '#e8f5e9' :
                 current.difficulty === 'intermediate' ? '#fff4e5' : '#ffebee',
               color: current.difficulty === 'beginner' ? '#2e7d32' :
                 current.difficulty === 'intermediate' ? '#b85c1a' : '#b91c1c',
-              marginBottom: '20px'
+              marginBottom: '16px'
             }}>
               {current.difficulty}
             </div>
           )}
 
           <h2 style={{
-            fontSize: '20px',
-            fontWeight: '600',
-            color: '#0f172a',
-            marginBottom: '28px',
-            fontFamily: "'Inter', 'Poppins', sans-serif",
+            fontSize: '18px',
+            fontWeight: '500',
+            color: '#2c3440',
+            marginBottom: '24px',
+            fontFamily: "'Poppins', sans-serif",
             lineHeight: '1.5'
           }}>
             {current.question}
           </h2>
 
           {/* Options */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
             {current.options.map((option, idx) => {
-              let bgColor = 'white';
-              let borderColor = '#e2e8f0';
-              let textColor = '#1e293b';
+              let bgColor = '#ffffff';
+              let borderColor = '#eaedf2';
+              let textColor = '#2c3440';
 
               if (answered) {
                 if (idx === current.correct) {
-                  bgColor = '#e8f5e9';
+                  bgColor = '#f0fdf4';
                   borderColor = '#4ade80';
                   textColor = '#166534';
                 } else if (idx === selectedAnswer && idx !== current.correct) {
-                  bgColor = '#fee2e2';
+                  bgColor = '#fef2f2';
                   borderColor = '#fecaca';
                   textColor = '#991b1b';
                 } else {
                   bgColor = '#f8fafc';
-                  borderColor = '#e2e8f0';
-                  textColor = '#94a3b8';
+                  borderColor = '#eaedf2';
+                  textColor = '#8f9aab';
                 }
               }
 
@@ -1805,95 +1755,82 @@ const generateDailyQuiz = () => {
                   style={{
                     display: 'flex',
                     alignItems: 'center',
-                    gap: '16px',
-                    padding: '16px 20px',
-                    border: `2px solid ${borderColor}`,
-                    borderRadius: '16px',
+                    gap: '12px',
+                    padding: '14px 16px',
+                    border: `1px solid ${borderColor}`,
+                    borderRadius: '12px',
                     background: bgColor,
                     textAlign: 'left',
-                    fontSize: '15px',
-                    fontWeight: '500',
+                    fontSize: '14px',
+                    fontWeight: '400',
                     color: textColor,
                     transition: 'all 0.2s ease',
-                    fontFamily: "'Inter', 'Poppins', sans-serif",
+                    fontFamily: "'Poppins', sans-serif",
                     cursor: answered ? 'default' : 'pointer',
                     width: '100%',
-                    boxShadow: !answered && !borderColor.includes('e2') ? '0 4px 12px rgba(124, 111, 214, 0.1)' : 'none'
                   }}
                   onMouseOver={(e) => {
                     if (!answered) {
                       e.currentTarget.style.background = '#f8fafc';
                       e.currentTarget.style.borderColor = '#7c6fd6';
-                      e.currentTarget.style.transform = 'translateY(-2px)';
-                      e.currentTarget.style.boxShadow = '0 8px 16px rgba(124, 111, 214, 0.15)';
                     }
                   }}
                   onMouseOut={(e) => {
                     if (!answered) {
-                      e.currentTarget.style.background = 'white';
-                      e.currentTarget.style.borderColor = '#e2e8f0';
-                      e.currentTarget.style.transform = 'translateY(0)';
-                      e.currentTarget.style.boxShadow = 'none';
+                      e.currentTarget.style.background = '#ffffff';
+                      e.currentTarget.style.borderColor = '#eaedf2';
                     }
                   }}
                 >
                   <span style={{
-                    fontWeight: '700',
-                    color: answered ? (idx === current.correct ? '#22c55e' : idx === selectedAnswer ? '#ef4444' : '#94a3b8') : '#7c6fd6',
-                    minWidth: '28px',
-                    fontSize: '16px'
+                    fontWeight: '500',
+                    color: answered ? (idx === current.correct ? '#22c55e' : idx === selectedAnswer ? '#ef4444' : '#8f9aab') : '#7c6fd6',
+                    minWidth: '24px',
+                    fontSize: '14px'
                   }}>
                     {String.fromCharCode(65 + idx)}.
                   </span>
                   <span style={{ flex: 1 }}>{option}</span>
-                  {answered && idx === current.correct && <span style={{ color: '#22c55e', fontSize: '20px' }}>✓</span>}
-                  {answered && idx === selectedAnswer && idx !== current.correct && <span style={{ color: '#ef4444', fontSize: '20px' }}>✗</span>}
+                  {answered && idx === current.correct && <span style={{ color: '#22c55e', fontSize: '18px' }}>✓</span>}
+                  {answered && idx === selectedAnswer && idx !== current.correct && <span style={{ color: '#ef4444', fontSize: '18px' }}>✗</span>}
                 </button>
               );
             })}
           </div>
         </div>
 
-        {/* Next Button - Matching MatchGame style */}
+        {/* Next Button */}
         {answered && (
           <button
             onClick={handleNext}
             style={{
               width: '100%',
-              padding: '16px',
-              background: 'linear-gradient(135deg, #7c6fd6 0%, #6b5ec5 100%)',
-              color: 'white',
+              padding: '14px',
+              background: '#7c6fd6',
+              color: '#ffffff',
               border: 'none',
-              borderRadius: '50px',
+              borderRadius: '30px',
               cursor: 'pointer',
-              fontSize: '16px',
-              fontWeight: '500',
-              fontFamily: "'Inter', 'Poppins', sans-serif",
+              fontSize: '14px',
+              fontWeight: '400',
+              fontFamily: "'Poppins', sans-serif",
               transition: 'all 0.2s ease',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              gap: '8px',
-              boxShadow: '0 8px 20px rgba(124, 111, 214, 0.3)',
             }}
             onMouseOver={(e) => {
-              e.currentTarget.style.transform = 'translateY(-2px)';
-              e.currentTarget.style.boxShadow = '0 12px 28px rgba(124, 111, 214, 0.4)';
+              e.currentTarget.style.background = '#6b5ec5';
             }}
             onMouseOut={(e) => {
-              e.currentTarget.style.transform = 'translateY(0)';
-              e.currentTarget.style.boxShadow = '0 8px 20px rgba(124, 111, 214, 0.3)';
+              e.currentTarget.style.background = '#7c6fd6';
             }}
           >
             {currentIndex === filteredQuizzes.length - 1 ? 'Finish Quiz' : 'Next Question'}
-            {currentIndex < filteredQuizzes.length - 1 && <span style={{ fontSize: '18px' }}>→</span>}
           </button>
         )}
       </div>
     );
   }
 
-  // Finished Screen - Matching MatchGame style
+  // FINISHED SCREEN
   if (gameState === 'finished') {
     const percentage = Math.round((score / filteredQuizzes.length) * 100);
     const today = new Date().toLocaleDateString('en-US', {
@@ -1903,8 +1840,8 @@ const generateDailyQuiz = () => {
 
     return (
       <div style={{
-        fontFamily: "'Inter', 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif",
-        maxWidth: '600px',
+        fontFamily: "'Poppins', sans-serif",
+        maxWidth: '500px',
         margin: '0 auto',
         padding: '24px'
       }}>
@@ -1913,42 +1850,40 @@ const generateDailyQuiz = () => {
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
-          marginBottom: '32px',
-          borderBottom: '1px solid #e2e8f0',
-          paddingBottom: '20px',
+          marginBottom: '24px',
+          borderBottom: '1px solid #eaedf2',
+          paddingBottom: '16px',
         }}>
           <button
             onClick={() => setGameState('intro')}
             style={{
-              background: 'white',
-              border: '1px solid #e2e8f0',
-              padding: '8px 20px',
-              borderRadius: '100px',
+              background: '#ffffff',
+              border: '1px solid #eaedf2',
+              padding: '8px 18px',
+              borderRadius: '30px',
               cursor: 'pointer',
-              fontSize: '14px',
-              fontWeight: '500',
-              color: '#475569',
-              fontFamily: "'Inter', 'Poppins', sans-serif",
+              fontSize: '13px',
+              fontWeight: '400',
+              color: '#5a6270',
+              fontFamily: "'Poppins', sans-serif",
               transition: 'all 0.2s ease'
             }}
             onMouseOver={(e) => {
               e.currentTarget.style.background = '#f8fafc';
-              e.currentTarget.style.borderColor = '#cbd5e1';
             }}
             onMouseOut={(e) => {
-              e.currentTarget.style.background = 'white';
-              e.currentTarget.style.borderColor = '#e2e8f0';
+              e.currentTarget.style.background = '#ffffff';
             }}
           >
             Back
           </button>
 
           <h1 style={{
-            fontSize: '22px',
-            fontWeight: '600',
-            color: '#0f172a',
+            fontSize: '20px',
+            fontWeight: '500',
+            color: '#2c3440',
             margin: '0',
-            fontFamily: "'Inter', 'Poppins', sans-serif"
+            fontFamily: "'Poppins', sans-serif"
           }}>
             Quiz Complete!
           </h1>
@@ -1959,35 +1894,32 @@ const generateDailyQuiz = () => {
         {/* Results Card */}
         <div style={{
           background: '#ffffff',
-          borderRadius: '24px',
-          padding: '40px',
-          textAlign: 'center',
-          boxShadow: '0 8px 24px rgba(124, 111, 214, 0.08)',
-          border: '1px solid #e6e0ff',
+          borderRadius: '16px',
+          padding: '32px',
+          border: '1px solid #eae8f0',
+          textAlign: 'center'
         }}>
           <div style={{
             fontSize: '64px',
-            marginBottom: '20px',
-            animation: 'float 3s ease-in-out infinite'
+            marginBottom: '16px',
           }}>
             {percentage === 100 ? '🏆' : '🎉'}
           </div>
 
           <h2 style={{
-            fontSize: '28px',
-            fontWeight: '600',
-            color: '#0f172a',
-            marginBottom: '8px',
-            fontFamily: "'Inter', 'Poppins', sans-serif"
+            fontSize: '24px',
+            fontWeight: '500',
+            color: '#2c3440',
+            marginBottom: '4px',
+            fontFamily: "'Poppins', sans-serif"
           }}>
             {percentage === 100 ? 'Perfect Score!' : 'Great Job!'}
           </h2>
 
           <p style={{
-            fontSize: '16px',
-            color: '#475569',
-            marginBottom: '24px',
-            fontFamily: "'Inter', 'Poppins', sans-serif"
+            fontSize: '14px',
+            color: '#6f7887',
+            marginBottom: '20px',
           }}>
             {today}'s daily quiz
           </p>
@@ -1996,25 +1928,24 @@ const generateDailyQuiz = () => {
           <div style={{
             width: '120px',
             height: '120px',
-            margin: '0 auto 24px',
+            margin: '0 auto 20px',
             borderRadius: '50%',
-            background: `conic-gradient(#7c6fd6 0% ${percentage}%, #f1f5f9 ${percentage}% 100%)`,
+            background: `conic-gradient(#7c6fd6 0% ${percentage}%, #f2f4f8 ${percentage}% 100%)`,
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            position: 'relative'
           }}>
             <div style={{
               width: '90px',
               height: '90px',
               borderRadius: '50%',
-              background: 'white',
+              background: '#ffffff',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
               fontSize: '28px',
-              fontWeight: '700',
-              color: '#7c6fd6'
+              fontWeight: '500',
+              color: '#7c6fd6',
             }}>
               {percentage}%
             </div>
@@ -2022,65 +1953,57 @@ const generateDailyQuiz = () => {
 
           {/* Score Details */}
           <div style={{
-            background: '#f8f7ff',
-            borderRadius: '16px',
-            padding: '20px',
-            marginBottom: '28px',
-            border: '1px solid #e6e0ff'
+            background: '#f8fafc',
+            borderRadius: '12px',
+            padding: '16px',
+            marginBottom: '24px',
+            border: '1px solid #eaedf2',
           }}>
             <div style={{
               display: 'flex',
               justifyContent: 'space-between',
-              marginBottom: '12px',
-              fontSize: '15px'
+              marginBottom: '8px',
+              fontSize: '14px',
             }}>
-              <span style={{ color: '#475569' }}>Your Score</span>
-              <span style={{ fontWeight: '600', color: '#0f172a' }}>{score}/{filteredQuizzes.length}</span>
+              <span style={{ color: '#5a6270' }}>Your Score</span>
+              <span style={{ fontWeight: '500', color: '#2c3440' }}>{score}/{filteredQuizzes.length}</span>
             </div>
             <div style={{
               display: 'flex',
               justifyContent: 'space-between',
-              fontSize: '15px'
+              fontSize: '14px'
             }}>
-              <span style={{ color: '#475569' }}>XP Earned</span>
-              <span style={{ fontWeight: '600', color: '#7c6fd6' }}>
+              <span style={{ color: '#5a6270' }}>XP Earned</span>
+              <span style={{ fontWeight: '500', color: '#7c6fd6' }}>
                 +{score === filteredQuizzes.length ? 30 : 15}
               </span>
             </div>
           </div>
 
           {/* Action Buttons */}
-          <div style={{ display: 'flex', gap: '12px' }}>
+          <div style={{ display: 'flex', gap: '10px' }}>
             <button
               onClick={handleRestart}
               style={{
                 flex: 1,
-                padding: '14px',
+                padding: '12px',
                 background: '#7c6fd6',
-                color: 'white',
+                color: '#ffffff',
                 border: 'none',
-                borderRadius: '100px',
+                borderRadius: '30px',
                 cursor: 'pointer',
-                fontSize: '14px',
-                fontWeight: '600',
-                fontFamily: "'Inter', 'Poppins', sans-serif",
-                boxShadow: '0 4px 12px rgba(124, 111, 214, 0.2)',
+                fontSize: '13px',
+                fontWeight: '400',
+                fontFamily: "'Poppins', sans-serif",
                 transition: 'all 0.2s ease',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '8px'
               }}
               onMouseOver={(e) => {
                 e.currentTarget.style.background = '#6b5ec5';
-                e.currentTarget.style.transform = 'translateY(-1px)';
               }}
               onMouseOut={(e) => {
                 e.currentTarget.style.background = '#7c6fd6';
-                e.currentTarget.style.transform = 'translateY(0)';
               }}
             >
-              <span style={{ fontSize: '18px' }}>🔄</span>
               Play Again
             </button>
 
@@ -2088,20 +2011,16 @@ const generateDailyQuiz = () => {
               onClick={onBack}
               style={{
                 flex: 1,
-                padding: '14px',
-                background: 'white',
-                color: '#475569',
-                border: '1px solid #e2e8f0',
-                borderRadius: '100px',
+                padding: '12px',
+                background: '#ffffff',
+                color: '#5a6270',
+                border: '1px solid #eaedf2',
+                borderRadius: '30px',
                 cursor: 'pointer',
-                fontSize: '14px',
-                fontWeight: '600',
-                fontFamily: "'Inter', 'Poppins', sans-serif",
+                fontSize: '13px',
+                fontWeight: '400',
+                fontFamily: "'Poppins', sans-serif",
                 transition: 'all 0.2s ease',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '8px'
               }}
               onMouseOver={(e) => {
                 e.currentTarget.style.background = '#f8fafc';
@@ -2109,23 +2028,15 @@ const generateDailyQuiz = () => {
                 e.currentTarget.style.color = '#7c6fd6';
               }}
               onMouseOut={(e) => {
-                e.currentTarget.style.background = 'white';
-                e.currentTarget.style.borderColor = '#e2e8f0';
-                e.currentTarget.style.color = '#475569';
+                e.currentTarget.style.background = '#ffffff';
+                e.currentTarget.style.borderColor = '#eaedf2';
+                e.currentTarget.style.color = '#5a6270';
               }}
             >
-              <span style={{ fontSize: '18px' }}>🎮</span>
               More Games
             </button>
           </div>
         </div>
-
-        <style>{`
-          @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-8px); }
-          }
-        `}</style>
       </div>
     );
   }
@@ -2146,7 +2057,7 @@ const MatchGame = ({ onBack }) => {
   const [gameComplete, setGameComplete] = useState(false);
   const [showConfetti, setShowConfetti] = useState(false);
 
-  // Categories based on vocabulary
+  // Categories
   const categories = [
     { id: 'all', name: 'All Words', icon: '📚', color: '#7c6fd6' },
     { id: 'action', name: 'Action Words', icon: '🏃', color: '#9b8de8' },
@@ -2157,41 +2068,32 @@ const MatchGame = ({ onBack }) => {
     { id: 'creativity', name: 'Creativity', icon: '🎨', color: '#f9ca24' },
   ];
 
-  // Image library with categories
+  // Image library
  const imageLibrary = [
-  // Action Words
   { id: 101, word: 'Run', icon: '🏃', category: 'action', difficulty: 'beginner' },
   { id: 102, word: 'Jump', icon: '⬆️', category: 'action', difficulty: 'beginner' },
   { id: 103, word: 'Swim', icon: '🏊', category: 'action', difficulty: 'beginner' },
   { id: 104, word: 'Fly', icon: '✈️', category: 'action', difficulty: 'beginner' },
   { id: 105, word: 'Eat', icon: '🍽️', category: 'action', difficulty: 'beginner' },
   { id: 106, word: 'Drink', icon: '🥤', category: 'action', difficulty: 'beginner' },
-  
-  // Animals
   { id: 201, word: 'Cat', icon: '🐱', category: 'animals', difficulty: 'beginner' },
   { id: 202, word: 'Dog', icon: '🐶', category: 'animals', difficulty: 'beginner' },
   { id: 203, word: 'Bird', icon: '🐦', category: 'animals', difficulty: 'beginner' },
   { id: 204, word: 'Fish', icon: '🐠', category: 'animals', difficulty: 'beginner' },
   { id: 205, word: 'Elephant', icon: '🐘', category: 'animals', difficulty: 'intermediate' },
   { id: 206, word: 'Lion', icon: '🦁', category: 'animals', difficulty: 'intermediate' },
-  
-  // Food
   { id: 301, word: 'Apple', icon: '🍎', category: 'food', difficulty: 'beginner' },
   { id: 302, word: 'Banana', icon: '🍌', category: 'food', difficulty: 'beginner' },
   { id: 303, word: 'Bread', icon: '🍞', category: 'food', difficulty: 'beginner' },
   { id: 304, word: 'Milk', icon: '🥛', category: 'food', difficulty: 'beginner' },
   { id: 305, word: 'Pizza', icon: '🍕', category: 'food', difficulty: 'intermediate' },
   { id: 306, word: 'Burger', icon: '🍔', category: 'food', difficulty: 'intermediate' },
-  
-  // Objects
   { id: 401, word: 'Book', icon: '📚', category: 'objects', difficulty: 'beginner' },
   { id: 402, word: 'Pen', icon: '✒️', category: 'objects', difficulty: 'beginner' },
   { id: 403, word: 'Chair', icon: '🪑', category: 'objects', difficulty: 'beginner' },
   { id: 404, word: 'Table', icon: '🪑', category: 'objects', difficulty: 'beginner' },
   { id: 405, word: 'Phone', icon: '📱', category: 'objects', difficulty: 'intermediate' },
   { id: 406, word: 'Computer', icon: '💻', category: 'objects', difficulty: 'intermediate' },
-  
-  // Nature
   { id: 501, word: 'Tree', icon: '🌳', category: 'nature', difficulty: 'beginner' },
   { id: 502, word: 'Flower', icon: '🌺', category: 'nature', difficulty: 'beginner' },
   { id: 503, word: 'Sun', icon: '☀️', category: 'nature', difficulty: 'beginner' },
@@ -2217,7 +2119,7 @@ const MatchGame = ({ onBack }) => {
     return () => clearInterval(timer);
   }, [gameState, startTime, gameComplete]);
 
-  // Get pairs for game based on category and difficulty
+  // Get pairs for game
   const getPairsForGame = () => {
     let words = [];
     
@@ -2227,10 +2129,6 @@ const MatchGame = ({ onBack }) => {
       words = imageLibrary.filter(img => img.category === selectedCategory);
     }
 
-    // Filter by difficulty if needed (optional)
-    // You can add difficulty filtering here
-
-    // Shuffle and limit based on difficulty
     const shuffled = words.sort(() => Math.random() - 0.5);
     const currentDifficulty = difficultyLevels.find(d => d.id === difficulty);
     return shuffled.slice(0, currentDifficulty.pairs);
@@ -2243,17 +2141,14 @@ const MatchGame = ({ onBack }) => {
     
     const gameCards = [];
     pairs.forEach(item => {
-      // Image card
       gameCards.push({
         id: `img-${item.id}-${Date.now()}-${Math.random()}`,
         type: 'image',
-        imageUrl: item.imageUrl,
         word: item.word,
         pairId: item.id,
         category: item.category,
         difficulty: item.difficulty
       });
-      // Word card
       gameCards.push({
         id: `word-${item.id}-${Date.now()}-${Math.random()}`,
         type: 'word',
@@ -2264,7 +2159,6 @@ const MatchGame = ({ onBack }) => {
       });
     });
 
-    // Shuffle cards
     const shuffled = gameCards.sort(() => Math.random() - 0.5);
     setCards(shuffled);
     setStartTime(Date.now());
@@ -2315,7 +2209,6 @@ const MatchGame = ({ onBack }) => {
         setMatched([...matched, cards[first].pairId]);
         setScore(prev => prev + 1);
 
-        // Calculate XP based on difficulty and speed
         const pairDifficulty = cards[first].difficulty;
         const baseXP = pairDifficulty === 'easy' ? 10 : 
                       pairDifficulty === 'medium' ? 15 : 20;
@@ -2362,16 +2255,12 @@ const MatchGame = ({ onBack }) => {
       const currentProgress = savedProgress ? JSON.parse(savedProgress) : null;
 
       if (currentProgress) {
-        // Calculate bonuses
         const optimalMoves = filteredPairs.length * 2;
         const efficiencyBonus = moves <= optimalMoves ? 30 : 
                                moves <= optimalMoves * 1.5 ? 20 : 10;
         
         const timeBonus = gameTime < 60 ? 25 : gameTime < 120 ? 15 : 5;
-        
-        // Perfect game bonus
         const perfectBonus = moves === filteredPairs.length * 2 ? 50 : 0;
-
         const totalXP = 50 + efficiencyBonus + timeBonus + perfectBonus;
 
         const updates = {
@@ -2386,7 +2275,6 @@ const MatchGame = ({ onBack }) => {
           }
         };
 
-        // Check for perfect score
         if (moves === filteredPairs.length * 2) {
           updates.match = {
             ...updates.match,
@@ -2407,36 +2295,34 @@ const MatchGame = ({ onBack }) => {
   const currentCategory = categories.find(c => c.id === selectedCategory) || categories[0];
   const currentDifficulty = difficultyLevels.find(d => d.id === difficulty) || difficultyLevels[0];
 
-  // Intro Screen
+  // INTRO SCREEN
   if (gameState === 'intro') {
     return (
-      <div style={{ fontFamily: "'Inter', 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif", maxWidth: '900px', margin: '0 auto', padding: '24px' }}>
+      <div style={{ fontFamily: "'Poppins', sans-serif", maxWidth: '900px', margin: '0 auto', padding: '24px' }}>
         <div style={{
-          background: 'linear-gradient(135deg, #f8f7ff 0%, #ffffff 100%)',
-          borderRadius: '24px',
-          padding: '40px',
-          marginBottom: '32px',
-          border: '1px solid #e6e0ff',
-          boxShadow: '0 8px 24px rgba(124, 111, 214, 0.08)',
+          background: '#ffffff',
+          borderRadius: '16px',
+          padding: '32px',
+          marginBottom: '24px',
+          border: '1px solid #eaedf2',
           textAlign: 'center'
         }}>
-          <div style={{ fontSize: '64px', marginBottom: '20px', animation: 'float 3s ease-in-out infinite' }}>🎴</div>
+          <div style={{ fontSize: '64px', marginBottom: '16px', color: '#7c6fd6' }}>🎴</div>
           <h2 style={{
             fontSize: '28px',
-            fontWeight: '600',
-            color: '#0f172a',
-            marginBottom: '12px',
-            fontFamily: "'Inter', 'Poppins', sans-serif"
+            fontWeight: '500',
+            color: '#2c3440',
+            marginBottom: '8px',
+            fontFamily: "'Poppins', sans-serif"
           }}>
             Match Game Challenge
           </h2>
           <p style={{
-            fontSize: '16px',
-            color: '#475569',
+            fontSize: '14px',
+            color: '#6f7887',
             lineHeight: '1.6',
             marginBottom: '24px',
-            fontFamily: "'Inter', 'Poppins', sans-serif",
-            maxWidth: '600px',
+            maxWidth: '500px',
             margin: '0 auto 24px'
           }}>
             Match each word with its correct image. Test your memory and speed!
@@ -2445,33 +2331,33 @@ const MatchGame = ({ onBack }) => {
           {/* Difficulty Selector */}
           <div style={{
             background: '#f8fafc',
-            borderRadius: '16px',
-            padding: '24px',
+            borderRadius: '12px',
+            padding: '20px',
             marginBottom: '24px',
-            border: '1px solid #e2e8f0'
+            border: '1px solid #eaedf2'
           }}>
             <h3 style={{
-              fontSize: '16px',
-              fontWeight: '600',
+              fontSize: '15px',
+              fontWeight: '500',
               color: '#7c6fd6',
-              marginBottom: '16px',
-              fontFamily: "'Inter', 'Poppins', sans-serif"
+              marginBottom: '12px',
+              fontFamily: "'Poppins', sans-serif"
             }}>
               Select Difficulty:
             </h3>
-            <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
+            <div style={{ display: 'flex', gap: '8px', justifyContent: 'center', flexWrap: 'wrap' }}>
               {difficultyLevels.map(level => (
                 <button
                   key={level.id}
                   onClick={() => setDifficulty(level.id)}
                   style={{
-                    padding: '12px 24px',
-                    borderRadius: '100px',
-                    border: `2px solid ${difficulty === level.id ? level.color : '#e2e8f0'}`,
-                    background: difficulty === level.id ? level.color : 'white',
-                    color: difficulty === level.id ? 'white' : '#475569',
-                    fontWeight: '600',
-                    fontSize: '14px',
+                    padding: '10px 20px',
+                    borderRadius: '30px',
+                    border: `1px solid ${difficulty === level.id ? level.color : '#eaedf2'}`,
+                    background: difficulty === level.id ? level.color : '#ffffff',
+                    color: difficulty === level.id ? '#ffffff' : '#5a6270',
+                    fontWeight: '400',
+                    fontSize: '13px',
                     cursor: 'pointer',
                     transition: 'all 0.2s ease'
                   }}
@@ -2485,18 +2371,17 @@ const MatchGame = ({ onBack }) => {
           {/* Categories */}
           <div style={{ marginBottom: '24px' }}>
             <h3 style={{
-              fontSize: '16px',
-              fontWeight: '600',
-              color: '#0f172a',
-              marginBottom: '16px',
-              fontFamily: "'Inter', 'Poppins', sans-serif"
+              fontSize: '15px',
+              fontWeight: '500',
+              color: '#2c3440',
+              marginBottom: '12px',
             }}>
               Choose Category
             </h3>
             <div style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))',
-              gap: '12px'
+              gridTemplateColumns: 'repeat(auto-fit, minmax(120px, 1fr))',
+              gap: '8px'
             }}>
               {categories.map(category => {
                 const count = imageLibrary.filter(img => 
@@ -2508,29 +2393,27 @@ const MatchGame = ({ onBack }) => {
                     key={category.id}
                     onClick={() => setSelectedCategory(category.id)}
                     style={{
-                      background: selectedCategory === category.id ? category.color : '#ffffff',
-                      border: `1px solid ${selectedCategory === category.id ? category.color : '#e2e8f0'}`,
-                      borderRadius: '16px',
+                      background: selectedCategory === category.id ? `${category.color}15` : '#ffffff',
+                      border: `1px solid ${selectedCategory === category.id ? category.color : '#eaedf2'}`,
+                      borderRadius: '12px',
                       padding: '12px',
                       cursor: 'pointer',
                       transition: 'all 0.2s ease',
-                      display: 'flex',
-                      flexDirection: 'column',
-                      alignItems: 'center',
-                      gap: '4px',
                     }}
                   >
-                    <span style={{ fontSize: '24px' }}>{category.icon}</span>
+                    <span style={{ fontSize: '24px', display: 'block', marginBottom: '4px' }}>{category.icon}</span>
                     <span style={{
                       fontSize: '13px',
-                      fontWeight: '600',
-                      color: selectedCategory === category.id ? 'white' : '#0f172a',
+                      fontWeight: '500',
+                      color: selectedCategory === category.id ? category.color : '#2c3440',
                     }}>
                       {category.name}
                     </span>
                     <span style={{
                       fontSize: '11px',
-                      color: selectedCategory === category.id ? 'rgba(255,255,255,0.8)' : '#64748b',
+                      color: selectedCategory === category.id ? category.color : '#8f9aab',
+                      display: 'block',
+                      marginTop: '2px'
                     }}>
                       {count} words
                     </span>
@@ -2544,37 +2427,37 @@ const MatchGame = ({ onBack }) => {
           <div style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(3, 1fr)',
-            gap: '12px',
+            gap: '8px',
             marginBottom: '24px'
           }}>
             <div style={{
               background: '#f8fafc',
-              padding: '16px',
-              borderRadius: '16px',
-              border: '1px solid #e2e8f0'
+              padding: '14px',
+              borderRadius: '12px',
+              border: '1px solid #eaedf2'
             }}>
-              <div style={{ fontSize: '20px', fontWeight: '600', color: '#0f172a' }}>
+              <div style={{ fontSize: '18px', fontWeight: '500', color: '#2c3440' }}>
                 {difficultyLevels.find(d => d.id === difficulty).pairs * 2}
               </div>
-              <div style={{ fontSize: '12px', color: '#64748b' }}>Cards</div>
+              <div style={{ fontSize: '11px', color: '#8f9aab' }}>Cards</div>
             </div>
             <div style={{
               background: '#f8fafc',
-              padding: '16px',
-              borderRadius: '16px',
-              border: '1px solid #e2e8f0'
+              padding: '14px',
+              borderRadius: '12px',
+              border: '1px solid #eaedf2'
             }}>
-              <div style={{ fontSize: '20px', fontWeight: '600', color: '#0f172a' }}>⏱️</div>
-              <div style={{ fontSize: '12px', color: '#64748b' }}>Timer</div>
+              <div style={{ fontSize: '18px', fontWeight: '500', color: '#2c3440' }}>⏱️</div>
+              <div style={{ fontSize: '11px', color: '#8f9aab' }}>Timer</div>
             </div>
             <div style={{
               background: '#f8fafc',
-              padding: '16px',
-              borderRadius: '16px',
-              border: '1px solid #e2e8f0'
+              padding: '14px',
+              borderRadius: '12px',
+              border: '1px solid #eaedf2'
             }}>
-              <div style={{ fontSize: '20px', fontWeight: '600', color: '#0f172a' }}>+50-150</div>
-              <div style={{ fontSize: '12px', color: '#64748b' }}>Total XP</div>
+              <div style={{ fontSize: '18px', fontWeight: '500', color: '#2c3440' }}>+50-150</div>
+              <div style={{ fontSize: '11px', color: '#8f9aab' }}>Total XP</div>
             </div>
           </div>
 
@@ -2582,73 +2465,71 @@ const MatchGame = ({ onBack }) => {
             onClick={handleStartGame}
             style={{
               width: '100%',
-              padding: '16px',
-              background: 'linear-gradient(135deg, #7c6fd6 0%, #6b5ec5 100%)',
-              color: 'white',
+              padding: '12px',
+              background: '#7c6fd6',
+              color: '#ffffff',
               border: 'none',
-              borderRadius: '50px',
+              borderRadius: '30px',
               cursor: 'pointer',
-              fontSize: '16px',
-              fontWeight: '600',
+              fontSize: '14px',
+              fontWeight: '400',
+              fontFamily: "'Poppins', sans-serif",
               transition: 'all 0.2s ease',
-              fontFamily: "'Inter', 'Poppins', sans-serif",
-              boxShadow: '0 8px 20px rgba(124, 111, 214, 0.3)',
+            }}
+            onMouseOver={(e) => {
+              e.currentTarget.style.background = '#6b5ec5';
+            }}
+            onMouseOut={(e) => {
+              e.currentTarget.style.background = '#7c6fd6';
             }}
           >
             Start Game
           </button>
         </div>
-
-        <style>{`
-          @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-8px); }
-          }
-        `}</style>
       </div>
     );
   }
 
-  // Playing Screen
+  // PLAYING SCREEN
   if (gameState === 'playing') {
     const gridCols = 4;
 
     return (
-      <div style={{ fontFamily: "'Inter', 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif", maxWidth: '800px', margin: '0 auto', padding: '24px' }}>
+      <div style={{ fontFamily: "'Poppins', sans-serif", maxWidth: '800px', margin: '0 auto', padding: '24px' }}>
         {/* Header */}
         <div style={{
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
-          marginBottom: '24px',
-          borderBottom: '1px solid #e2e8f0',
-          paddingBottom: '20px',
+          marginBottom: '20px',
+          borderBottom: '1px solid #eaedf2',
+          paddingBottom: '16px',
         }}>
           <button
             onClick={handleBackToIntro}
             style={{
-              background: 'white',
-              border: '1px solid #e2e8f0',
-              padding: '8px 20px',
-              borderRadius: '100px',
+              background: '#ffffff',
+              border: '1px solid #eaedf2',
+              padding: '8px 18px',
+              borderRadius: '30px',
               cursor: 'pointer',
-              fontSize: '14px',
-              fontWeight: '500',
-              color: '#475569',
-              fontFamily: "'Inter', 'Poppins', sans-serif",
+              fontSize: '13px',
+              fontWeight: '400',
+              color: '#5a6270',
+              fontFamily: "'Poppins', sans-serif",
             }}
           >
             Exit
           </button>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-            <span style={{ fontSize: '24px', color: currentCategory.color }}>{currentCategory.icon}</span>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <span style={{ fontSize: '22px', color: currentCategory.color }}>{currentCategory.icon}</span>
             <h1 style={{
-              fontSize: '22px',
-              fontWeight: '600',
-              color: '#0f172a',
+              fontSize: '20px',
+              fontWeight: '500',
+              color: '#2c3440',
               margin: '0',
-              fontFamily: "'Inter', 'Poppins', sans-serif"
+              fontFamily: "'Poppins', sans-serif"
             }}>
               {currentCategory.name}
             </h1>
@@ -2657,13 +2538,13 @@ const MatchGame = ({ onBack }) => {
           <div style={{
             display: 'flex',
             gap: '12px',
-            fontSize: '14px',
-            fontWeight: '600',
+            fontSize: '13px',
+            fontWeight: '500',
             background: '#f8f7ff',
             color: '#7c6fd6',
-            padding: '8px 16px',
-            borderRadius: '100px',
-            border: '1px solid #e6e0ff',
+            padding: '6px 14px',
+            borderRadius: '20px',
+            border: '1px solid #eae8f0',
           }}>
             <span>🎯 {score}/{filteredPairs.length}</span>
             <span>🔄 {moves}</span>
@@ -2672,29 +2553,30 @@ const MatchGame = ({ onBack }) => {
         </div>
 
         {/* Progress Bar */}
-        <div style={{ marginBottom: '24px' }}>
+        <div style={{ marginBottom: '20px' }}>
           <div style={{
             display: 'flex',
             justifyContent: 'space-between',
-            marginBottom: '8px',
-            fontSize: '13px',
-            color: '#64748b',
+            marginBottom: '6px',
+            fontSize: '12px',
+            color: '#8f9aab',
           }}>
             <span>{matched.length} of {filteredPairs.length * 2} cards matched</span>
-            <span>{Math.round(progress)}% Complete</span>
+            <span>{Math.round(progress)}%</span>
           </div>
           <div style={{
             width: '100%',
             height: '6px',
-            background: '#f1f5f9',
-            borderRadius: '100px',
+            background: '#f2f4f8',
+            borderRadius: '8px',
             overflow: 'hidden',
           }}>
             <div style={{
               height: '100%',
-              background: `linear-gradient(90deg, ${currentCategory.color}, ${currentCategory.color}dd)`,
+              background: '#7c6fd6',
               width: `${progress}%`,
               transition: 'width 0.3s ease',
+              borderRadius: '8px',
             }} />
           </div>
         </div>
@@ -2703,8 +2585,8 @@ const MatchGame = ({ onBack }) => {
         <div style={{
           display: 'grid',
           gridTemplateColumns: `repeat(${gridCols}, 1fr)`,
-          gap: '12px',
-          marginBottom: '24px'
+          gap: '8px',
+          marginBottom: '20px'
         }}>
           {cards.map((card, index) => {
             const isFlipped = flipped.includes(index) || matched.includes(card.pairId);
@@ -2716,57 +2598,44 @@ const MatchGame = ({ onBack }) => {
                 onClick={() => !isMatched && !gameComplete && handleCardClick(index)}
                 style={{
                   aspectRatio: '1',
-                  borderRadius: '16px',
+                  borderRadius: '12px',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                   cursor: isMatched || gameComplete ? 'default' : 'pointer',
-                  transition: 'all 0.3s ease',
+                  transition: 'all 0.2s ease',
                   background: isFlipped
-                    ? 'white'
+                    ? '#ffffff'
                     : `linear-gradient(135deg, ${currentCategory.color}, ${currentCategory.color}dd)`,
                   opacity: isMatched ? 0.6 : 1,
-                  border: isFlipped ? '2px solid #7c6fd6' : 'none',
-                  boxShadow: isFlipped ? '0 4px 12px rgba(124, 111, 214, 0.2)' : '0 2px 8px rgba(0,0,0,0.05)',
-                  overflow: 'hidden',
-                  transform: isFlipped ? 'scale(0.98)' : 'scale(1)',
+                  border: isFlipped ? '1px solid #7c6fd6' : 'none',
+                  boxShadow: isFlipped ? '0 2px 8px rgba(124, 111, 214, 0.1)' : '0 1px 4px rgba(0,0,0,0.05)',
                 }}
               >
                 {isFlipped ? (
                   card.type === 'image' ? (
-                    <img
-                      src={card.imageUrl}
-                      alt={card.word}
-                      style={{
-                        width: '100%',
-                        height: '100%',
-                        objectFit: 'cover',
-                        borderRadius: '14px'
-                      }}
-                    />
+                    <div style={{
+                      fontSize: '28px',
+                      color: '#2c3440'
+                    }}>
+                      {card.word.charAt(0)}
+                    </div>
                   ) : (
                     <div style={{
-                      fontSize: '20px',
-                      fontWeight: '700',
-                      color: '#1e293b',
+                      fontSize: '14px',
+                      fontWeight: '500',
+                      color: '#2c3440',
                       textAlign: 'center',
-                      padding: '8px',
-                      background: 'white',
-                      width: '100%',
-                      height: '100%',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      borderRadius: '14px',
+                      padding: '4px',
                     }}>
                       {card.content}
                     </div>
                   )
                 ) : (
                   <div style={{
-                    fontSize: '36px',
-                    fontWeight: '500',
-                    color: 'white'
+                    fontSize: '24px',
+                    fontWeight: '400',
+                    color: '#ffffff'
                   }}>
                     ?
                   </div>
@@ -2782,26 +2651,26 @@ const MatchGame = ({ onBack }) => {
           justifyContent: 'space-between',
           alignItems: 'center',
           marginBottom: '16px',
-          padding: '16px',
-          background: '#f8f7ff',
-          borderRadius: '16px',
-          border: '1px solid #e6e0ff'
+          padding: '14px',
+          background: '#f8fafc',
+          borderRadius: '12px',
+          border: '1px solid #eaedf2'
         }}>
           <div>
-            <div style={{ fontSize: '13px', color: '#64748b' }}>Efficiency</div>
-            <div style={{ fontSize: '18px', fontWeight: '700', color: '#7c6fd6' }}>
+            <div style={{ fontSize: '12px', color: '#8f9aab' }}>Efficiency</div>
+            <div style={{ fontSize: '16px', fontWeight: '500', color: '#7c6fd6' }}>
               {filteredPairs.length > 0 ? Math.round((filteredPairs.length * 2 / Math.max(moves, 1)) * 100) : 0}%
             </div>
           </div>
           <div>
-            <div style={{ fontSize: '13px', color: '#64748b' }}>Pairs Left</div>
-            <div style={{ fontSize: '18px', fontWeight: '700', color: '#7c6fd6' }}>
+            <div style={{ fontSize: '12px', color: '#8f9aab' }}>Pairs Left</div>
+            <div style={{ fontSize: '16px', fontWeight: '500', color: '#7c6fd6' }}>
               {filteredPairs.length - score}
             </div>
           </div>
           <div>
-            <div style={{ fontSize: '13px', color: '#64748b' }}>Time</div>
-            <div style={{ fontSize: '18px', fontWeight: '700', color: '#7c6fd6' }}>
+            <div style={{ fontSize: '12px', color: '#8f9aab' }}>Time</div>
+            <div style={{ fontSize: '16px', fontWeight: '500', color: '#7c6fd6' }}>
               {Math.floor(gameTime / 60)}:{String(gameTime % 60).padStart(2, '0')}
             </div>
           </div>
@@ -2813,33 +2682,33 @@ const MatchGame = ({ onBack }) => {
             onClick={handleRestart}
             style={{
               width: '100%',
-              padding: '14px',
-              background: 'white',
-              color: '#475569',
-              border: '1px solid #e2e8f0',
-              borderRadius: '100px',
+              padding: '12px',
+              background: '#ffffff',
+              color: '#5a6270',
+              border: '1px solid #eaedf2',
+              borderRadius: '30px',
               cursor: 'pointer',
-              fontSize: '14px',
-              fontWeight: '600',
-              fontFamily: "'Inter', 'Poppins', sans-serif",
+              fontSize: '13px',
+              fontWeight: '400',
+              fontFamily: "'Poppins', sans-serif",
               transition: 'all 0.2s ease',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              gap: '8px'
+              gap: '6px'
             }}
             onMouseOver={(e) => {
               e.currentTarget.style.background = '#f8fafc';
-              e.currentTarget.style.borderColor = currentCategory.color;
-              e.currentTarget.style.color = currentCategory.color;
+              e.currentTarget.style.borderColor = '#7c6fd6';
+              e.currentTarget.style.color = '#7c6fd6';
             }}
             onMouseOut={(e) => {
-              e.currentTarget.style.background = 'white';
-              e.currentTarget.style.borderColor = '#e2e8f0';
-              e.currentTarget.style.color = '#475569';
+              e.currentTarget.style.background = '#ffffff';
+              e.currentTarget.style.borderColor = '#eaedf2';
+              e.currentTarget.style.color = '#5a6270';
             }}
           >
-            <span style={{ fontSize: '18px' }}>🔄</span>
+            <span style={{ fontSize: '16px' }}>🔄</span>
             Shuffle Cards
           </button>
         )}
@@ -2847,43 +2716,43 @@ const MatchGame = ({ onBack }) => {
     );
   }
 
-  // Finished Screen
+  // FINISHED SCREEN
   const percentage = filteredPairs.length > 0 ? Math.round((score / filteredPairs.length) * 100) : 0;
   const efficiency = filteredPairs.length > 0 ? Math.round((filteredPairs.length * 2 / Math.max(moves, 1)) * 100) : 0;
 
   return (
-    <div style={{ fontFamily: "'Inter', 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif", maxWidth: '600px', margin: '0 auto', padding: '24px' }}>
+    <div style={{ fontFamily: "'Poppins', sans-serif", maxWidth: '500px', margin: '0 auto', padding: '24px' }}>
       {/* Header */}
       <div style={{
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
-        marginBottom: '32px',
-        borderBottom: '1px solid #e2e8f0',
-        paddingBottom: '20px',
+        marginBottom: '24px',
+        borderBottom: '1px solid #eaedf2',
+        paddingBottom: '16px',
       }}>
         <button
           onClick={handleBackToIntro}
           style={{
-            background: 'white',
-            border: '1px solid #e2e8f0',
-            padding: '8px 20px',
-            borderRadius: '100px',
+            background: '#ffffff',
+            border: '1px solid #eaedf2',
+            padding: '8px 18px',
+            borderRadius: '30px',
             cursor: 'pointer',
-            fontSize: '14px',
-            fontWeight: '500',
-            color: '#475569',
+            fontSize: '13px',
+            fontWeight: '400',
+            color: '#5a6270',
           }}
         >
           Back
         </button>
 
         <h1 style={{
-          fontSize: '22px',
-          fontWeight: '600',
-          color: '#0f172a',
+          fontSize: '20px',
+          fontWeight: '500',
+          color: '#2c3440',
           margin: '0',
-          fontFamily: "'Inter', 'Poppins', sans-serif"
+          fontFamily: "'Poppins', sans-serif"
         }}>
           Game Complete!
         </h1>
@@ -2894,35 +2763,32 @@ const MatchGame = ({ onBack }) => {
       {/* Results Card */}
       <div style={{
         background: '#ffffff',
-        borderRadius: '24px',
-        padding: '40px',
+        borderRadius: '16px',
+        padding: '32px',
+        border: '1px solid #eae8f0',
         textAlign: 'center',
-        boxShadow: '0 8px 24px rgba(124, 111, 214, 0.08)',
-        border: '1px solid #e6e0ff',
       }}>
         <div style={{
           fontSize: '64px',
-          marginBottom: '20px',
-          animation: 'float 3s ease-in-out infinite'
+          marginBottom: '16px',
         }}>
           {percentage === 100 ? '🏆' : '🎉'}
         </div>
 
         <h2 style={{
-          fontSize: '28px',
-          fontWeight: '600',
-          color: '#0f172a',
-          marginBottom: '8px',
-          fontFamily: "'Inter', 'Poppins', sans-serif"
+          fontSize: '24px',
+          fontWeight: '500',
+          color: '#2c3440',
+          marginBottom: '4px',
+          fontFamily: "'Poppins', sans-serif"
         }}>
           {percentage === 100 ? 'Perfect Match!' : 'Great Memory!'}
         </h2>
 
         <p style={{
-          fontSize: '16px',
-          color: '#475569',
-          marginBottom: '24px',
-          fontFamily: "'Inter', 'Poppins', sans-serif"
+          fontSize: '14px',
+          color: '#6f7887',
+          marginBottom: '20px',
         }}>
           You found {score} out of {filteredPairs.length} pairs in {moves} moves
         </p>
@@ -2931,25 +2797,24 @@ const MatchGame = ({ onBack }) => {
         <div style={{
           width: '120px',
           height: '120px',
-          margin: '0 auto 24px',
+          margin: '0 auto 20px',
           borderRadius: '50%',
-          background: `conic-gradient(#7c6fd6 0% ${percentage}%, #f1f5f9 ${percentage}% 100%)`,
+          background: `conic-gradient(#7c6fd6 0% ${percentage}%, #f2f4f8 ${percentage}% 100%)`,
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          position: 'relative'
         }}>
           <div style={{
             width: '90px',
             height: '90px',
             borderRadius: '50%',
-            background: 'white',
+            background: '#ffffff',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
             fontSize: '28px',
-            fontWeight: '700',
-            color: '#7c6fd6'
+            fontWeight: '500',
+            color: '#7c6fd6',
           }}>
             {percentage}%
           </div>
@@ -2959,45 +2824,44 @@ const MatchGame = ({ onBack }) => {
         <div style={{
           display: 'grid',
           gridTemplateColumns: '1fr 1fr',
-          gap: '12px',
-          marginBottom: '24px'
+          gap: '10px',
+          marginBottom: '20px'
         }}>
           <div style={{
-            background: '#f8f7ff',
-            padding: '16px',
-            borderRadius: '16px',
-            border: '1px solid #e6e0ff'
+            background: '#f8fafc',
+            padding: '14px',
+            borderRadius: '12px',
+            border: '1px solid #eaedf2'
           }}>
-            <div style={{ fontSize: '13px', color: '#64748b' }}>Time</div>
-            <div style={{ fontSize: '20px', fontWeight: '700', color: '#7c6fd6' }}>
+            <div style={{ fontSize: '12px', color: '#8f9aab' }}>Time</div>
+            <div style={{ fontSize: '18px', fontWeight: '500', color: '#7c6fd6' }}>
               {Math.floor(gameTime / 60)}:{String(gameTime % 60).padStart(2, '0')}
             </div>
           </div>
           <div style={{
-            background: '#f8f7ff',
-            padding: '16px',
-            borderRadius: '16px',
-            border: '1px solid #e6e0ff'
+            background: '#f8fafc',
+            padding: '14px',
+            borderRadius: '12px',
+            border: '1px solid #eaedf2'
           }}>
-            <div style={{ fontSize: '13px', color: '#64748b' }}>Efficiency</div>
-            <div style={{ fontSize: '20px', fontWeight: '700', color: '#7c6fd6' }}>{efficiency}%</div>
+            <div style={{ fontSize: '12px', color: '#8f9aab' }}>Efficiency</div>
+            <div style={{ fontSize: '18px', fontWeight: '500', color: '#7c6fd6' }}>{efficiency}%</div>
           </div>
         </div>
 
         {/* Message */}
         <div style={{
-          background: '#f8f7ff',
-          borderRadius: '16px',
-          padding: '20px',
-          marginBottom: '28px',
-          border: '1px solid #e6e0ff'
+          background: '#f8fafc',
+          borderRadius: '12px',
+          padding: '16px',
+          marginBottom: '24px',
+          border: '1px solid #eaedf2'
         }}>
           <p style={{
-            fontSize: '15px',
-            color: '#475569',
+            fontSize: '14px',
+            color: '#5a6270',
             margin: 0,
-            fontFamily: "'Inter', 'Poppins', sans-serif",
-            lineHeight: '1.6'
+            lineHeight: '1.5'
           }}>
             {score === filteredPairs.length ? 'Amazing! You found all pairs! 🏆' :
              efficiency >= 80 ? 'Great efficiency! Keep it up! ⚡' :
@@ -3006,121 +2870,88 @@ const MatchGame = ({ onBack }) => {
           </p>
         </div>
 
-        // Action Buttons - Updated with Done button
-<div style={{ display: 'flex', gap: '12px' }}>
-  <button
-    onClick={handleRestart}
-    style={{
-      flex: 1,
-      padding: '14px',
-      background: '#7c6fd6',
-      color: 'white',
-      border: 'none',
-      borderRadius: '100px',
-      cursor: 'pointer',
-      fontSize: '14px',
-      fontWeight: '600',
-      fontFamily: "'Inter', 'Poppins', sans-serif",
-      boxShadow: '0 4px 12px rgba(124, 111, 214, 0.2)',
-      transition: 'all 0.2s ease',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      gap: '8px'
-    }}
-    onMouseOver={(e) => {
-      e.currentTarget.style.background = '#6b5ec5';
-      e.currentTarget.style.transform = 'translateY(-1px)';
-    }}
-    onMouseOut={(e) => {
-      e.currentTarget.style.background = '#7c6fd6';
-      e.currentTarget.style.transform = 'translateY(0)';
-    }}
-  >
-    <span style={{ fontSize: '18px' }}>🔄</span>
-    Play Again
-  </button>
+        {/* Action Buttons */}
+        <div style={{ display: 'flex', gap: '10px' }}>
+          <button
+            onClick={handleRestart}
+            style={{
+              flex: 1,
+              padding: '12px',
+              background: '#7c6fd6',
+              color: '#ffffff',
+              border: 'none',
+              borderRadius: '30px',
+              cursor: 'pointer',
+              fontSize: '13px',
+              fontWeight: '400',
+              fontFamily: "'Poppins', sans-serif",
+              transition: 'all 0.2s ease',
+            }}
+            onMouseOver={(e) => {
+              e.currentTarget.style.background = '#6b5ec5';
+            }}
+            onMouseOut={(e) => {
+              e.currentTarget.style.background = '#7c6fd6';
+            }}
+          >
+            Play Again
+          </button>
 
-  <button
-    onClick={onBack}
-    style={{
-      flex: 1,
-      padding: '14px',
-      background: 'white',
-      color: '#475569',
-      border: '1px solid #e2e8f0',
-      borderRadius: '100px',
-      cursor: 'pointer',
-      fontSize: '14px',
-      fontWeight: '600',
-      fontFamily: "'Inter', 'Poppins', sans-serif",
-      transition: 'all 0.2s ease',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      gap: '8px'
-    }}
-    onMouseOver={(e) => {
-      e.currentTarget.style.background = '#f8fafc';
-      e.currentTarget.style.borderColor = '#7c6fd6';
-      e.currentTarget.style.color = '#7c6fd6';
-    }}
-    onMouseOut={(e) => {
-      e.currentTarget.style.background = 'white';
-      e.currentTarget.style.borderColor = '#e2e8f0';
-      e.currentTarget.style.color = '#475569';
-    }}
-  >
-    <span style={{ fontSize: '18px' }}>🎮</span>
-    More Games
-  </button>
+          <button
+            onClick={onBack}
+            style={{
+              flex: 1,
+              padding: '12px',
+              background: '#ffffff',
+              color: '#5a6270',
+              border: '1px solid #eaedf2',
+              borderRadius: '30px',
+              cursor: 'pointer',
+              fontSize: '13px',
+              fontWeight: '400',
+              fontFamily: "'Poppins', sans-serif",
+              transition: 'all 0.2s ease',
+            }}
+            onMouseOver={(e) => {
+              e.currentTarget.style.background = '#f8fafc';
+              e.currentTarget.style.borderColor = '#7c6fd6';
+              e.currentTarget.style.color = '#7c6fd6';
+            }}
+            onMouseOut={(e) => {
+              e.currentTarget.style.background = '#ffffff';
+              e.currentTarget.style.borderColor = '#eaedf2';
+              e.currentTarget.style.color = '#5a6270';
+            }}
+          >
+            More Games
+          </button>
 
-  {/* ✅ ADDED DONE BUTTON */}
-  <button
-    onClick={handleBackToIntro}
-    style={{
-      flex: 1,
-      padding: '14px',
-      background: '#0f172a',
-      color: 'white',
-      border: 'none',
-      borderRadius: '100px',
-      cursor: 'pointer',
-      fontSize: '14px',
-      fontWeight: '600',
-      fontFamily: "'Inter', 'Poppins', sans-serif",
-      boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
-      transition: 'all 0.2s ease',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      gap: '8px'
-    }}
-    onMouseOver={(e) => {
-      e.currentTarget.style.background = '#1e293b';
-      e.currentTarget.style.transform = 'translateY(-1px)';
-    }}
-    onMouseOut={(e) => {
-      e.currentTarget.style.background = '#0f172a';
-      e.currentTarget.style.transform = 'translateY(0)';
-    }}
-  >
-    <span style={{ fontSize: '18px' }}>✓</span>
-    Done
-  </button>
-</div>
+          <button
+            onClick={handleBackToIntro}
+            style={{
+              flex: 1,
+              padding: '12px',
+              background: '#2c3440',
+              color: '#ffffff',
+              border: 'none',
+              borderRadius: '30px',
+              cursor: 'pointer',
+              fontSize: '13px',
+              fontWeight: '400',
+              fontFamily: "'Poppins', sans-serif",
+              transition: 'all 0.2s ease',
+            }}
+            onMouseOver={(e) => {
+              e.currentTarget.style.background = '#3a4450';
+            }}
+            onMouseOut={(e) => {
+              e.currentTarget.style.background = '#2c3440';
+            }}
+          >
+            Done
+          </button>
+        </div>
       </div>
-
-      <style>{`
-        @keyframes float {
-          0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(-8px); }
-        }
-        @keyframes confetti {
-          0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-          100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
-        }
-      `}</style>
     </div>
   );
 };
@@ -3132,6 +2963,9 @@ const GuessWhatGame = ({ onBack }) => {
   const [answered, setAnswered] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [filteredQuestions, setFilteredQuestions] = useState([]);
+  const [streak, setStreak] = useState(0);
+  const [feedbackMessage, setFeedbackMessage] = useState('');
+  const [showFeedback, setShowFeedback] = useState(false);
 
   // Define categories
   const categories = [
@@ -3149,7 +2983,6 @@ const GuessWhatGame = ({ onBack }) => {
 
   // Enhanced questions with categories
   const allQuestions = [
-    // Action Words Category (existing)
     {
       id: 1,
       question: 'Which word describes being actively involved in something?',
@@ -3183,8 +3016,6 @@ const GuessWhatGame = ({ onBack }) => {
       difficulty: 'intermediate',
       hint: 'Put in order'
     },
-
-    // Focus & Attention Category (existing)
     {
       id: 4,
       question: 'What word describes directing all your mental energy toward one thing?',
@@ -3207,8 +3038,6 @@ const GuessWhatGame = ({ onBack }) => {
       difficulty: 'intermediate',
       hint: 'Watch carefully'
     },
-
-    // Analysis Category (existing)
     {
       id: 6,
       question: 'What word means to examine something methodically?',
@@ -3231,8 +3060,6 @@ const GuessWhatGame = ({ onBack }) => {
       difficulty: 'intermediate',
       hint: 'Find similarities and differences'
     },
-
-    // Communication Category (existing)
     {
       id: 8,
       question: 'What word means to exchange information with others?',
@@ -3266,8 +3093,6 @@ const GuessWhatGame = ({ onBack }) => {
       difficulty: 'intermediate',
       hint: 'Brief statement'
     },
-
-    // More Action Words (existing)
     {
       id: 11,
       question: 'What word means to show something with proof?',
@@ -3323,10 +3148,6 @@ const GuessWhatGame = ({ onBack }) => {
       difficulty: 'beginner',
       hint: 'Reply'
     },
-
-    // NEW CATEGORIES
-
-    // Problem Solving Category
     {
       id: 16,
       question: 'What word means to find a solution to a problem?',
@@ -3371,8 +3192,6 @@ const GuessWhatGame = ({ onBack }) => {
       difficulty: 'advanced',
       hint: 'Finish or decide'
     },
-
-    // Creativity Category
     {
       id: 20,
       question: 'What word means to bring something into existence?',
@@ -3417,8 +3236,6 @@ const GuessWhatGame = ({ onBack }) => {
       difficulty: 'intermediate',
       hint: 'Change completely'
     },
-
-    // Leadership Category
     {
       id: 24,
       question: 'What word means to guide or direct a group?',
@@ -3463,8 +3280,6 @@ const GuessWhatGame = ({ onBack }) => {
       difficulty: 'advanced',
       hint: 'Discuss terms'
     },
-
-    // Technology Category
     {
       id: 28,
       question: 'What word means to write computer programs?',
@@ -3509,8 +3324,6 @@ const GuessWhatGame = ({ onBack }) => {
       difficulty: 'advanced',
       hint: 'Make better'
     },
-
-    // Additional Action Words
     {
       id: 32,
       question: 'What word means to carry out or accomplish something?',
@@ -3533,8 +3346,6 @@ const GuessWhatGame = ({ onBack }) => {
       difficulty: 'beginner',
       hint: 'Give help'
     },
-
-    // Additional Communication
     {
       id: 34,
       question: 'What word means to express an opinion or idea?',
@@ -3561,7 +3372,6 @@ const GuessWhatGame = ({ onBack }) => {
 
   // Process questions to ensure correct options
   const processedQuestions = allQuestions.map((q) => {
-    // Shuffle options
     const shuffledOptions = [...q.options].sort(() => Math.random() - 0.5);
     return {
       ...q,
@@ -3580,6 +3390,7 @@ const GuessWhatGame = ({ onBack }) => {
     setScore(0);
     setAnswered(false);
     setSelectedAnswer(null);
+    setStreak(0);
   }, [selectedCategory]);
 
   const handleStartGame = () => {
@@ -3587,48 +3398,48 @@ const GuessWhatGame = ({ onBack }) => {
   };
 
   const handleAnswer = (selected) => {
-  if (!answered && currentQuestion) {
-    setSelectedAnswer(selected);
-    setAnswered(true);
-    
-    const isCorrect = selected === currentQuestion.word;
-    
-    if (isCorrect) {
-      setScore(score + 1);
-      setStreak(streak + 1);
-      setFeedbackMessage('✅ Correct! Great job!');
+    if (!answered && currentQuestion) {
+      setSelectedAnswer(selected);
+      setAnswered(true);
       
-      // Update progress
-      const savedProgress = localStorage.getItem('vocaboplay_progress');
-      const currentProgress = savedProgress ? JSON.parse(savedProgress) : null;
+      const isCorrect = selected === currentQuestion.word;
       
-      if (currentProgress) {
-        const updates = {
-          totalAnswers: (currentProgress.totalAnswers || 0) + 1,
-          correctAnswers: (currentProgress.correctAnswers || 0) + 1,
-          totalPoints: (currentProgress.totalPoints || 0) + 15,
-          xp: (currentProgress.xp || 0) + 8,
-          wordsLearned: (currentProgress.wordsLearned || 0) + 1,
-          wordPics: {
-            ...currentProgress.wordPics,
-            gamesPlayed: (currentProgress.wordPics?.gamesPlayed || 0) + 1,
-            cardsViewed: (currentProgress.wordPics?.cardsViewed || 0) + 1,
-            correctAnswers: (currentProgress.wordPics?.correctAnswers || 0) + 1,
-            knownWords: [...new Set([...(currentProgress.wordPics?.knownWords || []), currentQuestion.id])]
-          }
-        };
+      if (isCorrect) {
+        setScore(score + 1);
+        setStreak(streak + 1);
+        setFeedbackMessage('✅ Correct! Great job!');
         
-        updateProgress(updates);
+        const savedProgress = localStorage.getItem('vocaboplay_progress');
+        const currentProgress = savedProgress ? JSON.parse(savedProgress) : null;
+        
+        if (currentProgress) {
+          const updates = {
+            totalAnswers: (currentProgress.totalAnswers || 0) + 1,
+            correctAnswers: (currentProgress.correctAnswers || 0) + 1,
+            totalPoints: (currentProgress.totalPoints || 0) + 15,
+            xp: (currentProgress.xp || 0) + 8,
+            wordsLearned: (currentProgress.wordsLearned || 0) + 1,
+            wordPics: {
+              ...currentProgress.wordPics,
+              gamesPlayed: (currentProgress.wordPics?.gamesPlayed || 0) + 1,
+              cardsViewed: (currentProgress.wordPics?.cardsViewed || 0) + 1,
+              correctAnswers: (currentProgress.wordPics?.correctAnswers || 0) + 1,
+              knownWords: [...new Set([...(currentProgress.wordPics?.knownWords || []), currentQuestion.id])]
+            }
+          };
+          
+          updateProgress(updates);
+        }
+      } else {
+        setStreak(0);
+        setFeedbackMessage(`❌ Oops! The correct word is "${currentQuestion.word}"`);
       }
-    } else {
-      setStreak(0);
-      setFeedbackMessage(`❌ Oops! The correct word is "${currentQuestion.word}"`);
+      
+      setShowFeedback(true);
+      setTimeout(() => setShowFeedback(false), 2000);
     }
-    
-    setShowFeedback(true);
-    setTimeout(() => setShowFeedback(false), 2000);
-  }
-};
+  };
+
   const handleNextQuestion = () => {
     if (currentQuestion < filteredQuestions.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
@@ -3645,6 +3456,7 @@ const GuessWhatGame = ({ onBack }) => {
     setScore(0);
     setAnswered(false);
     setSelectedAnswer(null);
+    setStreak(0);
   };
 
   useEffect(() => {
@@ -3678,38 +3490,35 @@ const GuessWhatGame = ({ onBack }) => {
     }
   }, [gameState, score, filteredQuestions.length]);
 
-  // Intro Screen with Categories
+  // INTRO SCREEN
   if (gameState === 'intro') {
     return (
-      <div style={{ fontFamily: "'Inter', 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif", maxWidth: '900px', margin: '0 auto', padding: '24px' }}>
-
+      <div style={{ fontFamily: "'Poppins', sans-serif", maxWidth: '900px', margin: '0 auto', padding: '24px' }}>
         {/* Hero Section */}
         <div style={{
-          background: 'linear-gradient(135deg, #f8f7ff 0%, #ffffff 100%)',
-          borderRadius: '24px',
-          padding: '40px',
-          marginBottom: '32px',
-          border: '1px solid #e6e0ff',
-          boxShadow: '0 8px 24px rgba(124, 111, 214, 0.08)',
+          background: '#ffffff',
+          borderRadius: '16px',
+          padding: '32px',
+          marginBottom: '24px',
+          border: '1px solid #eaedf2',
           textAlign: 'center'
         }}>
-          <div style={{ fontSize: '64px', marginBottom: '20px', animation: 'float 3s ease-in-out infinite' }}>🤔</div>
+          <div style={{ fontSize: '64px', marginBottom: '16px', color: '#7c6fd6' }}>🤔</div>
           <h2 style={{
             fontSize: '28px',
-            fontWeight: '600',
-            color: '#0f172a',
-            marginBottom: '12px',
-            fontFamily: "'Inter', 'Poppins', sans-serif"
+            fontWeight: '500',
+            color: '#2c3440',
+            marginBottom: '8px',
+            fontFamily: "'Poppins', sans-serif"
           }}>
             Welcome to GuessWhat!
           </h2>
           <p style={{
-            fontSize: '16px',
-            color: '#475569',
+            fontSize: '14px',
+            color: '#6f7887',
             lineHeight: '1.6',
             marginBottom: '24px',
-            fontFamily: "'Inter', 'Poppins', sans-serif",
-            maxWidth: '600px',
+            maxWidth: '500px',
             margin: '0 auto 24px'
           }}>
             Test your vocabulary skills by guessing the correct word from context clues and images.
@@ -3717,18 +3526,18 @@ const GuessWhatGame = ({ onBack }) => {
 
           <div style={{
             background: '#f8fafc',
-            borderRadius: '16px',
-            padding: '24px',
-            marginBottom: '28px',
+            borderRadius: '12px',
+            padding: '20px',
+            marginBottom: '24px',
             textAlign: 'left',
-            border: '1px solid #e2e8f0'
+            border: '1px solid #eaedf2'
           }}>
             <h3 style={{
-              fontSize: '16px',
-              fontWeight: '600',
+              fontSize: '15px',
+              fontWeight: '500',
               color: '#7c6fd6',
-              marginBottom: '16px',
-              fontFamily: "'Inter', 'Poppins', sans-serif",
+              marginBottom: '12px',
+              fontFamily: "'Poppins', sans-serif",
               display: 'flex',
               alignItems: 'center',
               gap: '8px'
@@ -3737,10 +3546,10 @@ const GuessWhatGame = ({ onBack }) => {
             </h3>
             <ul style={{
               paddingLeft: '20px',
-              fontSize: '14px',
-              color: '#475569',
+              fontSize: '13px',
+              color: '#5a6270',
               lineHeight: '1.8',
-              fontFamily: "'Inter', 'Poppins', sans-serif",
+              fontFamily: "'Poppins', sans-serif",
               margin: 0
             }}>
               <li>Choose a category below or play with all words</li>
@@ -3753,25 +3562,20 @@ const GuessWhatGame = ({ onBack }) => {
         </div>
 
         {/* Categories Section */}
-        <div style={{ marginBottom: '32px' }}>
+        <div style={{ marginBottom: '24px' }}>
           <h3 style={{
-            fontSize: '16px',
-            fontWeight: '600',
-            color: '#0f172a',
-            marginBottom: '16px',
-            fontFamily: "'Inter', 'Poppins', sans-serif",
-            display: 'flex',
-            alignItems: 'center',
-            gap: '8px'
+            fontSize: '15px',
+            fontWeight: '500',
+            color: '#2c3440',
+            marginBottom: '12px',
           }}>
             Choose a Category
           </h3>
 
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))',
-            gap: '12px',
-            marginBottom: '24px'
+            gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))',
+            gap: '8px'
           }}>
             {categories.map(category => {
               const count = category.id === 'all'
@@ -3783,46 +3587,27 @@ const GuessWhatGame = ({ onBack }) => {
                   key={category.id}
                   onClick={() => setSelectedCategory(category.id)}
                   style={{
-                    background: selectedCategory === category.id ? category.color : '#ffffff',
-                    border: `1px solid ${selectedCategory === category.id ? category.color : '#e2e8f0'}`,
-                    borderRadius: '16px',
-                    padding: '16px 12px',
+                    background: selectedCategory === category.id ? `${category.color}15` : '#ffffff',
+                    border: `1px solid ${selectedCategory === category.id ? category.color : '#eaedf2'}`,
+                    borderRadius: '12px',
+                    padding: '12px',
                     cursor: 'pointer',
                     transition: 'all 0.2s ease',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    gap: '8px',
-                    boxShadow: selectedCategory === category.id ? '0 4px 12px rgba(124, 111, 214, 0.2)' : 'none',
-                  }}
-                  onMouseOver={(e) => {
-                    if (selectedCategory !== category.id) {
-                      e.currentTarget.style.background = '#f8fafc';
-                      e.currentTarget.style.borderColor = '#cbd5e1';
-                    }
-                  }}
-                  onMouseOut={(e) => {
-                    if (selectedCategory !== category.id) {
-                      e.currentTarget.style.background = '#ffffff';
-                      e.currentTarget.style.borderColor = '#e2e8f0';
-                    }
                   }}
                 >
-                  <span style={{ fontSize: '28px', marginBottom: '4px' }}>{category.icon}</span>
+                  <span style={{ fontSize: '24px', display: 'block', marginBottom: '4px' }}>{category.icon}</span>
                   <span style={{
-                    fontSize: '14px',
-                    fontWeight: '600',
-                    color: selectedCategory === category.id ? 'white' : '#0f172a',
-                    fontFamily: "'Inter', 'Poppins', sans-serif"
+                    fontSize: '13px',
+                    fontWeight: '500',
+                    color: selectedCategory === category.id ? category.color : '#2c3440',
                   }}>
                     {category.name}
                   </span>
                   <span style={{
-                    fontSize: '12px',
-                    color: selectedCategory === category.id ? 'rgba(255,255,255,0.9)' : '#64748b',
-                    background: selectedCategory === category.id ? 'rgba(255,255,255,0.2)' : '#f1f5f9',
-                    padding: '4px 10px',
-                    borderRadius: '100px',
+                    fontSize: '11px',
+                    color: selectedCategory === category.id ? category.color : '#8f9aab',
+                    display: 'block',
+                    marginTop: '2px'
                   }}>
                     {count} {count === 1 ? 'question' : 'questions'}
                   </span>
@@ -3837,180 +3622,211 @@ const GuessWhatGame = ({ onBack }) => {
           onClick={handleStartGame}
           style={{
             width: '100%',
-            padding: '10px',
-            background: 'linear-gradient(135deg, #7c6fd6 0%, #6b5ec5 100%)',
-            color: 'white',
+            padding: '12px',
+            background: '#7c6fd6',
+            color: '#ffffff',
             border: 'none',
-            borderRadius: '50px',
+            borderRadius: '30px',
             cursor: 'pointer',
-            fontSize: '16px',
+            fontSize: '14px',
             fontWeight: '400',
+            fontFamily: "'Poppins', sans-serif",
             transition: 'all 0.2s ease',
-            fontFamily: "'Inter', 'Poppins', sans-serif",
-            boxShadow: '0 8px 20px rgba(124, 111, 214, 0.3)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: '5px'
           }}
           onMouseOver={(e) => {
-            e.currentTarget.style.transform = 'translateY(-2px)';
-            e.currentTarget.style.boxShadow = '0 12px 28px rgba(124, 111, 214, 0.4)';
+            e.currentTarget.style.background = '#6b5ec5';
           }}
           onMouseOut={(e) => {
-            e.currentTarget.style.transform = 'translateY(0)';
-            e.currentTarget.style.boxShadow = '0 8px 20px rgba(124, 111, 214, 0.3)';
+            e.currentTarget.style.background = '#7c6fd6';
           }}
         >
           Start {selectedCategory === 'all' ? 'Game' : categories.find(c => c.id === selectedCategory)?.name || 'Game'}
         </button>
-
-        <style>{`
-          @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-8px); }
-          }
-        `}</style>
       </div>
     );
   }
 
-  // Playing Screen - Redesigned
+  // PLAYING SCREEN
   if (gameState === 'playing') {
     const current = filteredQuestions[currentQuestion];
     const progress = ((currentQuestion + 1) / filteredQuestions.length) * 100;
     const currentCategory = categories.find(c => c.id === current.category) || categories[0];
 
+    if (!current) {
+      return (
+        <div style={{ maxWidth: '600px', margin: '0 auto', padding: '24px' }}>
+          <div style={{
+            background: '#ffffff',
+            borderRadius: '16px',
+            padding: '40px',
+            border: '1px solid #eaedf2',
+            textAlign: 'center'
+          }}>
+            <div style={{ fontSize: '48px', marginBottom: '16px', color: '#8f9aab' }}>📭</div>
+            <h2 style={{ fontSize: '18px', fontWeight: '500', color: '#2c3440', marginBottom: '4px' }}>
+              No Questions Available
+            </h2>
+            <p style={{ fontSize: '13px', color: '#6f7887', marginBottom: '20px' }}>
+              Try adjusting your filters
+            </p>
+            <button
+              onClick={() => setGameState('intro')}
+              style={{
+                padding: '10px 24px',
+                background: '#7c6fd6',
+                color: '#ffffff',
+                border: 'none',
+                borderRadius: '30px',
+                fontSize: '13px',
+                fontWeight: '400',
+                cursor: 'pointer',
+                fontFamily: "'Poppins', sans-serif"
+              }}
+            >
+              Back to Settings
+            </button>
+          </div>
+        </div>
+      );
+    }
+
     return (
-      <div style={{ fontFamily: "'Inter', 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif", maxWidth: '800px', margin: '0 auto', padding: '24px' }}>
+      <div style={{ fontFamily: "'Poppins', sans-serif", maxWidth: '800px', margin: '0 auto', padding: '24px' }}>
         {/* Header */}
         <div style={{
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
-          marginBottom: '24px',
-          borderBottom: '1px solid #e2e8f0',
-          paddingBottom: '20px',
+          marginBottom: '20px',
+          borderBottom: '1px solid #eaedf2',
+          paddingBottom: '16px',
         }}>
           <button
-            onClick={onBack}
+            onClick={() => setGameState('intro')}
             style={{
-              background: 'white',
-              border: '1px solid #e2e8f0',
-              padding: '8px 20px',
-              borderRadius: '100px',
+              background: '#ffffff',
+              border: '1px solid #eaedf2',
+              padding: '8px 18px',
+              borderRadius: '30px',
               cursor: 'pointer',
-              fontSize: '14px',
-              fontWeight: '500',
-              color: '#475569',
-              fontFamily: "'Inter', 'Poppins', sans-serif",
+              fontSize: '13px',
+              fontWeight: '400',
+              color: '#5a6270',
+              fontFamily: "'Poppins', sans-serif",
               transition: 'all 0.2s ease',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '8px'
             }}
             onMouseOver={(e) => {
               e.currentTarget.style.background = '#f8fafc';
-              e.currentTarget.style.borderColor = '#cbd5e1';
             }}
             onMouseOut={(e) => {
-              e.currentTarget.style.background = 'white';
-              e.currentTarget.style.borderColor = '#e2e8f0';
+              e.currentTarget.style.background = '#ffffff';
             }}
           >
             Exit
           </button>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-            <span style={{ fontSize: '24px', color: currentCategory.color }}>{currentCategory.icon}</span>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <span style={{ fontSize: '22px', color: currentCategory.color }}>{currentCategory.icon}</span>
             <h1 style={{
-              fontSize: '22px',
-              fontWeight: '600',
-              color: '#0f172a',
+              fontSize: '20px',
+              fontWeight: '500',
+              color: '#2c3440',
               margin: '0',
-              fontFamily: "'Inter', 'Poppins', sans-serif"
+              fontFamily: "'Poppins', sans-serif"
             }}>
               {currentCategory.name}
             </h1>
           </div>
 
           <div style={{
-            fontSize: '16px',
-            fontWeight: '600',
+            fontSize: '14px',
+            fontWeight: '500',
             background: '#f8f7ff',
             color: '#7c6fd6',
-            padding: '8px 16px',
-            borderRadius: '100px',
-            border: '1px solid #e6e0ff',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '8px'
+            padding: '6px 14px',
+            borderRadius: '20px',
+            border: '1px solid #eae8f0',
           }}>
             {score}/{filteredQuestions.length}
           </div>
         </div>
 
         {/* Progress Bar */}
-        <div style={{ marginBottom: '24px' }}>
+        <div style={{ marginBottom: '20px' }}>
           <div style={{
             display: 'flex',
             justifyContent: 'space-between',
-            marginBottom: '8px',
-            fontSize: '13px',
-            color: '#64748b',
+            marginBottom: '6px',
+            fontSize: '12px',
+            color: '#8f9aab',
           }}>
             <span>Question {currentQuestion + 1} of {filteredQuestions.length}</span>
-            <span>{Math.round(progress)}% Complete</span>
+            <span>{Math.round(progress)}%</span>
           </div>
           <div style={{
             width: '100%',
             height: '6px',
-            background: '#f1f5f9',
-            borderRadius: '100px',
+            background: '#f2f4f8',
+            borderRadius: '8px',
             overflow: 'hidden',
           }}>
             <div style={{
               height: '100%',
-              background: `linear-gradient(90deg, ${currentCategory.color}, ${currentCategory.color}dd)`,
+              background: '#7c6fd6',
               width: `${progress}%`,
               transition: 'width 0.3s ease',
-              borderRadius: '100px',
+              borderRadius: '8px',
             }} />
           </div>
         </div>
 
+        {/* Feedback Message */}
+        {showFeedback && (
+          <div style={{
+            padding: '10px',
+            borderRadius: '8px',
+            background: feedbackMessage.includes('✅') ? '#f0fdf4' : '#fef2f2',
+            border: `1px solid ${feedbackMessage.includes('✅') ? '#bbf7d0' : '#fecaca'}`,
+            marginBottom: '16px',
+            textAlign: 'center',
+            fontSize: '14px',
+            fontWeight: '400',
+            color: feedbackMessage.includes('✅') ? '#166534' : '#991b1b',
+          }}>
+            {feedbackMessage}
+          </div>
+        )}
+
         {/* Question Card */}
         <div style={{
           background: '#ffffff',
-          borderRadius: '24px',
-          padding: '32px',
-          boxShadow: '0 8px 24px rgba(0,0,0,0.02)',
-          border: '1px solid #e2e8f0',
+          borderRadius: '16px',
+          padding: '24px',
+          border: '1px solid #eae8f0',
         }}>
           {/* Difficulty Badge */}
           <div style={{
             display: 'flex',
             justifyContent: 'space-between',
             alignItems: 'center',
-            marginBottom: '20px',
+            marginBottom: '16px',
           }}>
             <span style={{
               padding: '4px 12px',
-              borderRadius: '100px',
+              borderRadius: '12px',
               fontSize: '12px',
-              fontWeight: '600',
+              fontWeight: '500',
               background: current.difficulty === 'beginner' ? '#e8f5e9' :
                 current.difficulty === 'intermediate' ? '#fff4e5' : '#ffebee',
               color: current.difficulty === 'beginner' ? '#2e7d32' :
                 current.difficulty === 'intermediate' ? '#b85c1a' : '#b91c1c',
-              textTransform: 'capitalize',
             }}>
               {current.difficulty}
             </span>
             <span style={{
               padding: '4px 12px',
               background: '#f8f7ff',
-              borderRadius: '100px',
+              borderRadius: '12px',
               fontSize: '12px',
               color: '#7c6fd6',
               fontWeight: '500',
@@ -4020,12 +3836,12 @@ const GuessWhatGame = ({ onBack }) => {
           </div>
 
           <h2 style={{
-            fontSize: '20px',
-            fontWeight: '600',
-            color: '#0f172a',
-            marginBottom: '24px',
+            fontSize: '18px',
+            fontWeight: '500',
+            color: '#2c3440',
+            marginBottom: '20px',
             textAlign: 'center',
-            fontFamily: "'Inter', 'Poppins', sans-serif",
+            fontFamily: "'Poppins', sans-serif",
             lineHeight: '1.5'
           }}>
             {current.question}
@@ -4033,18 +3849,17 @@ const GuessWhatGame = ({ onBack }) => {
 
           {/* Image */}
           <div style={{
-            marginBottom: '24px',
+            marginBottom: '20px',
             textAlign: 'center'
           }}>
             <div style={{
-              width: '280px',
-              height: '180px',
+              width: '240px',
+              height: '160px',
               margin: '0 auto',
-              borderRadius: '16px',
+              borderRadius: '12px',
               overflow: 'hidden',
               background: '#f8fafc',
-              border: '1px solid #e2e8f0',
-              boxShadow: '0 4px 12px rgba(0,0,0,0.02)'
+              border: '1px solid #eaedf2',
             }}>
               <img
                 src={current.image}
@@ -4054,29 +3869,68 @@ const GuessWhatGame = ({ onBack }) => {
                   height: '100%',
                   objectFit: 'cover'
                 }}
+                onError={(e) => {
+                  e.target.style.display = 'none';
+                  e.target.parentNode.style.background = '#f8f7ff';
+                  const fallback = document.createElement('div');
+                  fallback.style.cssText = `
+                    width: 100%;
+                    height: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 48px;
+                    color: #7c6fd6;
+                  `;
+                  fallback.textContent = '🖼️';
+                  e.target.parentNode.appendChild(fallback);
+                }}
               />
             </div>
             <p style={{
-              fontSize: '18px',
-              fontWeight: '600',
-              color: '#0f172a',
-              fontFamily: "'Inter', 'Poppins', sans-serif",
+              fontSize: '16px',
+              fontWeight: '500',
+              color: '#2c3440',
+              fontFamily: "'Poppins', sans-serif",
               marginTop: '16px',
               padding: '12px',
               background: '#f8fafc',
               borderRadius: '12px',
-              border: '1px solid #e2e8f0'
+              border: '1px solid #eaedf2'
             }}>
               {current.sentence}
             </p>
           </div>
 
+          {/* Hint */}
+          <div style={{
+            marginBottom: '20px',
+            padding: '12px',
+            background: '#f8f7ff',
+            borderRadius: '8px',
+            border: '1px solid #eae8f0',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '8px'
+          }}>
+            <span style={{ fontSize: '18px', color: '#7c6fd6' }}>💡</span>
+            <p style={{
+              fontSize: '13px',
+              color: '#5a6270',
+              fontStyle: 'italic',
+              fontFamily: "'Poppins', sans-serif",
+              margin: 0
+            }}>
+              <strong>Hint:</strong> {current.hint}
+            </p>
+          </div>
+
           {/* Options */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '12px', marginBottom: '24px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '10px', marginBottom: '20px' }}>
             {current.options.map((option, idx) => {
               let bgColor = '#ffffff';
-              let borderColor = '#e2e8f0';
-              let textColor = '#0f172a';
+              let borderColor = '#eaedf2';
+              let textColor = '#2c3440';
 
               if (answered) {
                 if (option === current.answer) {
@@ -4096,18 +3950,17 @@ const GuessWhatGame = ({ onBack }) => {
                   onClick={() => handleAnswer(option)}
                   disabled={answered}
                   style={{
-                    padding: '16px 20px',
+                    padding: '12px 16px',
                     border: `1px solid ${borderColor}`,
-                    borderRadius: '14px',
+                    borderRadius: '12px',
                     background: bgColor,
-                    fontSize: '15px',
-                    fontWeight: '500',
+                    fontSize: '14px',
+                    fontWeight: '400',
                     color: textColor,
                     cursor: answered ? 'default' : 'pointer',
                     transition: 'all 0.2s ease',
-                    fontFamily: "'Inter', 'Poppins', sans-serif",
+                    fontFamily: "'Poppins', sans-serif",
                     textAlign: 'center',
-                    boxShadow: '0 1px 2px rgba(0,0,0,0.02)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'space-between'
@@ -4116,20 +3969,18 @@ const GuessWhatGame = ({ onBack }) => {
                     if (!answered) {
                       e.currentTarget.style.background = '#f8fafc';
                       e.currentTarget.style.borderColor = currentCategory.color;
-                      e.currentTarget.style.transform = 'translateY(-1px)';
                     }
                   }}
                   onMouseOut={(e) => {
                     if (!answered) {
                       e.currentTarget.style.background = '#ffffff';
-                      e.currentTarget.style.borderColor = '#e2e8f0';
-                      e.currentTarget.style.transform = 'translateY(0)';
+                      e.currentTarget.style.borderColor = '#eaedf2';
                     }
                   }}
                 >
                   <span>{option}</span>
-                  {answered && option === current.answer && <span style={{ color: '#22c55e', fontSize: '20px' }}>✓</span>}
-                  {answered && option === selectedAnswer && option !== current.answer && <span style={{ color: '#ef4444', fontSize: '20px' }}>✗</span>}
+                  {answered && option === current.answer && <span style={{ color: '#22c55e', fontSize: '18px' }}>✓</span>}
+                  {answered && option === selectedAnswer && option !== current.answer && <span style={{ color: '#ef4444', fontSize: '18px' }}>✗</span>}
                 </button>
               );
             })}
@@ -4141,44 +3992,30 @@ const GuessWhatGame = ({ onBack }) => {
               onClick={handleNextQuestion}
               style={{
                 width: '100%',
-                padding: '16px',
-                background: '#0f172a',
-                color: 'white',
+                padding: '12px',
+                background: '#7c6fd6',
+                color: '#ffffff',
                 border: 'none',
-                borderRadius: '100px',
+                borderRadius: '30px',
                 cursor: 'pointer',
-                fontSize: '16px',
-                fontWeight: '600',
-                fontFamily: "'Inter', 'Poppins', sans-serif",
-                boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+                fontSize: '14px',
+                fontWeight: '400',
+                fontFamily: "'Poppins', sans-serif",
                 transition: 'all 0.2s ease',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                gap: '8px',
-                marginTop: '16px'
+                gap: '6px',
               }}
               onMouseOver={(e) => {
-                e.currentTarget.style.background = '#1e293b';
-                e.currentTarget.style.transform = 'translateY(-2px)';
-                e.currentTarget.style.boxShadow = '0 6px 16px rgba(0,0,0,0.15)';
+                e.currentTarget.style.background = '#6b5ec5';
               }}
               onMouseOut={(e) => {
-                e.currentTarget.style.background = '#0f172a';
-                e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.1)';
+                e.currentTarget.style.background = '#7c6fd6';
               }}
             >
-              {currentQuestion === filteredQuestions.length - 1 ? (
-                <>
-                  Finish Game
-                </>
-              ) : (
-                <>
-                  <span>Next Question</span>
-                  <span style={{ fontSize: '18px' }}>→</span>
-                </>
-              )}
+              {currentQuestion === filteredQuestions.length - 1 ? 'Finish Game' : 'Next Question'}
+              {currentQuestion < filteredQuestions.length - 1 && <span style={{ fontSize: '16px' }}>→</span>}
             </button>
           )}
         </div>
@@ -4186,53 +4023,51 @@ const GuessWhatGame = ({ onBack }) => {
     );
   }
 
-  // Finished Screen - Redesigned
+  // FINISHED SCREEN
   if (gameState === 'finished') {
     const percentage = Math.round((score / filteredQuestions.length) * 100);
 
     return (
-      <div style={{ fontFamily: "'Inter', 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif", maxWidth: '600px', margin: '0 auto', padding: '24px' }}>
+      <div style={{ fontFamily: "'Poppins', sans-serif", maxWidth: '500px', margin: '0 auto', padding: '24px' }}>
         {/* Header */}
         <div style={{
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
-          marginBottom: '32px',
-          borderBottom: '1px solid #e2e8f0',
-          paddingBottom: '20px',
+          marginBottom: '24px',
+          borderBottom: '1px solid #eaedf2',
+          paddingBottom: '16px',
         }}>
           <button
-            onClick={onBack}
+            onClick={() => setGameState('intro')}
             style={{
-              background: 'white',
-              border: '1px solid #e2e8f0',
-              padding: '8px 20px',
-              borderRadius: '100px',
+              background: '#ffffff',
+              border: '1px solid #eaedf2',
+              padding: '8px 18px',
+              borderRadius: '30px',
               cursor: 'pointer',
-              fontSize: '14px',
-              fontWeight: '500',
-              color: '#475569',
-              fontFamily: "'Inter', 'Poppins', sans-serif",
+              fontSize: '13px',
+              fontWeight: '400',
+              color: '#5a6270',
+              fontFamily: "'Poppins', sans-serif",
               transition: 'all 0.2s ease'
             }}
             onMouseOver={(e) => {
               e.currentTarget.style.background = '#f8fafc';
-              e.currentTarget.style.borderColor = '#cbd5e1';
             }}
             onMouseOut={(e) => {
-              e.currentTarget.style.background = 'white';
-              e.currentTarget.style.borderColor = '#e2e8f0';
+              e.currentTarget.style.background = '#ffffff';
             }}
           >
             Back
           </button>
 
           <h1 style={{
-            fontSize: '22px',
-            fontWeight: '600',
-            color: '#0f172a',
+            fontSize: '20px',
+            fontWeight: '500',
+            color: '#2c3440',
             margin: '0',
-            fontFamily: "'Inter', 'Poppins', sans-serif"
+            fontFamily: "'Poppins', sans-serif"
           }}>
             Game Complete!
           </h1>
@@ -4243,35 +4078,32 @@ const GuessWhatGame = ({ onBack }) => {
         {/* Results Card */}
         <div style={{
           background: '#ffffff',
-          borderRadius: '24px',
-          padding: '40px',
-          textAlign: 'center',
-          boxShadow: '0 8px 24px rgba(124, 111, 214, 0.08)',
-          border: '1px solid #e6e0ff',
+          borderRadius: '16px',
+          padding: '32px',
+          border: '1px solid #eae8f0',
+          textAlign: 'center'
         }}>
           <div style={{
             fontSize: '64px',
-            marginBottom: '20px',
-            animation: 'float 3s ease-in-out infinite'
+            marginBottom: '16px',
           }}>
             {percentage === 100 ? '🏆' : '🎉'}
           </div>
 
           <h2 style={{
-            fontSize: '28px',
-            fontWeight: '600',
-            color: '#0f172a',
-            marginBottom: '8px',
-            fontFamily: "'Inter', 'Poppins', sans-serif"
+            fontSize: '24px',
+            fontWeight: '500',
+            color: '#2c3440',
+            marginBottom: '4px',
+            fontFamily: "'Poppins', sans-serif"
           }}>
             {percentage === 100 ? 'Perfect Score!' : 'Great Job!'}
           </h2>
 
           <p style={{
-            fontSize: '16px',
-            color: '#475569',
-            marginBottom: '24px',
-            fontFamily: "'Inter', 'Poppins', sans-serif"
+            fontSize: '14px',
+            color: '#6f7887',
+            marginBottom: '20px',
           }}>
             You scored {score} out of {filteredQuestions.length}
           </p>
@@ -4280,25 +4112,24 @@ const GuessWhatGame = ({ onBack }) => {
           <div style={{
             width: '120px',
             height: '120px',
-            margin: '0 auto 24px',
+            margin: '0 auto 20px',
             borderRadius: '50%',
-            background: `conic-gradient(#7c6fd6 0% ${percentage}%, #f1f5f9 ${percentage}% 100%)`,
+            background: `conic-gradient(#7c6fd6 0% ${percentage}%, #f2f4f8 ${percentage}% 100%)`,
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            position: 'relative'
           }}>
             <div style={{
               width: '90px',
               height: '90px',
               borderRadius: '50%',
-              background: 'white',
+              background: '#ffffff',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
               fontSize: '28px',
-              fontWeight: '700',
-              color: '#7c6fd6'
+              fontWeight: '500',
+              color: '#7c6fd6',
             }}>
               {percentage}%
             </div>
@@ -4306,18 +4137,17 @@ const GuessWhatGame = ({ onBack }) => {
 
           {/* Message */}
           <div style={{
-            background: '#f8f7ff',
-            borderRadius: '16px',
-            padding: '20px',
-            marginBottom: '28px',
-            border: '1px solid #e6e0ff'
+            background: '#f8fafc',
+            borderRadius: '12px',
+            padding: '16px',
+            marginBottom: '24px',
+            border: '1px solid #eaedf2',
           }}>
             <p style={{
-              fontSize: '15px',
-              color: '#475569',
+              fontSize: '14px',
+              color: '#5a6270',
               margin: 0,
-              fontFamily: "'Inter', 'Poppins', sans-serif",
-              lineHeight: '1.6'
+              lineHeight: '1.5'
             }}>
               {score === filteredQuestions.length ? 'Amazing! You got all questions right! 🏆' :
                 score >= filteredQuestions.length / 2 ? 'Great work! Keep practicing to improve! 👍' :
@@ -4326,37 +4156,29 @@ const GuessWhatGame = ({ onBack }) => {
           </div>
 
           {/* Action Buttons */}
-          <div style={{ display: 'flex', gap: '12px' }}>
+          <div style={{ display: 'flex', gap: '10px' }}>
             <button
               onClick={handleRestart}
               style={{
                 flex: 1,
-                padding: '14px',
+                padding: '12px',
                 background: '#7c6fd6',
-                color: 'white',
+                color: '#ffffff',
                 border: 'none',
-                borderRadius: '100px',
+                borderRadius: '30px',
                 cursor: 'pointer',
-                fontSize: '14px',
-                fontWeight: '600',
-                fontFamily: "'Inter', 'Poppins', sans-serif",
-                boxShadow: '0 4px 12px rgba(124, 111, 214, 0.2)',
+                fontSize: '13px',
+                fontWeight: '400',
+                fontFamily: "'Poppins', sans-serif",
                 transition: 'all 0.2s ease',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '8px'
               }}
               onMouseOver={(e) => {
                 e.currentTarget.style.background = '#6b5ec5';
-                e.currentTarget.style.transform = 'translateY(-1px)';
               }}
               onMouseOut={(e) => {
                 e.currentTarget.style.background = '#7c6fd6';
-                e.currentTarget.style.transform = 'translateY(0)';
               }}
             >
-              <span style={{ fontSize: '18px' }}>🔄</span>
               Play Again
             </button>
 
@@ -4364,20 +4186,16 @@ const GuessWhatGame = ({ onBack }) => {
               onClick={onBack}
               style={{
                 flex: 1,
-                padding: '14px',
-                background: 'white',
-                color: '#475569',
-                border: '1px solid #e2e8f0',
-                borderRadius: '100px',
+                padding: '12px',
+                background: '#ffffff',
+                color: '#5a6270',
+                border: '1px solid #eaedf2',
+                borderRadius: '30px',
                 cursor: 'pointer',
-                fontSize: '14px',
-                fontWeight: '600',
-                fontFamily: "'Inter', 'Poppins', sans-serif",
+                fontSize: '13px',
+                fontWeight: '400',
+                fontFamily: "'Poppins', sans-serif",
                 transition: 'all 0.2s ease',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '8px'
               }}
               onMouseOver={(e) => {
                 e.currentTarget.style.background = '#f8fafc';
@@ -4385,29 +4203,20 @@ const GuessWhatGame = ({ onBack }) => {
                 e.currentTarget.style.color = '#7c6fd6';
               }}
               onMouseOut={(e) => {
-                e.currentTarget.style.background = 'white';
-                e.currentTarget.style.borderColor = '#e2e8f0';
-                e.currentTarget.style.color = '#475569';
+                e.currentTarget.style.background = '#ffffff';
+                e.currentTarget.style.borderColor = '#eaedf2';
+                e.currentTarget.style.color = '#5a6270';
               }}
             >
-              <span style={{ fontSize: '18px' }}>🎮</span>
               More Games
             </button>
           </div>
         </div>
-
-        <style>{`
-          @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-8px); }
-          }
-        `}</style>
       </div>
     );
   }
 };
 
-// ============= FIXED & ENHANCED SHORT STORY GAME COMPONENT =============
 const ShortStoryGame = ({ onBack }) => {
   const [selectedStory, setSelectedStory] = useState(null);
   const [currentChapter, setCurrentChapter] = useState(0);
@@ -5049,11 +4858,11 @@ That night, Sofia wrote in her journal: "Today, I learned that helping others fe
   if (!selectedStory) {
     return (
       <div style={{
-        fontFamily: "'Inter', 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif",
+        fontFamily: "'Poppins', sans-serif",
         maxWidth: '1200px',
         margin: '0 auto',
-        padding: '32px 24px',
-        color: '#0f172a',
+        padding: '24px',
+        color: '#2c3440',
       }}>
         <style>{`
           @keyframes float {
@@ -5124,22 +4933,22 @@ That night, Sofia wrote in her journal: "Today, I learned that helping others fe
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
-          marginBottom: '40px',
-          borderBottom: '1px solid #e2e8f0',
-          paddingBottom: '24px',
+          marginBottom: '24px',
+          borderBottom: '1px solid #eaedf2',
+          paddingBottom: '16px',
         }}>
           <button
             onClick={onBack}
             style={{
               background: '#ffffff',
-              border: '1px solid #e2e8f0',
-              padding: '8px 20px',
-              borderRadius: '100px',
+              border: '1px solid #eaedf2',
+              padding: '8px 18px',
+              borderRadius: '30px',
               cursor: 'pointer',
-              fontSize: '14px',
-              fontWeight: '500',
-              color: '#475569',
-              fontFamily: "'Inter', 'Poppins', sans-serif",
+              fontSize: '13px',
+              fontWeight: '400',
+              color: '#5a6270',
+              fontFamily: "'Poppins', sans-serif",
               transition: 'all 0.2s ease',
             }}
             onMouseOver={(e) => {
@@ -5148,7 +4957,7 @@ That night, Sofia wrote in her journal: "Today, I learned that helping others fe
             }}
             onMouseOut={(e) => {
               e.currentTarget.style.background = '#ffffff';
-              e.currentTarget.style.borderColor = '#e2e8f0';
+              e.currentTarget.style.borderColor = '#eaedf2';
             }}
           >
             ← Back
@@ -5156,12 +4965,12 @@ That night, Sofia wrote in her journal: "Today, I learned that helping others fe
 
           <div style={{
             background: '#f8fafc',
-            padding: '8px 16px',
-            borderRadius: '100px',
-            border: '1px solid #e2e8f0',
-            fontSize: '14px',
-            color: '#0f172a',
-            fontWeight: '500',
+            padding: '6px 14px',
+            borderRadius: '20px',
+            border: '1px solid #eaedf2',
+            fontSize: '13px',
+            color: '#5a6270',
+            fontWeight: '400',
           }}>
             {stories.length} Stories Available
           </div>
@@ -5169,22 +4978,22 @@ That night, Sofia wrote in her journal: "Today, I learned that helping others fe
 
         <div style={{
           textAlign: 'center',
-          marginBottom: '48px',
+          marginBottom: '32px',
         }}>
           <h2 style={{
-            fontSize: '36px',
-            fontWeight: '700',
-            color: '#0f172a',
-            marginBottom: '12px',
-            fontFamily: "'Inter', 'Poppins', sans-serif",
+            fontSize: '28px',
+            fontWeight: '500',
+            color: '#2c3440',
+            marginBottom: '8px',
+            fontFamily: "'Poppins', sans-serif",
           }}>
             Choose Your Reading Adventure
           </h2>
           <p style={{
-            fontSize: '16px',
-            color: '#475569',
-            fontFamily: "'Inter', 'Poppins', sans-serif",
-            maxWidth: '600px',
+            fontSize: '14px',
+            color: '#6f7887',
+            fontFamily: "'Poppins', sans-serif",
+            maxWidth: '500px',
             margin: '0 auto',
           }}>
             Immerse yourself in stories while learning vocabulary in context
@@ -5193,8 +5002,8 @@ That night, Sofia wrote in her journal: "Today, I learned that helping others fe
 
         <div style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(360px, 1fr))',
-          gap: '24px'
+          gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+          gap: '20px'
         }}>
           {stories.map((story, index) => (
             <div
@@ -5202,75 +5011,71 @@ That night, Sofia wrote in her journal: "Today, I learned that helping others fe
               onClick={() => setSelectedStory(story)}
               style={{
                 background: '#ffffff',
-                border: '1px solid #e2e8f0',
-                borderRadius: '20px',
-                padding: '28px',
+                border: '1px solid #eaedf2',
+                borderRadius: '16px',
+                padding: '24px',
                 cursor: 'pointer',
-                transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                boxShadow: '0 4px 6px -2px rgba(0,0,0,0.02)',
-                fontFamily: "'Inter', 'Poppins', sans-serif",
-                animation: `slideIn 0.5s ease-out ${index * 0.1}s backwards`,
+                transition: 'all 0.2s ease',
+                animation: `slideIn 0.3s ease-out ${index * 0.1}s backwards`,
               }}
               onMouseOver={(e) => {
-                e.currentTarget.style.transform = 'translateY(-4px)';
-                e.currentTarget.style.boxShadow = '0 20px 30px -10px rgba(124, 111, 214, 0.2)';
                 e.currentTarget.style.borderColor = '#7c6fd6';
+                e.currentTarget.style.backgroundColor = '#faf9ff';
               }}
               onMouseOut={(e) => {
-                e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.boxShadow = '0 4px 6px -2px rgba(0,0,0,0.02)';
-                e.currentTarget.style.borderColor = '#e2e8f0';
+                e.currentTarget.style.borderColor = '#eaedf2';
+                e.currentTarget.style.backgroundColor = '#ffffff';
               }}
             >
               <div style={{
                 display: 'flex',
                 justifyContent: 'space-between',
                 alignItems: 'flex-start',
-                marginBottom: '20px',
+                marginBottom: '16px',
               }}>
                 <div style={{
-                  width: '64px',
-                  height: '64px',
+                  width: '56px',
+                  height: '56px',
                   background: '#f8f7ff',
-                  borderRadius: '16px',
+                  borderRadius: '12px',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  fontSize: '36px',
+                  fontSize: '32px',
                   color: '#7c6fd6',
                 }}>
                   {story.coverEmoji || '📚'}
                 </div>
 
                 <span style={{
-                  padding: '6px 14px',
-                  borderRadius: '100px',
-                  fontSize: '12px',
-                  fontWeight: '600',
+                  padding: '4px 10px',
+                  borderRadius: '12px',
+                  fontSize: '11px',
+                  fontWeight: '500',
                   background: '#f0edff',
                   color: '#7c6fd6',
-                  border: '1px solid #e6e0ff',
+                  border: '1px solid #eae8f0',
                 }}>
                   {story.genre}
                 </span>
               </div>
 
               <h3 style={{
-                fontSize: '22px',
-                fontWeight: '600',
-                color: '#0f172a',
-                marginBottom: '8px',
-                fontFamily: "'Inter', 'Poppins', sans-serif",
+                fontSize: '18px',
+                fontWeight: '500',
+                color: '#2c3440',
+                marginBottom: '6px',
+                fontFamily: "'Poppins', sans-serif",
               }}>
                 {story.title}
               </h3>
 
               <p style={{
-                fontSize: '14px',
-                color: '#475569',
-                marginBottom: '20px',
-                fontFamily: "'Inter', 'Poppins', sans-serif",
-                lineHeight: '1.6',
+                fontSize: '13px',
+                color: '#5a6270',
+                marginBottom: '16px',
+                fontFamily: "'Poppins', sans-serif",
+                lineHeight: '1.5',
               }}>
                 {story.description}
               </p>
@@ -5279,33 +5084,33 @@ That night, Sofia wrote in her journal: "Today, I learned that helping others fe
                 display: 'flex',
                 justifyContent: 'space-between',
                 alignItems: 'center',
-                marginBottom: '20px',
-                padding: '16px 0',
-                borderTop: '1px solid #e2e8f0',
-                borderBottom: '1px solid #e2e8f0',
+                marginBottom: '16px',
+                padding: '12px 0',
+                borderTop: '1px solid #eaedf2',
+                borderBottom: '1px solid #eaedf2',
               }}>
                 <div style={{
                   display: 'flex',
                   alignItems: 'center',
-                  gap: '8px',
-                  fontSize: '13px',
-                  color: '#64748b',
+                  gap: '6px',
+                  fontSize: '12px',
+                  color: '#8f9aab',
                 }}>
-                  <span style={{ fontSize: '18px' }}>✍️</span>
+                  <span style={{ fontSize: '16px' }}>✍️</span>
                   {story.author}
                 </div>
                 <div style={{
                   display: 'flex',
                   alignItems: 'center',
-                  gap: '6px',
-                  fontSize: '13px',
-                  fontWeight: '600',
+                  gap: '4px',
+                  fontSize: '12px',
+                  fontWeight: '500',
                   color: '#7c6fd6',
                   background: '#f8f7ff',
-                  padding: '6px 14px',
-                  borderRadius: '100px',
+                  padding: '4px 10px',
+                  borderRadius: '12px',
                 }}>
-                  <span style={{ fontSize: '16px' }}>📖</span>
+                  <span style={{ fontSize: '14px' }}>📖</span>
                   {story.chapters.length} Chapters
                 </div>
               </div>
@@ -5318,11 +5123,11 @@ That night, Sofia wrote in her journal: "Today, I learned that helping others fe
                 <div style={{
                   display: 'flex',
                   alignItems: 'center',
-                  gap: '8px',
-                  fontSize: '13px',
-                  color: '#475569',
+                  gap: '6px',
+                  fontSize: '12px',
+                  color: '#5a6270',
                 }}>
-                  <span style={{ fontSize: '18px', color: '#7c6fd6' }}>🎯</span>
+                  <span style={{ fontSize: '16px', color: '#7c6fd6' }}>🎯</span>
                   <span>{story.totalChapters || story.chapters.length} lessons</span>
                 </div>
 
@@ -5331,11 +5136,11 @@ That night, Sofia wrote in her journal: "Today, I learned that helping others fe
                   alignItems: 'center',
                   gap: '4px',
                   color: '#7c6fd6',
-                  fontSize: '14px',
-                  fontWeight: '500',
+                  fontSize: '13px',
+                  fontWeight: '400',
                 }}>
                   <span>Start Reading</span>
-                  <span style={{ fontSize: '18px' }}>→</span>
+                  <span style={{ fontSize: '16px' }}>→</span>
                 </div>
               </div>
             </div>
@@ -5356,72 +5161,69 @@ That night, Sofia wrote in her journal: "Today, I learned that helping others fe
 
     return (
       <div style={{
-        fontFamily: "'Inter', 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif",
-        maxWidth: '600px',
+        fontFamily: "'Poppins', sans-serif",
+        maxWidth: '500px',
         margin: '0 auto',
         padding: '24px',
-        color: '#0f172a',
       }}>
         <div style={{
           background: '#ffffff',
-          borderRadius: '24px',
-          padding: '40px',
-          boxShadow: '0 8px 24px rgba(124, 111, 214, 0.08)',
-          border: '1px solid #e6e0ff',
+          borderRadius: '16px',
+          padding: '32px',
+          border: '1px solid #eae8f0',
           textAlign: 'center'
         }}>
           <div style={{
             fontSize: '64px',
-            marginBottom: '20px',
-            animation: 'float 3s ease-in-out infinite'
+            marginBottom: '16px',
           }}>
             {isPerfect ? '🏆' : '📚'}
           </div>
 
           <h2 style={{
-            fontSize: '28px',
-            fontWeight: '600',
-            color: '#0f172a',
-            marginBottom: '8px',
-            fontFamily: "'Inter', 'Poppins', sans-serif"
+            fontSize: '24px',
+            fontWeight: '500',
+            color: '#2c3440',
+            marginBottom: '4px',
+            fontFamily: "'Poppins', sans-serif"
           }}>
             {isPerfect ? 'Perfect Story!' : 'Story Complete!'}
           </h2>
 
           <p style={{
-            fontSize: '16px',
-            color: '#475569',
-            marginBottom: '24px'
+            fontSize: '14px',
+            color: '#6f7887',
+            marginBottom: '20px'
           }}>
             You've finished "{selectedStory.title}"
           </p>
 
           <div style={{
-            background: '#f8f7ff',
-            borderRadius: '16px',
-            padding: '24px',
-            marginBottom: '28px',
-            border: '1px solid #e6e0ff'
+            background: '#f8fafc',
+            borderRadius: '12px',
+            padding: '20px',
+            marginBottom: '24px',
+            border: '1px solid #eaedf2',
           }}>
             <div style={{
               display: 'flex',
               justifyContent: 'space-between',
-              marginBottom: '16px',
-              fontSize: '15px'
+              marginBottom: '12px',
+              fontSize: '14px',
             }}>
-              <span style={{ color: '#475569' }}>Questions Correct</span>
-              <span style={{ fontWeight: '600', color: '#0f172a' }}>{correctAnswers}/{totalQuestions}</span>
+              <span style={{ color: '#5a6270' }}>Questions Correct</span>
+              <span style={{ fontWeight: '500', color: '#2c3440' }}>{correctAnswers}/{totalQuestions}</span>
             </div>
 
             <div style={{
               display: 'flex',
               justifyContent: 'space-between',
-              marginBottom: '16px',
-              fontSize: '15px'
+              marginBottom: '12px',
+              fontSize: '14px',
             }}>
-              <span style={{ color: '#475569' }}>Performance</span>
+              <span style={{ color: '#5a6270' }}>Performance</span>
               <span style={{
-                fontWeight: '600',
+                fontWeight: '500',
                 color: isPerfect ? '#22c55e' : '#7c6fd6'
               }}>
                 {isPerfect ? 'Perfect!' : 'Good Job!'}
@@ -5431,12 +5233,12 @@ That night, Sofia wrote in her journal: "Today, I learned that helping others fe
             <div style={{
               display: 'flex',
               justifyContent: 'space-between',
-              paddingTop: '16px',
-              borderTop: '1px solid #e6e0ff',
-              fontSize: '18px',
-              fontWeight: '700'
+              paddingTop: '12px',
+              borderTop: '1px solid #eaedf2',
+              fontSize: '16px',
+              fontWeight: '500'
             }}>
-              <span style={{ color: '#475569' }}>Points Earned</span>
+              <span style={{ color: '#5a6270' }}>Points Earned</span>
               <span style={{ color: '#7c6fd6' }}>{pointsEarned} / 5</span>
             </div>
           </div>
@@ -5445,25 +5247,22 @@ That night, Sofia wrote in her journal: "Today, I learned that helping others fe
             onClick={handleCompleteStory}
             style={{
               width: '100%',
-              padding: '16px',
-              background: 'linear-gradient(135deg, #7c6fd6 0%, #6b5ec5 100%)',
-              color: 'white',
+              padding: '12px',
+              background: '#7c6fd6',
+              color: '#ffffff',
               border: 'none',
-              borderRadius: '100px',
+              borderRadius: '30px',
               cursor: 'pointer',
-              fontSize: '16px',
-              fontWeight: '600',
-              fontFamily: "'Inter', 'Poppins', sans-serif",
-              boxShadow: '0 8px 20px rgba(124, 111, 214, 0.3)',
+              fontSize: '14px',
+              fontWeight: '400',
+              fontFamily: "'Poppins', sans-serif",
               transition: 'all 0.2s ease'
             }}
             onMouseOver={(e) => {
-              e.currentTarget.style.transform = 'translateY(-2px)';
-              e.currentTarget.style.boxShadow = '0 12px 28px rgba(124, 111, 214, 0.4)';
+              e.currentTarget.style.background = '#6b5ec5';
             }}
             onMouseOut={(e) => {
-              e.currentTarget.style.transform = 'translateY(0)';
-              e.currentTarget.style.boxShadow = '0 8px 20px rgba(124, 111, 214, 0.3)';
+              e.currentTarget.style.background = '#7c6fd6';
             }}
           >
             Back to Library
@@ -5480,54 +5279,51 @@ That night, Sofia wrote in her journal: "Today, I learned that helping others fe
 
     return (
       <div style={{
-        fontFamily: "'Inter', 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif",
-        maxWidth: '800px',
+        fontFamily: "'Poppins', sans-serif",
+        maxWidth: '700px',
         margin: '0 auto',
         padding: '24px',
-        color: '#0f172a',
       }}>
         <div style={{
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
-          marginBottom: '32px',
-          borderBottom: '1px solid #e2e8f0',
-          paddingBottom: '20px',
+          marginBottom: '24px',
+          borderBottom: '1px solid #eaedf2',
+          paddingBottom: '16px',
         }}>
           <button
             onClick={() => setShowQuiz(false)}
             style={{
               background: '#ffffff',
-              border: '1px solid #e2e8f0',
-              padding: '8px 20px',
-              borderRadius: '100px',
+              border: '1px solid #eaedf2',
+              padding: '8px 18px',
+              borderRadius: '30px',
               cursor: 'pointer',
-              fontSize: '14px',
-              fontWeight: '500',
-              color: '#475569',
-              fontFamily: "'Inter', 'Poppins', sans-serif",
+              fontSize: '13px',
+              fontWeight: '400',
+              color: '#5a6270',
+              fontFamily: "'Poppins', sans-serif",
               transition: 'all 0.2s ease',
             }}
             onMouseOver={(e) => {
               e.currentTarget.style.background = '#f8fafc';
-              e.currentTarget.style.borderColor = '#cbd5e1';
             }}
             onMouseOut={(e) => {
               e.currentTarget.style.background = '#ffffff';
-              e.currentTarget.style.borderColor = '#e2e8f0';
             }}
           >
             ← Back to Story
           </button>
 
           <div style={{
-            fontSize: '16px',
-            fontWeight: '600',
+            fontSize: '14px',
+            fontWeight: '500',
             background: '#f8f7ff',
             color: '#7c6fd6',
-            padding: '8px 16px',
-            borderRadius: '100px',
-            border: '1px solid #e6e0ff',
+            padding: '6px 14px',
+            borderRadius: '20px',
+            border: '1px solid #eae8f0',
           }}>
             Score: {quizScore}/{totalQuestions}
           </div>
@@ -5535,61 +5331,59 @@ That night, Sofia wrote in her journal: "Today, I learned that helping others fe
 
         <div style={{
           background: '#ffffff',
-          borderRadius: '24px',
-          padding: '32px',
-          boxShadow: '0 8px 24px rgba(124, 111, 214, 0.08)',
-          border: '1px solid #e6e0ff',
+          borderRadius: '16px',
+          padding: '28px',
+          border: '1px solid #eae8f0',
         }}>
           <div style={{
             textAlign: 'center',
-            marginBottom: '32px'
+            marginBottom: '24px'
           }}>
             <div style={{
-              fontSize: '48px',
-              marginBottom: '16px',
-              animation: 'float 3s ease-in-out infinite'
+              fontSize: '40px',
+              marginBottom: '12px',
             }}>
               🤔
             </div>
             <h2 style={{
-              fontSize: '24px',
-              fontWeight: '600',
-              color: '#0f172a',
-              marginBottom: '8px',
-              fontFamily: "'Inter', 'Poppins', sans-serif",
+              fontSize: '20px',
+              fontWeight: '500',
+              color: '#2c3440',
+              marginBottom: '4px',
+              fontFamily: "'Poppins', sans-serif",
             }}>
               Chapter {currentChapter + 1} Quiz
             </h2>
             {isLastQuiz && (
               <div style={{
                 background: '#f0edff',
-                padding: '8px 16px',
-                borderRadius: '100px',
+                padding: '6px 12px',
+                borderRadius: '20px',
                 display: 'inline-block',
-                marginTop: '8px',
-                fontSize: '13px',
+                marginTop: '4px',
+                fontSize: '12px',
                 color: '#7c6fd6',
-                fontWeight: '500'
+                fontWeight: '400'
               }}>
                 ⭐ Final Quiz - Complete for Story Points!
               </div>
             )}
           </div>
 
-          <div style={{ marginBottom: '32px' }}>
+          <div style={{ marginBottom: '24px' }}>
             <div style={{
               background: '#f8fafc',
-              padding: '24px',
-              borderRadius: '16px',
-              marginBottom: '24px',
-              border: '1px solid #e2e8f0',
+              padding: '20px',
+              borderRadius: '12px',
+              marginBottom: '20px',
+              border: '1px solid #eaedf2',
             }}>
               <h3 style={{
-                fontSize: '18px',
-                fontWeight: '600',
-                color: '#0f172a',
+                fontSize: '16px',
+                fontWeight: '500',
+                color: '#2c3440',
                 marginBottom: '0',
-                fontFamily: "'Inter', 'Poppins', sans-serif",
+                fontFamily: "'Poppins', sans-serif",
                 lineHeight: '1.5',
                 textAlign: 'center'
               }}>
@@ -5597,11 +5391,11 @@ That night, Sofia wrote in her journal: "Today, I learned that helping others fe
               </h3>
             </div>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
               {quizQuestion.options.map((option, idx) => {
                 let bgColor = '#ffffff';
-                let borderColor = '#e2e8f0';
-                let textColor = '#0f172a';
+                let borderColor = '#eaedf2';
+                let textColor = '#2c3440';
 
                 if (quizAnswered) {
                   if (idx === quizQuestion.correct) {
@@ -5621,50 +5415,48 @@ That night, Sofia wrote in her journal: "Today, I learned that helping others fe
                     onClick={() => handleQuizAnswer(idx)}
                     disabled={quizAnswered}
                     style={{
-                      padding: '16px 20px',
+                      padding: '14px 18px',
                       border: `1px solid ${borderColor}`,
-                      borderRadius: '14px',
+                      borderRadius: '12px',
                       background: bgColor,
                       textAlign: 'left',
-                      fontSize: '15px',
-                      fontWeight: '500',
+                      fontSize: '14px',
+                      fontWeight: '400',
                       color: textColor,
                       cursor: quizAnswered ? 'default' : 'pointer',
-                      fontFamily: "'Inter', 'Poppins', sans-serif",
+                      fontFamily: "'Poppins', sans-serif",
                       transition: 'all 0.2s ease',
                       display: 'flex',
                       alignItems: 'center',
-                      gap: '12px',
+                      gap: '10px',
                     }}
                     onMouseOver={(e) => {
                       if (!quizAnswered) {
                         e.currentTarget.style.background = '#f8fafc';
                         e.currentTarget.style.borderColor = '#7c6fd6';
-                        e.currentTarget.style.transform = 'translateY(-1px)';
                       }
                     }}
                     onMouseOut={(e) => {
                       if (!quizAnswered) {
                         e.currentTarget.style.background = '#ffffff';
-                        e.currentTarget.style.borderColor = '#e2e8f0';
-                        e.currentTarget.style.transform = 'translateY(0)';
+                        e.currentTarget.style.borderColor = '#eaedf2';
                       }
                     }}
                   >
                     <span style={{
-                      fontWeight: '600',
+                      fontWeight: '500',
                       color: quizAnswered ? (idx === quizQuestion.correct ? '#22c55e' : '#ef4444') : '#7c6fd6',
-                      fontSize: '16px',
-                      minWidth: '28px',
+                      minWidth: '24px',
+                      fontSize: '14px',
                     }}>
                       {String.fromCharCode(65 + idx)}.
                     </span>
                     <span style={{ flex: 1 }}>{option}</span>
                     {quizAnswered && idx === quizQuestion.correct && (
-                      <span style={{ color: '#22c55e', fontSize: '20px' }}>✓</span>
+                      <span style={{ color: '#22c55e', fontSize: '18px' }}>✓</span>
                     )}
                     {quizAnswered && idx !== quizQuestion.correct && (
-                      <span style={{ color: '#ef4444', fontSize: '20px' }}>✗</span>
+                      <span style={{ color: '#ef4444', fontSize: '18px' }}>✗</span>
                     )}
                   </button>
                 );
@@ -5677,14 +5469,14 @@ That night, Sofia wrote in her journal: "Today, I learned that helping others fe
               {isLastQuiz && (
                 <div style={{
                   background: '#f0edff',
-                  padding: '16px',
-                  borderRadius: '16px',
-                  marginBottom: '20px',
-                  border: '1px solid #e6e0ff',
+                  padding: '14px',
+                  borderRadius: '12px',
+                  marginBottom: '16px',
+                  border: '1px solid #eae8f0',
                 }}>
                   <p style={{
-                    fontSize: '14px',
-                    fontWeight: '500',
+                    fontSize: '13px',
+                    fontWeight: '400',
                     color: '#7c6fd6',
                     margin: 0,
                   }}>
@@ -5697,27 +5489,22 @@ That night, Sofia wrote in her journal: "Today, I learned that helping others fe
                 onClick={handleContinueStory}
                 style={{
                   width: '100%',
-                  padding: '16px',
-                  background: '#0f172a',
-                  color: 'white',
+                  padding: '12px',
+                  background: '#7c6fd6',
+                  color: '#ffffff',
                   border: 'none',
-                  borderRadius: '100px',
+                  borderRadius: '30px',
                   cursor: 'pointer',
-                  fontSize: '16px',
-                  fontWeight: '600',
-                  fontFamily: "'Inter', 'Poppins', sans-serif",
-                  boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+                  fontSize: '14px',
+                  fontWeight: '400',
+                  fontFamily: "'Poppins', sans-serif",
                   transition: 'all 0.2s ease',
                 }}
                 onMouseOver={(e) => {
-                  e.currentTarget.style.background = '#1e293b';
-                  e.currentTarget.style.transform = 'translateY(-1px)';
-                  e.currentTarget.style.boxShadow = '0 6px 16px rgba(0,0,0,0.15)';
+                  e.currentTarget.style.background = '#6b5ec5';
                 }}
                 onMouseOut={(e) => {
-                  e.currentTarget.style.background = '#0f172a';
-                  e.currentTarget.style.transform = 'translateY(0)';
-                  e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.1)';
+                  e.currentTarget.style.background = '#7c6fd6';
                 }}
               >
                 {isLastQuiz ? 'Complete Story' : 'Continue to Next Chapter'}
@@ -5731,81 +5518,78 @@ That night, Sofia wrote in her journal: "Today, I learned that helping others fe
 
   return (
     <div style={{
-      fontFamily: "'Inter', 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif",
-      maxWidth: '900px',
+      fontFamily: "'Poppins', sans-serif",
+      maxWidth: '800px',
       margin: '0 auto',
       padding: '24px',
-      color: '#0f172a',
     }}>
       <div style={{
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
-        marginBottom: '32px',
-        borderBottom: '1px solid #e2e8f0',
-        paddingBottom: '20px',
+        marginBottom: '24px',
+        borderBottom: '1px solid #eaedf2',
+        paddingBottom: '16px',
       }}>
         <button
           onClick={() => setSelectedStory(null)}
           style={{
             background: '#ffffff',
-            border: '1px solid #e2e8f0',
-            padding: '8px 20px',
-            borderRadius: '100px',
+            border: '1px solid #eaedf2',
+            padding: '8px 18px',
+            borderRadius: '30px',
             cursor: 'pointer',
-            fontSize: '14px',
-            fontWeight: '500',
-            color: '#475569',
-            fontFamily: "'Inter', 'Poppins', sans-serif",
+            fontSize: '13px',
+            fontWeight: '400',
+            color: '#5a6270',
+            fontFamily: "'Poppins', sans-serif",
             transition: 'all 0.2s ease',
           }}
           onMouseOver={(e) => {
             e.currentTarget.style.background = '#f8fafc';
-            e.currentTarget.style.borderColor = '#cbd5e1';
           }}
           onMouseOut={(e) => {
             e.currentTarget.style.background = '#ffffff';
-            e.currentTarget.style.borderColor = '#e2e8f0';
           }}
         >
           ← Back to Library
         </button>
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-          <span style={{ fontSize: '24px', color: '#7c6fd6' }}>{selectedStory.coverEmoji || '📚'}</span>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <span style={{ fontSize: '22px', color: '#7c6fd6' }}>{selectedStory.coverEmoji || '📚'}</span>
           <h1 style={{
-            fontSize: '22px',
-            fontWeight: '600',
-            color: '#0f172a',
+            fontSize: '20px',
+            fontWeight: '500',
+            color: '#2c3440',
             margin: '0',
-            fontFamily: "'Inter', 'Poppins', sans-serif",
+            fontFamily: "'Poppins', sans-serif",
           }}>
             {selectedStory.title}
           </h1>
         </div>
 
         <div style={{
-          fontSize: '14px',
-          fontWeight: '500',
+          fontSize: '13px',
+          fontWeight: '400',
           background: '#f8f7ff',
           color: '#7c6fd6',
-          padding: '8px 16px',
-          borderRadius: '100px',
-          border: '1px solid #e6e0ff',
+          padding: '6px 14px',
+          borderRadius: '20px',
+          border: '1px solid #eae8f0',
         }}>
           Chapter {currentChapter + 1}/{selectedStory.chapters.length}
         </div>
       </div>
 
       <div style={{
-        marginBottom: '32px',
+        marginBottom: '24px',
       }}>
         <div style={{
           display: 'flex',
           justifyContent: 'space-between',
-          marginBottom: '8px',
-          fontSize: '13px',
-          color: '#64748b',
+          marginBottom: '6px',
+          fontSize: '12px',
+          color: '#8f9aab',
         }}>
           <span>Reading Progress</span>
           <span>{Math.round(((currentChapter + 1) / selectedStory.chapters.length) * 100)}%</span>
@@ -5813,8 +5597,8 @@ That night, Sofia wrote in her journal: "Today, I learned that helping others fe
         <div style={{
           width: '100%',
           height: '6px',
-          background: '#f1f5f9',
-          borderRadius: '100px',
+          background: '#f2f4f8',
+          borderRadius: '8px',
           overflow: 'hidden',
         }}>
           <div style={{
@@ -5822,79 +5606,78 @@ That night, Sofia wrote in her journal: "Today, I learned that helping others fe
             background: 'linear-gradient(90deg, #7c6fd6, #9b8de8)',
             width: `${((currentChapter + 1) / selectedStory.chapters.length) * 100}%`,
             transition: 'width 0.3s ease',
-            borderRadius: '100px',
+            borderRadius: '8px',
           }} />
         </div>
       </div>
 
       <div style={{
         background: '#ffffff',
-        borderRadius: '24px',
-        padding: '40px',
-        boxShadow: '0 8px 24px rgba(0,0,0,0.02)',
-        border: '1px solid #e2e8f0',
-        marginBottom: '24px'
+        borderRadius: '16px',
+        padding: '32px',
+        border: '1px solid #eae8f0',
+        marginBottom: '20px'
       }}>
         <div style={{
           textAlign: 'center',
-          marginBottom: '32px',
+          marginBottom: '24px',
         }}>
           <h2 style={{
-            fontSize: '28px',
-            fontWeight: '600',
-            color: '#0f172a',
-            marginBottom: '12px',
-            fontFamily: "'Inter', 'Poppins', sans-serif",
+            fontSize: '22px',
+            fontWeight: '500',
+            color: '#2c3440',
+            marginBottom: '8px',
+            fontFamily: "'Poppins', sans-serif",
           }}>
             {currentChapterData.title}
           </h2>
           <div style={{
-            padding: '8px 20px',
-            borderRadius: '100px',
-            fontSize: '13px',
-            fontWeight: '500',
+            padding: '6px 16px',
+            borderRadius: '20px',
+            fontSize: '12px',
+            fontWeight: '400',
             background: '#f8f7ff',
             color: '#7c6fd6',
             display: 'inline-block',
-            border: '1px solid #e6e0ff',
+            border: '1px solid #eae8f0',
           }}>
             {selectedStory.genre} • Part {currentChapter + 1}
           </div>
         </div>
 
         <div style={{
-          fontSize: '16px',
-          lineHeight: '1.8',
-          color: '#334155',
-          marginBottom: '40px',
-          fontFamily: "'Inter', 'Poppins', sans-serif",
-          padding: '20px',
+          fontSize: '14px',
+          lineHeight: '1.7',
+          color: '#5a6270',
+          marginBottom: '32px',
+          fontFamily: "'Poppins', sans-serif",
+          padding: '16px',
           background: '#f8fafc',
-          borderRadius: '16px',
-          border: '1px solid #e2e8f0',
+          borderRadius: '12px',
+          border: '1px solid #eaedf2',
         }}>
           <div dangerouslySetInnerHTML={{ __html: currentChapterData.content }} />
         </div>
 
         <div style={{
           background: '#f8f7ff',
-          borderRadius: '20px',
-          padding: '28px',
-          marginBottom: '28px',
-          border: '1px solid #e6e0ff',
+          borderRadius: '16px',
+          padding: '24px',
+          marginBottom: '24px',
+          border: '1px solid #eae8f0',
           position: 'relative',
         }}>
           <div style={{
             position: 'absolute',
-            top: '-12px',
-            left: '24px',
+            top: '-10px',
+            left: '20px',
             background: '#7c6fd6',
-            padding: '6px 20px',
-            borderRadius: '100px',
-            color: 'white',
-            fontWeight: '600',
-            fontSize: '14px',
-            boxShadow: '0 4px 10px rgba(124, 111, 214, 0.2)',
+            padding: '4px 16px',
+            borderRadius: '20px',
+            color: '#ffffff',
+            fontWeight: '400',
+            fontSize: '13px',
+            boxShadow: '0 2px 8px rgba(124, 111, 214, 0.2)',
           }}>
             Words to Remember
           </div>
@@ -5902,8 +5685,8 @@ That night, Sofia wrote in her journal: "Today, I learned that helping others fe
           <div style={{
             display: 'flex',
             flexWrap: 'wrap',
-            gap: '10px',
-            marginTop: '20px'
+            gap: '8px',
+            marginTop: '16px'
           }}>
             {(() => {
               const wordMatches = currentChapterData.content.match(/<span class="vocab-word[^"]*"[^>]*>([^<]+)<\/span>/g);
@@ -5911,27 +5694,24 @@ That night, Sofia wrote in her journal: "Today, I learned that helping others fe
                 const uniqueWords = [...new Set(wordMatches.map(match => match.replace(/<[^>]+>/g, '')))];
                 return uniqueWords.map((word, i) => (
                   <span key={i} style={{
-                    background: 'white',
-                    padding: '8px 20px',
-                    borderRadius: '100px',
-                    fontSize: '13px',
-                    fontWeight: '500',
+                    background: '#ffffff',
+                    padding: '6px 16px',
+                    borderRadius: '20px',
+                    fontSize: '12px',
+                    fontWeight: '400',
                     color: '#7c6fd6',
-                    border: '1px solid #e6e0ff',
-                    boxShadow: '0 2px 6px rgba(124, 111, 214, 0.05)',
+                    border: '1px solid #eae8f0',
                     display: 'inline-flex',
                     alignItems: 'center',
-                    gap: '8px',
+                    gap: '6px',
                     transition: 'all 0.2s ease',
                     cursor: 'default',
                   }}
                     onMouseOver={(e) => {
                       e.currentTarget.style.background = '#f0edff';
-                      e.currentTarget.style.transform = 'scale(1.05)';
                     }}
                     onMouseOut={(e) => {
-                      e.currentTarget.style.background = 'white';
-                      e.currentTarget.style.transform = 'scale(1)';
+                      e.currentTarget.style.background = '#ffffff';
                     }}>
                     {word}
                   </span>
@@ -5942,9 +5722,9 @@ That night, Sofia wrote in her journal: "Today, I learned that helping others fe
           </div>
 
           <p style={{
-            fontSize: '13px',
-            color: '#64748b',
-            marginTop: '24px',
+            fontSize: '12px',
+            color: '#8f9aab',
+            marginTop: '20px',
             marginBottom: '0',
             fontStyle: 'italic',
           }}>
@@ -5956,37 +5736,32 @@ That night, Sofia wrote in her journal: "Today, I learned that helping others fe
           onClick={() => setShowQuiz(true)}
           style={{
             width: '100%',
-            padding: '16px',
-            background: '#0f172a',
-            color: 'white',
+            padding: '12px',
+            background: '#7c6fd6',
+            color: '#ffffff',
             border: 'none',
-            borderRadius: '100px',
+            borderRadius: '30px',
             cursor: 'pointer',
-            fontSize: '16px',
-            fontWeight: '600',
-            fontFamily: "'Inter', 'Poppins', sans-serif",
-            boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+            fontSize: '14px',
+            fontWeight: '400',
+            fontFamily: "'Poppins', sans-serif",
             transition: 'all 0.2s ease',
           }}
           onMouseOver={(e) => {
-            e.currentTarget.style.background = '#1e293b';
-            e.currentTarget.style.transform = 'translateY(-2px)';
-            e.currentTarget.style.boxShadow = '0 8px 20px rgba(0,0,0,0.15)';
+            e.currentTarget.style.background = '#6b5ec5';
           }}
           onMouseOut={(e) => {
-            e.currentTarget.style.background = '#0f172a';
-            e.currentTarget.style.transform = 'translateY(0)';
-            e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.1)';
+            e.currentTarget.style.background = '#7c6fd6';
           }}
         >
           Chapter Quiz
           {isLastChapter && (
             <span style={{
               background: 'rgba(255,255,255,0.2)',
-              padding: '4px 12px',
-              borderRadius: '100px',
-              fontSize: '13px',
-              fontWeight: '500',
+              padding: '4px 10px',
+              borderRadius: '20px',
+              fontSize: '12px',
+              fontWeight: '400',
               marginLeft: '8px'
             }}>
               Final Quiz
@@ -5997,38 +5772,37 @@ That night, Sofia wrote in her journal: "Today, I learned that helping others fe
 
       {isLastChapter && !showQuiz && (
         <div style={{
-          background: 'linear-gradient(135deg, #f8f7ff 0%, #ffffff 100%)',
-          borderRadius: '24px',
-          padding: '32px',
+          background: '#ffffff',
+          borderRadius: '16px',
+          padding: '24px',
           textAlign: 'center',
-          border: '2px solid #e6e0ff',
-          boxShadow: '0 8px 24px rgba(124, 111, 214, 0.1)',
-          marginTop: '20px',
+          border: '1px solid #eae8f0',
+          marginTop: '16px',
         }}>
           <h2 style={{
-            fontSize: '24px',
-            fontWeight: '600',
-            color: '#0f172a',
-            margin: '0 0 8px 0',
+            fontSize: '18px',
+            fontWeight: '500',
+            color: '#2c3440',
+            margin: '0 0 4px 0',
           }}>
             Almost a Story Master!
           </h2>
           <p style={{
-            fontSize: '14px',
-            color: '#475569',
-            marginBottom: '20px',
-            lineHeight: '1.6',
+            fontSize: '13px',
+            color: '#6f7887',
+            marginBottom: '16px',
+            lineHeight: '1.5',
           }}>
             Complete the final quiz to earn story points!
           </p>
           <div style={{
             background: '#f0edff',
-            padding: '12px',
-            borderRadius: '100px',
+            padding: '8px 16px',
+            borderRadius: '20px',
             display: 'inline-block',
-            fontSize: '14px',
+            fontSize: '13px',
             color: '#7c6fd6',
-            fontWeight: '500'
+            fontWeight: '400'
           }}>
             ⭐ Complete all quizzes correctly for 5 points
           </div>
@@ -6039,14 +5813,17 @@ That night, Sofia wrote in her journal: "Today, I learned that helping others fe
 };
 
 const SentenceBuilder = ({ onBack }) => {
+  const [gameState, setGameState] = useState('intro');
   const [currentIndex, setCurrentIndex] = useState(0);
   const [score, setScore] = useState(0);
   const [selectedWord, setSelectedWord] = useState(null);
   const [answered, setAnswered] = useState(false);
-  const [showWelcome, setShowWelcome] = useState(true);
   const [selectedCategory, setSelectedCategory] = useState('all');
+  const [streak, setStreak] = useState(0);
+  const [feedbackMessage, setFeedbackMessage] = useState('');
+  const [showFeedback, setShowFeedback] = useState(false);
 
-  // Define categories matching GuessWhat style
+  // Define categories
   const categories = [
     { id: 'all', name: 'All Sentences', icon: '📝', color: '#7c6fd6' },
     { id: 'collaboration', name: 'Collaboration', icon: '🤝', color: '#ff6b6b' },
@@ -6056,7 +5833,7 @@ const SentenceBuilder = ({ onBack }) => {
     { id: 'summary', name: 'Summary', icon: '📋', color: '#a06cd5' },
   ];
 
-  // Enhanced sentences with categories matching GuessWhat structure
+  // Enhanced sentences with categories
   const allSentences = [
     {
       id: 1,
@@ -6165,14 +5942,22 @@ const SentenceBuilder = ({ onBack }) => {
   const progress = sentences.length > 0 ? ((currentIndex + 1) / sentences.length) * 100 : 0;
 
   const handleAnswer = (word) => {
-    if (!answered) {
+    if (!answered && current) {
       setSelectedWord(word);
       setAnswered(true);
 
       const isCorrect = word === current.correct;
       if (isCorrect) {
         setScore(score + 1);
+        setStreak(streak + 1);
+        setFeedbackMessage('✅ Correct! Great job!');
+      } else {
+        setStreak(0);
+        setFeedbackMessage(`❌ Oops! The correct word is "${current.correct}"`);
       }
+      
+      setShowFeedback(true);
+      setTimeout(() => setShowFeedback(false), 2000);
 
       const savedProgress = localStorage.getItem('vocaboplay_progress');
       const currentProgress = savedProgress ? JSON.parse(savedProgress) : null;
@@ -6202,97 +5987,100 @@ const SentenceBuilder = ({ onBack }) => {
   };
 
   const handleNext = () => {
-  if (currentQuestionIndex < filteredQuestions.length - 1) {
-    setCurrentQuestionIndex(currentQuestionIndex + 1);
-    setAnswered(false);
-    setSelectedAnswer(null);
-  } else {
-    // Game finished
-    setGameState('finished');
-    
-    // Update final stats
-    const savedProgress = localStorage.getItem('vocaboplay_progress');
-    const currentProgress = savedProgress ? JSON.parse(savedProgress) : null;
-    
-    if (currentProgress) {
-      const updates = {
-        gamesPlayed: (currentProgress.gamesPlayed || 0) + 1,
-        wordPics: {
-          ...currentProgress.wordPics,
-          gamesCompleted: (currentProgress.wordPics?.gamesCompleted || 0) + 1,
-          totalScore: (currentProgress.wordPics?.totalScore || 0) + score
-        }
-      };
+    if (currentIndex < sentences.length - 1) {
+      setCurrentIndex(currentIndex + 1);
+      setAnswered(false);
+      setSelectedWord(null);
+    } else {
+      setGameState('finished');
       
-      if (score === filteredQuestions.length) {
-        updates.achievements = {
-          ...currentProgress.achievements,
-          perfectScore: true
+      const savedProgress = localStorage.getItem('vocaboplay_progress');
+      const currentProgress = savedProgress ? JSON.parse(savedProgress) : null;
+      
+      if (currentProgress) {
+        const updates = {
+          gamesPlayed: (currentProgress.gamesPlayed || 0) + 1,
+          sentenceBuilder: {
+            ...currentProgress.sentenceBuilder,
+            gamesCompleted: (currentProgress.sentenceBuilder?.gamesCompleted || 0) + 1,
+            bestScore: Math.max(currentProgress.sentenceBuilder?.bestScore || 0, score)
+          }
         };
-        updates.xp = (currentProgress.xp || 0) + 40;
-        updates.totalPoints = (currentProgress.totalPoints || 0) + 120;
-      } else {
-        updates.xp = (currentProgress.xp || 0) + 20;
-        updates.totalPoints = (currentProgress.totalPoints || 0) + 50;
+        
+        if (score === sentences.length) {
+          updates.achievements = {
+            ...currentProgress.achievements,
+            perfectScore: true
+          };
+          updates.xp = (currentProgress.xp || 0) + 40;
+          updates.totalPoints = (currentProgress.totalPoints || 0) + 120;
+        } else {
+          updates.xp = (currentProgress.xp || 0) + 20;
+          updates.totalPoints = (currentProgress.totalPoints || 0) + 50;
+        }
+        
+        updateProgress(updates);
       }
-      
-      updateProgress(updates);
     }
-  }
-};
+  };
 
-  // Intro Screen - Matching GuessWhat exactly
+  const handleRestart = () => {
+    setGameState('intro');
+    setCurrentIndex(0);
+    setScore(0);
+    setAnswered(false);
+    setSelectedWord(null);
+    setStreak(0);
+  };
+
+  // INTRO SCREEN
   if (gameState === 'intro') {
     return (
-      <div style={{ fontFamily: "'Inter', 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif", maxWidth: '900px', margin: '0 auto', padding: '24px' }}>
-
-        {/* Hero Section - Matching GuessWhat */}
+      <div style={{ fontFamily: "'Poppins', sans-serif", maxWidth: '900px', margin: '0 auto', padding: '24px' }}>
+        {/* Hero Section */}
         <div style={{
-          background: 'linear-gradient(135deg, #f8f7ff 0%, #ffffff 100%)',
-          borderRadius: '24px',
-          padding: '40px',
-          marginBottom: '32px',
-          border: '1px solid #e6e0ff',
-          boxShadow: '0 8px 24px rgba(124, 111, 214, 0.08)',
+          background: '#ffffff',
+          borderRadius: '16px',
+          padding: '32px',
+          marginBottom: '24px',
+          border: '1px solid #eaedf2',
           textAlign: 'center'
         }}>
-          <div style={{ fontSize: '64px', marginBottom: '20px', animation: 'float 3s ease-in-out infinite' }}>📝</div>
+          <div style={{ fontSize: '64px', marginBottom: '16px', color: '#7c6fd6' }}>📝</div>
           <h2 style={{
             fontSize: '28px',
-            fontWeight: '600',
-            color: '#0f172a',
-            marginBottom: '12px',
-            fontFamily: "'Inter', 'Poppins', sans-serif"
+            fontWeight: '500',
+            color: '#2c3440',
+            marginBottom: '8px',
+            fontFamily: "'Poppins', sans-serif"
           }}>
             Welcome to Sentence Builder!
           </h2>
           <p style={{
-            fontSize: '16px',
-            color: '#475569',
+            fontSize: '14px',
+            color: '#6f7887',
             lineHeight: '1.6',
             marginBottom: '24px',
-            fontFamily: "'Inter', 'Poppins', sans-serif",
-            maxWidth: '600px',
+            maxWidth: '500px',
             margin: '0 auto 24px'
           }}>
             Complete each sentence by choosing the correct vocabulary word. Practice using words in context.
           </p>
 
-          {/* How to Play - Matching GuessWhat */}
           <div style={{
             background: '#f8fafc',
-            borderRadius: '16px',
-            padding: '24px',
-            marginBottom: '28px',
+            borderRadius: '12px',
+            padding: '20px',
+            marginBottom: '24px',
             textAlign: 'left',
-            border: '1px solid #e2e8f0'
+            border: '1px solid #eaedf2'
           }}>
             <h3 style={{
-              fontSize: '16px',
-              fontWeight: '600',
+              fontSize: '15px',
+              fontWeight: '500',
               color: '#7c6fd6',
-              marginBottom: '16px',
-              fontFamily: "'Inter', 'Poppins', sans-serif",
+              marginBottom: '12px',
+              fontFamily: "'Poppins', sans-serif",
               display: 'flex',
               alignItems: 'center',
               gap: '8px'
@@ -6301,10 +6089,10 @@ const SentenceBuilder = ({ onBack }) => {
             </h3>
             <ul style={{
               paddingLeft: '20px',
-              fontSize: '14px',
-              color: '#475569',
+              fontSize: '13px',
+              color: '#5a6270',
               lineHeight: '1.8',
-              fontFamily: "'Inter', 'Poppins', sans-serif",
+              fontFamily: "'Poppins', sans-serif",
               margin: 0
             }}>
               <li>Choose a category below or practice with all sentences</li>
@@ -6316,26 +6104,21 @@ const SentenceBuilder = ({ onBack }) => {
           </div>
         </div>
 
-        {/* Categories Section - Matching GuessWhat exactly */}
-        <div style={{ marginBottom: '32px' }}>
+        {/* Categories Section */}
+        <div style={{ marginBottom: '24px' }}>
           <h3 style={{
-            fontSize: '16px',
-            fontWeight: '600',
-            color: '#0f172a',
-            marginBottom: '16px',
-            fontFamily: "'Inter', 'Poppins', sans-serif",
-            display: 'flex',
-            alignItems: 'center',
-            gap: '8px'
+            fontSize: '15px',
+            fontWeight: '500',
+            color: '#2c3440',
+            marginBottom: '12px',
           }}>
             Choose a Category
           </h3>
 
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))',
-            gap: '12px',
-            marginBottom: '24px'
+            gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))',
+            gap: '8px'
           }}>
             {categories.map(category => {
               const count = category.id === 'all'
@@ -6347,49 +6130,29 @@ const SentenceBuilder = ({ onBack }) => {
                   key={category.id}
                   onClick={() => {
                     setSelectedCategory(category.id);
-                    setGameState('intro');
                   }}
                   style={{
-                    background: selectedCategory === category.id ? category.color : '#ffffff',
-                    border: `1px solid ${selectedCategory === category.id ? category.color : '#e2e8f0'}`,
-                    borderRadius: '16px',
-                    padding: '16px 12px',
+                    background: selectedCategory === category.id ? `${category.color}15` : '#ffffff',
+                    border: `1px solid ${selectedCategory === category.id ? category.color : '#eaedf2'}`,
+                    borderRadius: '12px',
+                    padding: '12px',
                     cursor: 'pointer',
                     transition: 'all 0.2s ease',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    gap: '8px',
-                    boxShadow: selectedCategory === category.id ? '0 4px 12px rgba(124, 111, 214, 0.2)' : 'none',
-                  }}
-                  onMouseOver={(e) => {
-                    if (selectedCategory !== category.id) {
-                      e.currentTarget.style.background = '#f8fafc';
-                      e.currentTarget.style.borderColor = '#cbd5e1';
-                    }
-                  }}
-                  onMouseOut={(e) => {
-                    if (selectedCategory !== category.id) {
-                      e.currentTarget.style.background = '#ffffff';
-                      e.currentTarget.style.borderColor = '#e2e8f0';
-                    }
                   }}
                 >
-                  <span style={{ fontSize: '28px', marginBottom: '4px' }}>{category.icon}</span>
+                  <span style={{ fontSize: '24px', display: 'block', marginBottom: '4px' }}>{category.icon}</span>
                   <span style={{
-                    fontSize: '14px',
-                    fontWeight: '600',
-                    color: selectedCategory === category.id ? 'white' : '#0f172a',
-                    fontFamily: "'Inter', 'Poppins', sans-serif"
+                    fontSize: '13px',
+                    fontWeight: '500',
+                    color: selectedCategory === category.id ? category.color : '#2c3440',
                   }}>
                     {category.name}
                   </span>
                   <span style={{
-                    fontSize: '12px',
-                    color: selectedCategory === category.id ? 'rgba(255,255,255,0.9)' : '#64748b',
-                    background: selectedCategory === category.id ? 'rgba(255,255,255,0.2)' : '#f1f5f9',
-                    padding: '4px 10px',
-                    borderRadius: '100px',
+                    fontSize: '11px',
+                    color: selectedCategory === category.id ? category.color : '#8f9aab',
+                    display: 'block',
+                    marginTop: '2px'
                   }}>
                     {count} {count === 1 ? 'sentence' : 'sentences'}
                   </span>
@@ -6399,7 +6162,7 @@ const SentenceBuilder = ({ onBack }) => {
           </div>
         </div>
 
-        {/* Start Button - Matching GuessWhat exactly */}
+        {/* Start Button */}
         <button
           onClick={() => {
             setGameState('playing');
@@ -6410,40 +6173,26 @@ const SentenceBuilder = ({ onBack }) => {
           }}
           style={{
             width: '100%',
-            padding: '10px',
-            background: 'linear-gradient(135deg, #7c6fd6 0%, #6b5ec5 100%)',
-            color: 'white',
+            padding: '12px',
+            background: '#7c6fd6',
+            color: '#ffffff',
             border: 'none',
-            borderRadius: '50px',
+            borderRadius: '30px',
             cursor: 'pointer',
-            fontSize: '16px',
+            fontSize: '14px',
             fontWeight: '400',
+            fontFamily: "'Poppins', sans-serif",
             transition: 'all 0.2s ease',
-            fontFamily: "'Inter', 'Poppins', sans-serif",
-            boxShadow: '0 8px 20px rgba(124, 111, 214, 0.3)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: '5px'
           }}
           onMouseOver={(e) => {
-            e.currentTarget.style.transform = 'translateY(-2px)';
-            e.currentTarget.style.boxShadow = '0 12px 28px rgba(124, 111, 214, 0.4)';
+            e.currentTarget.style.background = '#6b5ec5';
           }}
           onMouseOut={(e) => {
-            e.currentTarget.style.transform = 'translateY(0)';
-            e.currentTarget.style.boxShadow = '0 8px 20px rgba(124, 111, 214, 0.3)';
+            e.currentTarget.style.background = '#7c6fd6';
           }}
         >
           Start {selectedCategory === 'all' ? 'Game' : categories.find(c => c.id === selectedCategory)?.name || 'Game'}
         </button>
-
-        <style>{`
-          @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-8px); }
-          }
-        `}</style>
       </div>
     );
   }
@@ -6452,36 +6201,37 @@ const SentenceBuilder = ({ onBack }) => {
   if (!current) {
     return (
       <div style={{
-        fontFamily: "'Inter', 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif",
-        maxWidth: '600px',
+        fontFamily: "'Poppins', sans-serif",
+        maxWidth: '500px',
         margin: '0 auto',
         padding: '24px'
       }}>
         <div style={{
           background: '#ffffff',
-          borderRadius: '24px',
-          padding: '48px',
-          border: '1px solid #e2e8f0',
+          borderRadius: '16px',
+          padding: '40px',
+          border: '1px solid #eaedf2',
           textAlign: 'center'
         }}>
-          <div style={{ fontSize: '48px', marginBottom: '16px', color: '#94a3b8' }}>📭</div>
-          <h2 style={{ fontSize: '20px', fontWeight: '600', color: '#0f172a', marginBottom: '8px' }}>
+          <div style={{ fontSize: '48px', marginBottom: '16px', color: '#8f9aab' }}>📭</div>
+          <h2 style={{ fontSize: '18px', fontWeight: '500', color: '#2c3440', marginBottom: '4px' }}>
             No Sentences Available
           </h2>
-          <p style={{ fontSize: '15px', color: '#64748b', marginBottom: '24px' }}>
+          <p style={{ fontSize: '13px', color: '#6f7887', marginBottom: '20px' }}>
             Try selecting a different category
           </p>
           <button
             onClick={() => setGameState('intro')}
             style={{
-              padding: '12px 32px',
-              background: '#0f172a',
-              color: 'white',
+              padding: '10px 24px',
+              background: '#7c6fd6',
+              color: '#ffffff',
               border: 'none',
-              borderRadius: '100px',
-              fontSize: '14px',
-              fontWeight: '500',
-              cursor: 'pointer'
+              borderRadius: '30px',
+              fontSize: '13px',
+              fontWeight: '400',
+              cursor: 'pointer',
+              fontFamily: "'Poppins', sans-serif"
             }}
           >
             Back to Categories
@@ -6491,140 +6241,147 @@ const SentenceBuilder = ({ onBack }) => {
     );
   }
 
-  // Playing Screen - Matching GuessWhat exactly
+  // PLAYING SCREEN
   if (gameState === 'playing') {
     const currentCategory = categories.find(c => c.id === current.category) || categories[0];
 
     return (
-      <div style={{ fontFamily: "'Inter', 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif", maxWidth: '800px', margin: '0 auto', padding: '24px' }}>
-        {/* Header - Matching GuessWhat */}
+      <div style={{ fontFamily: "'Poppins', sans-serif", maxWidth: '700px', margin: '0 auto', padding: '24px' }}>
+        {/* Header */}
         <div style={{
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
-          marginBottom: '24px',
-          borderBottom: '1px solid #e2e8f0',
-          paddingBottom: '20px',
+          marginBottom: '20px',
+          borderBottom: '1px solid #eaedf2',
+          paddingBottom: '16px',
         }}>
           <button
             onClick={() => setGameState('intro')}
             style={{
-              background: 'white',
-              border: '1px solid #e2e8f0',
-              padding: '8px 20px',
-              borderRadius: '100px',
+              background: '#ffffff',
+              border: '1px solid #eaedf2',
+              padding: '8px 18px',
+              borderRadius: '30px',
               cursor: 'pointer',
-              fontSize: '14px',
-              fontWeight: '500',
-              color: '#475569',
-              fontFamily: "'Inter', 'Poppins', sans-serif",
+              fontSize: '13px',
+              fontWeight: '400',
+              color: '#5a6270',
+              fontFamily: "'Poppins', sans-serif",
               transition: 'all 0.2s ease',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '8px'
             }}
             onMouseOver={(e) => {
               e.currentTarget.style.background = '#f8fafc';
-              e.currentTarget.style.borderColor = '#cbd5e1';
             }}
             onMouseOut={(e) => {
-              e.currentTarget.style.background = 'white';
-              e.currentTarget.style.borderColor = '#e2e8f0';
+              e.currentTarget.style.background = '#ffffff';
             }}
           >
             Exit
           </button>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-            <span style={{ fontSize: '24px', color: currentCategory.color }}>{currentCategory.icon}</span>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <span style={{ fontSize: '22px', color: currentCategory.color }}>{currentCategory.icon}</span>
             <h1 style={{
-              fontSize: '22px',
-              fontWeight: '600',
-              color: '#0f172a',
+              fontSize: '20px',
+              fontWeight: '500',
+              color: '#2c3440',
               margin: '0',
-              fontFamily: "'Inter', 'Poppins', sans-serif"
+              fontFamily: "'Poppins', sans-serif"
             }}>
               {currentCategory.name}
             </h1>
           </div>
 
           <div style={{
-            fontSize: '16px',
-            fontWeight: '600',
+            fontSize: '14px',
+            fontWeight: '500',
             background: '#f8f7ff',
             color: '#7c6fd6',
-            padding: '8px 16px',
-            borderRadius: '100px',
-            border: '1px solid #e6e0ff',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '8px'
+            padding: '6px 14px',
+            borderRadius: '20px',
+            border: '1px solid #eae8f0',
           }}>
-            {score}/{sentences.length}
+            🔥 {streak} | 🎯 {score}/{sentences.length}
           </div>
         </div>
 
-        {/* Progress Bar - Matching GuessWhat */}
-        <div style={{ marginBottom: '24px' }}>
+        {/* Progress Bar */}
+        <div style={{ marginBottom: '20px' }}>
           <div style={{
             display: 'flex',
             justifyContent: 'space-between',
-            marginBottom: '8px',
-            fontSize: '13px',
-            color: '#64748b',
+            marginBottom: '6px',
+            fontSize: '12px',
+            color: '#8f9aab',
           }}>
             <span>Sentence {currentIndex + 1} of {sentences.length}</span>
-            <span>{Math.round(progress)}% Complete</span>
+            <span>{Math.round(progress)}%</span>
           </div>
           <div style={{
             width: '100%',
             height: '6px',
-            background: '#f1f5f9',
-            borderRadius: '100px',
+            background: '#f2f4f8',
+            borderRadius: '8px',
             overflow: 'hidden',
           }}>
             <div style={{
               height: '100%',
-              background: `linear-gradient(90deg, ${currentCategory.color}, ${currentCategory.color}dd)`,
+              background: '#7c6fd6',
               width: `${progress}%`,
               transition: 'width 0.3s ease',
-              borderRadius: '100px',
+              borderRadius: '8px',
             }} />
           </div>
         </div>
 
-        {/* Sentence Card - Matching GuessWhat question card style */}
+        {/* Feedback Message */}
+        {showFeedback && (
+          <div style={{
+            padding: '10px',
+            borderRadius: '8px',
+            background: feedbackMessage.includes('✅') ? '#f0fdf4' : '#fef2f2',
+            border: `1px solid ${feedbackMessage.includes('✅') ? '#bbf7d0' : '#fecaca'}`,
+            marginBottom: '16px',
+            textAlign: 'center',
+            fontSize: '14px',
+            fontWeight: '400',
+            color: feedbackMessage.includes('✅') ? '#166534' : '#991b1b',
+          }}>
+            {feedbackMessage}
+          </div>
+        )}
+
+        {/* Sentence Card */}
         <div style={{
           background: '#ffffff',
-          borderRadius: '24px',
-          padding: '32px',
-          boxShadow: '0 8px 24px rgba(0,0,0,0.02)',
-          border: '1px solid #e2e8f0',
+          borderRadius: '16px',
+          padding: '24px',
+          border: '1px solid #eae8f0',
         }}>
-          {/* Difficulty Badge - Matching GuessWhat */}
+          {/* Difficulty Badge */}
           <div style={{
             display: 'flex',
             justifyContent: 'space-between',
             alignItems: 'center',
-            marginBottom: '20px',
+            marginBottom: '16px',
           }}>
             <span style={{
               padding: '4px 12px',
-              borderRadius: '100px',
+              borderRadius: '12px',
               fontSize: '12px',
-              fontWeight: '600',
+              fontWeight: '500',
               background: current.difficulty === 'beginner' ? '#e8f5e9' :
                 current.difficulty === 'intermediate' ? '#fff4e5' : '#ffebee',
               color: current.difficulty === 'beginner' ? '#2e7d32' :
                 current.difficulty === 'intermediate' ? '#b85c1a' : '#b91c1c',
-              textTransform: 'capitalize',
             }}>
               {current.difficulty}
             </span>
             <span style={{
               padding: '4px 12px',
               background: '#f8f7ff',
-              borderRadius: '100px',
+              borderRadius: '12px',
               fontSize: '12px',
               color: '#7c6fd6',
               fontWeight: '500',
@@ -6635,22 +6392,22 @@ const SentenceBuilder = ({ onBack }) => {
 
           {/* Sentence */}
           <div style={{
-            marginBottom: '24px',
+            marginBottom: '20px',
             textAlign: 'center'
           }}>
             <div style={{
               background: '#f8fafc',
-              borderRadius: '16px',
-              padding: '30px',
-              marginBottom: '20px',
-              border: '1px solid #e2e8f0',
+              borderRadius: '12px',
+              padding: '24px',
+              marginBottom: '16px',
+              border: '1px solid #eaedf2',
             }}>
               <h2 style={{
-                fontSize: '22px',
-                fontWeight: '600',
-                color: '#0f172a',
+                fontSize: '18px',
+                fontWeight: '500',
+                color: '#2c3440',
                 lineHeight: '1.6',
-                fontFamily: "'Inter', 'Poppins', sans-serif",
+                fontFamily: "'Poppins', sans-serif",
                 margin: 0
               }}>
                 {current.sentence}
@@ -6658,35 +6415,35 @@ const SentenceBuilder = ({ onBack }) => {
             </div>
           </div>
 
-          {/* Hint - Styled like GuessWhat image/sentence area */}
+          {/* Hint */}
           <div style={{
-            marginBottom: '24px',
-            padding: '16px',
+            marginBottom: '20px',
+            padding: '12px',
             background: '#f8f7ff',
-            borderRadius: '12px',
-            border: '1px solid #e6e0ff',
+            borderRadius: '8px',
+            border: '1px solid #eae8f0',
             display: 'flex',
             alignItems: 'center',
-            gap: '12px'
+            gap: '8px'
           }}>
-            <span style={{ fontSize: '20px', color: '#7c6fd6' }}>💡</span>
+            <span style={{ fontSize: '18px', color: '#7c6fd6' }}>💡</span>
             <p style={{
-              fontSize: '15px',
-              color: '#475569',
+              fontSize: '13px',
+              color: '#5a6270',
               fontStyle: 'italic',
-              fontFamily: "'Inter', 'Poppins', sans-serif",
+              fontFamily: "'Poppins', sans-serif",
               margin: 0
             }}>
               <strong>Hint:</strong> {current.hint}
             </p>
           </div>
 
-          {/* Options - Matching GuessWhat exactly */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '12px', marginBottom: '24px' }}>
+          {/* Options */}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '10px', marginBottom: '20px' }}>
             {current.options.map((option, idx) => {
               let bgColor = '#ffffff';
-              let borderColor = '#e2e8f0';
-              let textColor = '#0f172a';
+              let borderColor = '#eaedf2';
+              let textColor = '#2c3440';
 
               if (answered) {
                 if (option === current.correct) {
@@ -6706,88 +6463,72 @@ const SentenceBuilder = ({ onBack }) => {
                   onClick={() => handleAnswer(option)}
                   disabled={answered}
                   style={{
-                    padding: '16px 20px',
+                    padding: '12px 16px',
                     border: `1px solid ${borderColor}`,
-                    borderRadius: '14px',
+                    borderRadius: '12px',
                     background: bgColor,
-                    fontSize: '16px',
-                    fontWeight: '500',
+                    fontSize: '14px',
+                    fontWeight: '400',
                     color: textColor,
                     cursor: answered ? 'default' : 'pointer',
                     transition: 'all 0.2s ease',
-                    fontFamily: "'Inter', 'Poppins', sans-serif",
+                    fontFamily: "'Poppins', sans-serif",
                     textAlign: 'center',
-                    boxShadow: '0 1px 2px rgba(0,0,0,0.02)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'space-between',
-                    gridColumn: idx >= 2 ? 'span 1' : 'auto'
                   }}
                   onMouseOver={(e) => {
                     if (!answered) {
                       e.currentTarget.style.background = '#f8fafc';
                       e.currentTarget.style.borderColor = currentCategory.color;
-                      e.currentTarget.style.transform = 'translateY(-1px)';
                     }
                   }}
                   onMouseOut={(e) => {
                     if (!answered) {
                       e.currentTarget.style.background = '#ffffff';
-                      e.currentTarget.style.borderColor = '#e2e8f0';
-                      e.currentTarget.style.transform = 'translateY(0)';
+                      e.currentTarget.style.borderColor = '#eaedf2';
                     }
                   }}
                 >
                   <span>{option}</span>
-                  {answered && option === current.correct && <span style={{ color: '#22c55e', fontSize: '20px' }}>✓</span>}
-                  {answered && option === selectedWord && option !== current.correct && <span style={{ color: '#ef4444', fontSize: '20px' }}>✗</span>}
+                  {answered && option === current.correct && <span style={{ color: '#22c55e', fontSize: '18px' }}>✓</span>}
+                  {answered && option === selectedWord && option !== current.correct && <span style={{ color: '#ef4444', fontSize: '18px' }}>✗</span>}
                 </button>
               );
             })}
           </div>
 
-          {/* Next Button - Matching GuessWhat exactly */}
+          {/* Next Button */}
           {answered && (
             <button
               onClick={handleNext}
               style={{
                 width: '100%',
-                padding: '16px',
-                background: '#0f172a',
-                color: 'white',
+                padding: '12px',
+                background: '#7c6fd6',
+                color: '#ffffff',
                 border: 'none',
-                borderRadius: '100px',
+                borderRadius: '30px',
                 cursor: 'pointer',
-                fontSize: '16px',
-                fontWeight: '600',
-                fontFamily: "'Inter', 'Poppins', sans-serif",
-                boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+                fontSize: '14px',
+                fontWeight: '400',
+                fontFamily: "'Poppins', sans-serif",
                 transition: 'all 0.2s ease',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                gap: '8px',
-                marginTop: '16px'
+                gap: '6px',
               }}
               onMouseOver={(e) => {
-                e.currentTarget.style.background = '#1e293b';
-                e.currentTarget.style.transform = 'translateY(-2px)';
-                e.currentTarget.style.boxShadow = '0 6px 16px rgba(0,0,0,0.15)';
+                e.currentTarget.style.background = '#6b5ec5';
               }}
               onMouseOut={(e) => {
-                e.currentTarget.style.background = '#0f172a';
-                e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.1)';
+                e.currentTarget.style.background = '#7c6fd6';
               }}
             >
-              {currentIndex === sentences.length - 1 ? (
-                'Finish Game'
-              ) : (
-                <>
-                  <span>Next Sentence</span>
-                  <span style={{ fontSize: '18px' }}>→</span>
-                </>
-              )}
+              {currentIndex === sentences.length - 1 ? 'Finish Game' : 'Next Sentence'}
+              {currentIndex < sentences.length - 1 && <span style={{ fontSize: '16px' }}>→</span>}
             </button>
           )}
         </div>
@@ -6795,53 +6536,51 @@ const SentenceBuilder = ({ onBack }) => {
     );
   }
 
-  // Finished Screen - Matching GuessWhat exactly
+  // FINISHED SCREEN
   if (gameState === 'finished') {
     const percentage = Math.round((score / sentences.length) * 100);
 
     return (
-      <div style={{ fontFamily: "'Inter', 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif", maxWidth: '600px', margin: '0 auto', padding: '24px' }}>
-        {/* Header - Matching GuessWhat */}
+      <div style={{ fontFamily: "'Poppins', sans-serif", maxWidth: '500px', margin: '0 auto', padding: '24px' }}>
+        {/* Header */}
         <div style={{
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
-          marginBottom: '32px',
-          borderBottom: '1px solid #e2e8f0',
-          paddingBottom: '20px',
+          marginBottom: '24px',
+          borderBottom: '1px solid #eaedf2',
+          paddingBottom: '16px',
         }}>
           <button
-            onClick={onBack}
+            onClick={() => setGameState('intro')}
             style={{
-              background: 'white',
-              border: '1px solid #e2e8f0',
-              padding: '8px 20px',
-              borderRadius: '100px',
+              background: '#ffffff',
+              border: '1px solid #eaedf2',
+              padding: '8px 18px',
+              borderRadius: '30px',
               cursor: 'pointer',
-              fontSize: '14px',
-              fontWeight: '500',
-              color: '#475569',
-              fontFamily: "'Inter', 'Poppins', sans-serif",
+              fontSize: '13px',
+              fontWeight: '400',
+              color: '#5a6270',
+              fontFamily: "'Poppins', sans-serif",
               transition: 'all 0.2s ease'
             }}
             onMouseOver={(e) => {
               e.currentTarget.style.background = '#f8fafc';
-              e.currentTarget.style.borderColor = '#cbd5e1';
             }}
             onMouseOut={(e) => {
-              e.currentTarget.style.background = 'white';
-              e.currentTarget.style.borderColor = '#e2e8f0';
+              e.currentTarget.style.background = '#ffffff';
             }}
           >
             Back
           </button>
 
           <h1 style={{
-            fontSize: '22px',
-            fontWeight: '600',
-            color: '#0f172a',
+            fontSize: '20px',
+            fontWeight: '500',
+            color: '#2c3440',
             margin: '0',
-            fontFamily: "'Inter', 'Poppins', sans-serif"
+            fontFamily: "'Poppins', sans-serif"
           }}>
             Game Complete!
           </h1>
@@ -6849,84 +6588,79 @@ const SentenceBuilder = ({ onBack }) => {
           <div style={{ width: '40px' }}></div>
         </div>
 
-        {/* Results Card - Matching GuessWhat exactly */}
+        {/* Results Card */}
         <div style={{
           background: '#ffffff',
-          borderRadius: '24px',
-          padding: '40px',
-          textAlign: 'center',
-          boxShadow: '0 8px 24px rgba(124, 111, 214, 0.08)',
-          border: '1px solid #e6e0ff',
+          borderRadius: '16px',
+          padding: '32px',
+          border: '1px solid #eae8f0',
+          textAlign: 'center'
         }}>
           <div style={{
             fontSize: '64px',
-            marginBottom: '20px',
-            animation: 'float 3s ease-in-out infinite'
+            marginBottom: '16px',
           }}>
             {percentage === 100 ? '🏆' : '🎉'}
           </div>
 
           <h2 style={{
-            fontSize: '28px',
-            fontWeight: '600',
-            color: '#0f172a',
-            marginBottom: '8px',
-            fontFamily: "'Inter', 'Poppins', sans-serif"
+            fontSize: '24px',
+            fontWeight: '500',
+            color: '#2c3440',
+            marginBottom: '4px',
+            fontFamily: "'Poppins', sans-serif"
           }}>
             {percentage === 100 ? 'Perfect Score!' : 'Great Job!'}
           </h2>
 
           <p style={{
-            fontSize: '16px',
-            color: '#475569',
-            marginBottom: '24px',
-            fontFamily: "'Inter', 'Poppins', sans-serif"
+            fontSize: '14px',
+            color: '#6f7887',
+            marginBottom: '20px',
           }}>
             You scored {score} out of {sentences.length}
           </p>
 
-          {/* Score Circle - Matching GuessWhat */}
+          {/* Score Circle */}
           <div style={{
             width: '120px',
             height: '120px',
-            margin: '0 auto 24px',
+            margin: '0 auto 20px',
             borderRadius: '50%',
-            background: `conic-gradient(#7c6fd6 0% ${percentage}%, #f1f5f9 ${percentage}% 100%)`,
+            background: `conic-gradient(#7c6fd6 0% ${percentage}%, #f2f4f8 ${percentage}% 100%)`,
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            position: 'relative'
           }}>
             <div style={{
               width: '90px',
               height: '90px',
               borderRadius: '50%',
-              background: 'white',
+              background: '#ffffff',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
               fontSize: '28px',
-              fontWeight: '700',
-              color: '#7c6fd6'
+              fontWeight: '500',
+              color: '#7c6fd6',
             }}>
               {percentage}%
             </div>
           </div>
 
-          {/* Message - Matching GuessWhat */}
+          {/* Message */}
           <div style={{
-            background: '#f8f7ff',
-            borderRadius: '16px',
-            padding: '20px',
-            marginBottom: '28px',
-            border: '1px solid #e6e0ff'
+            background: '#f8fafc',
+            borderRadius: '12px',
+            padding: '16px',
+            marginBottom: '24px',
+            border: '1px solid #eaedf2',
           }}>
             <p style={{
-              fontSize: '15px',
-              color: '#475569',
+              fontSize: '14px',
+              color: '#5a6270',
               margin: 0,
-              fontFamily: "'Inter', 'Poppins', sans-serif",
-              lineHeight: '1.6'
+              lineHeight: '1.5'
             }}>
               {score === sentences.length ? 'Amazing! You got all sentences right! 🏆' :
                 score >= sentences.length / 2 ? 'Great work! Keep practicing to improve! 👍' :
@@ -6934,38 +6668,30 @@ const SentenceBuilder = ({ onBack }) => {
             </p>
           </div>
 
-          {/* Action Buttons - Matching GuessWhat exactly */}
-          <div style={{ display: 'flex', gap: '12px' }}>
+          {/* Action Buttons */}
+          <div style={{ display: 'flex', gap: '10px' }}>
             <button
               onClick={handleRestart}
               style={{
                 flex: 1,
-                padding: '14px',
+                padding: '12px',
                 background: '#7c6fd6',
-                color: 'white',
+                color: '#ffffff',
                 border: 'none',
-                borderRadius: '100px',
+                borderRadius: '30px',
                 cursor: 'pointer',
-                fontSize: '14px',
-                fontWeight: '600',
-                fontFamily: "'Inter', 'Poppins', sans-serif",
-                boxShadow: '0 4px 12px rgba(124, 111, 214, 0.2)',
+                fontSize: '13px',
+                fontWeight: '400',
+                fontFamily: "'Poppins', sans-serif",
                 transition: 'all 0.2s ease',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '8px'
               }}
               onMouseOver={(e) => {
                 e.currentTarget.style.background = '#6b5ec5';
-                e.currentTarget.style.transform = 'translateY(-1px)';
               }}
               onMouseOut={(e) => {
                 e.currentTarget.style.background = '#7c6fd6';
-                e.currentTarget.style.transform = 'translateY(0)';
               }}
             >
-              <span style={{ fontSize: '18px' }}>🔄</span>
               Play Again
             </button>
 
@@ -6973,20 +6699,16 @@ const SentenceBuilder = ({ onBack }) => {
               onClick={onBack}
               style={{
                 flex: 1,
-                padding: '14px',
-                background: 'white',
-                color: '#475569',
-                border: '1px solid #e2e8f0',
-                borderRadius: '100px',
+                padding: '12px',
+                background: '#ffffff',
+                color: '#5a6270',
+                border: '1px solid #eaedf2',
+                borderRadius: '30px',
                 cursor: 'pointer',
-                fontSize: '14px',
-                fontWeight: '600',
-                fontFamily: "'Inter', 'Poppins', sans-serif",
+                fontSize: '13px',
+                fontWeight: '400',
+                fontFamily: "'Poppins', sans-serif",
                 transition: 'all 0.2s ease',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '8px'
               }}
               onMouseOver={(e) => {
                 e.currentTarget.style.background = '#f8fafc';
@@ -6994,28 +6716,19 @@ const SentenceBuilder = ({ onBack }) => {
                 e.currentTarget.style.color = '#7c6fd6';
               }}
               onMouseOut={(e) => {
-                e.currentTarget.style.background = 'white';
-                e.currentTarget.style.borderColor = '#e2e8f0';
-                e.currentTarget.style.color = '#475569';
+                e.currentTarget.style.background = '#ffffff';
+                e.currentTarget.style.borderColor = '#eaedf2';
+                e.currentTarget.style.color = '#5a6270';
               }}
             >
-              <span style={{ fontSize: '18px' }}></span>
               More Games
             </button>
           </div>
         </div>
-
-        <style>{`
-          @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-8px); }
-          }
-        `}</style>
       </div>
     );
   }
 };
-
 // MyProgress Component
 const MyProgress = () => {
   const [progress, setProgress] = useState(() => {
@@ -7472,258 +7185,464 @@ const MyProgress = () => {
         </div>
       </div>
 
-      {/* Game Performance Table - same style */}
-      <div style={{
-        background: '#ffffff',
-        borderRadius: '20px',
-        border: '1px solid #e2e8f0',
-        overflow: 'hidden',
-        marginBottom: '32px',
-        boxShadow: '0 1px 3px rgba(0,0,0,0.02)',
-      }}>
-        <div style={{
-          padding: '20px 24px',
-          borderBottom: '1px solid #e2e8f0',
-          background: '#f8fafc',
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-        }}>
-          <h2 style={{
-            fontSize: '18px',
-            fontWeight: '600',
-            color: '#0f172a',
-            margin: 0,
-            fontFamily: "'Inter', 'Poppins', sans-serif",
-            display: 'flex',
-            alignItems: 'center',
-            gap: '8px',
-          }}>          
-            Game Performance
-          </h2>
-        </div>
-
-        <div style={{ padding: '8px 0' }}>
-         {/* Word Pics */}
+{/* Game Performance Table - same style */}
 <div style={{
-  display: 'flex',
-  alignItems: 'center',
-  padding: '16px 24px',
-  borderBottom: '1px solid #e2e8f0',
-  transition: 'background 0.2s ease',
-}}
-  onMouseOver={(e) => e.currentTarget.style.background = '#f8fafc'}
-  onMouseOut={(e) => e.currentTarget.style.background = 'transparent'}>
-  <div style={{ width: '160px', display: 'flex', alignItems: 'center', gap: '12px' }}>
-    <span style={{ fontSize: '20px', color: '#7c6fd6' }}>🖼️</span>
-    <span style={{ fontSize: '14px', fontWeight: '400', color: '#0f172a' }}>Word Pics</span>
+  background: '#ffffff',
+  borderRadius: '20px',
+  border: '1px solid #e2e8f0',
+  overflow: 'hidden',
+  marginBottom: '32px',
+  boxShadow: '0 1px 3px rgba(0,0,0,0.02)',
+}}>
+  <div style={{
+    padding: '20px 24px',
+    borderBottom: '1px solid #e2e8f0',
+    background: '#f8fafc',
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  }}>
+    <h2 style={{
+      fontSize: '18px',
+      fontWeight: '600',
+      color: '#0f172a',
+      margin: 0,
+      fontFamily: "'Inter', 'Poppins', sans-serif",
+      display: 'flex',
+      alignItems: 'center',
+      gap: '8px',
+    }}>          
+      Game Performance
+    </h2>
   </div>
-  <div style={{ flex: 1, marginRight: '24px' }}>
+
+  <div style={{ padding: '8px 0' }}>
+    {/* Word Pics */}
     <div style={{
-      background: '#f1f5f9',
-      height: '8px',
-      borderRadius: '100px',
-      overflow: 'hidden',
-    }}>
-      <div style={{
-        height: '100%',
-        background: 'linear-gradient(90deg, #7c6fd6, #9b8de8)',
-        width: `${progress.wordPics?.cardsViewed > 0 ? (progress.wordPics?.correctAnswers / progress.wordPics?.cardsViewed) * 100 : 0}%`,
-        borderRadius: '100px',
-        transition: 'width 0.3s ease',
-      }} />
+      display: 'flex',
+      alignItems: 'center',
+      padding: '16px 24px',
+      borderBottom: '1px solid #e2e8f0',
+      transition: 'all 0.2s ease',
+    }}
+      onMouseOver={(e) => {
+        e.currentTarget.style.background = '#f8fafc';
+        e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.05)';
+        e.currentTarget.style.transform = 'translateY(-1px)';
+      }}
+      onMouseOut={(e) => {
+        e.currentTarget.style.background = 'transparent';
+        e.currentTarget.style.boxShadow = 'none';
+        e.currentTarget.style.transform = 'translateY(0)';
+      }}>
+
+      <div style={{ width: '180px', display: 'flex', alignItems: 'center', gap: '16px' }}>
+        <div style={{
+          width: '48px',
+          height: '48px',
+          borderRadius: '12px',
+          overflow: 'hidden',
+          background: '#f1f5f9',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          boxShadow: '0 2px 8px rgba(0,0,0,0.05)',
+        }}>
+          <img
+            src="src/image/wordpics.png"
+            alt="Word Pics"
+            style={{
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+            }}
+          />
+        </div>
+        <span style={{ 
+          fontSize: '14px', 
+          fontWeight: '500', 
+          color: '#0f172a',
+          textShadow: '0 1px 2px rgba(0,0,0,0.05)',
+        }}>Word Pics</span>
+      </div>
+
+      <div style={{ flex: 1, marginRight: '24px' }}>
+        <div style={{
+          background: '#f1f5f9',
+          height: '8px',
+          borderRadius: '100px',
+          overflow: 'hidden',
+          boxShadow: 'inset 0 1px 2px rgba(0,0,0,0.05)',
+        }}>
+          <div style={{
+            height: '100%',
+            background: 'linear-gradient(90deg, #7c6fd6, #9b8de8)',
+            width: `${progress.wordPics?.cardsViewed > 0 ? (progress.wordPics?.correctAnswers / progress.wordPics?.cardsViewed) * 100 : 0}%`,
+            borderRadius: '100px',
+            transition: 'width 0.3s ease',
+            boxShadow: '0 1px 3px rgba(124, 111, 214, 0.3)',
+          }} />
+        </div>
+      </div>
+
+      <div style={{ width: '100px', textAlign: 'right' }}>
+        <span style={{
+          fontSize: '13px',
+          fontWeight: '500',
+          color: '#ffffff',
+          background: 'linear-gradient(135deg, #7c6fd6, #9b8de8)',
+          padding: '6px 14px',
+          borderRadius: '100px',
+          display: 'inline-block',
+          boxShadow: '0 4px 10px rgba(124, 111, 214, 0.3), 0 1px 2px rgba(0,0,0,0.1)',
+          textShadow: '0 1px 2px rgba(0,0,0,0.1)',
+        }}>
+          {progress.wordPics?.gamesPlayed || 0} games
+        </span>
+      </div>
     </div>
-  </div>
-  <div style={{ width: '100px', textAlign: 'right' }}>
-    <span style={{
-      fontSize: '13px',
-      fontWeight: '400',
-      color: '#7c6fd6',
-      background: '#f8f7ff',
-      padding: '4px 12px',
-      borderRadius: '100px',
-    }}>
-      {progress.wordPics?.gamesPlayed || 0} games
-    </span>
+
+    {/* Quiz */}
+    <div style={{
+      display: 'flex',
+      alignItems: 'center',
+      padding: '16px 24px',
+      borderBottom: '1px solid #e2e8f0',
+      transition: 'all 0.2s ease',
+    }}
+      onMouseOver={(e) => {
+        e.currentTarget.style.background = '#f8fafc';
+        e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.05)';
+        e.currentTarget.style.transform = 'translateY(-1px)';
+      }}
+      onMouseOut={(e) => {
+        e.currentTarget.style.background = 'transparent';
+        e.currentTarget.style.boxShadow = 'none';
+        e.currentTarget.style.transform = 'translateY(0)';
+      }}>
+
+      <div style={{ width: '180px', display: 'flex', alignItems: 'center', gap: '16px' }}>
+        <div style={{
+          width: '48px',
+          height: '48px',
+          borderRadius: '12px',
+          overflow: 'hidden',
+          background: '#f1f5f9',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          boxShadow: '0 2px 8px rgba(0,0,0,0.05)',
+        }}>
+          <img
+            src="src/image/quizgame.png"
+            alt="Quiz Master"
+            style={{
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+            }}
+          />
+        </div>
+        <span style={{ 
+          fontSize: '14px', 
+          fontWeight: '500', 
+          color: '#0f172a',
+          textShadow: '0 1px 2px rgba(0,0,0,0.05)',
+        }}>Quiz Master</span>
+      </div>
+
+      <div style={{ flex: 1, marginRight: '24px' }}>
+        <div style={{
+          background: '#f1f5f9',
+          height: '8px',
+          borderRadius: '100px',
+          overflow: 'hidden',
+          boxShadow: 'inset 0 1px 2px rgba(0,0,0,0.05)',
+        }}>
+          <div style={{
+            height: '100%',
+            background: 'linear-gradient(90deg, #7c6fd6, #9b8de8)',
+            width: `${progress.quiz.totalQuestions > 0 ? (progress.quiz.correctAnswers / progress.quiz.totalQuestions) * 100 : 0}%`,
+            borderRadius: '100px',
+            transition: 'width 0.3s ease',
+            boxShadow: '0 1px 3px rgba(124, 111, 214, 0.3)',
+          }} />
+        </div>
+      </div>
+
+      <div style={{ width: '100px', textAlign: 'right' }}>
+        <span style={{
+          fontSize: '13px',
+          fontWeight: '500',
+          color: '#ffffff',
+          background: 'linear-gradient(135deg, #7c6fd6, #9b8de8)',
+          padding: '6px 14px',
+          borderRadius: '100px',
+          display: 'inline-block',
+          boxShadow: '0 4px 10px rgba(124, 111, 214, 0.3), 0 1px 2px rgba(0,0,0,0.1)',
+          textShadow: '0 1px 2px rgba(0,0,0,0.1)',
+        }}>
+          {progress.quiz.gamesCompleted} games
+        </span>
+      </div>
+    </div>
+
+    {/* Match Game */}
+    <div style={{
+      display: 'flex',
+      alignItems: 'center',
+      padding: '16px 24px',
+      borderBottom: '1px solid #e2e8f0',
+      transition: 'all 0.2s ease',
+    }}
+      onMouseOver={(e) => {
+        e.currentTarget.style.background = '#f8fafc';
+        e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.05)';
+        e.currentTarget.style.transform = 'translateY(-1px)';
+      }}
+      onMouseOut={(e) => {
+        e.currentTarget.style.background = 'transparent';
+        e.currentTarget.style.boxShadow = 'none';
+        e.currentTarget.style.transform = 'translateY(0)';
+      }}>
+
+      <div style={{ width: '180px', display: 'flex', alignItems: 'center', gap: '16px' }}>
+        <div style={{
+          width: '48px',
+          height: '48px',
+          borderRadius: '12px',
+          overflow: 'hidden',
+          background: '#f1f5f9',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          boxShadow: '0 2px 8px rgba(0,0,0,0.05)',
+        }}>
+          <img
+            src="src/image/matchgame.png"
+            alt="Match Game"
+            style={{
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+            }}
+          />
+        </div>
+        <span style={{ 
+          fontSize: '14px', 
+          fontWeight: '500', 
+          color: '#0f172a',
+          textShadow: '0 1px 2px rgba(0,0,0,0.05)',
+        }}>Match Game</span>
+      </div>
+
+      <div style={{ flex: 1, marginRight: '24px' }}>
+        <div style={{
+          background: '#f1f5f9',
+          height: '8px',
+          borderRadius: '100px',
+          overflow: 'hidden',
+          boxShadow: 'inset 0 1px 2px rgba(0,0,0,0.05)',
+        }}>
+          <div style={{
+            height: '100%',
+            background: 'linear-gradient(90deg, #7c6fd6, #9b8de8)',
+            width: `${progress.match.totalPairs > 0 ? (progress.match.totalPairs / 6) * 100 : 0}%`,
+            borderRadius: '100px',
+            transition: 'width 0.3s ease',
+            boxShadow: '0 1px 3px rgba(124, 111, 214, 0.3)',
+          }} />
+        </div>
+      </div>
+
+      <div style={{ width: '100px', textAlign: 'right' }}>
+        <span style={{
+          fontSize: '13px',
+          fontWeight: '500',
+          color: '#ffffff',
+          background: 'linear-gradient(135deg, #7c6fd6, #9b8de8)',
+          padding: '6px 14px',
+          borderRadius: '100px',
+          display: 'inline-block',
+          boxShadow: '0 4px 10px rgba(124, 111, 214, 0.3), 0 1px 2px rgba(0,0,0,0.1)',
+          textShadow: '0 1px 2px rgba(0,0,0,0.1)',
+        }}>
+          {progress.match.totalPairs}/6
+        </span>
+      </div>
+    </div>
+
+    {/* GuessWhat */}
+    <div style={{
+      display: 'flex',
+      alignItems: 'center',
+      padding: '16px 24px',
+      borderBottom: '1px solid #e2e8f0',
+      transition: 'all 0.2s ease',
+    }}
+      onMouseOver={(e) => {
+        e.currentTarget.style.background = '#f8fafc';
+        e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.05)';
+        e.currentTarget.style.transform = 'translateY(-1px)';
+      }}
+      onMouseOut={(e) => {
+        e.currentTarget.style.background = 'transparent';
+        e.currentTarget.style.boxShadow = 'none';
+        e.currentTarget.style.transform = 'translateY(0)';
+      }}>
+
+      <div style={{ width: '180px', display: 'flex', alignItems: 'center', gap: '16px' }}>
+        <div style={{
+          width: '48px',
+          height: '48px',
+          borderRadius: '12px',
+          overflow: 'hidden',
+          background: '#f1f5f9',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          boxShadow: '0 2px 8px rgba(0,0,0,0.05)',
+        }}>
+          <img
+            src="src/image/guesswhatgame.png"
+            alt="GuessWhat"
+            style={{
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+            }}
+          />
+        </div>
+        <span style={{ 
+          fontSize: '14px', 
+          fontWeight: '500', 
+          color: '#0f172a',
+          textShadow: '0 1px 2px rgba(0,0,0,0.05)',
+        }}>GuessWhat</span>
+      </div>
+
+      <div style={{ flex: 1, marginRight: '24px' }}>
+        <div style={{
+          background: '#f1f5f9',
+          height: '8px',
+          borderRadius: '100px',
+          overflow: 'hidden',
+          boxShadow: 'inset 0 1px 2px rgba(0,0,0,0.05)',
+        }}>
+          <div style={{
+            height: '100%',
+            background: 'linear-gradient(90deg, #7c6fd6, #9b8de8)',
+            width: `${progress.guessWhat.totalQuestions > 0 ? (progress.guessWhat.correctAnswers / progress.guessWhat.totalQuestions) * 100 : 0}%`,
+            borderRadius: '100px',
+            transition: 'width 0.3s ease',
+            boxShadow: '0 1px 3px rgba(124, 111, 214, 0.3)',
+          }} />
+        </div>
+      </div>
+
+      <div style={{ width: '100px', textAlign: 'right' }}>
+        <span style={{
+          fontSize: '13px',
+          fontWeight: '500',
+          color: '#ffffff',
+          background: 'linear-gradient(135deg, #7c6fd6, #9b8de8)',
+          padding: '6px 14px',
+          borderRadius: '100px',
+          display: 'inline-block',
+          boxShadow: '0 4px 10px rgba(124, 111, 214, 0.3), 0 1px 2px rgba(0,0,0,0.1)',
+          textShadow: '0 1px 2px rgba(0,0,0,0.1)',
+        }}>
+          {progress.guessWhat.correctAnswers}/{progress.guessWhat.totalQuestions}
+        </span>
+      </div>
+    </div>
+
+    {/* Sentence Builder */}
+    <div style={{
+      display: 'flex',
+      alignItems: 'center',
+      padding: '16px 24px',
+      transition: 'all 0.2s ease',
+    }}
+      onMouseOver={(e) => {
+        e.currentTarget.style.background = '#f8fafc';
+        e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.05)';
+        e.currentTarget.style.transform = 'translateY(-1px)';
+      }}
+      onMouseOut={(e) => {
+        e.currentTarget.style.background = 'transparent';
+        e.currentTarget.style.boxShadow = 'none';
+        e.currentTarget.style.transform = 'translateY(0)';
+      }}>
+
+      <div style={{ width: '180px', display: 'flex', alignItems: 'center', gap: '16px' }}>
+        <div style={{
+          width: '48px',
+          height: '48px',
+          borderRadius: '12px',
+          overflow: 'hidden',
+          background: '#f1f5f9',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          boxShadow: '0 2px 8px rgba(0,0,0,0.05)',
+        }}>
+          <img
+            src="src/image/sentence.png"
+            alt="Sentence Builder"
+            style={{
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+            }}
+          />
+        </div>
+        <span style={{ 
+          fontSize: '14px', 
+          fontWeight: '500', 
+          color: '#0f172a',
+          textShadow: '0 1px 2px rgba(0,0,0,0.05)',
+        }}>Sentence Builder</span>
+      </div>
+
+      <div style={{ flex: 1, marginRight: '24px' }}>
+        <div style={{
+          background: '#f1f5f9',
+          height: '8px',
+          borderRadius: '100px',
+          overflow: 'hidden',
+          boxShadow: 'inset 0 1px 2px rgba(0,0,0,0.05)',
+        }}>
+          <div style={{
+            height: '100%',
+            background: 'linear-gradient(90deg, #7c6fd6, #9b8de8)',
+            width: `${progress.sentenceBuilder.totalSentences > 0 ? (progress.sentenceBuilder.correctAnswers / progress.sentenceBuilder.totalSentences) * 100 : 0}%`,
+            borderRadius: '100px',
+            transition: 'width 0.3s ease',
+            boxShadow: '0 1px 3px rgba(124, 111, 214, 0.3)',
+          }} />
+        </div>
+      </div>
+
+      <div style={{ width: '100px', textAlign: 'right' }}>
+        <span style={{
+          fontSize: '13px',
+          fontWeight: '500',
+          color: '#ffffff',
+          background: 'linear-gradient(135deg, #7c6fd6, #9b8de8)',
+          padding: '6px 14px',
+          borderRadius: '100px',
+          display: 'inline-block',
+          boxShadow: '0 4px 10px rgba(124, 111, 214, 0.3), 0 1px 2px rgba(0,0,0,0.1)',
+          textShadow: '0 1px 2px rgba(0,0,0,0.1)',
+        }}>
+          {progress.sentenceBuilder.correctAnswers}/{progress.sentenceBuilder.totalSentences}
+        </span>
+      </div>
+    </div>
   </div>
 </div>
 
-          {/* Quiz */}
-          <div style={{
-            display: 'flex',
-            alignItems: 'center',
-            padding: '16px 24px',
-            borderBottom: '1px solid #e2e8f0',
-            transition: 'background 0.2s ease',
-          }}
-            onMouseOver={(e) => e.currentTarget.style.background = '#f8fafc'}
-            onMouseOut={(e) => e.currentTarget.style.background = 'transparent'}>
-            <div style={{ width: '160px', display: 'flex', alignItems: 'center', gap: '12px' }}>
-              <span style={{ fontSize: '20px', color: '#7c6fd6' }}>❓</span>
-              <span style={{ fontSize: '14px', fontWeight: '400', color: '#0f172a' }}>Quiz Master</span>
-            </div>
-            <div style={{ flex: 1, marginRight: '24px' }}>
-              <div style={{
-                background: '#f1f5f9',
-                height: '8px',
-                borderRadius: '100px',
-                overflow: 'hidden',
-              }}>
-                <div style={{
-                  height: '100%',
-                  background: 'linear-gradient(90deg, #7c6fd6, #9b8de8)',
-                  width: `${progress.quiz.totalQuestions > 0 ? (progress.quiz.correctAnswers / progress.quiz.totalQuestions) * 100 : 0}%`,
-                  borderRadius: '100px',
-                  transition: 'width 0.3s ease',
-                }} />
-              </div>
-            </div>
-            <div style={{ width: '100px', textAlign: 'right' }}>
-              <span style={{
-                fontSize: '13px',
-                fontWeight: '400',
-                color: '#7c6fd6',
-                background: '#f8f7ff',
-                padding: '4px 12px',
-                borderRadius: '100px',
-              }}>
-                {progress.quiz.gamesCompleted} games
-              </span>
-            </div>
-          </div>
-
-          {/* Match Game */}
-          <div style={{
-            display: 'flex',
-            alignItems: 'center',
-            padding: '16px 24px',
-            borderBottom: '1px solid #e2e8f0',
-            transition: 'background 0.2s ease',
-          }}
-            onMouseOver={(e) => e.currentTarget.style.background = '#f8fafc'}
-            onMouseOut={(e) => e.currentTarget.style.background = 'transparent'}>
-            <div style={{ width: '160px', display: 'flex', alignItems: 'center', gap: '12px' }}>
-              <span style={{ fontSize: '20px', color: '#7c6fd6' }}>🎯</span>
-              <span style={{ fontSize: '14px', fontWeight: '400', color: '#0f172a' }}>Match Game</span>
-            </div>
-            <div style={{ flex: 1, marginRight: '24px' }}>
-              <div style={{
-                background: '#f1f5f9',
-                height: '8px',
-                borderRadius: '100px',
-                overflow: 'hidden',
-              }}>
-                <div style={{
-                  height: '100%',
-                  background: 'linear-gradient(90deg, #7c6fd6, #9b8de8)',
-                  width: `${progress.match.totalPairs > 0 ? (progress.match.totalPairs / 6) * 100 : 0}%`,
-                  borderRadius: '100px',
-                  transition: 'width 0.3s ease',
-                }} />
-              </div>
-            </div>
-            <div style={{ width: '100px', textAlign: 'right' }}>
-              <span style={{
-                fontSize: '13px',
-                fontWeight: '400',
-                color: '#7c6fd6',
-                background: '#f8f7ff',
-                padding: '4px 12px',
-                borderRadius: '100px',
-              }}>
-                {progress.match.totalPairs}/6
-              </span>
-            </div>
-          </div>
-
-          {/* GuessWhat */}
-          <div style={{
-            display: 'flex',
-            alignItems: 'center',
-            padding: '16px 24px',
-            borderBottom: '1px solid #e2e8f0',
-            transition: 'background 0.2s ease',
-          }}
-            onMouseOver={(e) => e.currentTarget.style.background = '#f8fafc'}
-            onMouseOut={(e) => e.currentTarget.style.background = 'transparent'}>
-            <div style={{ width: '160px', display: 'flex', alignItems: 'center', gap: '12px' }}>
-              <span style={{ fontSize: '20px', color: '#7c6fd6' }}>🤔</span>
-              <span style={{ fontSize: '14px', fontWeight: '400', color: '#0f172a' }}>GuessWhat</span>
-            </div>
-            <div style={{ flex: 1, marginRight: '24px' }}>
-              <div style={{
-                background: '#f1f5f9',
-                height: '8px',
-                borderRadius: '100px',
-                overflow: 'hidden',
-              }}>
-                <div style={{
-                  height: '100%',
-                  background: 'linear-gradient(90deg, #7c6fd6, #9b8de8)',
-                  width: `${progress.guessWhat.totalQuestions > 0 ? (progress.guessWhat.correctAnswers / progress.guessWhat.totalQuestions) * 100 : 0}%`,
-                  borderRadius: '100px',
-                  transition: 'width 0.3s ease',
-                }} />
-              </div>
-            </div>
-            <div style={{ width: '100px', textAlign: 'right' }}>
-              <span style={{
-                fontSize: '13px',
-                fontWeight: '400',
-                color: '#7c6fd6',
-                background: '#f8f7ff',
-                padding: '4px 12px',
-                borderRadius: '100px',
-              }}>
-                {progress.guessWhat.correctAnswers}/{progress.guessWhat.totalQuestions}
-              </span>
-            </div>
-          </div>
-
-          {/* Sentence Builder */}
-          <div style={{
-            display: 'flex',
-            alignItems: 'center',
-            padding: '16px 24px',
-            transition: 'background 0.2s ease',
-          }}
-            onMouseOver={(e) => e.currentTarget.style.background = '#f8fafc'}
-            onMouseOut={(e) => e.currentTarget.style.background = 'transparent'}>
-            <div style={{ width: '160px', display: 'flex', alignItems: 'center', gap: '12px' }}>
-              <span style={{ fontSize: '20px', color: '#7c6fd6' }}>📝</span>
-              <span style={{ fontSize: '14px', fontWeight: '400', color: '#0f172a' }}>Sentence Builder</span>
-            </div>
-            <div style={{ flex: 1, marginRight: '24px' }}>
-              <div style={{
-                background: '#f1f5f9',
-                height: '8px',
-                borderRadius: '100px',
-                overflow: 'hidden',
-              }}>
-                <div style={{
-                  height: '100%',
-                  background: 'linear-gradient(90deg, #7c6fd6, #9b8de8)',
-                  width: `${progress.sentenceBuilder.totalSentences > 0 ? (progress.sentenceBuilder.correctAnswers / progress.sentenceBuilder.totalSentences) * 100 : 0}%`,
-                  borderRadius: '100px',
-                  transition: 'width 0.3s ease',
-                }} />
-              </div>
-            </div>
-            <div style={{ width: '100px', textAlign: 'right' }}>
-              <span style={{
-                fontSize: '13px',
-                fontWeight: '400',
-                color: '#7c6fd6',
-                background: '#f8f7ff',
-                padding: '4px 12px',
-                borderRadius: '100px',
-              }}>
-                {progress.sentenceBuilder.correctAnswers}/{progress.sentenceBuilder.totalSentences}
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
 
       {/* Achievements - same style but improved */}
       <div style={{
@@ -7750,7 +7669,6 @@ const MyProgress = () => {
             alignItems: 'center',
             gap: '8px',
           }}>
-            <span style={{ fontSize: '20px', color: '#7c6fd6' }}>🏅</span>
             Achievements
           </h2>
           <span style={{
@@ -7836,30 +7754,17 @@ const MyProgress = () => {
           maxWidth: '500px',
           margin: '0 auto',
         }}>
-          <div style={{
-            width: '80px',
-            height: '80px',
-            background: '#f8f7ff',
-            borderRadius: '50%',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            margin: '0 auto 24px',
-            fontSize: '36px',
-            color: '#7c6fd6',
-          }}>
-            🎮
-          </div>
+
           <h3 style={{
-            fontSize: '20px',
-            fontWeight: '600',
+            fontSize: '15px',
+            fontWeight: '500',
             color: '#0f172a',
             marginBottom: '8px',
           }}>
             Start Your Learning Journey!
           </h3>
           <p style={{
-            fontSize: '15px',
+            fontSize: '12px',
             color: '#64748b',
             marginBottom: '24px',
             lineHeight: '1.6',
@@ -7869,12 +7774,12 @@ const MyProgress = () => {
           <button
             onClick={() => setActiveMenu('Games')}
             style={{
-              padding: '12px 32px',
+              padding: '10px 30px',
               background: '#0f172a',
               color: 'white',
               border: 'none',
               borderRadius: '100px',
-              fontSize: '14px',
+              fontSize: '13px',
               fontWeight: '500',
               cursor: 'pointer',
               transition: 'all 0.2s ease',
@@ -7888,7 +7793,7 @@ const MyProgress = () => {
               e.currentTarget.style.transform = 'translateY(0)';
             }}
           >
-            Browse Games →
+            Browse Games
           </button>
         </div>
       )}
@@ -8230,85 +8135,85 @@ const Dashboard = () => {
   const [hoveredGame, setHoveredGame] = useState(null);
 
   const games = [
-    {
-      id: 'wordpics',  
-      name: 'Word Pics',  
-      description: 'Guess the word from the picture! Fun and visual vocabulary learning.',
-      icon: '🖼️',  
-      accentColor: '#7c6fd6',
-      lightColor: '#F3F1F9',
-      category: 'vocab',
-      timeEstimate: '5-10 min',
-      difficulty: 'beginner',
-      players: '1 player',
-      available: true
-    },
-      {
-        id: 'match',
-        name: 'Match Game',
-        description: 'Connect words with definitions in this fast-paced memory challenge.',
-        icon: '🎯',
-        accentColor: '#B83B5E',
-        lightColor: '#FDF1F4',
-        category: 'vocab',
-        timeEstimate: '3-5 min',
-        difficulty: 'beginner',
-        players: '1 player',
-        available: true
-      },
-      {
-        id: 'short-story',
-        name: 'Short Story',
-        description: 'Immerse yourself in narratives while learning vocabulary in context.',
-        icon: '📖',
-        accentColor: '#2F5D62',
-        lightColor: '#EEF3F3',
-        category: 'reading',
-        timeEstimate: '15-20 min',
-        difficulty: 'intermediate',
-        players: '1 player',
-        available: true
-      },
-      {
-        id: 'quiz',
-        name: 'Quiz Master',
-        description: 'Test your knowledge with adaptive multiple choice questions.',
-        icon: '❓',
-        accentColor: '#1F4E5F',
-        lightColor: '#E8EDF0',
-        category: 'challenge',
-        timeEstimate: '10-15 min',
-        difficulty: 'intermediate',
-        players: '1 player',
-        available: true
-      },
-      {
-        id: 'guesswhat',
-        name: 'GuessWhat',
-        description: 'Deduce the correct word from visual context clues and sentences.',
-        icon: '🤔',
-        accentColor: '#C44545',
-        lightColor: '#FCEEEE',
-        category: 'challenge',
-        timeEstimate: '8-12 min',
-        difficulty: 'advanced',
-        players: '1 player',
-        available: true
-      },
-      {
-        id: 'sentence-builder',
-        name: 'Sentence Builder',
-        description: 'Construct grammatically correct sentences using vocabulary in context.',
-        icon: '📝',
-        accentColor: '#3A6B6B',
-        lightColor: '#EDF3F3',
-        category: 'vocab',
-        timeEstimate: '6-10 min',
-        difficulty: 'beginner',
-        players: '1 player',
-        available: true
-      },
-    ];
+  {
+    id: 'wordpics',
+    name: 'Word Pics',
+    description: 'Guess the word from the picture! Fun and visual vocabulary learning.',
+    image: 'src/image/wordpics.png', // Replace with your actual image path
+    accentColor: '#7c6fd6',
+    lightColor: '#F3F1F9',
+    category: 'vocab',
+    timeEstimate: '5-10 min',
+    difficulty: 'beginner',
+    players: '1 player',
+    available: true
+  },
+  {
+    id: 'match',
+    name: 'Match Game',
+    description: 'Connect words with definitions in this fast-paced memory challenge.',
+    image: '/src/image/matchgame.png', // Replace with your actual image path
+    accentColor: '#B83B5E',
+    lightColor: '#FDF1F4',
+    category: 'vocab',
+    timeEstimate: '3-5 min',
+    difficulty: 'beginner',
+    players: '1 player',
+    available: true
+  },
+  {
+    id: 'short-story',
+    name: 'Short Story',
+    description: 'Immerse yourself in narratives while learning vocabulary in context.',
+    image: '/src/image/shortstory.png', // Replace with your actual image path
+    accentColor: '#2F5D62',
+    lightColor: '#EEF3F3',
+    category: 'reading',
+    timeEstimate: '15-20 min',
+    difficulty: 'intermediate',
+    players: '1 player',
+    available: true
+  },
+  {
+    id: 'quiz',
+    name: 'Quiz Master',
+    description: 'Test your knowledge with adaptive multiple choice questions.',
+    image: '/src/image/quizgame.png', // Replace with your actual image path
+    accentColor: '#1F4E5F',
+    lightColor: '#E8EDF0',
+    category: 'challenge',
+    timeEstimate: '10-15 min',
+    difficulty: 'intermediate',
+    players: '1 player',
+    available: true
+  },
+  {
+    id: 'guesswhat',
+    name: 'GuessWhat',
+    description: 'Deduce the correct word from visual context clues and sentences.',
+    image: '/src/image/guesswhatgame.png', // Replace with your actual image path
+    accentColor: '#C44545',
+    lightColor: '#FCEEEE',
+    category: 'challenge',
+    timeEstimate: '8-12 min',
+    difficulty: 'advanced',
+    players: '1 player',
+    available: true
+  },
+  {
+    id: 'sentence-builder',
+    name: 'Sentence Builder',
+    description: 'Construct grammatically correct sentences using vocabulary in context.',
+    image: '/src/image/sentence.png', // Replace with your actual image path
+    accentColor: '#3A6B6B',
+    lightColor: '#EDF3F3',
+    category: 'vocab',
+    timeEstimate: '6-10 min',
+    difficulty: 'beginner',
+    players: '1 player',
+    available: true
+  },
+];
 
     const categories = [
       { id: 'all', name: 'All Games', icon: '🎮', color: '#0f172a' },
@@ -8338,265 +8243,278 @@ const Dashboard = () => {
         fontFamily: "'Inter', 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif",
         color: '#0f172a',
       }}>
-        {/* Header Section */}
+{/* Header Section */}
+<div style={{
+  display: 'flex',
+  justifyContent: 'space-between',
+  alignItems: 'flex-end',
+  marginBottom: '32px',
+  borderBottom: '1px solid #eaedf2',
+  paddingBottom: '20px',
+}}>
+  <div>
+    <h1 style={{
+      fontSize: '24px',
+      fontWeight: '500',
+      color: '#2c3440',
+      margin: '0 0 4px 0',
+      letterSpacing: '-0.01em',
+      fontFamily: "'Inter', 'Poppins', sans-serif",
+    }}>
+      Learning Games
+    </h1>
+    <p style={{
+      fontSize: '13px',
+      color: '#6f7887',
+      margin: '0',
+      fontWeight: '400',
+    }}>
+      Choose your adventure • All games use your vocabulary library
+    </p>
+  </div>
+
+  <div style={{
+    display: 'flex',
+    gap: '12px',
+  }}>
+  </div>
+</div>
+
+{/* Category Filters */}
+<div style={{
+  display: 'flex',
+  justifyContent: 'space-between',
+  alignItems: 'center',
+  marginBottom: '24px',
+}}>
+  <div style={{
+    display: 'flex',
+    gap: '4px',
+    background: '#f5f7fa',
+    padding: '4px',
+    borderRadius: '40px',
+    border: '1px solid #eaedf2',
+  }}>
+    {categories.map(cat => (
+      <button
+        key={cat.id}
+        onClick={() => setFilter(cat.id)}
+        style={{
+          padding: '8px 16px',
+          borderRadius: '32px',
+          border: 'none',
+          fontSize: '13px',
+          fontWeight: '400',
+          cursor: 'pointer',
+          transition: 'all 0.2s ease',
+          background: filter === cat.id ? '#ffffff' : 'transparent',
+          color: filter === cat.id ? cat.color : '#6f7887',
+          boxShadow: filter === cat.id ? '0 1px 3px rgba(0,0,0,0.05)' : 'none',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '6px',
+          fontFamily: "'Inter', 'Poppins', sans-serif",
+        }}
+      >
+        <span style={{ fontSize: '14px' }}>{cat.icon}</span>
+        {cat.name}
+      </button>
+    ))}
+  </div>
+
+  <span style={{
+    fontSize: '12px',
+    color: '#8f9aab',
+    background: '#ffffff',
+    padding: '6px 14px',
+    borderRadius: '20px',
+    border: '1px solid #eaedf2',
+    fontFamily: "'Inter', 'Poppins', sans-serif",
+  }}>
+    {filteredGames.length} games available
+  </span>
+</div>
+
+{/* Games Grid */}
+<div style={{
+  display: 'grid',
+  gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+  gap: '20px',
+}}>
+  {filteredGames.map((game, index) => (
+    <div
+      key={game.id}
+      onClick={() => game.available && startGame(game.id)}
+      onMouseEnter={() => setHoveredGame(game.id)}
+      onMouseLeave={() => setHoveredGame(null)}
+      style={{
+        background: '#ffffff',
+        border: `1px solid ${hoveredGame === game.id ? '#d0c9f0' : '#eaedf2'}`,
+        borderRadius: '12px',
+        overflow: 'hidden',
+        cursor: game.available ? 'pointer' : 'not-allowed',
+        transition: 'all 0.2s ease',
+        boxShadow: hoveredGame === game.id
+          ? `0 8px 16px -8px ${game.accentColor}30`
+          : '0 2px 4px rgba(0,0,0,0.02)',
+        display: 'flex',
+        flexDirection: 'column',
+        position: 'relative',
+        opacity: game.available ? 1 : 0.5,
+      }}
+    >
+      {/* Image on top - spans full width */}
+      <div style={{
+        width: '100%',
+        height: '140px',
+        background: `linear-gradient(135deg, ${game.accentColor}10, ${game.accentColor}05)`,
+        position: 'relative',
+        overflow: 'hidden',
+      }}>
+        <img 
+          src={game.image}
+          alt={game.name}
+          style={{
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            transition: 'transform 0.2s ease',
+            transform: hoveredGame === game.id ? 'scale(1.03)' : 'scale(1)',
+          }}
+          onError={(e) => {
+            e.target.style.display = 'none';
+            e.target.parentNode.style.background = game.lightColor;
+            const fallback = document.createElement('div');
+            fallback.style.cssText = `
+              width: 100%;
+              height: 100%;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              font-size: 40px;
+              color: ${game.accentColor};
+            `;
+            fallback.textContent = '🎮';
+            e.target.parentNode.appendChild(fallback);
+          }}
+        />
+        
+        {/* Difficulty Badge Overlay */}
+        <span style={{
+          position: 'absolute',
+          top: '10px',
+          right: '10px',
+          padding: '4px 10px',
+          borderRadius: '12px',
+          fontSize: '11px',
+          fontWeight: '500',
+          background: 'rgba(255, 255, 255, 0.9)',
+          color: game.difficulty === 'beginner' ? '#2E7D32' :
+                 game.difficulty === 'intermediate' ? '#B85C1A' : '#B91C1C',
+          textTransform: 'capitalize',
+          boxShadow: '0 2px 4px rgba(0,0,0,0.05)',
+          zIndex: 1,
+          fontFamily: "'Inter', 'Poppins', sans-serif",
+        }}>
+          {game.difficulty}
+        </span>
+      </div>
+
+      {/* Content Section */}
+      <div style={{ padding: '20px' }}>
+        {/* Icon and Status */}
         <div style={{
           display: 'flex',
           justifyContent: 'space-between',
-          alignItems: 'flex-end',
-          marginBottom: '40px',
-          borderBottom: '1px solid #e2e8f0',
-          paddingBottom: '24px',
+          alignItems: 'flex-start',
+          marginBottom: '12px',
         }}>
-          <div>
-            <h1 style={{
-              fontSize: '28px',
-              fontWeight: '600',
-              color: '#0f172a',
-              margin: '0 0 8px 0',
-              letterSpacing: '-0.01em',
+          <h3 style={{
+            fontSize: '18px',
+            fontWeight: '500',
+            color: '#2c3440',
+            margin: '0',
+            fontFamily: "'Inter', 'Poppins', sans-serif",
+            letterSpacing: '-0.01em',
+          }}>
+            {game.name}
+          </h3>
+
+          {!game.available && (
+            <span style={{
+              padding: '4px 10px',
+              background: '#f2f4f8',
+              borderRadius: '12px',
+              fontSize: '11px',
+              fontWeight: '400',
+              color: '#6f7887',
               fontFamily: "'Inter', 'Poppins', sans-serif",
             }}>
-              Learning Games
-            </h1>
-            <p style={{
-              fontSize: '15px',
-              color: '#475569',
-              margin: '0',
-              fontWeight: '300',
-            }}>
-              Choose your adventure • All games use your vocabulary library
-            </p>
-          </div>
-
-          <div style={{
-            display: 'flex',
-            gap: '12px',
-          }}>
-          </div>
+              Coming Soon
+            </span>
+          )}
         </div>
 
-        {/* Category Filters */}
+        {/* Game Info */}
+        <div style={{ flex: 1 }}>
+          <p style={{
+            fontSize: '13px',
+            color: '#5a6270',
+            lineHeight: '1.5',
+            margin: '0 0 12px 0',
+            fontFamily: "'Inter', 'Poppins', sans-serif",
+          }}>
+            {game.description}
+          </p>
+        </div>
+
+        {/* Metadata and CTA */}
         <div style={{
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
-          marginBottom: '32px',
+          marginTop: '12px',
+          paddingTop: '12px',
+          borderTop: '1px solid #eaedf2',
         }}>
           <div style={{
             display: 'flex',
-            gap: '8px',
-            background: '#f1f5f9',
-            padding: '4px',
-            borderRadius: '100px',
+            gap: '10px',
+            fontSize: '11px',
+            color: '#8f9aab',
           }}>
-            {categories.map(cat => (
-              <button
-                key={cat.id}
-                onClick={() => setFilter(cat.id)}
-                style={{
-                  padding: '10px 20px',
-                  borderRadius: '100px',
-                  border: 'none',
-                  fontSize: '14px',
-                  fontWeight: '500',
-                  cursor: 'pointer',
-                  transition: 'all 0.2s ease',
-                  background: filter === cat.id ? '#ffffff' : 'transparent',
-                  color: filter === cat.id ? cat.color : '#475569',
-                  boxShadow: filter === cat.id ? '0 2px 8px rgba(0,0,0,0.04)' : 'none',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '8px',
-                }}
-              >
-                <span style={{ fontSize: '16px' }}>{cat.icon}</span>
-                {cat.name}
-              </button>
-            ))}
+            <span style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '4px',
+            }}>
+              <span style={{ fontSize: '12px' }}>⏱️</span>
+              {game.timeEstimate}
+            </span>
           </div>
 
-          <span style={{
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '6px',
+            color: game.available ? game.accentColor : '#9aa5b5',
             fontSize: '13px',
-            color: '#64748b',
-            background: '#ffffff',
-            padding: '8px 16px',
-            borderRadius: '100px',
-            border: '1px solid #e2e8f0',
+            fontWeight: '400',
           }}>
-            {filteredGames.length} games available
-          </span>
+            <span>{game.available ? 'Start Game' : 'Unavailable'}</span>
+            <span style={{
+              fontSize: '16px',
+              transition: 'transform 0.2s ease',
+              transform: hoveredGame === game.id && game.available ? 'translateX(3px)' : 'translateX(0)',
+            }}>
+              {game.available ? '→' : '⏳'}
+            </span>
+          </div>
         </div>
-
-        {/* Games Grid */}
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))',
-          gap: '24px',
-        }}>
-          {filteredGames.map((game, index) => (
-            <div
-              key={game.id}
-              onClick={() => game.available && startGame(game.id)}
-              onMouseEnter={() => setHoveredGame(game.id)}
-              onMouseLeave={() => setHoveredGame(null)}
-              style={{
-                background: '#ffffff',
-                border: `1px solid ${hoveredGame === game.id ? game.accentColor : '#e2e8f0'}`,
-                borderRadius: '20px',
-                padding: '28px',
-                cursor: game.available ? 'pointer' : 'not-allowed',
-                transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                boxShadow: hoveredGame === game.id
-                  ? `0 20px 30px -10px ${game.accentColor}20`
-                  : '0 4px 6px -2px rgba(0,0,0,0.02)',
-                display: 'flex',
-                flexDirection: 'column',
-                position: 'relative',
-                overflow: 'hidden',
-                opacity: game.available ? 1 : 0.5,
-              }}
-            >
-              {/* Subtle gradient overlay on hover */}
-              {hoveredGame === game.id && (
-                <div style={{
-                  position: 'absolute',
-                  top: 0,
-                  left: 0,
-                  right: 0,
-                  height: '4px',
-                  background: `linear-gradient(90deg, ${game.accentColor}, ${game.accentColor}80)`,
-                }} />
-              )}
-
-              {/* Icon and Status */}
-              <div style={{
-                display: 'flex',
-                justifyContent: 'space-between',
-                alignItems: 'flex-start',
-                marginBottom: '20px',
-              }}>
-                <div style={{
-                  width: '64px',
-                  height: '64px',
-                  background: game.lightColor,
-                  borderRadius: '16px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  transition: 'transform 0.3s ease',
-                  transform: hoveredGame === game.id ? 'scale(1.05)' : 'scale(1)',
-                }}>
-                  <span style={{
-                    fontSize: '32px',
-                  }}>
-                    {game.icon}
-                  </span>
-                </div>
-
-                {!game.available && (
-                  <span style={{
-                    padding: '4px 12px',
-                    background: '#f1f5f9',
-                    borderRadius: '100px',
-                    fontSize: '12px',
-                    fontWeight: '600',
-                    color: '#64748b',
-                  }}>
-                    Coming Soon
-                  </span>
-                )}
-              </div>
-
-              {/* Game Info */}
-              <div style={{ flex: 1 }}>
-                <div style={{
-                  display: 'flex',
-                  alignItems: 'baseline',
-                  justifyContent: 'space-between',
-                  marginBottom: '8px',
-                }}>
-                  <h3 style={{
-                    fontSize: '20px',
-                    fontWeight: '600',
-                    color: '#0f172a',
-                    margin: '0',
-                    fontFamily: "'Inter', 'Poppins', sans-serif",
-                    letterSpacing: '-0.01em',
-                  }}>
-                    {game.name}
-                  </h3>
-
-                  {/* Difficulty Badge */}
-                  <span style={{
-                    padding: '4px 10px',
-                    borderRadius: '100px',
-                    fontSize: '11px',
-                    fontWeight: '400',
-                    background: `${getDifficultyColor(game.difficulty)}10`,
-                    color: getDifficultyColor(game.difficulty),
-                    textTransform: 'capitalize',
-                  }}>
-                    {game.difficulty}
-                  </span>
-                </div>
-
-                <p style={{
-                  fontSize: '14px',
-                  color: '#475569',
-                  lineHeight: '1.6',
-                  margin: '0 0 16px 0',
-                  fontFamily: "'Inter', 'Poppins', sans-serif",
-                }}>
-                  {game.description}
-                </p>
-              </div>
-
-              {/* Metadata and CTA */}
-              <div style={{
-                display: 'flex',
-                justifyContent: 'space-between',
-                alignItems: 'center',
-                marginTop: '16px',
-                paddingTop: '16px',
-                borderTop: '1px solid #e2e8f0',
-              }}>
-                <div style={{
-                  display: 'flex',
-                  gap: '12px',
-                  fontSize: '12px',
-                  color: '#64748b',
-                }}>
-                  <span style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '4px',
-                  }}>
-                    <span style={{ fontSize: '14px' }}>⏱️</span>
-                    {game.timeEstimate}
-                  </span>
-                </div>
-
-                <div style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '8px',
-                  color: game.available ? game.accentColor : '#94a3b8',
-                  fontSize: '14px',
-                  fontWeight: '500',
-                }}>
-                  <span>{game.available ? 'Start Game' : 'Unavailable'}</span>
-                  <span style={{
-                    fontSize: '18px',
-                    transition: 'transform 0.2s ease',
-                    transform: hoveredGame === game.id && game.available ? 'translateX(4px)' : 'translateX(0)',
-                  }}>
-                    {game.available ? '→' : '⏳'}
-                  </span>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
+      </div>
+    </div>
+  ))}
+</div>
 
         {/* Empty State */}
         {filteredGames.length === 0 && (
@@ -9199,411 +9117,476 @@ const Dashboard = () => {
 
     return (
         <div>
-            {/* Header */}
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '32px', borderBottom: '1px solid #eaeef2', paddingBottom: '20px' }}>
-                <div>
-                    <h1 style={{ fontSize: '28px', fontWeight: '600', color: '#1a2634', marginBottom: '6px', fontFamily: "'Poppins', sans-serif" }}>Word Library</h1>
-                    <p style={{ fontSize: '15px', color: '#6b7a8d', margin: 0, fontWeight: '300' }}>A comprehensive collection of {totalWords} essential words</p>
-                </div>
-                <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
-                    <span style={{ fontSize: '13px', color: '#7c8b9c', background: '#f8fafc', padding: '8px 16px', borderRadius: '90px', border: '1px solid #e2e8f0' }}>Total: {totalWords} Words</span>
-                    <span style={{ fontSize: '13px', color: '#7c8b9c', background: '#f8fafc', padding: '8px 16px', borderRadius: '90px', border: '1px solid #e2e8f0' }}>⭐ {masteredWords} mastered</span>
-                </div>
-            </div>
+           {/* Header */}
+<div style={{ 
+  display: 'flex', 
+  justifyContent: 'space-between', 
+  alignItems: 'flex-end', 
+  marginBottom: '24px', 
+  borderBottom: '1px solid #eaedf2', 
+  paddingBottom: '16px' 
+}}>
+  <div>
+    <h1 style={{ 
+      fontSize: '24px', 
+      fontWeight: '500', 
+      color: '#2c3440', 
+      marginBottom: '4px', 
+      fontFamily: "'Poppins', sans-serif" 
+    }}>Word Library</h1>
+    <p style={{ 
+      fontSize: '13px', 
+      color: '#6f7887', 
+      margin: 0, 
+      fontWeight: '400',
+      fontFamily: "'Poppins', sans-serif" 
+    }}>A comprehensive collection of {totalWords} essential words</p>
+  </div>
+  <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+    <span style={{ 
+      fontSize: '12px', 
+      color: '#6f7887', 
+      background: '#f8fafc', 
+      padding: '6px 14px', 
+      borderRadius: '20px', 
+      border: '1px solid #eaedf2',
+      fontFamily: "'Poppins', sans-serif",
+      fontWeight: '400',
+    }}>Total: {totalWords} Words</span>
+    <span style={{ 
+      fontSize: '12px', 
+      color: '#6f7887', 
+      background: '#f8fafc', 
+      padding: '6px 14px', 
+      borderRadius: '20px', 
+      border: '1px solid #eaedf2',
+      fontFamily: "'Poppins', sans-serif",
+      fontWeight: '400',
+    }}>⭐ {masteredWords} mastered</span>
+  </div>
+</div>
 
-            {/* Stats Bar */}
-            <div style={{ display: 'flex', gap: '16px', marginBottom: '24px', padding: '16px', background: '#fff', borderRadius: '16px', border: '1px solid #e6eaf0', flexWrap: 'wrap' }}>
-                {[
-                    { label: 'Beginner:', val: beginnerWords, color: '#2e7d32', bg: '#e8f5e9' },
-                    { label: 'Intermediate:', val: intermediateWords, color: '#b85c1a', bg: '#fff4e5' },
-                    { label: 'Advanced:', val: advancedWords, color: '#b71c1c', bg: '#ffebee' },
-                ].map(s => (
-                    <div key={s.label} style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '8px 16px', background: s.bg, borderRadius: '100px' }}>
-                        <span style={{ fontSize: '14px', fontWeight: '600', color: s.color }}>{s.label}</span>
-                        <span style={{ fontSize: '16px', fontWeight: '700', color: s.color }}>{s.val}</span>
-                    </div>
-                ))}
-            </div>
+{/* Search and Filter Section */}
+<div style={{
+  background: '#ffffff',
+  borderRadius: '12px',
+  border: '1px solid #eaedf2',
+  padding: '20px',
+  marginBottom: '24px',
+}}>
+  {/* Search */}
+  <div style={{ marginBottom: '20px' }}>
+    <div style={{
+      display: 'flex',
+      alignItems: 'center',
+      background: '#fbfcfd',
+      border: '1px solid #eaedf2',
+      borderRadius: '8px',
+      padding: '2px 2px 2px 14px',
+    }}>
+      <span style={{ color: '#8f9aab', fontSize: '16px', marginRight: '6px' }}>🔍</span>
+      <input
+        type="text"
+        placeholder="Search by word, definition, category, or part of speech..."
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+        style={{
+          width: '100%',
+          padding: '12px 0',
+          border: 'none',
+          background: 'transparent',
+          fontSize: '14px',
+          fontFamily: "'Poppins', sans-serif",
+          outline: 'none',
+          color: '#2c3440',
+          fontWeight: '400',
+        }}
+      />
+      {searchTerm && (
+        <button
+          onClick={() => setSearchTerm('')}
+          style={{
+            padding: '6px 14px',
+            background: 'transparent',
+            border: 'none',
+            color: '#8f9aab',
+            fontSize: '12px',
+            cursor: 'pointer',
+            fontWeight: '400',
+            fontFamily: "'Poppins', sans-serif",
+          }}
+        >
+          ✕ Clear
+        </button>
+      )}
+    </div>
+  </div>
 
-            {/* Search and Filter Section */}
-            <div style={{
-                background: '#ffffff',
-                borderRadius: '16px',
-                border: '1px solid #e2e8f0',
-                padding: '24px',
-                marginBottom: '32px',
-            }}>
-                {/* Search */}
-                <div style={{ marginBottom: '24px' }}>
-                    <div style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        background: '#f8fafc',
-                        border: '1px solid #e2e8f0',
-                        borderRadius: '12px',
-                        padding: '4px 4px 4px 16px',
-                    }}>
-                        <span style={{ color: '#64748b', fontSize: '18px', marginRight: '8px' }}>🔍</span>
-                        <input
-                            type="text"
-                            placeholder="Search by word, definition, category, or part of speech..."
-                            value={searchTerm}
-                            onChange={(e) => setSearchTerm(e.target.value)}
-                            style={{
-                                width: '100%',
-                                padding: '14px 0',
-                                border: 'none',
-                                background: 'transparent',
-                                fontSize: '15px',
-                                fontFamily: "'Poppins', sans-serif",
-                                outline: 'none',
-                                color: '#0f172a',
-                            }}
-                        />
-                        {searchTerm && (
-                            <button
-                                onClick={() => setSearchTerm('')}
-                                style={{
-                                    padding: '8px 16px',
-                                    background: 'transparent',
-                                    border: 'none',
-                                    color: '#64748b',
-                                    fontSize: '13px',
-                                    cursor: 'pointer',
-                                    fontWeight: '500',
-                                }}
-                            >
-                                ✕ Clear
-                            </button>
-                        )}
-                    </div>
-                </div>
+  {/* Filters Row */}
+  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px', alignItems: 'flex-start' }}>
+    {/* Categories */}
+    <div style={{ flex: '1 1 280px' }}>
+      <label style={{
+        display: 'block',
+        fontSize: '11px',
+        fontWeight: '500',
+        color: '#6f7887',
+        marginBottom: '6px',
+        textTransform: 'uppercase',
+        letterSpacing: '0.02em',
+        fontFamily: "'Poppins', sans-serif",
+      }}>
+        Category
+      </label>
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4px' }}>
+        {categories.map(category => (
+          <button
+            key={category.id}
+            onClick={() => setSelectedCategory(category.id)}
+            style={{
+              padding: '6px 14px',
+              borderRadius: '20px',
+              fontSize: '12px',
+              fontWeight: '400',
+              cursor: 'pointer',
+              transition: 'all 0.2s ease',
+              fontFamily: "'Poppins', sans-serif",
+              background: selectedCategory === category.id ? `${category.color}15` : 'transparent',
+              color: selectedCategory === category.id ? category.color : '#6f7887',
+              border: selectedCategory === category.id
+                ? `1px solid ${category.color}30`
+                : '1px solid #eaedf2',
+            }}
+          >
+            {category.name}
+          </button>
+        ))}
+      </div>
+    </div>
 
-                {/* Filters Row */}
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '24px', alignItems: 'flex-start' }}>
-                    {/* Categories */}
-                    <div style={{ flex: '1 1 300px' }}>
-                        <label style={{
-                            display: 'block',
-                            fontSize: '12px',
-                            fontWeight: '600',
-                            color: '#475569',
-                            marginBottom: '8px',
-                            textTransform: 'uppercase',
-                            letterSpacing: '0.03em',
-                        }}>
-                            Category
-                        </label>
-                        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
-                            {categories.map(category => (
-                                <button
-                                    key={category.id}
-                                    onClick={() => setSelectedCategory(category.id)}
-                                    style={{
-                                        padding: '8px 16px',
-                                        borderRadius: '100px',
-                                        fontSize: '13px',
-                                        fontWeight: '500',
-                                        cursor: 'pointer',
-                                        transition: 'all 0.2s ease',
-                                        fontFamily: "'Poppins', sans-serif",
-                                        background: selectedCategory === category.id ? category.color : 'transparent',
-                                        color: selectedCategory === category.id ? 'white' : '#475569',
-                                        border: selectedCategory === category.id
-                                            ? `1px solid ${category.color}`
-                                            : '1px solid #e2e8f0',
-                                    }}
-                                >
-                                    {category.name}
-                                </button>
-                            ))}
-                        </div>
-                    </div>
+    {/* Difficulty Levels */}
+    <div style={{ flex: '1 1 280px' }}>
+      <label style={{
+        display: 'block',
+        fontSize: '11px',
+        fontWeight: '500',
+        color: '#6f7887',
+        marginBottom: '6px',
+        textTransform: 'uppercase',
+        letterSpacing: '0.02em',
+        fontFamily: "'Poppins', sans-serif",
+      }}>
+        Difficulty
+      </label>
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4px' }}>
+        {difficultyLevels.map(level => (
+          <button
+            key={level.id}
+            onClick={() => setFilterDiff(level.id)}
+            style={{
+              padding: '6px 14px',
+              borderRadius: '20px',
+              fontSize: '12px',
+              fontWeight: '400',
+              cursor: 'pointer',
+              transition: 'all 0.2s ease',
+              fontFamily: "'Poppins', sans-serif",
+              background: filterDiff === level.id ? `${level.color}15` : 'transparent',
+              color: filterDiff === level.id ? level.color : '#6f7887',
+              border: filterDiff === level.id
+                ? `1px solid ${level.color}30`
+                : '1px solid #eaedf2',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '4px',
+            }}
+          >
+            {level.id === 'favorites' && <span style={{ fontSize: '11px' }}>⭐</span>}
+            {level.name}
+            {level.id === 'favorites' && favorites.length > 0 && (
+              <span style={{
+                background: filterDiff === 'favorites' ? level.color : '#e5e7eb',
+                color: filterDiff === 'favorites' ? '#ffffff' : '#6f7887',
+                borderRadius: '12px',
+                padding: '2px 6px',
+                fontSize: '10px',
+                fontWeight: '500',
+                marginLeft: '2px',
+              }}>
+                {favorites.length}
+              </span>
+            )}
+          </button>
+        ))}
+      </div>
+    </div>
 
-                    {/* Difficulty Levels */}
-                    <div style={{ flex: '1 1 300px' }}>
-                        <label style={{
-                            display: 'block',
-                            fontSize: '12px',
-                            fontWeight: '600',
-                            color: '#475569',
-                            marginBottom: '8px',
-                            textTransform: 'uppercase',
-                            letterSpacing: '0.03em',
-                        }}>
-                            Difficulty
-                        </label>
-                        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
-                            {difficultyLevels.map(level => (
-                                <button
-                                    key={level.id}
-                                    onClick={() => setFilterDiff(level.id)}
-                                    style={{
-                                        padding: '8px 16px',
-                                        borderRadius: '100px',
-                                        fontSize: '13px',
-                                        fontWeight: '500',
-                                        cursor: 'pointer',
-                                        transition: 'all 0.2s ease',
-                                        fontFamily: "'Poppins', sans-serif",
-                                        background: filterDiff === level.id ? level.color : 'transparent',
-                                        color: filterDiff === level.id ? 'white' : '#475569',
-                                        border: filterDiff === level.id
-                                            ? `1px solid ${level.color}`
-                                            : '1px solid #e2e8f0',
-                                        display: 'flex',
-                                        alignItems: 'center',
-                                        gap: '6px',
-                                    }}
-                                >
-                                    {level.id === 'favorites' && '⭐'}
-                                    {level.name}
-                                    {level.id === 'favorites' && favorites.length > 0 && (
-                                        <span style={{
-                                            background: filterDiff === 'favorites' ? 'rgba(255,255,255,0.2)' : '#C44545',
-                                            color: 'white',
-                                            borderRadius: '100px',
-                                            padding: '2px 8px',
-                                            fontSize: '11px',
-                                            fontWeight: '600',
-                                        }}>
-                                            {favorites.length}
-                                        </span>
-                                    )}
-                                </button>
-                            ))}
-                        </div>
-                    </div>
+    {/* Sort & View Options */}
+    <div style={{ display: 'flex', gap: '8px', alignItems: 'flex-end' }}>
+      <div>
+        <label style={{
+          display: 'block',
+          fontSize: '11px',
+          fontWeight: '500',
+          color: '#6f7887',
+          marginBottom: '6px',
+          textTransform: 'uppercase',
+          letterSpacing: '0.02em',
+          fontFamily: "'Poppins', sans-serif",
+        }}>
+          Sort by
+        </label>
+        <select
+          value={sortBy}
+          onChange={(e) => setSortBy(e.target.value)}
+          style={{
+            padding: '6px 28px 6px 12px',
+            borderRadius: '20px',
+            border: '1px solid #eaedf2',
+            fontSize: '12px',
+            fontWeight: '400',
+            color: '#2c3440',
+            background: '#ffffff',
+            cursor: 'pointer',
+            outline: 'none',
+            appearance: 'none',
+            backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%236f7887' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E")`,
+            backgroundRepeat: 'no-repeat',
+            backgroundPosition: 'right 10px center',
+            fontFamily: "'Poppins', sans-serif",
+          }}
+        >
+          <option value="word">Word (A-Z)</option>
+          <option value="difficulty">Difficulty</option>
+          <option value="category">Category</option>
+        </select>
+      </div>
 
-                    {/* Sort & View Options */}
-                    <div style={{ display: 'flex', gap: '12px', alignItems: 'flex-end' }}>
-                        <div>
-                            <label style={{
-                                display: 'block',
-                                fontSize: '12px',
-                                fontWeight: '600',
-                                color: '#475569',
-                                marginBottom: '8px',
-                                textTransform: 'uppercase',
-                                letterSpacing: '0.03em',
-                            }}>
-                                Sort by
-                            </label>
-                            <select
-                                value={sortBy}
-                                onChange={(e) => setSortBy(e.target.value)}
-                                style={{
-                                    padding: '8px 32px 8px 16px',
-                                    borderRadius: '100px',
-                                    border: '1px solid #e2e8f0',
-                                    fontSize: '13px',
-                                    fontWeight: '500',
-                                    color: '#0f172a',
-                                    background: '#ffffff',
-                                    cursor: 'pointer',
-                                    outline: 'none',
-                                    appearance: 'none',
-                                    backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23475669' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E")`,
-                                    backgroundRepeat: 'no-repeat',
-                                    backgroundPosition: 'right 12px center',
-                                }}
-                            >
-                                <option value="word">Word (A-Z)</option>
-                                <option value="difficulty">Difficulty</option>
-                                <option value="category">Category</option>
-                            </select>
-                        </div>
+      <div>
+        <label style={{
+          display: 'block',
+          fontSize: '11px',
+          fontWeight: '500',
+          color: '#6f7887',
+          marginBottom: '6px',
+          textTransform: 'uppercase',
+          letterSpacing: '0.02em',
+          fontFamily: "'Poppins', sans-serif",
+        }}>
+          View
+        </label>
+        <div style={{
+          display: 'flex',
+          gap: '2px',
+          padding: '2px',
+          background: '#f5f7fa',
+          borderRadius: '20px',
+          border: '1px solid #eaedf2',
+        }}>
+          <button
+            onClick={() => setViewMode('grid')}
+            style={{
+              padding: '6px 14px',
+              borderRadius: '18px',
+              border: 'none',
+              fontSize: '12px',
+              fontWeight: '400',
+              cursor: 'pointer',
+              background: viewMode === 'grid' ? '#ffffff' : 'transparent',
+              color: viewMode === 'grid' ? '#6b63b5' : '#6f7887',
+              fontFamily: "'Poppins', sans-serif",
+              transition: 'all 0.2s ease',
+            }}
+          >
+            Grid
+          </button>
+          <button
+            onClick={() => setViewMode('list')}
+            style={{
+              padding: '6px 14px',
+              borderRadius: '18px',
+              border: 'none',
+              fontSize: '12px',
+              fontWeight: '400',
+              cursor: 'pointer',
+              background: viewMode === 'list' ? '#ffffff' : 'transparent',
+              color: viewMode === 'list' ? '#6b63b5' : '#6f7887',
+              fontFamily: "'Poppins', sans-serif",
+              transition: 'all 0.2s ease',
+            }}
+          >
+            List
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 
-                        <div>
-                            <label style={{
-                                display: 'block',
-                                fontSize: '12px',
-                                fontWeight: '600',
-                                color: '#475569',
-                                marginBottom: '8px',
-                                textTransform: 'uppercase',
-                                letterSpacing: '0.03em',
-                            }}>
-                                View
-                            </label>
-                            <div style={{
-                                display: 'flex',
-                                gap: '4px',
-                                padding: '4px',
-                                background: '#f1f5f9',
-                                borderRadius: '100px',
-                            }}>
-                                <button
-                                    onClick={() => setViewMode('grid')}
-                                    style={{
-                                        padding: '8px 16px',
-                                        borderRadius: '100px',
-                                        border: 'none',
-                                        fontSize: '13px',
-                                        fontWeight: '500',
-                                        cursor: 'pointer',
-                                        background: viewMode === 'grid' ? '#ffffff' : 'transparent',
-                                        color: viewMode === 'grid' ? '#0f172a' : '#64748b',
-                                        boxShadow: viewMode === 'grid' ? '0 1px 3px rgba(0,0,0,0.05)' : 'none',
-                                    }}
-                                >
-                                    Grid
-                                </button>
-                                <button
-                                    onClick={() => setViewMode('list')}
-                                    style={{
-                                        padding: '8px 16px',
-                                        borderRadius: '100px',
-                                        border: 'none',
-                                        fontSize: '13px',
-                                        fontWeight: '500',
-                                        cursor: 'pointer',
-                                        background: viewMode === 'list' ? '#ffffff' : 'transparent',
-                                        color: viewMode === 'list' ? '#0f172a' : '#64748b',
-                                        boxShadow: viewMode === 'list' ? '0 1px 3px rgba(0,0,0,0.05)' : 'none',
-                                    }}
-                                >
-                                    List
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+  {/* Active Filters */}
+  {(selectedCategory !== 'all' || filterDiff !== 'all' || searchTerm) && (
+    <div style={{
+      marginTop: '16px',
+      paddingTop: '16px',
+      borderTop: '1px solid #eaedf2',
+      display: 'flex',
+      alignItems: 'center',
+      gap: '8px',
+      flexWrap: 'wrap',
+    }}>
+      <span style={{ 
+        fontSize: '12px', 
+        color: '#6f7887', 
+        fontWeight: '400',
+        fontFamily: "'Poppins', sans-serif",
+      }}>
+        Active filters:
+      </span>
+      {selectedCategory !== 'all' && (
+        <span style={{
+          padding: '4px 10px',
+          background: '#f5f7fa',
+          borderRadius: '16px',
+          fontSize: '11px',
+          color: '#2c3440',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '4px',
+          fontFamily: "'Poppins', sans-serif",
+          border: '1px solid #eaedf2',
+        }}>
+          Category: {categories.find(c => c.id === selectedCategory)?.name}
+          <button
+            onClick={() => setSelectedCategory('all')}
+            style={{
+              background: 'none',
+              border: 'none',
+              cursor: 'pointer',
+              fontSize: '14px',
+              color: '#8f9aab',
+              padding: '0 2px',
+              display: 'flex',
+              alignItems: 'center',
+            }}
+          >
+            ×
+          </button>
+        </span>
+      )}
+      {filterDiff !== 'all' && (
+        <span style={{
+          padding: '4px 10px',
+          background: '#f5f7fa',
+          borderRadius: '16px',
+          fontSize: '11px',
+          color: '#2c3440',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '4px',
+          fontFamily: "'Poppins', sans-serif",
+          border: '1px solid #eaedf2',
+        }}>
+          Level: {difficultyLevels.find(d => d.id === filterDiff)?.name}
+          <button
+            onClick={() => setFilterDiff('all')}
+            style={{
+              background: 'none',
+              border: 'none',
+              cursor: 'pointer',
+              fontSize: '14px',
+              color: '#8f9aab',
+              padding: '0 2px',
+              display: 'flex',
+              alignItems: 'center',
+            }}
+          >
+            ×
+          </button>
+        </span>
+      )}
+      {searchTerm && (
+        <span style={{
+          padding: '4px 10px',
+          background: '#f5f7fa',
+          borderRadius: '16px',
+          fontSize: '11px',
+          color: '#2c3440',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '4px',
+          fontFamily: "'Poppins', sans-serif",
+          border: '1px solid #eaedf2',
+        }}>
+          Search: "{searchTerm}"
+          <button
+            onClick={() => setSearchTerm('')}
+            style={{
+              background: 'none',
+              border: 'none',
+              cursor: 'pointer',
+              fontSize: '14px',
+              color: '#8f9aab',
+              padding: '0 2px',
+              display: 'flex',
+              alignItems: 'center',
+            }}
+          >
+            ×
+          </button>
+        </span>
+      )}
+      <button
+        onClick={() => {
+          setSelectedCategory('all');
+          setFilterDiff('all');
+          setSearchTerm('');
+        }}
+        style={{
+          padding: '4px 10px',
+          background: 'transparent',
+          border: '1px solid #eaedf2',
+          borderRadius: '16px',
+          fontSize: '11px',
+          color: '#6f7887',
+          cursor: 'pointer',
+          fontWeight: '400',
+          fontFamily: "'Poppins', sans-serif",
+        }}
+      >
+        Clear all
+      </button>
+    </div>
+  )}
+</div>
 
-                {/* Active Filters */}
-                {(selectedCategory !== 'all' || filterDiff !== 'all' || searchTerm) && (
-                    <div style={{
-                        marginTop: '20px',
-                        paddingTop: '20px',
-                        borderTop: '1px solid #e2e8f0',
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '12px',
-                        flexWrap: 'wrap',
-                    }}>
-                        <span style={{ fontSize: '13px', color: '#475569', fontWeight: '500' }}>
-                            Active filters:
-                        </span>
-                        {selectedCategory !== 'all' && (
-                            <span style={{
-                                padding: '4px 12px',
-                                background: '#f1f5f9',
-                                borderRadius: '100px',
-                                fontSize: '12px',
-                                color: '#0f172a',
-                                display: 'flex',
-                                alignItems: 'center',
-                                gap: '6px',
-                            }}>
-                                Category: {categories.find(c => c.id === selectedCategory)?.name}
-                                <button
-                                    onClick={() => setSelectedCategory('all')}
-                                    style={{
-                                        background: 'none',
-                                        border: 'none',
-                                        cursor: 'pointer',
-                                        fontSize: '14px',
-                                        color: '#64748b',
-                                        padding: '0 2px',
-                                    }}
-                                >
-                                    ×
-                                </button>
-                            </span>
-                        )}
-                        {filterDiff !== 'all' && (
-                            <span style={{
-                                padding: '4px 12px',
-                                background: '#f1f5f9',
-                                borderRadius: '100px',
-                                fontSize: '12px',
-                                color: '#0f172a',
-                                display: 'flex',
-                                alignItems: 'center',
-                                gap: '6px',
-                            }}>
-                                Level: {difficultyLevels.find(d => d.id === filterDiff)?.name}
-                                <button
-                                    onClick={() => setFilterDiff('all')}
-                                    style={{
-                                        background: 'none',
-                                        border: 'none',
-                                        cursor: 'pointer',
-                                        fontSize: '14px',
-                                        color: '#64748b',
-                                        padding: '0 2px',
-                                    }}
-                                >
-                                    ×
-                                </button>
-                            </span>
-                        )}
-                        {searchTerm && (
-                            <span style={{
-                                padding: '4px 12px',
-                                background: '#f1f5f9',
-                                borderRadius: '100px',
-                                fontSize: '12px',
-                                color: '#0f172a',
-                                display: 'flex',
-                                alignItems: 'center',
-                                gap: '6px',
-                            }}>
-                                Search: "{searchTerm}"
-                                <button
-                                    onClick={() => setSearchTerm('')}
-                                    style={{
-                                        background: 'none',
-                                        border: 'none',
-                                        cursor: 'pointer',
-                                        fontSize: '14px',
-                                        color: '#64748b',
-                                        padding: '0 2px',
-                                    }}
-                                >
-                                    ×
-                                </button>
-                            </span>
-                        )}
-                        <button
-                            onClick={() => {
-                                setSelectedCategory('all');
-                                setFilterDiff('all');
-                                setSearchTerm('');
-                            }}
-                            style={{
-                                padding: '4px 12px',
-                                background: 'transparent',
-                                border: '1px solid #e2e8f0',
-                                borderRadius: '100px',
-                                fontSize: '12px',
-                                color: '#475569',
-                                cursor: 'pointer',
-                                fontWeight: '500',
-                            }}
-                        >
-                            Clear all
-                        </button>
-                    </div>
-                )}
-            </div>
-
-            {/* Results Count */}
-            <div style={{
-                display: 'flex',
-                justifyContent: 'space-between',
-                alignItems: 'center',
-                marginBottom: '20px',
-            }}>
-                <p style={{ fontSize: '14px', color: '#475569', margin: '0' }}>
-                    Showing <span style={{ fontWeight: '600', color: '#0f172a' }}>{sortedAndFilteredWords.length}</span> of <span style={{ fontWeight: '600', color: '#0f172a' }}>{totalWords}</span> words
-                </p>
-                {filterDiff === 'favorites' && favorites.length === 0 && (
-                    <p style={{ fontSize: '14px', color: '#C44545', margin: '0', display: 'flex', alignItems: 'center', gap: '6px' }}>
-                        <span>⭐</span> No favorites yet
-                    </p>
-                )}
-            </div>
+{/* Results Count */}
+<div style={{
+  display: 'flex',
+  justifyContent: 'space-between',
+  alignItems: 'center',
+  marginBottom: '16px',
+}}>
+  <p style={{ 
+    fontSize: '13px', 
+    color: '#6f7887', 
+    margin: '0',
+    fontFamily: "'Poppins', sans-serif",
+  }}>
+    Showing <span style={{ fontWeight: '500', color: '#2c3440' }}>{sortedAndFilteredWords.length}</span> of <span style={{ fontWeight: '500', color: '#2c3440' }}>{totalWords}</span> words
+  </p>
+  {filterDiff === 'favorites' && favorites.length === 0 && (
+    <p style={{ 
+      fontSize: '12px', 
+      color: '#b58a8a', 
+      margin: '0', 
+      display: 'flex', 
+      alignItems: 'center', 
+      gap: '4px',
+      fontFamily: "'Poppins', sans-serif",
+    }}>
+      <span style={{ fontSize: '11px' }}>⭐</span> No favorites yet
+    </p>
+  )}
+</div>
 
             {/* Word Details Modal */}
             {showWordDetails && selectedWord && (
@@ -10050,24 +10033,24 @@ const Dashboard = () => {
         background: '#f5f5f7',
         fontFamily: 'Poppins, sans-serif',
       }}>
-        {/* Sidebar */}
-        {isSidebarVisible && (
-          <div style={{
-            width: '260px',
-            background: 'linear-gradient(180deg, #8b7dd6 0%, #7c6fd6 50%, #6b5ec5 100%)',
-            color: 'white',
-            display: 'flex',
-            flexDirection: 'column',
-            position: 'fixed',
-            height: '100vh',
-            left: 0,
-            top: 0,
-            padding: '0',
-            fontFamily: "'Poppins', sans-serif",
-            boxShadow: '4px 0 20px rgba(0, 0, 0, 0.1)',
-            zIndex: 1000,
-            transition: 'transform 0.3s ease',
-          }}>
+{/* Sidebar */}
+{isSidebarVisible && (
+  <div style={{
+    width: '280px',
+    background: 'linear-gradient(180deg, #8b7dd6 0%, #7c6fd6 50%, #6b5ec5 100%)',
+    color: 'white',
+    display: 'flex',
+    flexDirection: 'column',
+    position: 'fixed',
+    height: '100vh',
+    left: 0,
+    top: 0,
+    padding: '0',
+    fontFamily: "'Poppins', sans-serif",
+    boxShadow: '4px 0 20px rgba(0, 0, 0, 0.1)',
+    zIndex: 1000,
+    transition: 'transform 0.3s ease',
+  }}>
             {/* Logo */}
             <div style={{
               padding: '30px 25px',
@@ -10090,14 +10073,32 @@ const Dashboard = () => {
             </div>
 
             {/* Menu Items */}
-            <nav style={{ flex: 1, padding: '25px 0' }}>
+            <nav style={{ flex: 1, padding: '23px 0' }}>
               {[
-                { name: 'Dashboard', icon: '▣' },
-                { name: 'Word Library', icon: '☰' },
-                { name: 'Games', icon: '◉' },
-                { name: 'My Progress', icon: '▦' },
-                { name: 'Favorites', icon: '★' },
-                { name: 'Leaderboards', icon: '🏆' },
+               { 
+  name: 'Dashboard', 
+  icon: '⊞'  // Window
+},
+{ 
+  name: 'Word Library', 
+  icon: '≡'  // Stacked lines - like book pages
+},
+{ 
+  name: 'Games', 
+  icon: '▶'  // Play button
+},
+{ 
+  name: 'My Progress', 
+  icon: '↗'  // Up arrow
+},
+{ 
+  name: 'Favorites', 
+  icon: '★'  // Star
+},
+{ 
+  name: 'Leaderboards', 
+  icon: '⚑'  // Flag (race/competition)
+}
                  
               ].map((item) => (
                 <div
@@ -10189,49 +10190,50 @@ const Dashboard = () => {
               }
             }}
   >
-         <span style={{ fontSize: '20px' }}>👤</span>
-         <span>My Profile</span>
+        <span style={{ fontSize: '20px' }}>⊙</span>  {/* Circle with dot - minimal */}
+<span>Profile</span>
           </div>
          </div>
           </div>
         )}
 
         {/* Sidebar Toggle Button */}
-        {!isSidebarVisible && (
-          <button
-            onClick={() => setIsSidebarVisible(true)}
-            style={{
-              position: 'fixed',
-              top: '20px',
-              left: '20px',
-              zIndex: 1001,
-              background: 'linear-gradient(135deg, #7c6fd6 0%, #9b8de8 100%)',
-              color: 'white',
-              border: 'none',
-              borderRadius: '50%',
-              width: '50px',
-              height: '50px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              fontSize: '24px',
-              cursor: 'pointer',
-              boxShadow: '0 4px 12px rgba(124, 111, 214, 0.4)',
-              transition: 'all 0.3s ease',
-              fontFamily: "'Poppins', sans-serif",
-            }}
-            onMouseOver={(e) => {
-              e.currentTarget.style.transform = 'scale(1.1)';
-              e.currentTarget.style.boxShadow = '0 6px 20px rgba(124, 111, 214, 0.6)';
-            }}
-            onMouseOut={(e) => {
-              e.currentTarget.style.transform = 'scale(1)';
-              e.currentTarget.style.boxShadow = '0 4px 12px rgba(124, 111, 214, 0.4)';
-            }}
-          >
-            ☰
-          </button>
-        )}
+{!isSidebarVisible && (
+  <button
+    onClick={() => setIsSidebarVisible(true)}
+    style={{
+      position: 'fixed',
+      top: '20px',
+      left: '20px',
+      zIndex: 1001,
+      background: 'transparent',
+      color: '#7c6fd6',
+      border: '1.5px solid #eae8f0',
+      borderRadius: '10px',
+      width: '42px',
+      height: '42px',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      fontSize: '20px',
+      cursor: 'pointer',
+      transition: 'all 0.2s ease',
+      fontFamily: "'Poppins', sans-serif",
+    }}
+    onMouseOver={(e) => {
+      e.currentTarget.style.background = '#f8f7ff';
+      e.currentTarget.style.borderColor = '#d0c9f0';
+      e.currentTarget.style.color = '#625d9b';
+    }}
+    onMouseOut={(e) => {
+      e.currentTarget.style.background = 'transparent';
+      e.currentTarget.style.borderColor = '#eae8f0';
+      e.currentTarget.style.color = '#7c6fd6';
+    }}
+  >
+    ☰
+  </button>
+)}
 
         {/* Main Content Area */}
         <div style={{
@@ -10332,150 +10334,149 @@ const Dashboard = () => {
     <span style={{ fontSize: '12px', color: '#999', marginLeft: '4px' }}>▼</span>
   </div>
 
-  {/* Dropdown Menu */}
-  {showProfileMenu && (
+{/* Dropdown Menu */}
+{showProfileMenu && (
+  <div style={{
+    position: 'absolute',
+    top: '60px',
+    right: '0',
+    background: 'white',
+    borderRadius: '12px',
+    boxShadow: '0 4px 16px rgba(0,0,0,0.08)',
+    zIndex: 1000,
+    minWidth: '240px',
+    overflow: 'hidden',
+    fontFamily: "'Poppins', sans-serif",
+    border: '1px solid #eaedf2',
+  }}>
     <div style={{
-      position: 'absolute',
-      top: '60px',
-      right: '0',
-      background: 'white',
-      borderRadius: '16px',
-      boxShadow: '0 8px 24px rgba(0,0,0,0.15)',
-      zIndex: 1000,
-      minWidth: '240px',
-      overflow: 'hidden',
-      fontFamily: "'Poppins', sans-serif",
-      border: '1px solid #f0f0f0',
+      padding: '14px 16px',
+      background: '#faf9ff',
+      borderBottom: '1px solid #eae8f0',
+      display: 'flex',
+      alignItems: 'center',
+      gap: '10px',
     }}>
       <div style={{
-        padding: '16px 18px',
-        background: 'linear-gradient(135deg, #f8f7ff 0%, #ffffff 100%)',
-        borderBottom: '1px solid #e6e0ff',
+        width: '42px',
+        height: '42px',
+        borderRadius: '10px',
+        background: '#7c6fd6',
         display: 'flex',
         alignItems: 'center',
-        gap: '12px',
+        justifyContent: 'center',
+        fontSize: '20px',
+        color: 'white',
       }}>
-        <div style={{
-          width: '48px',
-          height: '48px',
-          borderRadius: '50%',
-          background: 'linear-gradient(135deg, #7c6fd6 0%, #9b8de8 100%)',
+        {userProfile?.avatar || '👤'}
+      </div>
+      <div>
+        <div style={{ fontSize: '14px', fontWeight: '500', color: '#2c3440' }}>{userProfile?.displayName || 'User'}</div>
+        <div style={{ fontSize: '11px', color: '#8f9aab' }}>{userProfile?.email || 'user@example.com'}</div>
+      </div>
+    </div>
+
+    <div style={{ padding: '6px' }}>
+      <button
+        onClick={() => {
+          setShowProfileMenu(false);
+          setActiveMenu('My Profile');
+          setCurrentGame(null);
+        }}
+        style={{
+          width: '100%',
+          padding: '10px 14px',
+          border: 'none',
+          background: 'none',
+          fontSize: '13px',
+          fontWeight: '400',
+          color: '#5a6270',
+          cursor: 'pointer',
+          textAlign: 'left',
+          borderRadius: '8px',
+          transition: 'all 0.2s ease',
           display: 'flex',
           alignItems: 'center',
-          justifyContent: 'center',
-          fontSize: '24px',
-          color: 'white',
-        }}>
-          {userProfile?.avatar || '👤'}
-        </div>
-        <div>
-          <div style={{ fontSize: '15px', fontWeight: '600', color: '#1a1a1a' }}>{userProfile?.displayName || 'User'}</div>
-          <div style={{ fontSize: '12px', color: '#666' }}>{userProfile?.email || 'user@example.com'}</div>
-        </div>
-      </div>
+          gap: '10px',
+        }}
+        onMouseOver={(e) => {
+          e.currentTarget.style.background = '#f8f7ff';
+          e.currentTarget.style.color = '#7c6fd6';
+        }}
+        onMouseOut={(e) => {
+          e.currentTarget.style.background = 'none';
+          e.currentTarget.style.color = '#5a6270';
+        }}
+      >
+        <span style={{ fontSize: '16px' }}>👤</span>
+        My Profile
+      </button>
 
-      <div style={{ padding: '8px' }}>
-        <button
-          onClick={() => {
-            setShowProfileMenu(false);
-            setActiveMenu('My Profile');
-            setCurrentGame(null);
-          }}
-          style={{
-            width: '100%',
-            padding: '12px 16px',
-            border: 'none',
-            background: 'none',
-            fontSize: '14px',
-            fontWeight: '500',
-            color: '#333',
-            cursor: 'pointer',
-            textAlign: 'left',
-            borderRadius: '8px',
-            transition: 'all 0.2s ease',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '12px',
-          }}
-          onMouseOver={(e) => {
-            e.currentTarget.style.background = '#f8f7ff';
-            e.currentTarget.style.color = '#7c6fd6';
-          }}
-          onMouseOut={(e) => {
-            e.currentTarget.style.background = 'none';
-            e.currentTarget.style.color = '#333';
-          }}
-        >
-          <span style={{ fontSize: '18px' }}>👤</span>
-          My Profile
-        </button>
+      <button
+        onClick={() => {
+          setShowProfileMenu(false);
+          setActiveMenu('My Progress');
+          setCurrentGame(null);
+        }}
+        style={{
+          width: '100%',
+          padding: '10px 14px',
+          border: 'none',
+          background: 'none',
+          fontSize: '13px',
+          fontWeight: '400',
+          color: '#5a6270',
+          cursor: 'pointer',
+          textAlign: 'left',
+          borderRadius: '8px',
+          transition: 'all 0.2s ease',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '10px',
+        }}
+        onMouseOver={(e) => {
+          e.currentTarget.style.background = '#f8f7ff';
+          e.currentTarget.style.color = '#7c6fd6';
+        }}
+        onMouseOut={(e) => {
+          e.currentTarget.style.background = 'none';
+          e.currentTarget.style.color = '#5a6270';
+        }}
+      >
+        <span style={{ fontSize: '16px' }}>📊</span>
+        My Progress
+      </button>
 
-     
+      <div style={{ height: '1px', background: '#eaedf2', margin: '6px 0' }}></div>
 
-        <button
-          onClick={() => {
-            setShowProfileMenu(false);
-            setActiveMenu('My Progress');
-            setCurrentGame(null);
-          }}
-          style={{
-            width: '100%',
-            padding: '12px 16px',
-            border: 'none',
-            background: 'none',
-            fontSize: '14px',
-            fontWeight: '500',
-            color: '#333',
-            cursor: 'pointer',
-            textAlign: 'left',
-            borderRadius: '8px',
-            transition: 'all 0.2s ease',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '12px',
-          }}
-          onMouseOver={(e) => {
-            e.currentTarget.style.background = '#f8f7ff';
-            e.currentTarget.style.color = '#7c6fd6';
-          }}
-          onMouseOut={(e) => {
-            e.currentTarget.style.background = 'none';
-            e.currentTarget.style.color = '#333';
-          }}
-        >
-          <span style={{ fontSize: '18px' }}>📊</span>
-          My Progress
-        </button>
-
-        <div style={{ height: '1px', background: '#f0f0f0', margin: '8px 0' }}></div>
-
-        <button
-          onClick={handleLogout}
-          style={{
-            width: '100%',
-            padding: '12px 16px',
-            border: 'none',
-            background: 'none',
-            fontSize: '14px',
-            fontWeight: '500',
-            color: '#ff6b6b',
-            cursor: 'pointer',
-            textAlign: 'left',
-            borderRadius: '8px',
-            transition: 'all 0.2s ease',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '12px',
-          }}
-          onMouseOver={(e) => {
-            e.currentTarget.style.background = '#fff5f5';
-          }}
-          onMouseOut={(e) => {
-            e.currentTarget.style.background = 'none';
-          }}
-        >
-          <span style={{ fontSize: '18px' }}>🚪</span>
-          Sign Out
+      <button
+        onClick={handleLogout}
+        style={{
+          width: '100%',
+          padding: '10px 14px',
+          border: 'none',
+          background: 'none',
+          fontSize: '13px',
+          fontWeight: '400',
+          color: '#b58a8a',
+          cursor: 'pointer',
+          textAlign: 'left',
+          borderRadius: '8px',
+          transition: 'all 0.2s ease',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '10px',
+        }}
+        onMouseOver={(e) => {
+          e.currentTarget.style.background = '#faf2f2';
+          e.currentTarget.style.color = '#b58a8a';
+        }}
+        onMouseOut={(e) => {
+          e.currentTarget.style.background = 'none';
+          e.currentTarget.style.color = '#b58a8a';
+        }}
+      >
+        Sign Out
         </button>
       </div>
     </div>
@@ -10544,894 +10545,623 @@ const Dashboard = () => {
               fontFamily: "'Inter', 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif",
               color: '#0f172a',
             }}>
-              {/* Welcome Section - Enhanced with Purple Theme */}
-              <div style={{
-                background: 'linear-gradient(135deg, #7c6fd6 0%, #6b5ec5 50%, #5a4db4 100%)',
-                borderRadius: '24px',
-                padding: '30px 40px',
-                marginBottom: '40px',
-                display: 'flex',
-                gap: '35px',
-                alignItems: 'center',
-                color: 'white',
-                border: '1px solid rgba(255,255,255,0.15)',
-                boxShadow: '0 12px 40px rgba(124, 111, 214, 0.25)',
-                position: 'relative',
-                overflow: 'hidden',
-              }}>
-                {/* Subtle decorative elements */}
-                <div style={{
-                  position: 'absolute',
-                  top: '-50px',
-                  right: '-50px',
-                  width: '200px',
-                  height: '200px',
-                  background: 'rgba(255,255,255,0.05)',
-                  borderRadius: '50%',
-                  zIndex: 0,
-                }}></div>
-                <div style={{
-                  position: 'absolute',
-                  bottom: '-30px',
-                  left: '-30px',
-                  width: '150px',
-                  height: '150px',
-                  background: 'rgba(255,255,255,0.05)',
-                  borderRadius: '50%',
-                  zIndex: 0,
-                }}></div>
+          {/* Welcome Section - Enhanced with Purple Theme */}
+<div style={{
+  background: 'linear-gradient(135deg, #7c6fd6 0%, #6b5ec5 50%, #5a4db4 100%)',
+  borderRadius: '16px',
+  padding: '24px 32px',
+  marginBottom: '32px',
+  display: 'flex',
+  gap: '24px',
+  alignItems: 'center',
+  color: 'white',
+  border: '1px solid rgba(255,255,255,0.1)',
+  boxShadow: '0 4px 16px rgba(106, 90, 170, 0.15)',
+  position: 'relative',
+  overflow: 'hidden',
+}}>
+  {/* Subtle decorative elements */}
+  <div style={{
+    position: 'absolute',
+    top: '-50px',
+    right: '-50px',
+    width: '180px',
+    height: '180px',
+    background: 'rgba(255,255,255,0.03)',
+    borderRadius: '50%',
+    zIndex: 0,
+  }}></div>
+  <div style={{
+    position: 'absolute',
+    bottom: '-30px',
+    left: '-30px',
+    width: '130px',
+    height: '130px',
+    background: 'rgba(255,255,255,0.03)',
+    borderRadius: '50%',
+    zIndex: 0,
+  }}></div>
 
-                <div style={{
-                  width: '120px',
-                  height: '120px',
-                  background: 'white',
-                  borderRadius: '20px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  flexShrink: 0,
-                  boxShadow: '0 12px 30px rgba(0,0,0,0.25)',
-                  border: '3px solid rgba(255,255,255,0.3)',
-                  position: 'relative',
-                  zIndex: 1,
-                }}>
-                  <img
-                    src="src/image/bokawelcoming.jpg"
-                    alt="VocaboPlay Mascot"
-                    style={{
-                      width: '100%',
-                      height: '100%',
-                      borderRadius: '17px',
-                      objectFit: 'cover',
-                    }}
-                  />
-                </div>
-                <div style={{ flex: 1, position: 'relative', zIndex: 1 }}>
-                  <div style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '12px',
-                    marginBottom: '12px',
-                    flexWrap: 'wrap',
-                  }}>
-                    <h2 style={{
-                      fontSize: '32px',
-                      fontWeight: '700',
-                      margin: '0',
-                      fontFamily: "'Poppins', sans-serif",
-                      letterSpacing: '-0.5px',
-                      color: 'white',
-                      textShadow: '0 2px 10px rgba(0,0,0,0.1)',
-                    }}>
-                      Welcome back, kwekwek
-                    </h2>
-                    <span style={{
-                      fontSize: '32px',
-                      background: 'rgba(255,255,255,0.2)',
-                      borderRadius: '50%',
-                      width: '48px',
-                      height: '48px',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                    }}>👋</span>
-                  </div>
-                  <p style={{
-                    fontSize: '15px',
-                    opacity: '0.9',
-                    lineHeight: '1.6',
-                    marginBottom: '28px',
-                    maxWidth: '600px',
-                    color: 'rgba(255,255,255,0.95)',
-                    fontWeight: '300',
-                  }}>
-                    Continue your vocabulary journey with <strong style={{ fontWeight: '700', background: 'rgba(255,255,255,0.2)', padding: '2px 8px', borderRadius: '20px' }}>{UNIFIED_VOCABULARY.length} words</strong> to master.
-                  </p>
-                  <div style={{
-                    display: 'flex',
-                    gap: '16px',
-                    flexWrap: 'wrap',
-                  }}>
-                    <button
-                      onClick={() => setActiveMenu('Games')}
-                      style={{
-                        background: 'white',
-                        color: '#5a4db4',
-                        border: 'none',
-                        padding: '12px 28px',
-                        borderRadius: '100px',
-                        fontSize: '14px',
-                        fontWeight: '400',
-                        cursor: 'pointer',
-                        fontFamily: "'Poppins', sans-serif",
-                        boxShadow: '0 8px 20px rgba(0,0,0,0.15)',
-                        transition: 'all 0.2s ease',
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '8px',
-                      }}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.background = '#f0edff';
-                        e.currentTarget.style.transform = 'translateY(-2px)';
-                        e.currentTarget.style.boxShadow = '0 12px 28px rgba(0,0,0,0.2)';
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.background = 'white';
-                        e.currentTarget.style.transform = 'translateY(0)';
-                        e.currentTarget.style.boxShadow = '0 8px 20px rgba(0,0,0,0.15)';
-                      }}
-                    >
-                      Continue Learning
-                    </button>
-                    <button
-                      onClick={() => setActiveMenu('Word Library')}
-                      style={{
-                        background: 'rgba(255, 255, 255, 0.15)',
-                        color: 'white',
-                        border: '1px solid rgba(255, 255, 255, 0.3)',
-                        padding: '12px 28px',
-                        borderRadius: '100px',
-                        fontSize: '14px',
-                        fontWeight: '400',
-                        cursor: 'pointer',
-                        fontFamily: "'Poppins', sans-serif",
-                        backdropFilter: 'blur(10px)',
-                        transition: 'all 0.2s ease',
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '8px',
-                      }}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.background = 'rgba(255, 255, 255, 0.25)';
-                        e.currentTarget.style.border = '1px solid rgba(255, 255, 255, 0.5)';
-                        e.currentTarget.style.transform = 'translateY(-2px)';
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.background = 'rgba(255, 255, 255, 0.15)';
-                        e.currentTarget.style.border = '1px solid rgba(255, 255, 255, 0.3)';
-                        e.currentTarget.style.transform = 'translateY(0)';
-                      }}
-                    >
-                      Browse Library
-                    </button>
-                  </div>
-                </div>
-              </div>
+  <div style={{
+    width: '100px',
+    height: '100px',
+    background: 'white',
+    borderRadius: '16px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexShrink: 0,
+    boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
+    border: '2px solid rgba(255,255,255,0.2)',
+    position: 'relative',
+    zIndex: 1,
+  }}>
+    <img
+      src="src/image/bokawelcoming.jpg"
+      alt="VocaboPlay Mascot"
+      style={{
+        width: '100%',
+        height: '100%',
+        borderRadius: '14px',
+        objectFit: 'cover',
+      }}
+    />
+  </div>
+  <div style={{ flex: 1, position: 'relative', zIndex: 1 }}>
+    <div style={{
+      display: 'flex',
+      alignItems: 'center',
+      gap: '10px',
+      marginBottom: '8px',
+      flexWrap: 'wrap',
+    }}>
+      <h2 style={{
+        fontSize: '28px',
+        fontWeight: '500',
+        margin: '0',
+        fontFamily: "'Poppins', sans-serif",
+        letterSpacing: '-0.3px',
+        color: 'white',
+        textShadow: '0 1px 4px rgba(0,0,0,0.1)',
+      }}>
+        Welcome back, kwekwek
+      </h2>
+      <span style={{
+        fontSize: '28px',
+        background: 'rgba(255,255,255,0.15)',
+        borderRadius: '50%',
+        width: '42px',
+        height: '42px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}>👋</span>
+    </div>
+    <p style={{
+      fontSize: '14px',
+      opacity: '0.85',
+      lineHeight: '1.5',
+      marginBottom: '20px',
+      maxWidth: '550px',
+      color: 'rgba(255,255,255,0.95)',
+      fontWeight: '300',
+    }}>
+      Continue your vocabulary journey with <strong style={{ fontWeight: '500', background: 'rgba(255,255,255,0.15)', padding: '2px 8px', borderRadius: '16px' }}>{UNIFIED_VOCABULARY.length} words</strong> to master.
+    </p>
+    <div style={{
+      display: 'flex',
+      gap: '12px',
+      flexWrap: 'wrap',
+    }}>
+      <button
+        onClick={() => setActiveMenu('Games')}
+        style={{
+          background: 'white',
+          color: '#625d9b',
+          border: 'none',
+          padding: '10px 24px',
+          borderRadius: '40px',
+          fontSize: '13px',
+          fontWeight: '400',
+          cursor: 'pointer',
+          fontFamily: "'Poppins', sans-serif",
+          boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+          transition: 'all 0.2s ease',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '6px',
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.background = '#f5f3ff';
+          e.currentTarget.style.transform = 'translateY(-1px)';
+          e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.12)';
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.background = 'white';
+          e.currentTarget.style.transform = 'translateY(0)';
+          e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.1)';
+        }}
+      >
+        Continue Learning
+      </button>
+      <button
+        onClick={() => setActiveMenu('Word Library')}
+        style={{
+          background: 'rgba(255, 255, 255, 0.1)',
+          color: 'white',
+          border: '1px solid rgba(255, 255, 255, 0.2)',
+          padding: '10px 24px',
+          borderRadius: '40px',
+          fontSize: '13px',
+          fontWeight: '400',
+          cursor: 'pointer',
+          fontFamily: "'Poppins', sans-serif",
+          backdropFilter: 'blur(4px)',
+          transition: 'all 0.2s ease',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '6px',
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.background = 'rgba(255, 255, 255, 0.15)';
+          e.currentTarget.style.border = '1px solid rgba(255, 255, 255, 0.3)';
+          e.currentTarget.style.transform = 'translateY(-1px)';
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.background = 'rgba(255, 255, 255, 0.1)';
+          e.currentTarget.style.border = '1px solid rgba(255, 255, 255, 0.2)';
+          e.currentTarget.style.transform = 'translateY(0)';
+        }}
+      >
+        Browse Library
+      </button>
+    </div>
+  </div>
+</div>
 
-              {/* Stats Grid - Purple Theme */}
-              <div style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(230px, 1fr))',
-                gap: '20px',
-                marginBottom: '45px',
-              }}>
-                {[
-                  {
-                    label: 'Words Learned',
-                    value: `${JSON.parse(localStorage.getItem('vocaboplay_progress') || '{"wordsLearned":0}').wordsLearned}`,
-                    icon: '📚',
-                    color: '#7c6fd6',
-                    bg: '#f0edff',
-                    trend: 'Mastered so far'
-                  },
-                  {
-                    label: 'Games Played',
-                    value: `${JSON.parse(localStorage.getItem('vocaboplay_progress') || '{"gamesPlayed":0}').gamesPlayed}`,
-                    icon: '🎮',
-                    color: '#9b8de8',
-                    bg: '#f3f0ff',
-                    trend: 'Total sessions'
-                  },
-                  {
-                    label: 'Current Streak',
-                    value: `${JSON.parse(localStorage.getItem('vocaboplay_progress') || '{"streak":0}').streak}`,
-                    icon: '🔥',
-                    color: '#ff9f4b',
-                    bg: '#fff1e6',
-                    unit: 'days',
-                    trend: 'Keep it up!'
-                  },
-                  {
-                    label: 'Total Points',
-                    value: `${JSON.parse(localStorage.getItem('vocaboplay_progress') || '{"totalPoints":0}').totalPoints}`,
-                    icon: '⭐',
-                    color: '#ffb84d',
-                    bg: '#fff8e7',
-                    trend: 'Keep earning'
-                  },
-                ].map((stat, i) => {
-                  const progress = JSON.parse(localStorage.getItem('vocaboplay_progress') || '{"xp":0}');
-                  const xpToNextLevel = 100;
-                  const currentLevelXp = progress.xp % xpToNextLevel;
-                  const levelProgress = (currentLevelXp / xpToNextLevel) * 100;
+{/* Stats Grid - Purple Theme */}
+<div style={{
+  display: 'grid',
+  gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
+  gap: '16px',
+  marginBottom: '32px',
+}}>
+  {[
+    {
+      label: 'Words Learned',
+      value: `${JSON.parse(localStorage.getItem('vocaboplay_progress') || '{"wordsLearned":0}').wordsLearned}`,
+      icon: '📚',
+      color: '#7c6fd6',
+      bg: '#f8f7ff',
+      trend: 'Mastered so far'
+    },
+    {
+      label: 'Games Played',
+      value: `${JSON.parse(localStorage.getItem('vocaboplay_progress') || '{"gamesPlayed":0}').gamesPlayed}`,
+      icon: '🎮',
+      color: '#9b8de8',
+      bg: '#f8f7ff',
+      trend: 'Total sessions'
+    },
+    {
+      label: 'Current Streak',
+      value: `${JSON.parse(localStorage.getItem('vocaboplay_progress') || '{"streak":0}').streak}`,
+      icon: '🔥',
+      color: '#ff9f4b',
+      bg: '#fff8f0',
+      unit: 'days',
+      trend: 'Keep it up!'
+    },
+    {
+      label: 'Total Points',
+      value: `${JSON.parse(localStorage.getItem('vocaboplay_progress') || '{"totalPoints":0}').totalPoints}`,
+      icon: '⭐',
+      color: '#ffb84d',
+      bg: '#fffaf0',
+      trend: 'Keep earning'
+    },
+  ].map((stat, i) => {
+    const progress = JSON.parse(localStorage.getItem('vocaboplay_progress') || '{"xp":0}');
+    const xpToNextLevel = 100;
+    const currentLevelXp = progress.xp % xpToNextLevel;
+    const levelProgress = (currentLevelXp / xpToNextLevel) * 100;
 
-                  return (
-                    <div
-                      key={i}
-                      style={{
-                        background: '#ffffff',
-                        borderRadius: '20px',
-                        padding: '24px',
-                        border: '1px solid #e6e0ff',
-                        transition: 'all 0.2s ease',
-                        display: 'flex',
-                        flexDirection: 'column',
-                        position: 'relative',
-                        overflow: 'hidden',
-                        boxShadow: '0 4px 12px rgba(124, 111, 214, 0.08)',
-                      }}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.borderColor = '#7c6fd6';
-                        e.currentTarget.style.boxShadow = '0 12px 28px rgba(124, 111, 214, 0.15)';
-                        e.currentTarget.style.transform = 'translateY(-4px)';
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.borderColor = '#e6e0ff';
-                        e.currentTarget.style.boxShadow = '0 4px 12px rgba(124, 111, 214, 0.08)';
-                        e.currentTarget.style.transform = 'translateY(0)';
-                      }}
-                    >
-                      <div style={{
-                        display: 'flex',
-                        justifyContent: 'space-between',
-                        alignItems: 'flex-start',
-                        marginBottom: '16px',
-                      }}>
-                        <div style={{
-                          width: '48px',
-                          height: '48px',
-                          background: stat.bg,
-                          borderRadius: '16px',
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          fontSize: '24px',
-                          color: stat.color,
-                        }}>
-                          {stat.icon}
-                        </div>
-                        {stat.label === 'Total Points' && (
-                          <span style={{
-                            padding: '4px 12px',
-                            background: '#f0edff',
-                            borderRadius: '100px',
-                            fontSize: '12px',
-                            fontWeight: '600',
-                            color: '#7c6fd6',
-                          }}>
-                            Level {progress.level || 1}
-                          </span>
-                        )}
-                      </div>
-
-                      <div style={{ marginBottom: '4px' }}>
-                        <span style={{
-                          fontSize: '36px',
-                          fontWeight: '700',
-                          color: '#1a1a2c',
-                          fontFamily: "'Poppins', sans-serif",
-                          letterSpacing: '-0.5px',
-                          lineHeight: 1,
-                        }}>
-                          {stat.value}
-                        </span>
-                        {stat.unit && (
-                          <span style={{
-                            fontSize: '16px',
-                            color: '#8880b0',
-                            marginLeft: '4px',
-                            fontWeight: '500',
-                          }}>
-                            {stat.unit}
-                          </span>
-                        )}
-                      </div>
-
-                      <div style={{
-                        fontSize: '14px',
-                        fontWeight: '600',
-                        color: '#6b63a0',
-                        marginBottom: stat.label === 'Total Points' ? '12px' : '8px',
-                      }}>
-                        {stat.label}
-                      </div>
-
-                      <div style={{
-                        fontSize: '12px',
-                        color: '#9a94c0',
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '4px',
-                        marginTop: 'auto',
-                      }}>
-                        <span style={{ color: stat.color }}>●</span>
-                        {stat.trend}
-                      </div>
-
-                      {stat.label === 'Total Points' && (
-                        <div style={{
-                          marginTop: '16px',
-                        }}>
-                          <div style={{
-                            display: 'flex',
-                            justifyContent: 'space-between',
-                            marginBottom: '6px',
-                            fontSize: '12px',
-                          }}>
-                            <span style={{ color: '#6b63a0' }}>XP to next level</span>
-                            <span style={{ color: '#7c6fd6', fontWeight: '600' }}>
-                              {currentLevelXp}/{xpToNextLevel}
-                            </span>
-                          </div>
-                          <div style={{
-                            background: '#f0edff',
-                            height: '8px',
-                            borderRadius: '100px',
-                            overflow: 'hidden',
-                          }}>
-                            <div style={{
-                              height: '100%',
-                              width: `${levelProgress}%`,
-                              background: 'linear-gradient(90deg, #7c6fd6, #9b8de8)',
-                              borderRadius: '100px',
-                              transition: 'width 0.3s ease',
-                            }} />
-                          </div>
-                        </div>
-                      )}
-                    </div>
-                  );
-                })}
-              </div>
-
-              {/* Quick Actions & Activity */}
-              <div style={{
-                display: 'grid',
-                gridTemplateColumns: '1fr 1fr',
-                gap: '24px',
-                marginBottom: '40px',
-              }}>
-                {/* Quick Actions */}
-                <div style={{
-                  background: '#ffffff',
-                  borderRadius: '20px',
-                  padding: '28px',
-                  border: '1px solid #e6e0ff',
-                  boxShadow: '0 4px 12px rgba(124, 111, 214, 0.08)',
-                }}>
-                  <div style={{
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'center',
-                    marginBottom: '20px',
-                  }}>
-                    <h3 style={{
-                      fontSize: '18px',
-                      fontWeight: '700',
-                      color: '#1a1a2c',
-                      margin: '0',
-                      fontFamily: "'Poppins', sans-serif",
-                      letterSpacing: '-0.3px',
-                    }}>
-                      Quick Actions
-                    </h3>
-
-                  </div>
-
-                  <div style={{
-                    display: 'grid',
-                    gridTemplateColumns: '1fr 1fr',
-                    gap: '12px',
-                  }}>
-                    {[
-                      { label: 'Flashcards', icon: '🃏', color: '#7c6fd6', action: () => startGame('flashcards'), bg: '#f0edff' },
-                      { label: 'Match Game', icon: '🎯', color: '#9b8de8', action: () => startGame('match'), bg: '#f3f0ff' },
-                      { label: 'Quiz', icon: '📝', color: '#9b8de8', action: () => startGame('quiz'), bg: '#f6f3ff' },
-                      { label: 'Story', icon: '📖', color: '#8f81d9', action: () => startGame('short-story'), bg: '#f0edff' },
-                    ].map((action, i) => (
-                      <button
-                        key={i}
-                        onClick={action.action}
-                        style={{
-                          padding: '20px 12px',
-                          background: action.bg,
-                          border: '1px solid transparent',
-                          borderRadius: '16px',
-                          cursor: 'pointer',
-                          transition: 'all 0.2s ease',
-                          fontFamily: "'Poppins', sans-serif",
-                          fontSize: '14px',
-                          fontWeight: '400',
-                          color: action.color,
-                          display: 'flex',
-                          flexDirection: 'column',
-                          alignItems: 'center',
-                          gap: '10px',
-                        }}
-                        onMouseEnter={(e) => {
-                          e.currentTarget.style.background = 'white';
-                          e.currentTarget.style.borderColor = action.color;
-                          e.currentTarget.style.transform = 'translateY(-4px)';
-                          e.currentTarget.style.boxShadow = `0 12px 24px ${action.color}30`;
-                        }}
-                        onMouseLeave={(e) => {
-                          e.currentTarget.style.background = action.bg;
-                          e.currentTarget.style.borderColor = 'transparent';
-                          e.currentTarget.style.transform = 'translateY(0)';
-                          e.currentTarget.style.boxShadow = 'none';
-                        }}
-                      >
-                        <span style={{ fontSize: '28px' }}>{action.icon}</span>
-                        {action.label}
-                      </button>
-                    ))}
-                  </div>
-
-                  <button
-                    onClick={() => setActiveMenu('Games')}
-                    style={{
-                      width: '98%',
-                      marginTop: '20px',
-                      padding: '14px',
-                      background: '#f8f6ff',
-                      border: '1px solid #e6e0ff',
-                      borderRadius: '100px',
-                      fontSize: '13px',
-                      fontWeight: '500',
-                      color: '#7c6fd6',
-                      cursor: 'pointer',
-                      transition: 'all 0.2s ease',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      gap: '8px',
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.background = '#7c6fd6';
-                      e.currentTarget.style.color = 'white';
-                      e.currentTarget.style.borderColor = '#7c6fd6';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.background = '#f8f6ff';
-                      e.currentTarget.style.color = '#7c6fd6';
-                      e.currentTarget.style.borderColor = '#e6e0ff';
-                    }}
-                  >
-                    View All Games
-                  </button>
-                </div>
-
-                {/* Recent Activity */}
-                <div style={{
-                  background: '#ffffff',
-                  borderRadius: '20px',
-                  padding: '25px',
-                  border: '1px solid #e6e0ff',
-                  boxShadow: '0 4px 12px rgba(124, 111, 214, 0.08)',
-                }}>
-                  <div style={{
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'center',
-                    marginBottom: '20px',
-                  }}>
-                    <h3 style={{
-                      fontSize: '18px',
-                      fontWeight: '700',
-                      color: '#1a1a2c',
-                      margin: '0',
-                      fontFamily: "'Poppins', sans-serif",
-                      letterSpacing: '-0.3px',
-                    }}>
-                      Recent Activity
-                    </h3>
-
-                  </div>
-
-                  {JSON.parse(localStorage.getItem('vocaboplay_progress') || '{"gamesPlayed":0}').gamesPlayed === 0 ? (
-                    <div style={{
-                      display: 'flex',
-                      flexDirection: 'column',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      padding: '24px 16px',
-                      textAlign: 'center',
-                      background: '#f8f6ff',
-                      borderRadius: '16px',
-                    }}>
-                      <div style={{
-                        width: '64px',
-                        height: '64px',
-                        background: '#f0edff',
-                        borderRadius: '20px',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        marginBottom: '16px',
-                        fontSize: '32px',
-                        color: '#7c6fd6',
-                      }}>
-                        🎮
-                      </div>
-                      <p style={{
-                        fontSize: '15px',
-                        color: '#1a1a2c',
-                        marginBottom: '8px',
-                        fontWeight: '600',
-                      }}>
-                        No activity yet
-                      </p>
-                      <p style={{
-                        fontSize: '13px',
-                        color: '#8880b0',
-                        marginBottom: '16px',
-                      }}>
-                        Start playing to see your progress
-                      </p>
-                      <button
-                        onClick={() => setActiveMenu('Games')}
-                        style={{
-                          padding: '10px 24px',
-                          background: '#7c6fd6',
-                          color: 'white',
-                          border: 'none',
-                          borderRadius: '100px',
-                          fontSize: '13px',
-                          fontWeight: '600',
-                          cursor: 'pointer',
-                          transition: 'all 0.2s ease',
-                        }}
-                        onMouseEnter={(e) => e.currentTarget.style.background = '#6b5ec5'}
-                        onMouseLeave={(e) => e.currentTarget.style.background = '#7c6fd6'}
-                      >
-                        Browse Games
-                      </button>
-                    </div>
-                  ) : (
-                    <div style={{
-                      display: 'flex',
-                      flexDirection: 'column',
-                      gap: '12px',
-                    }}>
-                      <div style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '14px',
-                        padding: '14px',
-                        background: '#f8f6ff',
-                        borderRadius: '16px',
-                        border: '1px solid #f0edff',
-                      }}>
-                        <div style={{
-                          width: '44px',
-                          height: '44px',
-                          background: '#f0edff',
-                          borderRadius: '12px',
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          fontSize: '22px',
-                          color: '#7c6fd6',
-                        }}>
-                          🃏
-                        </div>
-                        <div style={{ flex: 1 }}>
-                          <div style={{
-                            fontSize: '14px',
-                            fontWeight: '400',
-                            color: '#1a1a2c',
-                          }}>
-                            Completed Flashcard session
-                          </div>
-                          <div style={{
-                            fontSize: '12px',
-                            color: '#8880b0',
-                            fontWeight: '50',
-
-                          }}>
-                            {new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  )}
-                </div>
-              </div>
-
-              {/* Learning Goals & Recommendations */}
-              <div style={{
-                display: 'grid',
-                gridTemplateColumns: '1fr 1fr',
-                gap: '24px',
-              }}>
-                {/* Daily Goal */}
-                <div style={{
-                  background: '#ffffff',
-                  borderRadius: '20px',
-                  padding: '28px',
-                  border: '1px solid #e6e0ff',
-                  boxShadow: '0 4px 12px rgba(124, 111, 214, 0.08)',
-                }}>
-                  <div style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '16px',
-                    marginBottom: '20px',
-                  }}>
-                    <div style={{
-                      width: '52px',
-                      height: '52px',
-                      background: '#f0edff',
-                      borderRadius: '16px',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      fontSize: '26px',
-                      color: '#7c6fd6',
-                    }}>
-                      🎯
-                    </div>
-                    <div>
-                      <h4 style={{
-                        fontSize: '16px',
-                        fontWeight: '700',
-                        color: '#1a1a2c',
-                        margin: '0 0 4px 0',
-                      }}>
-                        Daily Goal
-                      </h4>
-                      <p style={{
-                        fontSize: '13px',
-                        color: '#8880b0',
-                        margin: '0',
-                        fontWeight: '50',
-
-                      }}>
-                        Learn 10 words today
-                      </p>
-                    </div>
-                  </div>
-
-                  <div style={{
-                    marginBottom: '20px',
-                  }}>
-                    <div style={{
-                      display: 'flex',
-                      justifyContent: 'space-between',
-                      marginBottom: '8px',
-                      fontSize: '13px',
-                    }}>
-                      <span style={{ color: '#6b63a0' }}>Progress</span>
-                      <span style={{ color: '#7c6fd6', fontWeight: '700' }}>0/10</span>
-                    </div>
-                    <div style={{
-                      background: '#f0edff',
-                      height: '10px',
-                      borderRadius: '100px',
-                      overflow: 'hidden',
-                    }}>
-                      <div style={{
-                        height: '100%',
-                        width: '0%',
-                        background: 'linear-gradient(90deg, #7c6fd6, #9b8de8)',
-                        borderRadius: '100px',
-                        transition: 'width 0.3s ease',
-                      }} />
-                    </div>
-                  </div>
-
-                  <button
-                    onClick={() => startGame('flashcards')}
-                    style={{
-                      width: '100%',
-                      padding: '13px',
-                      background: '#7c6fd6',
-                      color: 'white',
-                      border: 'none',
-                      borderRadius: '100px',
-                      fontSize: '14px',
-                      fontWeight: '400',
-                      cursor: 'pointer',
-                      transition: 'all 0.2s ease',
-                      boxShadow: '0 8px 20px rgba(124, 111, 214, 0.25)',
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.background = '#6b5ec5';
-                      e.currentTarget.style.transform = 'translateY(-2px)';
-                      e.currentTarget.style.boxShadow = '0 12px 28px rgba(124, 111, 214, 0.35)';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.background = '#7c6fd6';
-                      e.currentTarget.style.transform = 'translateY(0)';
-                      e.currentTarget.style.boxShadow = '0 8px 20px rgba(124, 111, 214, 0.25)';
-                    }}
-                  >
-                    Start learning
-                  </button>
-                </div>
-
-                {/* Recommended for You */}
-                <div style={{
-                  background: '#ffffff',
-                  borderRadius: '20px',
-                  padding: '28px',
-                  border: '1px solid #e6e0ff',
-                  boxShadow: '0 4px 12px rgba(124, 111, 214, 0.08)',
-                }}>
-                  <div style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '16px',
-                    marginBottom: '20px',
-                  }}>
-                    <div style={{
-                      width: '52px',
-                      height: '52px',
-                      background: '#f0edff',
-                      borderRadius: '16px',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      fontSize: '26px',
-                      color: '#7c6fd6',
-                    }}>
-                      ✨
-                    </div>
-                    <div>
-                      <h4 style={{
-                        fontSize: '16px',
-                        fontWeight: '700',
-                        color: '#1a1a2c',
-                        margin: '0 0 4px 0',
-                      }}>
-                        Recommended
-                      </h4>
-                      <p style={{
-                        fontSize: '13px',
-                        color: '#8880b0',
-                        margin: '0',
-
-                      }}>
-                        Based on your progress
-                      </p>
-                    </div>
-                  </div>
-
-                  <div style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    gap: '12px',
-                  }}>
-                    <div style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'space-between',
-                      padding: '14px',
-                      background: '#f8f6ff',
-                      borderRadius: '16px',
-                      border: '1px solid #f0edff',
-                    }}>
-                      <div style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '14px',
-                      }}>
-                        <span style={{ fontSize: '24px', color: '#7c6fd6' }}>📖</span>
-                        <div>
-                          <div style={{ fontSize: '14px', fontWeight: '600', color: '#1a1a2c' }}>
-                            The Learning Journey
-                          </div>
-                          <div style={{ fontSize: '12px', color: '#8880b0' }}>
-                            Chapter 1: Classroom Adventures
-                          </div>
-                        </div>
-                      </div>
-                      <button
-                        onClick={() => startGame('short-story')}
-                        style={{
-                          padding: '8px 18px',
-                          background: 'white',
-                          border: '1px solid #e6e0ff',
-                          borderRadius: '100px',
-                          fontSize: '12px',
-                          fontWeight: '500',
-                          color: '#7c6fd6',
-                          cursor: 'pointer',
-                          transition: 'all 0.2s ease',
-                        }}
-                        onMouseEnter={(e) => {
-                          e.currentTarget.style.background = '#7c6fd6';
-                          e.currentTarget.style.color = 'white';
-                          e.currentTarget.style.borderColor = '#7c6fd6';
-                        }}
-                        onMouseLeave={(e) => {
-                          e.currentTarget.style.background = 'white';
-                          e.currentTarget.style.color = '#7c6fd6';
-                          e.currentTarget.style.borderColor = '#e6e0ff';
-                        }}
-                      >
-                        Continue
-                      </button>
-                    </div>
-
-                    <div style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'space-between',
-                      padding: '14px',
-                      background: '#f8f6ff',
-                      borderRadius: '16px',
-                      border: '1px solid #f0edff',
-                    }}>
-                      <div style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '14px',
-                      }}>
-                        <span style={{ fontSize: '24px', color: '#7c6fd6' }}>🃏</span>
-                        <div>
-                          <div style={{ fontSize: '14px', fontWeight: '600', color: '#1a1a2c' }}>
-                            Flashcards
-                          </div>
-                          <div style={{ fontSize: '12px', color: '#8880b0' }}>
-                            30 words to review
-                          </div>
-                        </div>
-                      </div>
-                      <button
-                        onClick={() => startGame('flashcards')}
-                        style={{
-                          padding: '8px 18px',
-                          background: 'white',
-                          border: '1px solid #e6e0ff',
-                          borderRadius: '100px',
-                          fontSize: '12px',
-                          fontWeight: '500',
-                          color: '#7c6fd6',
-                          cursor: 'pointer',
-                          transition: 'all 0.2s ease',
-                        }}
-                        onMouseEnter={(e) => {
-                          e.currentTarget.style.background = '#7c6fd6';
-                          e.currentTarget.style.color = 'white';
-                          e.currentTarget.style.borderColor = '#7c6fd6';
-                        }}
-                        onMouseLeave={(e) => {
-                          e.currentTarget.style.background = 'white';
-                          e.currentTarget.style.color = '#7c6fd6';
-                          e.currentTarget.style.borderColor = '#e6e0ff';
-                        }}
-                      >
-                        Start
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+    return (
+      <div
+        key={i}
+        style={{
+          background: '#ffffff',
+          borderRadius: '16px',
+          padding: '20px',
+          border: '1px solid #eae8f0',
+          transition: 'all 0.2s ease',
+          display: 'flex',
+          flexDirection: 'column',
+          position: 'relative',
+          overflow: 'hidden',
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.borderColor = '#d0c9f0';
+          e.currentTarget.style.backgroundColor = '#faf9ff';
+          e.currentTarget.style.transform = 'translateY(-2px)';
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.borderColor = '#eae8f0';
+          e.currentTarget.style.backgroundColor = '#ffffff';
+          e.currentTarget.style.transform = 'translateY(0)';
+        }}
+      >
+        <div style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'flex-start',
+          marginBottom: '12px',
+        }}>
+          <div style={{
+            width: '42px',
+            height: '42px',
+            background: stat.bg,
+            borderRadius: '12px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            fontSize: '20px',
+            color: stat.color,
+          }}>
+            {stat.icon}
+          </div>
+          {stat.label === 'Total Points' && (
+            <span style={{
+              padding: '4px 10px',
+              background: '#f8f7ff',
+              borderRadius: '12px',
+              fontSize: '11px',
+              fontWeight: '500',
+              color: '#7c6fd6',
+            }}>
+              Level {progress.level || 1}
+            </span>
           )}
-          
+        </div>
 
+        <div style={{ marginBottom: '2px' }}>
+          <span style={{
+            fontSize: '30px',
+            fontWeight: '500',
+            color: '#2c3440',
+            fontFamily: "'Poppins', sans-serif",
+            letterSpacing: '-0.3px',
+            lineHeight: 1,
+          }}>
+            {stat.value}
+          </span>
+          {stat.unit && (
+            <span style={{
+              fontSize: '14px',
+              color: '#8f9aab',
+              marginLeft: '4px',
+              fontWeight: '400',
+            }}>
+              {stat.unit}
+            </span>
+          )}
+        </div>
+
+        <div style={{
+          fontSize: '13px',
+          fontWeight: '500',
+          color: '#5a6270',
+          marginBottom: stat.label === 'Total Points' ? '12px' : '4px',
+        }}>
+          {stat.label}
+        </div>
+
+        <div style={{
+          fontSize: '11px',
+          color: '#8f9aab',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '4px',
+          marginTop: 'auto',
+        }}>
+          <span style={{ color: stat.color, fontSize: '8px' }}>●</span>
+          {stat.trend}
+        </div>
+
+        {stat.label === 'Total Points' && (
+          <div style={{
+            marginTop: '16px',
+          }}>
+            <div style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              marginBottom: '4px',
+              fontSize: '11px',
+            }}>
+              <span style={{ color: '#6f7887' }}>XP to next level</span>
+              <span style={{ color: '#7c6fd6', fontWeight: '500' }}>
+                {currentLevelXp}/{xpToNextLevel}
+              </span>
+            </div>
+            <div style={{
+              background: '#f0edff',
+              height: '6px',
+              borderRadius: '8px',
+              overflow: 'hidden',
+            }}>
+              <div style={{
+                height: '100%',
+                width: `${levelProgress}%`,
+                background: '#7c6fd6',
+                borderRadius: '8px',
+                transition: 'width 0.3s ease',
+              }} />
+            </div>
+          </div>
+        )}
+      </div>
+    );
+  })}
+</div>
+
+{/* Quick Actions & Activity */}
+<div style={{
+  display: 'grid',
+  gridTemplateColumns: '1fr 1fr',
+  gap: '20px',
+  marginBottom: '32px',
+}}>
+
+  {/* ================= QUICK ACTIONS ================= */}
+  <div style={{
+    background: '#ffffff',
+    borderRadius: '16px',
+    padding: '24px',
+    border: '1px solid #eae8f0',
+  }}>
+    <h3 style={{
+      fontSize: '16px',
+      fontWeight: '500',
+      color: '#2c3440',
+      marginBottom: '16px',
+      fontFamily: "'Poppins', sans-serif",
+    }}>
+      Quick Actions
+    </h3>
+
+    <div style={{
+      display: 'grid',
+      gridTemplateColumns: '1fr 1fr',
+      gap: '12px',
+    }}>
+      {[
+        { label: 'Word Pics', image: 'src/image/wordpics.png', action: () => startGame('wordpics') },
+        { label: 'Match Game', image: 'src/image/matchgame.png', action: () => startGame('match') },
+        { label: 'Quiz', image: 'src/image/quizgame.png', action: () => startGame('quiz') },
+        { label: 'Story', image: 'src/image/shortstory.png', action: () => startGame('short-story') },
+      ].map((action, i) => (
+        <button
+          key={i}
+          onClick={action.action}
+          style={{
+            position: 'relative',
+            height: '120px',
+            borderRadius: '12px',
+            overflow: 'hidden',
+            border: 'none',
+            cursor: 'pointer',
+            padding: 0,
+            transition: 'transform 0.2s ease',
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.transform = 'translateY(-2px)';
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.transform = 'translateY(0)';
+          }}
+        >
+          <img
+            src={action.image}
+            alt={action.label}
+            style={{
+              position: 'absolute',
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              top: 0,
+              left: 0,
+            }}
+          />
+
+          <div style={{
+            position: 'absolute',
+            inset: 0,
+            background: 'linear-gradient(to top, rgba(0,0,0,0.6), rgba(0,0,0,0.1))',
+          }} />
+
+          <div style={{
+            position: 'relative',
+            zIndex: 2,
+            height: '100%',
+            display: 'flex',
+            alignItems: 'flex-end',
+            padding: '14px',
+            fontFamily: "'Poppins', sans-serif",
+          }}>
+            <span style={{
+              color: 'white',
+              fontSize: '14px',
+              fontWeight: '500',
+            }}>
+              {action.label}
+            </span>
+          </div>
+        </button>
+      ))}
+    </div>
+
+    <button
+      onClick={() => setActiveMenu('Games')}
+      style={{
+        width: '100%',
+        marginTop: '20px',
+        padding: '12px',
+        background: '#f8f7ff',
+        border: '1px solid #eae8f0',
+        borderRadius: '40px',
+        fontSize: '13px',
+        fontWeight: '400',
+        color: '#7c6fd6',
+        cursor: 'pointer',
+        fontFamily: "'Poppins', sans-serif",
+        transition: 'all 0.2s ease',
+      }}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.background = '#f0edff';
+        e.currentTarget.style.borderColor = '#d0c9f0';
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.background = '#f8f7ff';
+        e.currentTarget.style.borderColor = '#eae8f0';
+      }}
+    >
+      View All Games →
+    </button>
+  </div>
+
+  {/* ================= RECOMMENDED ================= */}
+  <div style={{
+    background: '#ffffff',
+    borderRadius: '16px',
+    padding: '24px',
+    border: '1px solid #eae8f0',
+  }}>
+    <h4 style={{
+      fontSize: '16px',
+      fontWeight: '500',
+      marginBottom: '16px',
+      color: '#2c3440',
+      fontFamily: "'Poppins', sans-serif",
+    }}>
+      ✨ Recommended for You
+    </h4>
+
+    <div style={{
+      display: 'flex',
+      flexDirection: 'column',
+      gap: '12px',
+    }}>
+
+      <div
+        onClick={() => startGame('short-story')}
+        style={{
+          position: 'relative',
+          height: '120px',
+          borderRadius: '12px',
+          overflow: 'hidden',
+          cursor: 'pointer',
+          transition: 'transform 0.2s ease',
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.transform = 'translateY(-2px)';
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.transform = 'translateY(0)';
+        }}
+      >
+        <img
+          src="src/image/shortstory.png"
+          alt="The Learning Journey"
+          style={{
+            position: 'absolute',
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+          }}
+        />
+
+        <div style={{
+          position: 'absolute',
+          inset: 0,
+          background: 'linear-gradient(to top, rgba(0,0,0,0.6), rgba(0,0,0,0.1))',
+        }} />
+
+        <div style={{
+          position: 'relative',
+          zIndex: 2,
+          height: '100%',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'flex-end',
+          padding: '14px',
+          color: 'white',
+        }}>
+          <div style={{ fontSize: '15px', fontWeight: '500' }}>
+            The Learning Journey
+          </div>
+          <div style={{ fontSize: '12px', opacity: 0.85 }}>
+            Chapter 1: Classroom Adventures
+          </div>
+        </div>
+      </div>
+
+      <div
+        onClick={() => startGame('wordpics')}
+        style={{
+          position: 'relative',
+          height: '120px',
+          borderRadius: '12px',
+          overflow: 'hidden',
+          cursor: 'pointer',
+          transition: 'transform 0.2s ease',
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.transform = 'translateY(-2px)';
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.transform = 'translateY(0)';
+        }}
+      >
+        <img
+          src="src/image/wordpics.png"
+          alt="Word Pics"
+          style={{
+            position: 'absolute',
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+          }}
+        />
+
+        <div style={{
+          position: 'absolute',
+          inset: 0,
+          background: 'linear-gradient(to top, rgba(0,0,0,0.6), rgba(0,0,0,0.1))',
+        }} />
+
+        <div style={{
+          position: 'relative',
+          zIndex: 2,
+          height: '100%',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'flex-end',
+          padding: '14px',
+          color: 'white',
+        }}>
+          <div style={{ fontSize: '15px', fontWeight: '500' }}>
+            Word Pics Challenge
+          </div>
+          <div style={{ fontSize: '12px', opacity: 0.85 }}>
+            30 words to review
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  </div>
+          )}
         </div>
       </div>
     </>
@@ -11444,7 +11174,8 @@ const FavoritesPage = () => {
   const [selectedWord, setSelectedWord] = useState(null);
   const [showWordDetails, setShowWordDetails] = useState(false);
   const currentUserId = localStorage.getItem('userId');
-
+  const [viewMode, setViewMode] = useState('grid'); // 'grid' or 'list'
+  
   // Load favorites from Firebase
   useEffect(() => {
     const loadFavorites = async () => {
@@ -11760,52 +11491,70 @@ const FavoritesPage = () => {
     </div>
   );
 
-  // Empty state - no favorites yet
-  if (!loading && favoriteWords.length === 0) {
-    return (
+// Empty state - no favorites yet
+if (!loading && favoriteWords.length === 0) {
+  return (
+    <div style={{
+      background: 'white',
+      minHeight: '100vh',
+      width: '100%',
+      padding: '20px',
+      boxSizing: 'border-box',
+    }}>
       <div style={{ 
-        maxWidth: '600px', 
-        margin: '40px auto', 
-        padding: '60px 40px', 
-        background: '#ffffff', 
-        borderRadius: '24px', 
-        border: '1px solid #e2e8f0', 
-        textAlign: 'center' 
+        width: '180px', 
+        height: '180px', 
+        margin: '40px auto 16px',
+        display: 'block',
       }}>
-        <div style={{ 
-          width: '100px', 
-          height: '100px', 
-          background: '#fef2f2', 
-          borderRadius: '50%', 
-          display: 'flex', 
-          alignItems: 'center', 
-          justifyContent: 'center', 
-          margin: '0 auto 24px' 
-        }}>
-          <span style={{ fontSize: '48px', color: '#C44545' }}>⭐</span>
-        </div>
-        <h2 style={{ fontSize: '24px', fontWeight: '600', color: '#0f172a', marginBottom: '12px' }}>
-          No favorite words yet
-        </h2>
-        <p style={{ fontSize: '16px', color: '#64748b', marginBottom: '32px' }}>
-          Star words in the Word Library to see them here
-        </p>
+        <img 
+          src="src/image/sadheart.jpg"
+          alt="No favorites yet"
+          style={{
+            width: '100%',
+            height: '100%',
+            objectFit: 'contain',
+          }}
+        />
+      </div>
+      <h2 style={{ 
+        fontSize: '22px',
+        fontWeight: '600', 
+        color: '#0f172a', 
+        textAlign: 'center',
+        margin: '0 auto 8px',
+        maxWidth: '400px',
+      }}>
+        No favorite words yet
+      </h2>
+      <p style={{ 
+        fontSize: '15px',
+        color: '#64748b', 
+        textAlign: 'center',
+        margin: '0 auto 24px',
+        maxWidth: '400px',
+      }}>
+        Star words in the Word Library to see them here
+      </p>
+      <div style={{ textAlign: 'center' }}>
         <button 
           onClick={() => {
-            // This needs setActiveMenu - we'll pass it as prop or use navigate
-            // For now, we'll use window.location as fallback
             window.location.href = '/dashboard?tab=word-library';
           }} 
           style={{ 
-            padding: '14px 32px', 
+            padding: '10px 24px',
             background: '#7c6fd6', 
             color: 'white', 
             border: 'none', 
             borderRadius: '100px', 
-            fontSize: '16px', 
-            fontWeight: '600', 
+            fontSize: '14px',
+            fontWeight: '500',
             cursor: 'pointer',
             transition: 'all 0.2s ease',
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '8px',
+            margin: '0 auto',
           }}
           onMouseOver={(e) => {
             e.currentTarget.style.background = '#6b5ec5';
@@ -11818,84 +11567,156 @@ const FavoritesPage = () => {
             e.currentTarget.style.boxShadow = 'none';
           }}
         >
-          Browse Word Library
+          Browse 
         </button>
       </div>
-    );
-  }
+    </div>
+  );
+}
 
-  // Loading state
-  if (loading) {
-    return (
-      <div style={{ 
-        display: 'flex', 
-        flexDirection: 'column',
-        alignItems: 'center', 
-        justifyContent: 'center',
-        minHeight: '400px',
-        textAlign: 'center' 
-      }}>
-        <div style={{ fontSize: '48px', marginBottom: '16px', animation: 'spin 2s linear infinite' }}>⏳</div>
-        <div style={{ fontSize: '18px', color: '#64748b' }}>Loading your favorites...</div>
-        <style>{`
-          @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-          }
-        `}</style>
+// Loading state
+if (loading) {
+  return (
+    <div style={{ 
+      display: 'flex', 
+      flexDirection: 'column',
+      alignItems: 'center', 
+      justifyContent: 'center',
+      minHeight: '400px',
+      textAlign: 'center' 
+    }}>
+      <div style={{
+        width: '50px',
+        height: '50px',
+        border: '4px solid #f0edff',
+        borderTop: '4px solid #7c6fd6',
+        borderRadius: '50%',
+        marginBottom: '20px',
+        animation: 'spin 1s linear infinite'
+      }}></div>
+      <div style={{ fontSize: '16px', color: '#64748b' }}>
+        Loading your favorites
+        <span style={{ animation: 'pulse 1.5s infinite' }}>...</span>
       </div>
-    );
-  }
+      <style>{`
+        @keyframes spin {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
+        @keyframes pulse {
+          0%, 100% { opacity: 1; }
+          50% { opacity: 0.3; }
+        }
+      `}</style>
+    </div>
+  );
+}
 
   // Main render - with favorites
-  return (
-    <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '24px' }}>
-      {/* Header */}
+return (
+    <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '24px', fontFamily: "'Poppins', sans-serif" }}>
+      {/* Header with view toggle */}
       <div style={{ 
         display: 'flex', 
         justifyContent: 'space-between', 
         alignItems: 'center', 
-        marginBottom: '32px', 
-        borderBottom: '1px solid #e2e8f0', 
-        paddingBottom: '20px' 
+        marginBottom: '24px', 
+        borderBottom: '1px solid #eaedf2', 
+        paddingBottom: '16px' 
       }}>
         <div>
           <h1 style={{ 
-            fontSize: '28px', 
-            fontWeight: '600', 
-            color: '#0f172a', 
-            marginBottom: '8px', 
+            fontSize: '24px', 
+            fontWeight: '500', 
+            color: '#2c3440', 
+            marginBottom: '4px', 
             display: 'flex', 
             alignItems: 'center', 
-            gap: '12px' 
+            gap: '8px',
+            fontFamily: "'Poppins', sans-serif",
           }}>
-            <span style={{ fontSize: '32px', color: '#7c6fd6' }}>⭐</span>
             My Favorite Words
           </h1>
-          <p style={{ fontSize: '15px', color: '#64748b', margin: '0' }}>
+          <p style={{ fontSize: '13px', color: '#6f7887', margin: '0', fontFamily: "'Poppins', sans-serif" }}>
             {favoriteWords.length} {favoriteWords.length === 1 ? 'word' : 'words'} saved from Word Library
           </p>
         </div>
 
-        {/* Stats */}
-        <div style={{
-          background: '#f8fafc',
-          padding: '8px 20px',
-          borderRadius: '100px',
-          border: '1px solid #e2e8f0',
-          fontSize: '14px',
-          color: '#64748b',
-          fontWeight: '500',
-          display: 'flex',
-          alignItems: 'center',
-          gap: '8px',
-        }}>
-          <span style={{ color: '#7c6fd6' }}>⭐</span>
-          {favoriteWords.length} words
+        <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+          {/* View toggle buttons */}
+          <div style={{
+            display: 'flex',
+            gap: '4px',
+            background: '#f5f7fa',
+            padding: '4px',
+            borderRadius: '8px',
+            border: '1px solid #eaedf2',
+          }}>
+            <button
+              onClick={() => setViewMode('grid')}
+              style={{
+                padding: '6px 12px',
+                background: viewMode === 'grid' ? '#ffffff' : 'transparent',
+                border: 'none',
+                borderRadius: '6px',
+                fontSize: '13px',
+                color: viewMode === 'grid' ? '#6b63b5' : '#6f7887',
+                fontWeight: viewMode === 'grid' ? '500' : '400',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '6px',
+                transition: 'all 0.2s ease',
+                fontFamily: "'Poppins', sans-serif",
+                boxShadow: viewMode === 'grid' ? '0 1px 3px rgba(0,0,0,0.05)' : 'none',
+              }}
+            >
+              <span style={{ fontSize: '14px' }}>⊞</span> Grid
+            </button>
+            <button
+              onClick={() => setViewMode('list')}
+              style={{
+                padding: '6px 12px',
+                background: viewMode === 'list' ? '#ffffff' : 'transparent',
+                border: 'none',
+                borderRadius: '6px',
+                fontSize: '13px',
+                color: viewMode === 'list' ? '#6b63b5' : '#6f7887',
+                fontWeight: viewMode === 'list' ? '500' : '400',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '6px',
+                transition: 'all 0.2s ease',
+                fontFamily: "'Poppins', sans-serif",
+                boxShadow: viewMode === 'list' ? '0 1px 3px rgba(0,0,0,0.05)' : 'none',
+              }}
+            >
+              <span style={{ fontSize: '14px' }}>☰</span> List
+            </button>
+          </div>
+
+          {/* Stats */}
+          <div style={{
+            background: '#f8fafc',
+            padding: '6px 14px',
+            borderRadius: '20px',
+            border: '1px solid #eaedf2',
+            fontSize: '13px',
+            color: '#6f7887',
+            fontWeight: '400',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '6px',
+            fontFamily: "'Poppins', sans-serif",
+          }}>
+            <span style={{ color: '#d4af37', fontSize: '12px' }}>⭐</span>
+            {favoriteWords.length} words
+          </div>
         </div>
       </div>
 
-      {/* Word Details Modal */}
+      {/* Word Details Modal - This is where all the detailed content should go */}
       {showWordDetails && selectedWord && (
         <WordDetailsModal
           word={selectedWord}
@@ -11906,83 +11727,90 @@ const FavoritesPage = () => {
         />
       )}
 
-      {/* Favorites Grid */}
+      {/* Favorites Grid/List - Simple cards here */}
       {favoriteWords.length === 0 ? (
         <div style={{ 
           textAlign: 'center', 
-          padding: '80px 40px', 
+          padding: '64px 32px', 
           background: '#ffffff', 
-          borderRadius: '24px', 
-          border: '1px solid #e2e8f0',
-          maxWidth: '500px',
+          borderRadius: '12px', 
+          border: '1px solid #eaedf2',
+          maxWidth: '480px',
           margin: '40px auto'
         }}>
           <div style={{ 
-            width: '80px', 
-            height: '80px', 
-            background: '#fef2f2', 
+            width: '72px', 
+            height: '72px', 
+            background: '#faf2f2', 
             borderRadius: '50%', 
             display: 'flex', 
             alignItems: 'center', 
             justifyContent: 'center', 
-            margin: '0 auto 24px' 
+            margin: '0 auto 20px' 
           }}>
-            <span style={{ fontSize: '40px', color: '#C44545' }}>⭐</span>
+            <span style={{ fontSize: '32px', color: '#b58a8a' }}>⭐</span>
           </div>
-          <h3 style={{ fontSize: '20px', fontWeight: '600', color: '#0f172a', marginBottom: '8px' }}>
+          <h3 style={{ fontSize: '18px', fontWeight: '500', color: '#2c3440', marginBottom: '6px', fontFamily: "'Poppins', sans-serif" }}>
             No favorite words yet
           </h3>
-          <p style={{ fontSize: '15px', color: '#64748b', marginBottom: '24px' }}>
+          <p style={{ fontSize: '14px', color: '#6f7887', marginBottom: '20px', fontFamily: "'Poppins', sans-serif" }}>
             Star words in the Word Library to see them here
           </p>
           <button 
             onClick={() => window.location.href = '/dashboard?tab=word-library'}
             style={{ 
-              padding: '12px 28px', 
-              background: '#7c6fd6', 
-              color: 'white', 
+              padding: '10px 24px', 
+              background: '#6b63b5', 
+              color: '#ffffff', 
               border: 'none', 
-              borderRadius: '100px', 
-              fontSize: '14px', 
+              borderRadius: '8px', 
+              fontSize: '13px', 
               fontWeight: '500', 
-              cursor: 'pointer' 
+              cursor: 'pointer',
+              fontFamily: "'Poppins', sans-serif",
+              transition: 'background 0.2s ease',
             }}
+            onMouseOver={(e) => e.currentTarget.style.background = '#5a52a0'}
+            onMouseOut={(e) => e.currentTarget.style.background = '#6b63b5'}
           >
             Browse Word Library
           </button>
         </div>
       ) : (
         <div style={{ 
-          display: 'grid', 
-          gridTemplateColumns: 'repeat(auto-fill, minmax(350px, 1fr))', 
-          gap: '24px' 
+          display: viewMode === 'grid' 
+            ? 'grid' 
+            : 'flex',
+          gridTemplateColumns: viewMode === 'grid' ? 'repeat(auto-fill, minmax(320px, 1fr))' : 'none',
+          flexDirection: viewMode === 'list' ? 'column' : 'none',
+          gap: viewMode === 'grid' ? '20px' : '12px',
         }}>
           {favoriteWords.map((word) => (
             <div 
               key={word.id} 
               style={{ 
                 background: '#ffffff', 
-                borderRadius: '16px', 
-                border: '1px solid #e2e8f0', 
-                padding: '24px', 
+                borderRadius: '10px', 
+                border: '1px solid #eaedf2', 
+                padding: viewMode === 'grid' ? '20px' : '16px 20px', 
                 position: 'relative',
                 transition: 'all 0.2s ease',
-                boxShadow: '0 2px 8px rgba(0,0,0,0.02)',
-                cursor: 'pointer'
+                cursor: 'pointer',
+                display: viewMode === 'list' ? 'flex' : 'block',
+                alignItems: viewMode === 'list' ? 'flex-start' : 'stretch',
+                gap: viewMode === 'list' ? '16px' : '0',
               }}
               onClick={() => {
                 setSelectedWord(word);
                 setShowWordDetails(true);
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = '#7c6fd6';
-                e.currentTarget.style.boxShadow = '0 8px 24px rgba(124, 111, 214, 0.1)';
-                e.currentTarget.style.transform = 'translateY(-2px)';
+                e.currentTarget.style.borderColor = '#d0c9f0';
+                e.currentTarget.style.backgroundColor = '#faf9ff';
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = '#e2e8f0';
-                e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.02)';
-                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.borderColor = '#eaedf2';
+                e.currentTarget.style.backgroundColor = '#ffffff';
               }}
             >
               {/* Remove button */}
@@ -11992,20 +11820,24 @@ const FavoritesPage = () => {
                   removeFavorite(word.id);
                 }} 
                 style={{ 
-                  position: 'absolute', 
-                  top: '20px', 
-                  right: '20px', 
+                  position: viewMode === 'grid' ? 'absolute' : 'relative',
+                  top: viewMode === 'grid' ? '16px' : 'auto',
+                  right: viewMode === 'grid' ? '16px' : 'auto',
+                  order: viewMode === 'list' ? 3 : 'auto',
+                  marginLeft: viewMode === 'list' ? 'auto' : '0',
                   background: 'none', 
                   border: 'none', 
-                  fontSize: '24px', 
+                  fontSize: '20px', 
                   cursor: 'pointer', 
-                  color: '#FFD700',
+                  color: '#d4af37',
                   transition: 'transform 0.2s ease',
-                  zIndex: 10
+                  zIndex: 10,
+                  padding: '4px',
+                  lineHeight: 1,
                 }}
                 onMouseOver={(e) => {
                   e.stopPropagation();
-                  e.currentTarget.style.transform = 'scale(1.2)';
+                  e.currentTarget.style.transform = 'scale(1.15)';
                 }}
                 onMouseOut={(e) => {
                   e.stopPropagation();
@@ -12015,89 +11847,116 @@ const FavoritesPage = () => {
                 ★
               </button>
 
-              {/* Word content */}
-              <div style={{ marginBottom: '16px', paddingRight: '40px' }}>
-                <h3 style={{ 
-                  fontSize: '24px', 
-                  fontWeight: '600', 
-                  color: '#0f172a', 
-                  margin: '0 0 4px 0' 
+              {/* Word content - SIMPLE CARD VIEW (no examples/synonyms here) */}
+              <div style={{ 
+                flex: viewMode === 'list' ? '1' : 'none',
+                paddingRight: viewMode === 'grid' ? '24px' : '0',
+                marginBottom: viewMode === 'grid' ? '12px' : '0',
+                width: '100%',
+              }}>
+                {/* Word and pronunciation - stacked vertically like the image */}
+                <div style={{ 
+                  marginBottom: '8px',
                 }}>
-                  {word.word}
-                </h3>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
-                  <span style={{ fontSize: '14px', color: '#64748b', fontStyle: 'italic' }}>
+                  <h3 style={{ 
+                    fontSize: viewMode === 'grid' ? '24px' : '22px', 
+                    fontWeight: '500', 
+                    color: '#2c3440', 
+                    margin: '0 0 2px 0',
+                    fontFamily: "'Poppins', sans-serif",
+                    lineHeight: 1.2,
+                  }}>
+                    {word.word}
+                  </h3>
+                  <div style={{ 
+                    fontSize: viewMode === 'grid' ? '14px' : '13px', 
+                    color: '#8f9aab', 
+                    fontStyle: 'italic',
+                    fontFamily: "'Poppins', sans-serif",
+                    marginBottom: '4px',
+                  }}>
                     {word.pronunciation}
-                  </span>
+                  </div>
                   <span style={{ 
                     fontSize: '12px', 
-                    padding: '2px 8px', 
-                    background: '#f1f5f9', 
-                    borderRadius: '100px', 
-                    color: '#475569' 
+                    padding: '2px 10px', 
+                    background: '#f2f4f8', 
+                    borderRadius: '12px', 
+                    color: '#5a6270',
+                    fontFamily: "'Poppins', sans-serif",
+                    display: 'inline-block',
                   }}>
                     {word.partOfSpeech || 'verb'}
                   </span>
                 </div>
-              </div>
 
-              {/* Definition */}
-              <p style={{ 
-                fontSize: '14px', 
-                color: '#334155', 
-                lineHeight: '1.6', 
-                marginBottom: '16px' 
-              }}>
-                {word.definition}
-              </p>
-
-              {/* Example sentence */}
-              {word.examples && word.examples[0] && (
-                <div style={{ 
-                  background: '#f8fafc', 
-                  borderRadius: '10px', 
-                  padding: '14px', 
-                  marginBottom: '16px', 
-                  borderLeft: `3px solid ${diffColor(word.difficulty)}` 
+                {/* Definition - only showing first 100 chars in card view to keep it clean */}
+                <p style={{ 
+                  fontSize: viewMode === 'grid' ? '14px' : '14px', 
+                  color: '#4a5565', 
+                  lineHeight: '1.5', 
+                  marginBottom: '12px',
+                  fontFamily: "'Poppins', sans-serif",
                 }}>
-                  <p style={{ 
-                    fontSize: '13px', 
-                    color: '#475569', 
-                    margin: '0', 
-                    fontStyle: 'italic' 
+                  {word.definition.length > 100 
+                    ? `${word.definition.substring(0, 100)}...` 
+                    : word.definition}
+                </p>
+
+                {/* Example sentence - simple preview, not the full section */}
+                {word.examples && word.examples[0] && (
+                  <div style={{ 
+                    marginBottom: '12px',
                   }}>
-                    {word.examples[0]}
-                  </p>
-                </div>
-              )}
+                    <p style={{ 
+                      fontSize: '13px', 
+                      color: '#5a6270', 
+                      margin: '0', 
+                      fontStyle: 'italic',
+                      fontFamily: "'Poppins', sans-serif",
+                      position: 'relative',
+                      paddingLeft: '12px',
+                      borderLeft: `2px solid ${diffColor(word.difficulty)}`,
+                    }}>
+                      "{word.examples[0].length > 60 
+                        ? `${word.examples[0].substring(0, 60)}...` 
+                        : word.examples[0]}"
+                    </p>
+                  </div>
+                )}
 
-              {/* Footer */}
-              <div style={{ 
-                display: 'flex', 
-                justifyContent: 'space-between', 
-                alignItems: 'center', 
-                marginTop: 'auto' 
-              }}>
-                <span style={{ 
-                  padding: '4px 12px', 
-                  borderRadius: '100px', 
-                  fontSize: '12px', 
-                  fontWeight: '600', 
-                  background: diffBg(word.difficulty), 
-                  color: diffColor(word.difficulty) 
+                {/* Footer tags - difficulty and category only */}
+                <div style={{ 
+                  display: 'flex', 
+                  justifyContent: 'flex-start', 
+                  alignItems: 'center', 
+                  marginTop: '8px',
+                  gap: '8px',
+                  flexWrap: 'wrap',
                 }}>
-                  {word.difficulty || 'Easy'}
-                </span>
-                <span style={{ 
-                  padding: '4px 12px', 
-                  borderRadius: '100px', 
-                  fontSize: '12px', 
-                  fontWeight: '500', 
-                  background: '#f1f5f9', 
-                  color: '#475569' 
-                }}>
-                  {word.category || 'Academic'}
-                </span>
+                  <span style={{ 
+                    padding: '4px 10px', 
+                    borderRadius: '12px', 
+                    fontSize: '11px', 
+                    fontWeight: '500', 
+                    background: diffBg(word.difficulty), 
+                    color: diffColor(word.difficulty),
+                    fontFamily: "'Poppins', sans-serif",
+                  }}>
+                    {word.difficulty || 'Easy'}
+                  </span>
+                  <span style={{ 
+                    padding: '4px 10px', 
+                    borderRadius: '12px', 
+                    fontSize: '11px', 
+                    fontWeight: '400', 
+                    background: '#f2f4f8', 
+                    color: '#5a6270',
+                    fontFamily: "'Poppins', sans-serif",
+                  }}>
+                    {word.category || 'Academic'}
+                  </span>
+                </div>
               </div>
             </div>
           ))}
@@ -12107,17 +11966,18 @@ const FavoritesPage = () => {
       {/* Footer stats */}
       {favoriteWords.length > 0 && (
         <div style={{ 
-          marginTop: '32px', 
-          paddingTop: '24px', 
-          borderTop: '1px solid #e2e8f0', 
+          marginTop: '28px', 
+          paddingTop: '20px', 
+          borderTop: '1px solid #eaedf2', 
           display: 'flex', 
           justifyContent: 'space-between', 
           alignItems: 'center', 
-          fontSize: '13px', 
-          color: '#64748b' 
+          fontSize: '12px', 
+          color: '#8f9aab',
+          fontFamily: "'Poppins', sans-serif",
         }}>
           <span>📚 From Word Library • {favoriteWords.length} favorites</span>
-          <span>⭐ Click star to remove from favorites</span>
+          <span>⭐ Click star to remove • Click word for details</span>
         </div>
       )}
     </div>
